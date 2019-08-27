@@ -1,61 +1,48 @@
 ## Top Level State Shape
 ```js
-
-{
-	entities: {
-		users: {},
-		posts: {}
-	},
-
-	session: {
-		currentUser: 1
-
-	},
-
-	ui: {
-		modalOpen: true
-
-	},
-
-	errors: {
-		userErrors: [],
-		sessionErrors: [],
-		postErrors: []
-	}
-}
-
-```
-
-
-
-```js
 {
 entities: {
   users: {
     3: {
       id: 3,
-      name: 'Andy',
+      username: 'Kyle',
+      email: 'email@email.com',
+      password_digest: 'password',
+      session_token: 'tokentoken',
       }
   },
 
-  posts: {
+  playlists: {
     1: {
       id: 1,
-      title: 'post 1',
-      authorId: 3,
+      title: 'Playlist 1',
+      author_id: 3,
     },
     2: {
       id: 2,
-      title: 'post 2',
-      authorId: 3,
+      title: 'Playlist2',
+      author_id: 3,
     }
   },
 
-  postLikes: {
-  	1: {
-    	id: 1,
-      userId: 3,
-      postId: 4
+  songs: {
+  	4: {
+        id: 1,
+        title: "She's a Bad Mama Jama",
+        artist: 'Carl Carlton',
+        album: 'Too Hot'
+    }
+  	8: {
+        id: 8,
+        title: 'Virtual Insanity',
+        artist: 'Jamiroquai',
+        album: 'Traveling Without Moving'
+    }
+  	12: {
+        id: 12,
+        title: 'You Sexy Thing',
+        artist: 'Hot Chocolate',
+        album: 'Hot Chocolate'
     }
   }
 }

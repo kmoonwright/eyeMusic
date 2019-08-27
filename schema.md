@@ -1,31 +1,36 @@
 ## `users`
+```sh
+| column name     | data type | details
+|-----------------|-----------|-----------------------|
+| `id `            | integer   | not null, primary key
 
- column name     | data type | details
+| `username  `     | string    | not null, indexed, unique
 
-----------------|-----------|-----------------------
+| `email  `        | string    | not null, indexed, unique
 
-`id `             | integer   | not null, primary key
+| `password_digest`| string    | not null
 
-`username  `      | string    | not null, indexed, unique
+| `session_token`  | string    | not null, indexed, unique
 
-`email  `      | string    | not null, indexed, unique
+| `created_at`     | datetime  | not null
 
-`password_digest` | string    | not null
-
-`session_token`   | string    | not null, indexed, unique
-
-`created_at`   | datetime    | not null
-
-`updated_at`   | datetime    | not null
+| `updated_at`     | datetime  | not null
 
 - index on ​username, unique: true
 - index on email, unique: true
 - index on session_token, unique: true
+```
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
 
 
 
 ## `songs`
-
+```sh
  column name     | data type | details
 
 ----------------|-----------|-----------------------
@@ -49,10 +54,10 @@
 - playlist_id references playlists
 
 - index on playlist_id
-
+```
 
 ## `playlists`
-
+```sh
  column name     | data type | details
 
 ----------------|-----------|-----------------------
@@ -69,12 +74,12 @@
 
 - author_id references users
 - index on playlist_id
-
+```
 
 
 
 ## `playlist_songs`
-
+```sh
  column name     | data type | details
 
 ----------------|-----------|-----------------------
@@ -96,3 +101,4 @@
 - playlist_id references playlist
 
 - index on playlist_id
+```
