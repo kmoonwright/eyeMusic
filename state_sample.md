@@ -1,4 +1,4 @@
-## Top Level State Shape
+## Sample State Shape
 ```js
 {
 entities: {
@@ -15,12 +15,12 @@ entities: {
   playlists: {
     1: {
       id: 1,
-      title: 'Playlist 1',
+      title: 'Funkalypse',
       author_id: 3,
     },
     2: {
       id: 2,
-      title: 'Playlist2',
+      title: 'Funk You',
       author_id: 3,
     }
   },
