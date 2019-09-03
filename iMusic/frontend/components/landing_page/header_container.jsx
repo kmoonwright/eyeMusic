@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import Header from './header';
 import { logout } from '../../actions/session_actions';
 
-
 const msp = state => ({
     currentUser: state.session.currentUser
 });
@@ -14,4 +13,4 @@ const mdp = dispatch => ({
     logout: () => dispatch(logout())
 });
 
-export default withRouter(connect(msp, mdp)(Header))
+export default connect(msp, mdp)(Header);
