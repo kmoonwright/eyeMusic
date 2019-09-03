@@ -36,7 +36,7 @@ class Signup extends React.Component {
                     </label>
                     <label>Password:
                         <input
-                            type="text"
+                            type="password"
                             value={this.state.password}
                             onChange={e => this.setState({ password: e.target.value })}
                         />
@@ -47,3 +47,5 @@ class Signup extends React.Component {
         )
     }
 }
+
+export default Signup;
