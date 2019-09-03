@@ -4,8 +4,10 @@ import { login } from '../../actions/session_actions';
 import Login from './login';
 import { withRouter } from 'react-router-dom';
 
-const mdp = dispatch => ({
-    login: formUser => dispatch(login(formUser))
-});
+const mdp = dispatch => {
+    return {
+        login: formUser => dispatch(login(formUser))
+    }
+};
 
-export default connect(null, mdp)(Login);
+export default connect(undefined, mdp)(Login);

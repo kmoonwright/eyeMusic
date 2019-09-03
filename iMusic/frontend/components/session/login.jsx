@@ -3,12 +3,12 @@ import React from 'react';
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             username: "",
             password: "",
         };
 
-        this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInput(type) {

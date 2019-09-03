@@ -11,8 +11,8 @@ export const createNewUser = (user) => dispatch => {
         }))
 }
 
-export const login = () => dispatch => {
-    return postSession()
+export const login = (formUser) => dispatch => {
+    return postSession(formUser)
         .then(user => dispatch({
             type: RECEIVE_CURRENT_USER,
             user
