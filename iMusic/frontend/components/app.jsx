@@ -12,6 +12,7 @@ const App = () => (
         <Route path="/" component={NavBarContainer} />
         <AuthRoute patch="/signup" component={SignUpContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
+
         <h1>VVELC0ME</h1>
         <ul>
             <li>DIS IS</li>
