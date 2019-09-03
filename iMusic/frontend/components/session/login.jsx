@@ -11,6 +11,12 @@ class Login extends React.Component {
         this.handleSubmit.bind(this);
     }
 
+    handleInput(type) {
+        return (e) => {
+            this.setState({[type]: e.target.value})
+        }
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.login(this.state);
@@ -25,17 +31,20 @@ class Login extends React.Component {
                         <input 
                             type="text"
                             value={this.state.username}
-                            onChange={e => this.setState({ username: e.target.value })}
+                            onChange={this.handleInput("username")}
+                            // onChange={e => this.setState({ [username]: e.target.value })}
+
                         />
                     </label>
                     <label>Password:
                         <input 
                             type="password"
                             value={this.state.password}
-                            onChange={e => this.setState({ password: e.target.value })}
+                            onChange={this.handleInput("password")}
+                            // onChange={e => this.setState({ [password]: e.target.value })}
                         />
-                    </label>
                     <button onClick={this.handleSubmit}>Login</button>
+                    </label>
                 </form>
             </div>
         )

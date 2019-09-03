@@ -8,4 +8,4 @@ const mdp = dispatch => ({
     login: formUser => dispatch(login(formUser))
 });
 
-export default connect(undefined, mdp)(Login);
+export default connect(null, mdp)(Login);

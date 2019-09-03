@@ -11,10 +11,17 @@ class Signup extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleInput(type) {
+        return (e) => {
+            this.setState({[type]: e.target.value});
+        }
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.createNewUser(this.state);
     }
+
     render() {
         return (
             <div className="session-form">
@@ -24,24 +31,27 @@ class Signup extends React.Component {
                         <input
                             type="text"
                             value={this.state.username}
-                            onChange={e => this.setState({username: e.target.value})}
+                            onChange={this.handleInput("username")}
+                            // onChange={e => this.setState({[username]: e.target.value})}
                         />
                     </label>
                     <label>Email:
                         <input
                             type="text"
                             value={this.state.email}
-                            onChange={e => this.setState({ email: e.target.value })}
+                            onChange={this.handleInput("email")}
+                            // onChange={e => this.setState({ [email]: e.target.value })}
                         />
                     </label>
                     <label>Password:
                         <input
                             type="password"
                             value={this.state.password}
-                            onChange={e => this.setState({ password: e.target.value })}
+                            onChange={this.handleInput("password")}
+                            // onChange={e => this.setState({ [password]: e.target.value })}
                         />
-                    </label>
                     <button onClick={this.handleSubmit}>Sign Up</button>
+                    </label>
                 </form>
             </div>
         )
