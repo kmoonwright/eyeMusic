@@ -50,7 +50,7 @@ class Signup extends React.Component {
                             onChange={this.handleInput("password")}
                             // onChange={e => this.setState({ [password]: e.target.value })}
                         />
-                    <button onClick={this.handleSubmit}>Sign Up</button>
+                    <button onClick={this.handleSubmit}>Submit</button>
                     </label>
                 </form>
             </div>

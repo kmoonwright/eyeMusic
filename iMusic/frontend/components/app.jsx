@@ -10,8 +10,8 @@ import LoginContainer from './session/login_container'
 const App = () => (
     <div>
         <Route path="/" component={NavBarContainer} />
-        <AuthRoute path="/signup" component={SignUpContainer} />
         <AuthRoute path="/login" component={LoginContainer} />
+        <AuthRoute path="/signup" component={SignUpContainer} />
 
         <h1>VVELC0ME</h1>
         <ul>
