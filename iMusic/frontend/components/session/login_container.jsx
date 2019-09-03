@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 const mdp = dispatch => {
     return {
-        login: formUser => dispatch(login(formUser))
+        action: formUser => dispatch(login(formUser))
     }
 };
 
