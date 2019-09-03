@@ -9,12 +9,11 @@ class LandingPage extends React.Component {
         return (
             <div>
                 <Header />
-                
-                <h1>VVELC0ME</h1>
-                <ul>
-                    <li>DIS IS</li>
-                    <li>APP APP</li>
-                </ul>
+
+                <h1>Lose yourself in</h1>
+                <h1>50 million songs.</h1>
+                <button>Try it free</button>
+
             </div>
         )
     }
