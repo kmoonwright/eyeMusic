@@ -9,16 +9,16 @@ class LandingPage extends React.Component {
         return (
             <div className="landing">
 
-                <div className="landing-nav">
-                    <Header></Header>
-                </div>
+                <Header></Header>
 
                 <div className="landing-img">
-                    <h1>Lose yourself in</h1>
-                    <h1>50 million songs.</h1>
-                    <button>
-                        <Link className="btn" to="/signup">Try it free</Link>
-                    </button>
+                    <ul>
+                        <h1>Lose yourself in</h1>
+                        <h1>50 million songs.</h1>
+                        <button>
+                            <Link className="btn" to="/signup">Try it free</Link>
+                        </button>
+                    </ul>
                 </div>
 
             </div>

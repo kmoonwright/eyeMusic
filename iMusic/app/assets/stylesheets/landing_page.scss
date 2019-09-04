@@ -3,6 +3,17 @@
   background-size: cover;
 }
 
+.landing-header {
+  font-family: Helvetica;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 .landing-img {
+  font-family: Helvetica;
   height: 700px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
