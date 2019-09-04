@@ -1,14 +1,16 @@
 .landing {
   font-family: Helvetica;
-  background-size: cover;
+  font-weight: 600px;
 }
 
 .landing-header {
   background-color: #F1F1F1;
+  height: 35px;
   width: 100%;
-  text-align: center;
   padding: 20px;
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   // position: absolute;
   // padding: 10px 16px;
   // display: flex;
@@ -21,25 +23,48 @@
   // z-index: 1;
   // flex-direction: row;
   // justify-content: space-around;
+  landing-logo {
+    font-size: 100px;
+  }
 }
 
 .landing-content {
-    padding: 16px;
+  text-align: center;
+  padding-top: 220px;
+
+  button {
+    color: #fff;
+    display: block;
+    width: 250px;
+    margin: 32px auto 0;
+    box-sizing: border-box;
+    height: 36px;
+    font-size: 17px;
+    background: #ff2f56;
+    border-color: #ff2f56;
+  }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+.landing-logo {
 }
 
-.sticky + .landing-content {
-  padding-top: 102px;
+.landing-hero {
+  min-height: 800px;
+  max-height:860px;
+  font-size: 64px;
+  background: image-url('headphones.jpg');
+  background-size: cover;
 }
 
 .landing-canvas {
+  width: 100%;
+  min-height: 800px;
+  max-height:860px;
   padding: 40px;
-  // background: image-url('landing-bg.jpg') fixed center;
+  background: image-url('canvas-bg.png');
+  background-size: cover;
+
+  color: #fff;
   // direction: ltr;
   // display: block;
   // font-size: 17px;
@@ -49,13 +74,36 @@
   // min-height: 1000px;
   // position:absolute;
   // text-align: left;
+  h1 {
+    padding-top: 220px;
+    font-size: 50px;
+  }
+  h3 {
+    padding-top: 20px;
+  }
 
 }
 
 .landing-cards {
-  padding: 30px;
+  font-size: 50px;
+  width: 100%;
+  min-height: 800px;
+  max-height:860px;
+  padding: 40px;
+
+  h1 {
+    padding-top: 150px;
+  }
 }
 
 .landing-program-guide {
-  padding: 30px;
+  background-color: #fafafa;
+  width: 100%;
+  min-height: 800px;
+  max-height:860px;
+  padding: 40px;
+  h1 {
+    font-size: 50px;
+    padding-top: 150px;
+  }
 }

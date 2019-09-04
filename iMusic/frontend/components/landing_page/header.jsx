@@ -32,8 +32,7 @@ class Header extends React.Component {
             
         return (
             <div className="landing-header">
-                <div className="landing-logo">
-                    <h2>iMUSIC</h2>
+                <div className="landing-logo">iMUSIC
                 </div>
                 <div className="landing-nav">
                     <Link className="btn" to="/signup">Try it free*</Link>
