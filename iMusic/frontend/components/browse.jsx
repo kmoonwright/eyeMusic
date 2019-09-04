@@ -1,4 +1,6 @@
 import React from 'react';
+import { Switch } from 'react-router-dom';
+
 
 class Browse extends React.Component {
 
