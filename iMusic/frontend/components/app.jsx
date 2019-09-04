@@ -3,10 +3,10 @@ import { Provider } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
-import NavBarContainer from './nav_bar/nav_bar_container';
-import SignUpContainer from './session/signup_container'
-import LoginContainer from './session/login_container'
+import SignUpContainer from './session/signup_container';
+import LoginContainer from './session/login_container';
 import LandingPage from './landing_page/landing_page';
+import NavBarContainer from './nav_bar/nav_bar_container';
 
 const App = () => (
     <div>
