@@ -6,7 +6,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import SignUpContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
 import LandingPage from './landing_page/landing_page';
-import NavBarContainer from './nav_bar/nav_bar_container';
+import Main from './main';
 
 const App = () => (
     <div>
@@ -15,7 +15,7 @@ const App = () => (
             <AuthRoute path="/login" component={LoginContainer} />
             <AuthRoute path="/signup" component={SignUpContainer} />
 
-            <ProtectedRoute path="/" component={NavBarContainer} />
+            <ProtectedRoute path="/:section" component={Main}></ProtectedRoute>
         </Switch>
     </div>
 );
