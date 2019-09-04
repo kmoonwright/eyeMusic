@@ -6,6 +6,8 @@ import { ProtectedRoute } from '../util/route_util';
 import MusicPlayer from './music_player';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import Browse from './browse';
+import Library from './library';
+import Radio from './radio';
 
 class Home extends React.Component {
 
@@ -15,7 +17,9 @@ class Home extends React.Component {
                 <ProtectedRoute path="/" component={MusicPlayer}></ProtectedRoute>
                 <ProtectedRoute path="/" component={NavBarContainer}></ProtectedRoute>
                 <Switch>
+                    <ProtectedRoute path="/library" component={Library}></ProtectedRoute>
                     <ProtectedRoute path="/browse" component={Browse}></ProtectedRoute>
+                    <ProtectedRoute path="/radio" component={Radio}></ProtectedRoute>
                 </Switch>
             </div>
         )
