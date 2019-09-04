@@ -12,8 +12,10 @@ class NavBar extends React.Component {
     render() {
         const display = currentUser ? (
             <div>
-                <h5>Welcome {currentUser.username}</h5>
-                <button onClick={logout}>Logout</button>
+                <ol>
+                    Welcome <button>{currentUser.username}</button>
+                    <button onClick={logout}>Logout</button>
+                </ol>
             </div>
         ) : (
             <div>
@@ -22,24 +24,29 @@ class NavBar extends React.Component {
             </div>
         );
         return (
-            <div>
-                <h3>NavBar</h3>
-                <ol>
-                    <button>Back</button>
-                    <button>Forward</button>
-                </ol>
-                <ul>
-                    <button>
-                        <Link to="../library">Library</Link>
-                    </button>
-                    <button>
-                        <Link to="../browse">Browse</Link>
-                    </button>
-                    <button>
-                        <Link to="../radio">Radio</Link>
-                    </button>
-                </ul>
-                {display}
+            <div className="navbar">
+                <div className="navbar-history">
+                    <ol>
+                        <button>Back</button>
+                        <button>Forward</button>
+                    </ol>
+                </div>
+                <div className="navbar-btns">
+                    <ol>
+                        <button>
+                            <Link to="../library">Library</Link>
+                        </button>
+                        <button>
+                            <Link to="../browse">Browse</Link>
+                        </button>
+                        <button>
+                            <Link to="../radio">Radio</Link>
+                        </button>
+                    </ol>
+                </div>
+                <div className="navbar-profile">
+                    {display}
+                </div>
                 {/* <header className="nav-bar">
                     <h1 className="logo">iMusic</h1>
                     <div>
