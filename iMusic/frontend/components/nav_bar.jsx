@@ -12,10 +12,8 @@ class NavBar extends React.Component {
     render() {
         const display = currentUser ? (
             <div>
-                <ol>
-                    Welcome <button>{currentUser.username}</button>
-                    <button onClick={logout}>Logout</button>
-                </ol>
+                <button>{currentUser.username}</button>
+                <button onClick={this.props.logout}>Logout</button>
             </div>
         ) : (
             <div>
@@ -57,7 +55,6 @@ class NavBar extends React.Component {
         )
     }
 }
-
 
 const msp = state => ({
     currentUser: state.session.currentUser
