@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ProtectedRoute } from '../util/route_util';
 
 import NavBarContainer from './nav_bar/nav_bar_container';
+import Browse from './browse';
 
 class Main extends React.Component {
 
@@ -10,7 +11,8 @@ class Main extends React.Component {
         return (
             <div className="main">
                 <Switch>
-                    <ProtectedRoute path="/" component={NavBarContainer} />
+                    <ProtectedRoute path="/" component={NavBarContainer}></ProtectedRoute>
+                    <ProtectedRoute path="/browse" component={Browse}></ProtectedRoute>
                 </Switch>
             </div>
         )
