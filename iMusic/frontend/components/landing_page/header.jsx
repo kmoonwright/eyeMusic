@@ -16,12 +16,12 @@ class Header extends React.Component {
     render() {
         const { currentUser } = this.props;
         const display = currentUser ? (
-            <div className="nav-main">
+            <div className="landing-header">
                 <h3 className="nav-welcome">Welcome {currentUser.username}!</h3>
                 <button onClick={this.logoutUser} className="nav-logout">Logout</button>
             </div>
         ) : (
-            <ul className="nav-main">
+            <ul className="landing-header">
                 <h1>iMusic</h1>
                 <Link className="btn" to="/signup">Try it free*</Link>
                 <Link className="btn" to="/login">Log In</Link>

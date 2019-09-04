@@ -7,12 +7,19 @@ class LandingPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <Header />
+            <div className="landing">
 
-                <h1>Lose yourself in</h1>
-                <h1>50 million songs.</h1>
-                <button>Try it free</button>
+                <div className="landing-nav">
+                    <Header></Header>
+                </div>
+
+                <div className="landing-img">
+                    <h1>Lose yourself in</h1>
+                    <h1>50 million songs.</h1>
+                    <button>
+                        <Link className="btn" to="/signup">Try it free</Link>
+                    </button>
+                </div>
 
             </div>
         )
