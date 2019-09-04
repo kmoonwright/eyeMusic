@@ -1,19 +1,61 @@
 .landing {
-  background: image-url('landing-bg.jpg') no-repeat fixed center;
+  font-family: Helvetica;
   background-size: cover;
 }
 
 .landing-header {
-  font-family: Helvetica;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  background-color: #F1F1F1;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  // position: absolute;
+  // padding: 10px 16px;
+  // display: flex;
+  // justify-content: center
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: auto;
+  // min-height: 100%;
+  // z-index: 1;
+  // flex-direction: row;
+  // justify-content: space-around;
 }
 
-.landing-img {
-  font-family: Helvetica;
-  height: 700px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
+.landing-content {
+    padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .landing-content {
+  padding-top: 102px;
+}
+
+.landing-canvas {
+  padding: 40px;
+  // background: image-url('landing-bg.jpg') fixed center;
+  // direction: ltr;
+  // display: block;
+  // font-size: 17px;
+  // font-weight: 400px;
+  // height: 1080px;
+  // max-height: 1080px;
+  // min-height: 1000px;
+  // position:absolute;
+  // text-align: left;
+
+}
+
+.landing-cards {
+  padding: 30px;
+}
+
+.landing-program-guide {
+  padding: 30px;
 }
