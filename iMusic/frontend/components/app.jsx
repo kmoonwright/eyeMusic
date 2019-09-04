@@ -11,11 +11,11 @@ import Main from './main';
 const App = () => (
     <div>
         <Switch>
-            <AuthRoute path="/signup" component={SignUpContainer} />
-            <AuthRoute path="/login" component={LoginContainer} />
+            <AuthRoute path="/signup" component={SignUpContainer}></AuthRoute>
+            <AuthRoute path="/login" component={LoginContainer}></AuthRoute>
             <ProtectedRoute path="/:section" component={Main}></ProtectedRoute>
 
-            <Route path="/" component={LandingPage} />
+            <Route exact path="/" component={LandingPage} />
         </Switch>
     </div>
 );
