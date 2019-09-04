@@ -22,9 +22,15 @@ export default ({ currentUser, logout }) => {
                 <button>Forward</button>
             </ol>
             <ul>
-                <button>Library</button>
-                <button>Explore</button>
-                <button>Radio</button>
+                <button>
+                    <Link to="../library">Library</Link>
+                </button>
+                <button>
+                    <Link to="../browse">Browse</Link>
+                </button>
+                <button>
+                    <Link to="../radio">Radio</Link>
+                </button>
             </ul>
             {display}
             {/* <header className="nav-bar">

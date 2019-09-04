@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LibraryNav from './library_nav'
+
 class Library extends React.Component {
     
     constructor(props){
@@ -8,7 +10,10 @@ class Library extends React.Component {
 
     render() {
         return(
-            <div></div>
+            <div className="library-container">
+                <LibraryNav></LibraryNav>
+                <h1>VVELCOME TO Library</h1>
+            </div>
         )
     }
 }
