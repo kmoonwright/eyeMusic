@@ -100,6 +100,13 @@
   }
 }
 
+.landing-logo {
+  background: image-url('icon2.png') no-repeat;
+  background-size: contain;
+  height: 35px;
+  width: 35px;
+}
+
 
 .landing-hero {
   min-height: 1070px;
@@ -117,7 +124,7 @@
   // min-height: 800px;
   // max-height:1080px;
   height:1080px;
-  background: image-url('canvas-bg.png');
+  background: image-url('bg-canvas.png');
   background-size: cover;
 
   color: #fff;
@@ -180,7 +187,7 @@
 }
 
 .landing-footer {
-  background: image-url('canvas-bg.png');
+  background: image-url('bg-canvas.png');
   color: #fff;
   width: 100%;
   min-height: 700px;

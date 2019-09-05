@@ -13,7 +13,6 @@ class LandingPage extends React.Component {
                 <Header></Header>
                 <div className="landing-content">
                     <div className="landing-logo">
-                        <img src="../data/icon2.png" alt="iMUSIC Icon" ></img>
                     </div>
                     <div className="landing-hero">
                         
