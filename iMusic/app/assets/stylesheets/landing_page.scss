@@ -5,7 +5,7 @@
 
 .landing-header {
   background-color: #F1F1F1;
-  height: 35px;
+  height: 55px;
   width: 100%;
   position: fixed;
   display: flex;
@@ -44,8 +44,6 @@
   }
 }
 
-.landing-logo {
-}
 
 .landing-hero {
   min-height: 860px;
@@ -57,9 +55,9 @@
 
 .landing-canvas {
   width: 100%;
-  min-height: 800px;
-  max-height:860px;
-  padding: 40px;
+  // min-height: 800px;
+  // max-height:1080px;
+  height:1080px;
   background: image-url('canvas-bg.png');
   background-size: cover;
 
@@ -73,12 +71,23 @@
   // min-height: 1000px;
   // position:absolute;
   // text-align: left;
-  h1 {
+  h2 {
     padding-top: 220px;
-    font-size: 50px;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1.07143;
+    letter-spacing: -.005em;
+
   }
   h3 {
     padding-top: 20px;
+
+    font-size: 32px;
+    line-height: 1.125;
+    font-weight: 600;
+    letter-spacing: .004em;
+    margin-top: 4vh;
+    opacity: 1;
   }
 
 }
@@ -90,8 +99,12 @@
   max-height:860px;
   padding: 40px;
 
-  h1 {
+  h2 {
     padding-top: 150px;
+    font-size: 56px;
+    line-height: 1.07143;
+    font-weight: 600;
+    letter-spacing: -.005em;
   }
 }
 
@@ -104,5 +117,20 @@
   h1 {
     font-size: 50px;
     padding-top: 150px;
+  }
+}
+
+.landing-footer {
+  background: image-url('canvas-bg.png');
+  color: #fff;
+  width: 100%;
+  min-height: 700px;
+  max-height:860px;
+  h2 {
+    font-size: 48px;
+    padding-top: 150px;
+  }
+  h3 {
+    font-size: 21px;
   }
 }
