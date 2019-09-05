@@ -68,6 +68,7 @@ class Signup extends React.Component {
                             <button onClick={this.handleSubmit}>Sign Up!</button>
                         </form>
                     </div>
+                    
                     <div className="session-form-link">
                         <p>Already a member? <Link to="/login">Log in</Link> instead.</p>
                     </div>
