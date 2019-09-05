@@ -10,12 +10,14 @@ class LandingPage extends React.Component {
     render() {
         return (
             <div className="landing">
+                <a name="overview"></a>
+                
                 <Header></Header>
                 <div className="landing-content">
-                    <div className="landing-logo">
-                    </div>
+
+                    <div className="landing-logo"></div>
+
                     <div className="landing-hero">
-                        
                         <h1>Lose yourself in</h1>
                         <h1>50 million songs.</h1>
                         <button>
@@ -37,12 +39,14 @@ class LandingPage extends React.Component {
                     </div>
 
                     <div className="landing-cards">
+                        <a name="overview"></a>
                         <h2>It's as easy
                             <br/>as it sounds.
                         </h2>
                     </div>
 
                     <div className="landing-program-guide">
+                        <a name="explore"></a>
                         <h1>New and noteworthy.</h1>
                         <h3>Now Playing</h3>
                         <h3>Featured Playlists</h3>

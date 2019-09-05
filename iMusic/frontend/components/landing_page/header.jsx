@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 class Header extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.logoutUser = this.logoutUser.bind(this);
     }
 
     logoutUser() {
         this.props.logout()
-            // .then(() => this.props.history.push('/'));
+        // .then(() => this.props.history.push('/'));
     }
 
     render() {
@@ -29,23 +29,19 @@ class Header extends React.Component {
 
         // );
 
-            
+
         return (
             <div className="landing-header">
                 <div className="header-logo">
                     <div className="logo">
-                        <h3>iMUSIC</h3>
+                        <p>iMUSIC</p>
                     </div>
                 </div>
 
                 <div className="landing-nav">
                     <div className="landing-nav-menu">
-                        <button>
-                            Overview
-                        </button>                        
-                        <button>
-                            Features
-                        </button>
+                        <a href="#overview">Overview</a>
+                        <a href="#explore">Explore</a>
                         {/* <button>
                             <Link to="/login">SplashNav</Link>
                         </button> */}

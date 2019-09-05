@@ -1,0 +1,76 @@
+
+//
+// HEADER
+//
+
+.landing-header {
+  background-color: #F1F1F1;
+  height: 55px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 18px;
+
+  .logo {
+    padding-right: 300px;
+    font-size: 19px;
+  }
+  // position: absolute;
+  // padding: 10px 16px;
+  // display: flex;
+  // justify-content: center
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: auto;
+  // min-height: 100%;
+  // z-index: 1;
+  // flex-direction: row;
+  // justify-content: space-around;
+
+
+  // button {
+  //     display: inline-block;
+  //     color: #fff;
+  //     font-size: 12px;
+  //     line-height: 1.33341;
+  //     font-weight: 400;
+  //     letter-spacing: -.01em;
+  //     border-radius: 12px;
+  //     padding: 3px 11px;
+  //     background: #ff2f56;
+  //     border-color: #ff2f56;
+
+}
+
+.landing-nav {
+  display: flex;
+  flex-direction: row;
+}
+.landing-nav-menu {
+  display: flex;
+  flex-direction: row;
+}
+.landing-nav-signup {
+    button {
+        color: #fff;
+        //   display: flex;
+        //   align-content: center;
+        //   justify-content: center;
+        width: 85px;
+        box-sizing: border-box;
+        height: 30px;
+        font-size: 14px;
+        
+        background: #ff2f56;
+        border-color: #ff2f56;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+  }
+}
+// .landing-nav-menu {
+//   padding-right: 20px;
+// }
