@@ -55,7 +55,9 @@ class Login extends React.Component {
                                     // onChange={e => this.setState({ [password]: e.target.value })}
                                 />
                             </label>
-                            <button onClick={this.handleSubmit}>Login</button>
+                            <div className="session-form-btn" id="login-btn">
+                                <button onClick={this.handleSubmit}>Login</button>
+                            </div>
                         </form>
                     </div>
                     <div className="session-form-link">

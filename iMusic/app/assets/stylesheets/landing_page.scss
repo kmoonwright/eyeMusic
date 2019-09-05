@@ -68,6 +68,7 @@
   // text-align: left;
   h2 {
     padding-top: 220px;
+    padding-bottom: 80px;
     font-size: 56px;
     font-weight: 600;
     line-height: 1.07143;
@@ -75,13 +76,13 @@
 
   }
   h3 {
-    padding-top: 20px;
 
     font-size: 32px;
     line-height: 1.125;
     font-weight: 600;
-    letter-spacing: .004em;
-    margin-top: 4vh;
+    margin: 30px;
+    // letter-spacing: .004em;
+    // margin-top: 4vh;
     opacity: 1;
   }
 

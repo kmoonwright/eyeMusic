@@ -11,7 +11,7 @@ class LandingPage extends React.Component {
         return (
             <div className="landing">
                 <a name="overview"></a>
-                
+
                 <Header></Header>
                 <div className="landing-content">
 
@@ -28,11 +28,10 @@ class LandingPage extends React.Component {
                     <div className="landing-canvas">
                         <h2>It hits all the <br></br> right notes.</h2>
 
-                        <h3>Stream 50 million songs ad-free.
-                            <br/>Download your favorite tracks. Play them offline.
-                            <br/>Get exclusive and original content.
-                            <br/>Listen across all of your devices.
-                        </h3>
+                        <h3>Stream 50 million songs ad-free.</h3>
+                        <h3>Download your favorite tracks. Play them offline.</h3>
+                        <h3>Get exclusive and original content.</h3>
+                        <h3>Listen across all of your devices.</h3>
                         <button>
                             <Link className="btn" to="/signup">Try it free</Link>
                         </button>

@@ -70,15 +70,18 @@
         font-size: 25px;
         padding-bottom: 20px;
     }
+}
 
+.session-form-btn {
+    display: inline-flex;
     button {
-        margin: 20px;      
+        margin: 5px;    
         text-align: center;
         align-self: center;
         height: 40px;
         width: 140px;
         box-sizing: border-box;
-
+    
         color: #fff;
         background: #ff2f56;
         border-color: #ff2f56;
@@ -87,6 +90,10 @@
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
     }
+}
+#login-btn {
+    display: contents;
+
 }
 
 .session-form-link {
