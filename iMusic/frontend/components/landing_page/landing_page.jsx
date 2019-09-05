@@ -11,7 +11,7 @@ class LandingPage extends React.Component {
                 <Header></Header>
                 <div className="landing-content">
                     <div className="landing-logo">
-                        <h1>LOGO</h1>
+                        <h3>Logo</h3>
                     </div>
                     <div className="landing-hero">
                         

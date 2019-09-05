@@ -7,7 +7,6 @@
   background-color: #F1F1F1;
   height: 35px;
   width: 100%;
-  padding: 20px;
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -49,10 +48,10 @@
 }
 
 .landing-hero {
-  min-height: 800px;
-  max-height:860px;
+  min-height: 860px;
+  max-height:1070px;
   font-size: 64px;
-  background: image-url('headphones.jpg');
+  background: image-url('violin_art.png');
   background-size: cover;
 }
 
