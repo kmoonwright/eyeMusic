@@ -42,24 +42,13 @@
     border-top-right-radius: 12px;
     box-shadow: 10px 10px 5px black;
 
-
-    button {
-        width: 85px;
-        box-sizing: border-box;
-        height: 30px;
-        color: #fff;
-        background: #ff2f56;
-        border-color: #ff2f56;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-    }
 }
 
-.session-form-header {
-
-}
+// .session-form-header {
+//     p {
+//         align-self: center;
+//     }
+// }
 
 .session-form-input {
     form {
@@ -69,8 +58,32 @@
         flex-direction: column;
     }
     input {
-        padding: 5px;
+        margin: 8px;
+        width: 200px;
+        padding: 9px;
         border: 2px solid gray;
         border-radius: 4px;
+    }
+    p {
+        text-align: center;
+        font-size: 25px;
+        padding-bottom: 20px;
+    }
+
+    button {
+        margin: 20px;      
+        text-align: center;
+        align-self: center;
+        height: 40px;
+        width: 140px;
+        box-sizing: border-box;
+
+        color: #fff;
+        background: #ff2f56;
+        border-color: #ff2f56;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
     }
 }

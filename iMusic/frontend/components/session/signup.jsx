@@ -32,10 +32,10 @@ class Signup extends React.Component {
                 <div className="session-form">
                     <div className="session-form-header">
                         <div className="session-form-icon"></div>
-                        <p>Sign up for a new account</p>
                     </div>
 
                     <div className="session-form-input">
+                        <p>Sign up for a new account</p>
                         <form>
                             <label>
                                 <input
