@@ -46,6 +46,8 @@ class LandingPage extends React.Component {
 
                     <div className="landing-program-guide">
                         <h1>New and noteworthy.</h1>
+                        <h3>Now Playing</h3>
+                        <h3>Featured Playlists</h3>
                     </div>
 
                     <div className="landing-footer">
