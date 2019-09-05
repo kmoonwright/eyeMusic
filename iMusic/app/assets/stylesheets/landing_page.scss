@@ -1,6 +1,5 @@
 .landing {
   font-family: Helvetica;
-  font-weight: 600px;
 }
 
 //
@@ -14,6 +13,7 @@
   position: fixed;
   display: flex;
   justify-content: space-around;
+  padding-top: 18px;
 
   .logo {
     padding-right: 300px;
@@ -49,8 +49,11 @@
 
 .landing-nav {
   display: flex;
-  justify-content: flex-end;
-  padding-top: 18px;
+  flex-direction: row;
+}
+.landing-nav-menu {
+  display: flex;
+  flex-direction: row;
 }
 .landing-nav-signup {
   color: #fff;
@@ -99,11 +102,14 @@
 
 
 .landing-hero {
-  min-height: 860px;
-  max-height:1070px;
+  min-height: 1070px;
+  max-height:1590px;
   font-size: 64px;
-  background: image-url('music_tree.png');
+  background: image-url('bookcase-cropped.png');
   background-size: cover;
+  h1 {
+    font-weight: 550;
+  }
 }
 
 .landing-canvas {
