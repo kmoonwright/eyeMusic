@@ -32,12 +32,25 @@ class Header extends React.Component {
             
         return (
             <div className="landing-header">
-                <div className="landing-logo">iMUSIC
+                <div className="header-logo">
+                    <div className="logo">
+                        <h3>iMUSIC</h3>
+                    </div>
                 </div>
+
                 <div className="landing-nav">
-                    <Link className="btn" to="/signup">Try it free*</Link>
-                    <Link className="btn" to="/login">Log In</Link>
+                    {/* <div className="landing-nav-menu"> */}
+                        <button>
+                            <Link to="/login">SplashNav</Link>
+                        </button>
+                    {/* </div> */}
+                    <div className="landing-nav-signup">
+                        <button>
+                            <Link to="/signup">Try it free*</Link>
+                        </button>
+                    </div>
                 </div>
+
             </div>
         )
     }

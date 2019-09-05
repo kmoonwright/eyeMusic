@@ -3,13 +3,22 @@
   font-weight: 600px;
 }
 
+//
+// HEADER
+//
+
 .landing-header {
   background-color: #F1F1F1;
   height: 55px;
   width: 100%;
   position: fixed;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  .logo {
+    padding-right: 300px;
+    font-size: 19px;
+  }
   // position: absolute;
   // padding: 10px 16px;
   // display: flex;
@@ -22,9 +31,8 @@
   // z-index: 1;
   // flex-direction: row;
   // justify-content: space-around;
-  landing-logo {
-    font-size: 100px;
-  }
+
+
   // button {
   //     display: inline-block;
   //     color: #fff;
@@ -37,14 +45,41 @@
   //     background: #ff2f56;
   //     border-color: #ff2f56;
 
-  //     // width: 20px;
-  //     // margin: 32px auto 0;
-  //     // box-sizing: border-box;
-  //     // height: 36px;
-
-  // }
 }
 
+.landing-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 18px;
+}
+.landing-nav-signup {
+  color: #fff;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 85px;
+  box-sizing: border-box;
+  height: 30px;
+  font-size: 14px;
+  background: #ff2f56;
+  border-color: #ff2f56;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+// .landing-nav-menu {
+//   padding-right: 20px;
+// }
+
+
+
+
+
+
+//
+// MAIN LANDING
+//
 .landing-content {
   text-align: center;
   padding-top: 220px;
@@ -67,7 +102,7 @@
   min-height: 860px;
   max-height:1070px;
   font-size: 64px;
-  background: image-url('violin_art.png');
+  background: image-url('music_tree.png');
   background-size: cover;
 }
 
