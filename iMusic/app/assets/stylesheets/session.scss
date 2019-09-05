@@ -8,11 +8,12 @@
     background-size: cover;
     min-height: 1370px;
     max-height:1590px;
+
 }
 
 .session-form-logo {
     color: #fff;
-    font-size: 35px;
+    font-size: 45px;
     font-weight: 500;
 }
 
@@ -24,7 +25,7 @@
   height: 75px;
   width: 75px;
 
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .session-form {
@@ -85,5 +86,15 @@
         border-bottom-right-radius: 12px;
         border-top-left-radius: 12px;
         border-top-right-radius: 12px;
+    }
+}
+
+.session-form-link {
+    margin: 20px;      
+    text-align: center;
+    align-self: center;
+    a {
+        color: cornflowerblue;
+        text-decoration: underline;
     }
 }
