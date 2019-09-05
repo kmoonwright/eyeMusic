@@ -25,9 +25,13 @@ class Signup extends React.Component {
     render() {
         return (
             <div className="session-form-container">
+                <div className="session-form-logo">
+                    <h3>iMUSIC</h3>
+                </div>
+                
                 <div className="session-form">
                     <div className="session-form-header">
-                        <p>Logo</p>
+                        <div className="session-form-icon"></div>
                         <p>Sign up for a new account</p>
                     </div>
 
@@ -59,8 +63,8 @@ class Signup extends React.Component {
                                     placeholder="Password"
                                     // onChange={e => this.setState({ [password]: e.target.value })}
                                 />
-                            <button onClick={this.handleSubmit}>Sign Up!</button>
                             </label>
+                            <button onClick={this.handleSubmit}>Sign Up!</button>
                         </form>
     
                     </div>

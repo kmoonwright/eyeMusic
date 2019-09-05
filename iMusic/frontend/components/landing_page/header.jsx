@@ -34,14 +34,19 @@ class Header extends React.Component {
             <div className="landing-header">
                 <div className="header-logo">
                     <div className="logo">
+                        <div className="header-icon"></div>
                         <p>iMUSIC</p>
                     </div>
                 </div>
 
                 <div className="landing-nav">
                     <div className="landing-nav-menu">
-                        <a href="#overview">Overview</a>
-                        <a href="#explore">Explore</a>
+                        <button>
+                            <a href="#overview">Overview</a>
+                        </button>
+                        <button>
+                         <a href="#explore">Explore</a>
+                        </button>
                         {/* <button>
                             <Link to="/login">SplashNav</Link>
                         </button> */}
