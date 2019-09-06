@@ -43,7 +43,8 @@ class Signup extends React.Component {
                 </ul>
             )
         } else {
-            errorsList = null;
+            // errorsList = null;
+            errorsList = <p>"ERRRRROR"</p>;//<li>NO ERRORS</li>;
         };
 
         return (

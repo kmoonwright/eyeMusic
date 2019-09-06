@@ -51,7 +51,11 @@
 //     }
 // }
 .session-errors {
-    color: red;
+    margin: auto;
+    width: 50%;
+    li {
+        color: red;
+    }
 }
 
 .session-form-input {
