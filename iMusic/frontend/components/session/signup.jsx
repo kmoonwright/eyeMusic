@@ -10,6 +10,7 @@ class Signup extends React.Component {
             password: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     handleInput(type) {
@@ -21,6 +22,10 @@ class Signup extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state);
+    }
+
+    demoLogin() {
+        this.props.demoLogin();
     }
 
     render() {
@@ -67,7 +72,7 @@ class Signup extends React.Component {
                             </label>
                             <div className="session-form-btn">
                                 <button onClick={this.handleSubmit}>Sign Up!</button>
-                                <button onClick={this.handleSubmit}>Demo User</button>
+                                <button onClick={this.demoLogin}>Demo User</button>
                             </div>
                         </form>
                     </div>

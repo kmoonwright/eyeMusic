@@ -21,3 +21,11 @@ export const deleteSession = () => {
         method: "DELETE"
     })
 };
+
+export const loginDemo = () => {
+    return $.ajax({
+        url: "api/session",
+        method: "POST",
+        data: { currentUser: { username: 'demouser', password: '123456' } }
+    })
+};
