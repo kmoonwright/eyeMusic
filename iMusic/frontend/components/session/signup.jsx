@@ -24,11 +24,28 @@ class Signup extends React.Component {
         this.props.action(this.state);
     }
 
+    componentWillUnmount() {
+        this.props.receiveErrors([]);
+    }
+
     demoLogin() {
         this.props.demoLogin();
     }
 
     render() {
+        let errorsList = null;
+        if (this.props.errors.length > 0) {
+            errorsList = (
+                <ul className="session-errors">
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+            )
+        } else {
+            errorsList = null;
+        };
+
         return (
             <div className="session-form-container">
                 <div className="session-form-logo">
@@ -42,6 +59,7 @@ class Signup extends React.Component {
 
                     <div className="session-form-input">
                         <p>Sign up for a new account</p>
+                        {errorsList}
                         <form>
                             <label>
                                 <input
@@ -71,7 +89,7 @@ class Signup extends React.Component {
                                 />
                             </label>
                             <div className="session-form-btn">
-                                <button onClick={this.handleSubmit}>Sign Up!</button>
+                                <button onClick={this.handleSubmit}>Sign Up</button>
                                 <button onClick={this.demoLogin}>Demo User</button>
                             </div>
                         </form>

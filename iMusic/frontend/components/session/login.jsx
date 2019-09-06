@@ -24,6 +24,19 @@ class Login extends React.Component {
     }
 
     render() {
+        let errorsList = null;
+        if (this.props.errors.length > 0) {
+            errorsList = (
+                <ul className="session-errors">
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+            )
+        } else {
+            errorsList = null;
+        };
+
         return (
             <div className="session-form-container">
                 <div className="session-form-logo">
@@ -36,6 +49,7 @@ class Login extends React.Component {
 
                     <div className="session-form-input">
                         <p>Let's get back at it.</p>
+                        {errorsList}
                         <form>
                             <label>
                                 <input 

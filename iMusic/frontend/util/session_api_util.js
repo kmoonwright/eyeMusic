@@ -26,6 +26,6 @@ export const loginDemo = () => {
     return $.ajax({
         url: "api/session",
         method: "POST",
-        data: { currentUser: { username: 'demouser', password: '123456' } }
+        data: { user: { username: 'demouser', password: '123456' } }
     })
 };
