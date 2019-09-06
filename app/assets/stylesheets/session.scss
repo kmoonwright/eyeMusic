@@ -1,0 +1,118 @@
+.session-form-container {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    background: image-url('bg-session-1.jpg');
+    background-size: cover;
+    min-height: 1370px;
+    max-height:1590px;
+}
+
+#session-login-container {
+    background: image-url('bg-session-2.jpg');
+    background-size: cover;
+}
+
+.session-form-logo {
+    color: #fff;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.session-form-icon {
+  margin: auto;
+  width: 50%;
+  background: image-url('icon2.png') no-repeat;
+  background-size: contain;
+  height: 75px;
+  width: 75px;
+
+  padding-bottom: 30px;
+}
+
+.session-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    background-color: #F1F1F1;
+    width: 500px;
+    height: 500px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 10px 10px 5px black;
+
+}
+
+// .session-form-header {
+//     p {
+//         align-self: center;
+//     }
+// }
+.session-errors {
+    li {
+        margin: auto;
+        width: 85%;
+        color: red;
+    }
+}
+
+.session-form-input {
+    form {
+        margin: auto;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        margin: 8px;
+        width: 200px;
+        padding: 9px;
+        border: 2px solid gray;
+        border-radius: 4px;
+    }
+    p {
+        text-align: center;
+        font-size: 25px;
+        padding-bottom: 20px;
+    }
+}
+
+.session-form-btn {
+    display: inline-flex;
+    button {
+        margin: 5px;    
+        text-align: center;
+        align-self: center;
+        height: 40px;
+        width: 140px;
+        box-sizing: border-box;
+    
+        color: #fff;
+        background: #ff2f56;
+        border-color: #ff2f56;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+    }
+}
+#login-btn {
+    display: contents;
+
+}
+
+.session-form-link {
+    margin: 20px;      
+    text-align: center;
+    align-self: center;
+    a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+}
