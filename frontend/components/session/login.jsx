@@ -41,7 +41,7 @@ class Login extends React.Component {
         return (
             <div className="session-form-container" id="session-login-container">
                 <div className="session-form-logo">
-                    <h3>iMUSIC</h3>
+                    <h3>eyeMUSIC</h3>
                 </div>
                 <div className="session-form">
                     <div className="session-form-header">

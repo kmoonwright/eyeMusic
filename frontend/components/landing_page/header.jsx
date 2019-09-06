@@ -14,20 +14,7 @@ class Header extends React.Component {
     }
 
     render() {
-        // const { currentUser } = this.props;
-        // const display = currentUser ? (
-        //     <ul className="landing-header-nav">
-        //         <h3 className="nav-welcome">Welcome {currentUser.username}!</h3>
-        //         <button onClick={this.logoutUser} className="nav-logout">Logout</button>
-        //     </ul>
-        // ) : (
-        //     <ul className="landing-header-nav">
-        //         <h1>iMusic</h1>
-        //         <Link className="btn" to="/signup">Try it free*</Link>
-        //         <Link className="btn" to="/login">Log In</Link>
-        //     </ul>
 
-        // );
         const refreshPage = () => {
             window.location.reload();
         }
@@ -37,7 +24,7 @@ class Header extends React.Component {
                 <div className="header-logo">
                     <button className="header-icon" onClick={refreshPage}></button>
                     <div className="header-text" onClick={refreshPage}>
-                        <button><p>iMUSIC</p></button>
+                        <button><p>eyeMUSIC</p></button>
                     </div>
                 </div>
 
