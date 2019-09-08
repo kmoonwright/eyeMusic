@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
 # DESTROY EVERYTHING
 
 User.destroy_all
@@ -17,16 +19,18 @@ PlaylistSong.destroy_all
 
 # USERS
 
-# demoUser = User.create(username: 'demoUser', password: '123456')
-# test = User.create(username: 'test',  password: '123456')
-# test = User.create(username: 'test5',  password: '123456')
+demoUser = User.create(username: 'demoUser', password: '123456')
+test = User.create(username: 'test',  password: '123456')
+test2 = User.create(username: 'test2',  password: '123456')
 
 # Daft Punk
 daftpunk = Artist.create(name:'Daft Punk')
 
 discovery = Album.create(name:'Discovery', artist_id: daftpunk.id)
 
-onemoretime = Song.create(title:'One More Time', album_id: testAlbum2.id)
+somethingaboutus = Song.create(title:'Something About Us', album_id: discovery.id)
+somethingaboutus_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/SomethingAboutUs.m4a')
+somethingaboutus.audio.attach(io:somethingaboutus_audio, filename:'SomethingAboutUs.m4a')
 
 # Jimi Hendrix
 jimihendrixexperience = Artist.create(name:'Jimi Hendrix Experience')
@@ -41,5 +45,5 @@ prince = Artist.create(name:"Prince")
 
 nineteenninetynine = Album.create(title:"1999", artist_id: prince.id)
 
-dmsr = Song.create(title:"D.M.S.R", album_id: nineteenninetynine.id)
+trust = Song.create(title:"Trust", album_id: nineteenninetynine.id)
 
