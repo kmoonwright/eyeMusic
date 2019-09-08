@@ -12,4 +12,6 @@ demoUser = User.create(username: 'demoUser', password: '123456')
 test = User.create(username: 'test',  password: '123456')
 test = User.create(username: 'test5',  password: '123456')
 
-
+testSong = Song.create(title:"D.M.S.R")
+testArtist = Artist.create(name:"Prince")
+testAlbum = Album.create(title:"1999")
