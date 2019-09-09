@@ -11,9 +11,7 @@ class LibraryNav extends React.Component {
                     <ul>Library
                         <li>Albums</li>
                         <li>Artists</li>
-                        <li>
-                            <SongIndex></SongIndex>
-                        </li>
+                        <SongIndex>SongIndex</SongIndex>
                     </ul>
                     <ul>Playlists
                         <li>Playlist1</li>
