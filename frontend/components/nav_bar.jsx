@@ -34,13 +34,13 @@ class NavBar extends React.Component {
                 <div className="navbar-btns">
                     <ol>
                         <button>
-                            <Link to="./library">Library</Link>
+                            <Link to="/library">Library</Link>
                         </button>
                         <button>
-                            <Link to="./browse">Browse</Link>
+                            <Link to="/browse">Browse</Link>
                         </button>
                         <button>
-                            <Link to="./radio">Radio</Link>
+                            <Link to="/radio">Radio</Link>
                         </button>
                     </ol>
                 </div>
