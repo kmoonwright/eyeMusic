@@ -18,6 +18,10 @@ class Login extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.receiveErrors([]);
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.action(this.state);
@@ -25,7 +29,7 @@ class Login extends React.Component {
 
     render() {
         let errorsList = null;
-        let stateErrors = this.props.errors.responseJSON;
+        let stateErrors = this.props.errors;
         if (stateErrors) {
             errorsList = (
                 <ul className="session-errors">

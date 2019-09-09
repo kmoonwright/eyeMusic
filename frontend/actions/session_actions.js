@@ -12,8 +12,8 @@ export const createNewUser = (user) => dispatch => {
         }),
         errors => dispatch({
             type: RECEIVE_SESSION_ERRORS,
-            errors
-        }).responseJSON
+            errors: errors.responseJSON
+        })
     )
 }
 
@@ -25,8 +25,8 @@ export const login = (formUser) => dispatch => {
         }),
         errors => dispatch({
             type: RECEIVE_SESSION_ERRORS,
-            errors
-        }).responseJSON
+            errors: errors.responseJSON
+        })
     )
 };
 
@@ -37,8 +37,8 @@ export const logout = () => dispatch => {
         }),
         errors => dispatch({
             type: RECEIVE_SESSION_ERRORS,
-            errors
-        }).responseJSON
+            errors: errors.responseJSON
+        })
     )
 };
 
@@ -50,7 +50,7 @@ export const demoLogin = () => dispatch => {
         }),
         errors => dispatch({
             type: RECEIVE_SESSION_ERRORS,
-            errors
-        }).responseJSON
+            errors: errors.responseJSON
+        })
     )          
-}
+};

@@ -26,15 +26,17 @@ class Signup extends React.Component {
 
     componentWillUnmount() {
         this.props.receiveErrors([]);
+        
     }
 
-    demoLogin() {
+    demoLogin(e) {
+        e.preventDefault();
         this.props.demoLogin();
     }
 
     render() {
         let errorsList = null;
-        let stateErrors = this.props.errors.responseJSON;
+        let stateErrors = this.props.errors;
         if (stateErrors) {
             errorsList = (
                 <ul className="session-errors">

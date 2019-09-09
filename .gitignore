@@ -1,6 +1,25 @@
-node_modules
+# Ignore bundler config.
+/.bundle
 bundle.js
 bundle.js.map
+
+# Ignore all logfiles and tempfiles.
+/log/*
+
+/tmp/*
+
+!/log/.keep
+
+!/tmp/.keep
+
+/node_modules
+
+/yarn-error.log
+
 .byebug_history
+
+trending_util
+
 .DS_Store
+
 npm-debug.log
