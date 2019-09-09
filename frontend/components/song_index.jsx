@@ -19,7 +19,6 @@ class SongIndex extends React.Component {
 
     render() {
         
-        debugger
         return (
             <div className="song-index-container">
                 <ul className="song-index">
@@ -27,6 +26,7 @@ class SongIndex extends React.Component {
                         return (
                             <li key={song.id} className="song-item">
                                 {song}
+                                {song.title}
                             </li>
                         )
                             {/* <li key={song.id}>{song.title}</li> */}
@@ -52,6 +52,7 @@ const msp = state => ({
 
 const mdp = dispatch => ({
     fetchAllSongs: () => dispatch(fetchAllSongs()),
+    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
 })
 
 export default connect(msp, mdp)(SongIndex);
