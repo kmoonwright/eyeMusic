@@ -23,7 +23,7 @@ export const fetchAllSongs = () => dispatch => {
             songs
         })
     )
-}
+};
 export const fetchOneSong = (songId) => dispatch => {
     return MusicApiUtil.fetchOneSong(songId)
         .then(song => dispatch({
@@ -31,7 +31,7 @@ export const fetchOneSong = (songId) => dispatch => {
             song
         })
     )
-}
+};
 
 // ALBUMS
 export const fetchAllAlbums = () => dispatch => {
@@ -41,7 +41,7 @@ export const fetchAllAlbums = () => dispatch => {
             albums
         })
     )
-}
+};
 export const fetchOneAlbum = (albumId) => dispatch => {
     return MusicApiUtil.fetchOneAlbum(albumId)
         .then(album => dispatch({
@@ -49,7 +49,7 @@ export const fetchOneAlbum = (albumId) => dispatch => {
             album
         })
     )
-}
+};
 
 // ARTISTS
 export const fetchAllArtists = () => dispatch => {
@@ -59,7 +59,7 @@ export const fetchAllArtists = () => dispatch => {
             artists
         })
     )
-}
+};
 export const fetchOneSong = (artistId) => dispatch => {
     return MusicApiUtil.fetchOneSong(artistId)
         .then(artist => dispatch({
@@ -67,7 +67,7 @@ export const fetchOneSong = (artistId) => dispatch => {
             artist
         })
     )
-}
+};
 
 // PLAYLISTS
 export const fetchAllPlaylists = () => dispatch => {
@@ -77,7 +77,7 @@ export const fetchAllPlaylists = () => dispatch => {
             playlists
         })
     )
-}
+};
 export const fetchOnePlaylist = (playlistId) => dispatch => {
     return MusicApiUtil.fetchOnePlaylist(playlistId)
         .then(playlist => dispatch({
@@ -85,4 +85,26 @@ export const fetchOnePlaylist = (playlistId) => dispatch => {
             playlist
         })
     )
-}
+};
+export const createPlaylist = (playlist) => dispatch => (
+    MusicApiUtil.createPlaylist(playlist)
+        .then(playlist => dispatch({
+            type: RECEIVE_ONE_PLAYLIST,
+            playlist
+        })
+    )
+);
+export const deletePlaylist = (id) => dispatch => (
+    MusicApiUtil.deletePlaylist(id)
+        .then(playlists => dispatch({
+            type: RECEIVE_ALL_PLAYLISTS,
+            playlists
+        })
+    )
+)
+// export const addSongToPlaylist = (data) => dispatch => (
+    
+// )
+// export const removeSongFromPlaylist = (id, data) => dispatch => (
+
+// )
