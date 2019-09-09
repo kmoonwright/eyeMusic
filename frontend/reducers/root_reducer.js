@@ -14,4 +14,5 @@ const rootReducer = combineReducers({
     session: sessionReducer,
     errors: errorsReducer
 })
+
 export default rootReducer;

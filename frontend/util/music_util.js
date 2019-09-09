@@ -50,7 +50,7 @@ export const fetchAllArtists = () => (
         method: 'GET'
     })
 );
-export const fetchOneArtists = (artistId) => (
+export const fetchOneArtist = (artistId) => (
     $.ajax({
         url: `api/artists/${artistId}`,
         method: 'GET'
