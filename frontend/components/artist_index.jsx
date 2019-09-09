@@ -5,6 +5,7 @@ class ArtistIndex extends React.Component {
     render() {
         return (
             <div>
+                <p>ARTIST INDEX</p>
 
             </div>
         )
