@@ -44,9 +44,9 @@ export const fetchAllAlbums = () => dispatch => {
 };
 export const fetchOneAlbum = (albumId) => dispatch => {
     return MusicApiUtil.fetchOneAlbum(albumId)
-        .then(album => dispatch({
+        .then(payload => dispatch({
             type: RECEIVE_ONE_ALBUM,
-            album
+            payload
         })
     )
 };
@@ -60,11 +60,11 @@ export const fetchAllArtists = () => dispatch => {
         })
     )
 };
-export const fetchOneSong = (artistId) => dispatch => {
-    return MusicApiUtil.fetchOneSong(artistId)
-        .then(artist => dispatch({
+export const fetchOneArtist = (artistId) => dispatch => {
+    return MusicApiUtil.fetchOneArtist(artistId)
+        .then(payload => dispatch({
             type: RECEIVE_ONE_ARTIST,
-            artist
+            payload
         })
     )
 };
@@ -80,9 +80,9 @@ export const fetchAllPlaylists = () => dispatch => {
 };
 export const fetchOnePlaylist = (playlistId) => dispatch => {
     return MusicApiUtil.fetchOnePlaylist(playlistId)
-        .then(playlist => dispatch({
+        .then(payload => dispatch({
             type: RECEIVE_ONE_PLAYLIST,
-            playlist
+            payload
         })
     )
 };
