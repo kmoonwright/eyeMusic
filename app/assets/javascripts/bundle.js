@@ -2349,7 +2349,7 @@ var deleteSession = function deleteSession() {
 };
 var loginDemo = function loginDemo() {
   return $.ajax({
-    url: "api/session",
+    url: 'api/session',
     method: "POST",
     data: {
       user: {

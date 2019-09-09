@@ -24,7 +24,7 @@ export const deleteSession = () => {
 
 export const loginDemo = () => {
     return $.ajax({
-        url: "api/session",
+        url: 'api/session',
         method: "POST",
         data: { user: { username: 'demoUser', password: '123456' } }
     })
