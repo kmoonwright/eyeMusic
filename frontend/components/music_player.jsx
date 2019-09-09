@@ -12,12 +12,6 @@ class MusicPlayer extends React.Component {
         return(
             <div className="player-container">
                 <h3>MusicPlayer</h3>
-                <ul>
-                    <li>playback</li>
-                    <li>volume</li>
-                    <li>song-info</li>
-                    <li>search</li>
-                </ul>
                 {/* <div className="playback-buttons">
 
                 </div>

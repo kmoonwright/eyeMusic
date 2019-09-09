@@ -14,6 +14,7 @@ class Home extends React.Component {
     render() {
         return (
             <div className="home">
+                {/* <div className="home-container"> */}
                 <ProtectedRoute path="/" component={MusicPlayer}></ProtectedRoute>
                 <ProtectedRoute path="/" component={NavBar}></ProtectedRoute>
                 <Switch>
@@ -21,6 +22,8 @@ class Home extends React.Component {
                     <ProtectedRoute path="/browse" component={Browse}></ProtectedRoute>
                     <ProtectedRoute path="/radio" component={Radio}></ProtectedRoute>
                 </Switch>
+
+                {/* </div> */}
             </div>
         )
     }

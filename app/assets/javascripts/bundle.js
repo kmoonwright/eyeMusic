@@ -419,7 +419,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "THIS IS BROWSE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS BROWSE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null));
     }
   }]);
 
@@ -799,7 +799,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_library_nav__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_library_main__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "VVELCOME TO LibraryMain")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "VVELCOME TO Library"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_library_nav__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_library_main__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -857,7 +857,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-main"
-      });
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "VVELCOME TO LibraryMain"));
     }
   }]);
 
@@ -981,7 +981,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "MusicPlayer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "playback"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "volume"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "song-info"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "search")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "MusicPlayer"));
     }
   }]);
 
@@ -1043,7 +1043,7 @@ function (_React$Component) {
   _createClass(NavBar, [{
     key: "render",
     value: function render() {
-      var display = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      var display = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         onClick: this.props.logout
       }, "Logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn",
@@ -1136,7 +1136,9 @@ function (_React$Component) {
   _createClass(Radio, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "RADIO TBD"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "radio-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "RADIO TBD"));
     }
   }]);
 

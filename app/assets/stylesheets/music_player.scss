@@ -1,4 +1,10 @@
 .player-container {
+    height: 55px;
+    display: flex;
+    flex-direction: row;
     color: white;
-    background-color: #1a1b28;
+    background-color: #333333;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }

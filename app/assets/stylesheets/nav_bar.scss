@@ -1,6 +1,10 @@
 .navbar {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+
+    height: 35px;
     color: whitesmoke;
-    background-color: #2e2e2e;
+    background-color: #202020;
+    border-bottom: 2px solid #3e3e3e;
 }

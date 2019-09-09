@@ -8,8 +8,8 @@ class Radio extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>RADIO TBD</h1>
+            <div className="radio-container">
+                <p>RADIO TBD</p>
             </div>
         )
     }

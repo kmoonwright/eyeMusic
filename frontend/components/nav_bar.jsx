@@ -12,8 +12,10 @@ class NavBar extends React.Component {
     render() {
         const display = this.props.currentUser ? (
             <div>
-                <button>{this.props.currentUser.username}</button>
-                <button onClick={this.props.logout}>Logout</button>
+                <p>{this.props.currentUser.username}</p>
+                <p onClick={this.props.logout}>Logout</p>
+                {/* <button>{this.props.currentUser.username}</button>
+                <button onClick={this.props.logout}>Logout</button> */}
             </div>
         ) : (
             <div>

@@ -1,0 +1,23 @@
+.library-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    min-height: 900px;
+}
+
+.library-nav {
+    color: whitesmoke;
+    background-color: #333333;
+    width: 20%;
+}
+
+.library-nav-items {
+    color: white;
+}
+
+.library-main {
+    color:whitesmoke;
+    background-color: #1d1f22;
+    width: 80%;
+}
