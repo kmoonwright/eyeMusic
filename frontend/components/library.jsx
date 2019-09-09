@@ -43,7 +43,8 @@ class Library extends React.Component {
                         <ProtectedRoute path="/library/artists" component={ArtistIndex}></ProtectedRoute>
                         <ProtectedRoute path="/library/songs" component={SongIndex}></ProtectedRoute>
 
-                        {/* <ProtectedRoute path="/library/*" component={AlbumIndex}></ProtectedRoute> */}
+                        {/* CATCH ALL FOR /LIBRARY URL? */}
+                        {/* <ProtectedRoute path="/library/`*`" component={AlbumIndex}></ProtectedRoute> */}
                     </Switch>
                 </div>
             </div>
