@@ -38,6 +38,8 @@ jimihendrixexperience = Artist.create(name:'Jimi Hendrix Experience')
 areyouexperienced = Album.create(name:'Are You Experienced?', artist_id: jimihendrixexperience.id)
 
 manicdepression = Song.create(title:'Manic Depression', album_id: areyouexperienced.id)
+manicdepression_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/ManicDepression.m4a')
+manicdepression.audio.attach(io:manicdepression_audio, filename:'ManicDepression.m4a')
 
 # Prince
 
@@ -46,4 +48,6 @@ prince = Artist.create(name:"Prince")
 nineteenninetynine = Album.create(title:"1999", artist_id: prince.id)
 
 trust = Song.create(title:"Trust", album_id: nineteenninetynine.id)
+trust_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/Trust.MP3')
+trust.audio.attach(io:trust_audio, filename:'Trust.MP3')
 
