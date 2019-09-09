@@ -17,14 +17,14 @@ Artist.destroy_all
 Playlist.destroy_all
 # PlaylistSong.destroy_all
 
-# USERS
+##### USERS #####
 
 demoUser = User.create(username: 'demoUser', password: '123456')
 test = User.create(username: 'test',  password: '123456')
 test2 = User.create(username: 'test2',  password: '123456')
 
 
-# MUSIC
+##### MUSIC #####
 #####
 # Daft Punk
 #####
