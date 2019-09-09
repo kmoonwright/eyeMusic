@@ -16,11 +16,24 @@ class AlbumIndex extends React.Component {
     }
 
     render() {
-        return (
-            <div className="album-index">
-                <p>ALBUM INDEX</p>
-            </div>
-        )
+        if (this.props.albums.length > 0) {
+            const albumList = this.props.albums.map(album => {
+                return (
+                    <li key={album.id} className="single-album">
+                        <div album={album}>Title: {album.title}, Year: {album.year}</div>
+                    </li>
+                )
+            })
+            return (
+                <div className="album-index-container">
+                    <ul className="album-index">
+                        {albumList}
+                    </ul>
+                </div>
+            )
+        } else {
+            return null;
+        }
     }
 }
 

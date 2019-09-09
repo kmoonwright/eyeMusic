@@ -34,10 +34,15 @@ import { fetchAllSongs, fetchOneSong } from '../actions/music_actions'
 // export default connect(msp, mdp)(SongIndexItem);
 
 const SongIndexItem = ({ song }) => (
-    <li className="song-index-item">
-        <span>{song.title}</span>
-        <span>{song.audioUrl}</span>
-    </li>
+    <div>
+        <div className="song-index-item">
+            <span>{song.title}</span>
+            <span>{song.audioUrl}</span>
+        </div>
+        <div>
+            {song}
+        </div>
+    </div>
 );
 
 export default SongIndexItem;

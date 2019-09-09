@@ -18,39 +18,50 @@ class SongIndex extends React.Component {
     }
 
     render() {
-        
-        return (
-            <div className="song-index-container">
-                <ul className="song-index">
-                    {this.props.songs.map((song, idx) => (
-                        <SongIndexItem 
-                            key={song.id} 
-                            song={song}>
-                        </SongIndexItem>,
-                        <li key={song.id} className="song-item">
-                            {song}
-                        </li>
-                    ))}
-                    {/* {
-                        return (
-                            <li key={song.id} className="song-item">
-                                {song}
-                            </li>
-                        )
-                            <li key={song.id}>{song.title}</li>
-            
-                    } */}
-                    {/* {this.state.songs.map((song, idx) => (
-                        <SongIndexItem
-                            key={song.id}
-                            song={song}
-                        >
-                        </SongIndexItem>
+        if (this.props.songs.length > 0) {
+            const songList = this.props.songs.map(song => {
+                return (
+                    <li key={song.id} className="single-song">
+                        {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}
+                        <div song={song}>Title: {song.title}</div>
+                    </li>
+                )
+            })
+            return (
+                <div className="song-index-container">
+                    <ul className="song-index">
+                        {songList}
+                    </ul>
+                </div>
+                )
+        } else {
+            return null;
+        }
 
-                    ))} */}
-                </ul>
-            </div>
-        )
+        // return (
+        //     <div className="song-index-container">
+        //         <ul className="song-index">
+        //             {songList},
+        //             {/* {/* {
+        //                 return (
+        //                     <li key={song.id} className="song-item">
+        //                         {song}
+        //                     </li>
+        //                 )
+        //                     <li key={song.id}>{song.title}</li>
+            
+        //             } */}, */}
+        //             {this.state.songs.map((song, idx) => (
+        //                 <SongIndexItem
+        //                     key={song.id}
+        //                     song={song}
+        //                 >
+        //                 </SongIndexItem>
+
+        //             ))}
+        //         </ul>
+        //     </div>
+        // )
     }
 }
 
