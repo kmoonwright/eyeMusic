@@ -45,7 +45,7 @@ class NavBar extends React.Component {
                     </ol>
                 </div>
                 <div className="navbar-profile">
-                    <p>{this.props.currentUser.username}</p>
+                    <p>Welcome {this.props.currentUser.username}!</p>
                     <button onClick={this.props.logout}>Logout</button>
                 </div>
 
