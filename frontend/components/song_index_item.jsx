@@ -2,35 +2,42 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllSongs, fetchOneSong } from '../actions/music_actions'
 
-class SongIndexItem extends React.Component {
-    constructor(props) {
-        super(props);
+// class SongIndexItem extends React.Component {
+//     constructor(props) {
+//         super(props);
 
-        this.state = {
-            songs: this.props.songs
-        }
-    }
+//         this.state = {
+//             songs: this.props.songs
+//         }
+//     }
 
-    render() {
+//     render() {
 
-        return (
-            <div className="song-index-item">
-                return (
-                    <li key={song.id} className="song-item">{song}</li>
-                    )
-            </div>
-        )
-    }
-}
+//         return (
+//             <div className="song-index-item">
 
-const msp = state => ({
+//             </div>
+//         )
+//     }
+// }
 
-})
+// const msp = state => ({
 
-const mdp = dispatch => ({
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-    fetchOneSong: (id) => dispatch(fetchOneSong(id)),
+// })
 
-})
+// const mdp = dispatch => ({
+//     fetchAllSongs: () => dispatch(fetchAllSongs()),
+//     fetchOneSong: (id) => dispatch(fetchOneSong(id)),
 
-export default connect(msp, mdp)(SongIndexItem);
+// })
+
+// export default connect(msp, mdp)(SongIndexItem);
+
+const SongIndexItem = ({ song }) => (
+    <li className="song-index-item">
+        <span>{song.title}</span>
+        <span>{song.audioUrl}</span>
+    </li>
+);
+
+export default SongIndexItem;
