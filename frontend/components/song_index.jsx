@@ -18,17 +18,18 @@ class SongIndex extends React.Component {
     }
 
     render() {
+        
         return (
             <div className="song-index-container">
                 <ul className="song-index">
-                    {this.state.songs}
-                    {/* {songs.map((song, idx) => {
+
+                    {this.state.songs.map((song, idx) => {
                         return (
                             <li key={song.id} className="song-item">
                                 {song}
                             </li>
                         )
-                    })} */}
+                    })}
                 </ul>
             </div>
         )
@@ -36,7 +37,7 @@ class SongIndex extends React.Component {
 }
 
 const msp = state => ({
-
+    songs: Object.values(state.entities.songs)
 })
 
 const mdp = dispatch => ({
