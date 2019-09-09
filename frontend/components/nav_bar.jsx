@@ -10,19 +10,19 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const display = this.props.currentUser ? (
-            <div>
-                <p>{this.props.currentUser.username}</p>
-                <p onClick={this.props.logout}>Logout</p>
-                {/* <button>{this.props.currentUser.username}</button>
-                <button onClick={this.props.logout}>Logout</button> */}
-            </div>
-        ) : (
-            <div>
-                <Link className="btn" to="/signup">Try it free*  </Link>
-                <Link className="btn" to="/login">Log In</Link>
-            </div>
-        );
+        // const display = this.props.currentUser ? (
+        //     <div>
+        //         <p>{this.props.currentUser.username}</p>
+        //         <p onClick={this.props.logout}>Logout</p>
+        //         {/* <button>{this.props.currentUser.username}</button>
+        //         <button onClick={this.props.logout}>Logout</button> */}
+        //     </div>
+        // ) : (
+        //     <div>
+        //         <Link className="btn" to="/signup">Try it free*  </Link>
+        //         <Link className="btn" to="/login">Log In</Link>
+        //     </div>
+        // );
         return (
             <div className="navbar">
                 <div className="navbar-history">
@@ -45,14 +45,10 @@ class NavBar extends React.Component {
                     </ol>
                 </div>
                 <div className="navbar-profile">
-                    {display}
+                    <p>{this.props.currentUser.username}</p>
+                    <button onClick={this.props.logout}>Logout</button>
                 </div>
-                {/* <header className="nav-bar">
-                    <h1 className="logo">iMusic</h1>
-                    <div>
-                        {display}
-                    </div>
-                </header> */}
+
             </div>
         )
     }

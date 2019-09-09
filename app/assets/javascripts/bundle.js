@@ -1043,15 +1043,19 @@ function (_React$Component) {
   _createClass(NavBar, [{
     key: "render",
     value: function render() {
-      var display = this.props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        onClick: this.props.logout
-      }, "Logout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "btn",
-        to: "/signup"
-      }, "Try it free*  "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "btn",
-        to: "/login"
-      }, "Log In"));
+      // const display = this.props.currentUser ? (
+      //     <div>
+      //         <p>{this.props.currentUser.username}</p>
+      //         <p onClick={this.props.logout}>Logout</p>
+      //         {/* <button>{this.props.currentUser.username}</button>
+      //         <button onClick={this.props.logout}>Logout</button> */}
+      //     </div>
+      // ) : (
+      //     <div>
+      //         <Link className="btn" to="/signup">Try it free*  </Link>
+      //         <Link className="btn" to="/login">Log In</Link>
+      //     </div>
+      // );
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1066,7 +1070,9 @@ function (_React$Component) {
         to: "../radio"
       }, "Radio")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-profile"
-      }, display));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.props.logout
+      }, "Logout")));
     }
   }]);
 
