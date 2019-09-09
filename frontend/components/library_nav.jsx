@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SongIndex from './song_index'
+
 class LibraryNav extends React.Component {
     
     render() {
@@ -9,7 +11,9 @@ class LibraryNav extends React.Component {
                     <ul>Library
                         <li>Albums</li>
                         <li>Artists</li>
-                        <li>Songs</li>
+                        <li>
+                            <SongIndex></SongIndex>
+                        </li>
                     </ul>
                     <ul>Playlists
                         <li>Playlist1</li>
