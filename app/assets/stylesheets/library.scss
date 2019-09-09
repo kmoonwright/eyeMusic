@@ -10,14 +10,26 @@
     color: whitesmoke;
     background-color: #333333;
     width: 20%;
+    padding: 6px;
 }
 
-.library-nav-items {
-    color: white;
+.library-nav-indices{
+    display: grid;
+    padding-left: 10px;
+    padding-bottom: 8px;
+    margin: 5px;
+
+}
+
+.library-nav-playlists {
+    margin: 5px;
+    padding: 6px;
+
 }
 
 .library-main {
     color:whitesmoke;
     background-color: #1d1f22;
     width: 80%;
+    padding: 6px;
 }

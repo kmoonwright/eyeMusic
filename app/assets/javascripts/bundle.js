@@ -920,24 +920,26 @@ function (_React$Component) {
         className: "library-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "library-nav-items"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Library"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-indices"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "./album_index"
+        to: "/library/albums"
       }, "Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "./artist_index"
+        to: "/library/artists"
       }, "Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "./song_index"
-      }, "Songs"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, "Library", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_song_index__WEBPACK_IMPORTED_MODULE_5__["default"], null, "SongIndex")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, "Playlists", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Playlist1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Playlist2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Playlist3")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        to: "/library/songs"
+      }, "Songs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Music Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-playlists"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "VVELCOME TO LibraryMain"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-        path: "/album_index",
+        path: "/library/albums",
         component: _album_index__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-        path: "/artist_index",
+        path: "/library/artists",
         component: _artist_index__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
-        path: "/song_index",
+        path: "/library/songs",
         component: _song_index__WEBPACK_IMPORTED_MODULE_5__["default"]
       }))));
     }
@@ -1654,6 +1656,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "song-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -1663,6 +1666,9 @@ function (_React$Component) {
           key: song.id,
           className: "song-item"
         }, song);
+        {
+          /* <li key={song.id}>{song.title}</li> */
+        }
       })));
     }
   }]);
@@ -1699,6 +1705,8 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_music_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/music_actions */ "./frontend/actions/music_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1719,28 +1727,56 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var SongIndexItem =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(SongIndexItem, _React$Component);
 
   function SongIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, SongIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SongIndexItem).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SongIndexItem).call(this, props));
+    _this.state = {
+      songs: _this.props.songs
+    };
+    return _this;
   }
 
   _createClass(SongIndexItem, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "song-index-item"
+      }, "return (", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: song.id,
+        className: "song-item"
+      }, song), ")");
     }
   }]);
 
   return SongIndexItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (SongIndexItem);
+var msp = function msp(state) {
+  return {};
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchAllSongs: function fetchAllSongs() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllSongs"])());
+    },
+    fetchOneSong: function fetchOneSong(id) {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOneSong"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(SongIndexItem));
 
 /***/ }),
 
