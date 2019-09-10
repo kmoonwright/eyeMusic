@@ -1,0 +1,51 @@
+// ALBUM INDEX
+.album-index-container {
+
+}
+
+.album-index {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+        height: 200px;
+        width: 200px;
+        margin: 2px;
+    }
+}
+
+.album-index-item {
+
+}
+
+// ARTIST INDEX
+.artist-index-container {
+
+}
+
+.artist-index {
+    display: flex;
+    flex-direction: column;
+    img {
+        height: 100px;
+        width: 100px;
+        margin: 2px;
+        border-radius: 50px 50px 50px 50px;
+    }
+}
+
+.artist-index-item {
+
+}
+
+// SONG INDEX
+.song-index-container {
+
+}
+
+.song-index {
+
+}
+
+.song-index-item {
+
+}
