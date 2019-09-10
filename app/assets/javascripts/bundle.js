@@ -518,7 +518,9 @@ function (_React$Component) {
 
 var msp = function msp(state) {
   return {
-    songs: Object.values(state.entities.songs)
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums
   };
 };
 
@@ -662,8 +664,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       // ADD LOADING STATE
       if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -685,32 +685,10 @@ function (_React$Component) {
             src: artist.photoUrl
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             artist: artist
-          }, artist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "artist-index-detail"
-          }, artist.albums.map(function (album) {
-            {
-              /* const albumSongs = this.props.songs.map(song => {
-                 song[album.id];
-              }) */
-            }
-            {
-              /* const albumSongs = this.props.songs.album_id[album.id]; */
-            }
-
-            var albumSongs = _this2.props.songs.filter(function (song) {
-              return song.album_id === album.id;
-            });
-
-            albumSongs = albumSongs.map(function (song) {
-              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.title);
-            });
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              key: album.id,
-              className: "artist-index-detail-item"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              src: _this2.props.albums[album.id].imageUrl
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumSongs));
-          })));
+          }, artist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_artist_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            key: artist.id,
+            artist: artist
+          }));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "artist-index-container"
@@ -824,25 +802,82 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      if (this.props.songs.length > 0) {
-        var songList = this.props.songs.map(function (song) {
-          if (song.album_id === _this2.props.key) {
-            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-              key: song.id,
-              className: "song-list-item"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              song: song
-            }, "Song Title: ", song.title));
-          }
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "artist-index-detail"
+      }, this.props.artist.albums.map(function (album) {
+        var albumSongs = _this2.props.songs.filter(function (song) {
+          return song.album_id === album.id;
+        });
+
+        albumSongs = albumSongs.map(function (song) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: song.id
+          }, song.title);
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "album-index-song-index-container"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-          className: "album-index-song-index"
-        }, songList));
-      } else {
-        return null;
-      }
+          key: album.id,
+          className: "artist-index-detail-item"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: _this2.props.albums[album.id].imageUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumSongs));
+      })); // this.props.artist.albums.map(album => {
+      //     return (
+      //         <div className="artist-index-detail">
+      //             <p>Hello</p>
+      //         </div>
+      //     )
+      // })
+      // return (
+      //     <div className="artist-index-detail">
+      //         {this.props.artist.albums.map(album => {
+      //     debugger
+      //             let albumMatch = this.props.albums[album.id]
+      //             {/* return (
+      //                 {albumMatch.imageUrl}
+      //             ) */}
+      //         })}
+      //     </div>
+      // )
+      // <div className="artist-index-detail">
+      //     {this.props.artist.albums.map(album => {
+      //         let albumSongs = this.props.songs.filter(song => song.album_id === album.id);
+      //         albumSongs = albumSongs.map(song => (
+      //             <li>
+      //                 {song.title}
+      //             </li>
+      //         ))
+      //         return (
+      //             <div key={album.id} className="artist-index-detail-item">
+      //                 <img src={this.props.albums[album.id].imageUrl}></img>
+      //                 <ul>
+      //                     {albumSongs}
+      //                 </ul>
+      //             </div>
+      //         )
+      //     })}
+      // </div>
+      // if (this.props.songs.length > 0) {
+      //     const songList = this.props.songs.map(song => {
+      //         if (song.album_id === this.props.key) {
+      //             return (
+      //                 <li key={song.id} className="song-list-item">
+      //                     <div song={song}>
+      //                         Song Title: {song.title}
+      //                     </div>
+      //                 </li>
+      //             )
+      //         }
+      //     })
+      //     return (
+      //         <div className="album-index-song-index-container">
+      //             <ul className="album-index-song-index">
+      //                 {songList}
+      //             </ul>
+      //         </div>
+      //     )
+      // } else {
+      //     return null;
+      // }
     }
   }]);
 
@@ -853,7 +888,7 @@ var msp = function msp(state) {
   return {
     artists: Object.values(state.entities.artists),
     songs: Object.values(state.entities.songs),
-    albums: Object.values(state.entities.albums)
+    albums: state.entities.albums
   };
 };
 

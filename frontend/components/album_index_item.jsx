@@ -42,7 +42,9 @@ class AlbumIndexItem extends React.Component {
 }
 
 const msp = state => ({
+    artists: Object.values(state.entities.artists),
     songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
 })
 
 const mdp = dispatch => ({

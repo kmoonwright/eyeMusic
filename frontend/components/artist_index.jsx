@@ -39,27 +39,18 @@ class ArtistIndex extends React.Component {
                             <div artist={artist}>{artist.name}</div>
                         </div>
 
-                        <div className="artist-index-detail">
-                            {/* <ArtistIndexItem
-                                key={artist.id}
-                                artist_albums={artist.albums}
-                            >
-                            </ArtistIndexItem> */}
+                        <ArtistIndexItem
+                            key={artist.id}
+                            artist={artist}
+                        ></ArtistIndexItem>
+                        {/* <div className="artist-index-detail">
                             {artist.albums.map(album => {
-                                
-                                {/* const albumSongs = this.props.songs.map(song => {
-                                    song[album.id];
-                                }) */}
-                                {/* const albumSongs = this.props.songs.album_id[album.id]; */}
-                                
                                 let albumSongs = this.props.songs.filter(song => song.album_id === album.id);
                                 albumSongs = albumSongs.map(song => (
                                     <li>
                                         {song.title}
                                     </li>
                                 ))
-                                
-
                                 return (
                                     
                                     <div key={album.id} className="artist-index-detail-item">
@@ -67,15 +58,10 @@ class ArtistIndex extends React.Component {
                                         <ul>
                                             {albumSongs}
                                         </ul>
-                                        {/* <ArtistIndexItem
-                                            key={album.id}
-                                            artist_albums={artist.albums}
-                                        >
-                                        </ArtistIndexItem> */}
                                     </div>
                                 )
                             })}
-                        </div>
+                        </div> */}
 
                     </div>
                 )
