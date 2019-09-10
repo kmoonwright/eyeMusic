@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 
 import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_actions'
 
-class AlbumIndexItem extends React.Component {
+
+class ArtistIndexItem extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            artists: this.props.artists,
             songs: this.props.songs,
+            albums: this.props.albums,
         }
     }
 
@@ -18,11 +21,11 @@ class AlbumIndexItem extends React.Component {
     render() {
         if (this.props.songs.length > 0) {
             const songList = this.props.songs.map(song => {
-                if (song.album_id === this.props.album.id) {
+                if (song.album_id === this.props.key) {
                     return (
                         <li key={song.id} className="song-list-item">
                             <div song={song}>
-                                {song.title}
+                                Song Title: {song.title}
                             </div>
                         </li>
                     )
@@ -42,7 +45,9 @@ class AlbumIndexItem extends React.Component {
 }
 
 const msp = state => ({
+    artists: Object.values(state.entities.artists),
     songs: Object.values(state.entities.songs),
+    albums: Object.values(state.entities.albums),
 })
 
 const mdp = dispatch => ({
@@ -50,4 +55,4 @@ const mdp = dispatch => ({
     fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
 })
 
-export default connect(msp, mdp)(AlbumIndexItem);
+export default connect(msp, mdp)(ArtistIndexItem);

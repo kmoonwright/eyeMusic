@@ -9,27 +9,45 @@ class SongIndex extends React.Component {
         super(props)
 
         this.state = {
-            songs: this.props.songs
+            artists: this.props.artists,
+            songs: this.props.songs,
+            albums: this.props.albums,
         }
     }
 
     componentDidMount() {
-        this.props.fetchAllSongs();
+        
     }
 
     render() {
+        // ADD LOADING STATE
+        if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
+            return <div className="loading-state">LOADING...</div>
+        }
+
         if (this.props.songs.length > 0) {
-            const songList = this.props.songs.map(song => {
+            
+            const songList = this.props.songs.map(song => { 
+                
+                const artistAlbum = this.props.albums[song.album_id];
                 return (
-                    <li key={song.id} className="single-song">
-                        {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}
-                        <div song={song}>
-                            Title: {song.title}
-                            Artist: {song.artist}
-                            Album: {song.album_id}
-                        </div>
-                    </li>
-                )
+                    <div key={song.id}>
+                        Title: {song.title}
+                        Artist: {this.props.artists[artistAlbum.artist_id]}
+                        Album: {artistAlbum.title}
+                    </div>
+                )   
+                // console.log(song)
+                // return (
+                //     <li key={song.id} className="single-song">
+                //         {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}
+                //         <div>
+                //             Title: {song.title}
+                //             Artist: {song.artist}
+                //             Album: {this.props.albums[song.album_id].title}
+                //         </div>
+                //     </li>
+                // )
             })
             return (
                 <div className="song-index-container">
@@ -37,40 +55,17 @@ class SongIndex extends React.Component {
                         {songList}
                     </ul>
                 </div>
-                )
+            )
         } else {
             return null;
         }
-
-        // return (
-        //     <div className="song-index-container">
-        //         <ul className="song-index">
-        //             {songList},
-        //             {/* {/* {
-        //                 return (
-        //                     <li key={song.id} className="song-item">
-        //                         {song}
-        //                     </li>
-        //                 )
-        //                     <li key={song.id}>{song.title}</li>
-            
-        //             } */}, */}
-        //             {this.state.songs.map((song, idx) => (
-        //                 <SongIndexItem
-        //                     key={song.id}
-        //                     song={song}
-        //                 >
-        //                 </SongIndexItem>
-
-        //             ))}
-        //         </ul>
-        //     </div>
-        // )
     }
 }
 
 const msp = state => ({
-    songs: Object.values(state.entities.songs)
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
 })
 
 const mdp = dispatch => ({

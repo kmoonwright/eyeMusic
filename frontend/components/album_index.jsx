@@ -10,11 +10,11 @@ class AlbumIndex extends React.Component {
 
         this.state = {
             albums: this.props.albums,
+            songs: this.props.songs,
         }
     }
 
     componentDidMount() {
-        this.props.fetchAllAlbums();
     }
 
     render() {
@@ -51,11 +51,13 @@ class AlbumIndex extends React.Component {
 
 const msp = state => ({
     albums: Object.values(state.entities.albums),
+    songs: Object.values(state.entities.songs),
 })
 
 const mdp = dispatch => ({
     fetchAllAlbums: () => dispatch(fetchAllAlbums()),
     fetchOneAlbum: (albumId) => dispatch(fetchOneAlbum(albumId)),
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
 })
 
 export default connect(msp, mdp)(AlbumIndex);
