@@ -47,8 +47,8 @@ newyorkcity.image.attach(io:newyorkcity_image, filename:'album-braziliangirls2.j
 
 
 diegedakensindfrei = Song.create(title:'Die Gedaken sind frei', album_id: braziliangirlsalbum.id)
-diegedakensindhfrei_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-diegedaken.m4a')
-diegedakensindhfrei.audio.attach(io:diegedakensindhfrei_audio, filename:'audio-braziliangirls-diegedaken.m4a')
+diegedakensindfrei_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-diegedaken.m4a')
+diegedakensindfrei.audio.attach(io:diegedakensindfrei_audio, filename:'audio-braziliangirls-diegedaken.m4a')
 
 goodtime = Song.create(title:'Good Time', album_id: newyorkcity.id)
 goodtime_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-goodtime.m4a')
@@ -67,9 +67,9 @@ thed4_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-d4.j
 thed4.photo.attach(io:thed4_photo, filename:'photo-d4.jpg')
 
 
-6twenty = Album.create(title:'6Twenty', artist_id: thed4.id, year:'1998')
-6twenty_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-d4-6twenty.jpg')
-6twenty.image.attach(io:6twenty_image, filename:'album-d4-6twenty.jpg')
+sixtwenty = Album.create(title:'6Twenty', artist_id: thed4.id, year:'1998')
+sixtwenty_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-d4-6twenty.jpg')
+sixtwenty.image.attach(io:sixtwenty_image, filename:'album-d4-6twenty.jpg')
 
 runningonemptyalbum = Album.create(title:'Running On Empty', artist_id: thed4.id, year:'1997')
 runningonemptyalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-d4-runningonempty.jpg')
@@ -84,7 +84,7 @@ comeon = Song.create(title:'Come On!', album_id: d4ep.id)
 comeon_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-d4-comeon.m4a')
 comeon.audio.attach(io:comeon_audio, filename:'audio-d4-comeon.m4a')
 
-invaderace = Song.create(title:'Invader Ace', album_id: 6twenty.id)
+invaderace = Song.create(title:'Invader Ace', album_id: sixtwenty.id)
 invaderace_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-d4-invaderace.m4a')
 invaderace.audio.attach(io:invaderace_audio, filename:'audio-d4-invaderace.m4a')
 
@@ -196,7 +196,7 @@ aquietmanalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/a
 aquietmanalbum.image.attach(io:aquietmanalbum_image, filename:'album-jimnoir-aquietman.jpg')
 
 eaneymeanyalbum = Album.create(title:'Eaney Meany', artist_id: jimnoir.id, year:'2004')
-eaneymeanealbum_image = open(' 	https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir-eaneymeany.jpg')
+eaneymeanyalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir-eaneymeany.jpg')
 eaneymeanyalbum.image.attach(io:eaneymeanyalbum_image, filename:'album-jimnoir-eaneymeany.jpg')
 
 mypatchalbum = Album.create(title:'My Patch', artist_id: jimnoir.id, year:'2003')
@@ -220,9 +220,9 @@ aquietmansong = Song.create(title:'A Quiet Man', album_id: aquietmanalbum.id)
 aquietmansong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-aquietman.m4a')
 aquietmansong.audio.attach(io:aquietmansong_audio, filename:'audio-jimnoir-aquietman.m4a')
 
-eaneymeany = Song.create(title:'Eaney Meany', album_id: eaneymeanyalbum.id)
-eaneymeany_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-eaeniemeany.m4a')
-eaneymeany.audio.attach(io:eaneymeany_audio, filename:'audio-jimnoir-eaeniemeany.m4a')
+eaneymeanysong = Song.create(title:'Eaney Meany', album_id: eaneymeanyalbum.id)
+eaneymeanysong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-eaeniemeany.m4a')
+eaneymeanysong.audio.attach(io:eaneymeanysong_audio, filename:'audio-jimnoir-eaeniemeany.m4a')
 
 mypatch = Song.create(title:'My Patch', album_id: mypatchalbum.id)
 mypatch_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-mypatch.m4a')
