@@ -10,12 +10,12 @@ require 'open-uri'
 
 # DESTROY EVERYTHING
 
-User.destroy_all
+# PlaylistSong.destroy_all
+Playlist.destroy_all
 Song.destroy_all
 Album.destroy_all
 Artist.destroy_all
-Playlist.destroy_all
-# PlaylistSong.destroy_all
+User.destroy_all
 
 ##### USERS #####
 
@@ -26,6 +26,32 @@ test2 = User.create(username: 'test2',  password: '123456')
 
 ##### MUSIC #####
 #####
+# Brazilian Girls
+#####
+braziliangirls = Artist.create(name:'Brazilian Girls')
+braziliangirls_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-braziliangirls.jpg')
+braziliangirls.photo.attach(io:braziliangirls_photo, filename:'photo-braziliangirls.jpg')
+
+
+braziliangirlsalbum = Album.create(title:'Brazilian Girls', artist_id: braziliangirls.id, year:'2005')
+braziliangirlsalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-braziliangirls2.jpg')
+braziliangirlsalbum.image.attach(io:braziliangirlsalbum_image, filename:'album-braziliangirls2.jpg')
+
+talktolabomb = Album.create(title:'Talk To La Bomb', artist_id: braziliangirls.id, year:'2006')
+talktolabomb_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-braziliangirls-talktolabomb.jpg')
+talktolabomb.image.attach(io:talktolabomb_image, filename:'album-braziliangirls-talktolabomb.jpg')
+
+newyorkcity = Album.create(title:'New York City', artist_id: braziliangirls.id, year:'2008')
+newyorkcity_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-braziliangirls-nyc.jpg')
+newyorkcity.image.attach(io:newyorkcity_image, filename:'album-braziliangirls2.jpg')
+
+
+diegedakensindfrei = Song.create(title:'Die Gedaken sind frei', album_id: discovery.id)
+diegedakensindhfrei_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-diegedaken.m4a')
+diegedakensindhfrei.audio.attach(io:diegedakensindhfrei_audio, filename:'audio-braziliangirls-diegedaken.m4a')
+
+
+#####
 # Daft Punk
 #####
 daftpunk = Artist.create(name:'Daft Punk')
@@ -35,7 +61,7 @@ daftpunk.photo.attach(io:daftpunk_photo, filename:'photo-daftpunk.jpg')
 
 discovery = Album.create(title:'Discovery', artist_id: daftpunk.id, year:'2001')
 discovery_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-daftpunk-discovery.jpg')
-discovery.image.attach(io:discovery_photo, filename:'album-daftpunk-discovery.jpg')
+discovery.image.attach(io:discovery_image, filename:'album-daftpunk-discovery.jpg')
 
 homework = Album.create(title:'Homework', artist_id: daftpunk.id, year:'1997')
 homework_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-daftpunk-homework.jpg')
@@ -147,3 +173,21 @@ whendovescry = Song.create(title:'When Doves Cry', album_id: purplerain.id)
 whendovescry_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-prince-whendovescry.m4a')
 whendovescry.audio.attach(io:whendovescry_audio, filename:'audio-prince-whendovescry.m4a')
 
+
+
+# #####
+# # Artist
+# #####
+# daftpunk = Artist.create(name:'Daft Punk')
+# daftpunk_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-daftpunk.jpg')
+# daftpunk.photo.attach(io:daftpunk_photo, filename:'photo-daftpunk.jpg')
+
+
+# discovery = Album.create(title:'Discovery', artist_id: daftpunk.id, year:'2001')
+# discovery_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-daftpunk-discovery.jpg')
+# discovery.image.attach(io:discovery_image, filename:'album-daftpunk-discovery.jpg')
+
+
+# somethingaboutus = Song.create(title:'Something About Us', album_id: discovery.id)
+# somethingaboutus_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-daftpunk-SomethingAboutUs.m4a')
+# somethingaboutus.audio.attach(io:somethingaboutus_audio, filename:'audio-daftpunk-SomethingAboutUs.m4a')
