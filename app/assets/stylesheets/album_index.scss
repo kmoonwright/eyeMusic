@@ -3,9 +3,15 @@
 }
 
 .album-index {
-
+    display: flex;
+    flex-wrap: wrap;
+    img {
+        height: 200px;
+        width: 200px;
+        margin: 2px;
+    }
 }
 
 .album-index-item {
-    
+
 }

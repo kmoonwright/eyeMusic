@@ -37,7 +37,6 @@ class Library extends React.Component {
                 </div>
 
                 <div className="library-main">
-                    <h1>VVELCOME TO LibraryMain</h1>
                     <Switch>
                         <ProtectedRoute path="/library/albums" component={AlbumIndex}></ProtectedRoute>
                         <ProtectedRoute path="/library/artists" component={ArtistIndex}></ProtectedRoute>

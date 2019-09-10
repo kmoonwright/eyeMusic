@@ -384,7 +384,7 @@ function (_React$Component) {
             className: "album-list-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             album: album
-          }, "Title: ", album.title, ", Year: ", album.year, ",", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: album.imageUrl
           })));
         });
@@ -1032,7 +1032,7 @@ function (_React$Component) {
         className: "library-nav-playlists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "VVELCOME TO LibraryMain"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
         path: "/library/albums",
         component: _album_index__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {

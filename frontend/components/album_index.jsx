@@ -21,8 +21,8 @@ class AlbumIndex extends React.Component {
                 return (
                     <li key={album.id} className="album-list-item">
                         <div album={album}>
-                            Title: {album.title}, 
-                            Year: {album.year},
+                            {/* Title: {album.title}, 
+                            Year: {album.year}, */}
                             <img src={album.imageUrl}></img>
                         </div>
                     </li>
