@@ -234,6 +234,59 @@ turbulentweather.audio.attach(io:turbulentweather_audio, filename:'audio-jimnoir
 
 
 #####
+# Nekromantix
+#####
+nekromantix = Artist.create(name:'Nekromantix')
+nekromantix_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-nekromantix.jpg')
+nekromantix.photo.attach(io:nekromantix_photo, filename:'photo-nekromantix.jpg')
+
+
+returnofthelovingdead = Album.create(title:'Return Of The Loving Dead', artist_id: nekromantix.id, year:'2002')
+returnofthelovingdead_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-nekro-livingdead.jpg')
+returnofthelovingdead.image.attach(io:returnofthelovingdead_image, filename:'album-nekro-livingdead.jpg')
+
+broughtbacktolife = Album.create(title:'Brought Back To Life', artist_id: nekromantix.id, year:'2004')
+broughtbacktolife_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-nekro-broughtback.jpg')
+broughtbacktolife.image.attach(io:broughtbacktolife_image, filename:'album-nekro-broughtback.jpg')
+
+
+struckbyawreckingball = Song.create(title:'Struck By A Wrecking Ball', album_id: returnofthelovingdead.id)
+struckbyawreckingball_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-struckbyawrecking.m4a')
+struckbyawreckingball.audio.attach(io:struckbyawreckingball_audio, filename:'audio-struckbyawrecking.m4a')
+
+whokilledthecheerleader = Song.create(title:'Who Killed The CheerLeader', album_id: broughtbacktolife.id)
+whokilledthecheerleader_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-whokilledthecheerleader.mp3')
+whokilledthecheerleader.audio.attach(io:whokilledthecheerleader_audio, filename:'audio-whokilledthecheerleader.mp3')
+
+
+#####
+# The Phenomenauts
+#####
+thephenomenauts = Artist.create(name:'The Phenomenauts')
+thephenomenauts_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-phemomenauts.jpg')
+thephenomenauts.photo.attach(io:thephenomenauts_photo, filename:'photo-phemomenauts.jpg')
+
+
+rocketsandrobots = Album.create(title:'Rockets and Robots', artist_id: thephenomenauts.id, year:'2003')
+rocketsandrobots_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-phenomenaunts-rocketsandrobots.jpg')
+rocketsandrobots.image.attach(io:rocketsandrobots_image, filename:'album-phenomenaunts-rocketsandrobots.jpg')
+
+reentry = Album.create(title:'Reentry', artist_id: thephenomenauts.id, year:'2004')
+reentry_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-phenomenauts-reentry.jpg')
+reentry.image.attach(io:reentry_image, filename:'album-phenomenauts-reentry.jpg')
+
+
+compositesynthesizer = Song.create(title:'Composite Synthesizer', album_id: rocketsandrobots.id)
+compositesynthesizer_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-phenomenauts-CompositeSynthesizer.m4a')
+compositesynthesizer.audio.attach(io:compositesynthesizer_audio, filename:'audio-phenomenauts-CompositeSynthesizer.m4a')
+
+mission = Song.create(title:'Mission', album_id: reentry.id)
+mission_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-phenomenauts-mission.m4a')
+mission.audio.attach(io:mission_audio, filename:'audio-phenomenauts-mission.m4a')
+
+
+
+#####
 # Prince
 #####
 prince = Artist.create(name:'Prince')
