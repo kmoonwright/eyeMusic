@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAllArtists, fetchOneArtist } from '../actions/music_actions'
+import { Switch } from 'react-router-dom';
+import { ProtectedRoute } from '../util/route_util';
+
 import ArtistIndexItem from './artist_index_item'
+import ArtistIndexDetail from './artist_index_detail'
 
 class ArtistIndex extends React.Component {
     constructor(props) {
@@ -22,60 +26,22 @@ class ArtistIndex extends React.Component {
         if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
             return <div className="loading-state">LOADING...</div>
         }
-        
-        if (this.props.artists.length > 0) {
-            const artistList = this.props.artists.map(artist => {
+        return (
+            <div className="artist-index-container">
 
-                
-                // const artistAlbums = this.props.albums[artist.id];
-                // const albumSongs = this.props.songs.map(
-                //     );
+                <ul className="artist-index">
+                    {this.props.artists.map(artist => {
+                        return (
+                            <ArtistIndexItem key={artist.id} artist={artist}></ArtistIndexItem>
+                        )
+                    })}
+                </ul>
 
-                return (
-                    <div key={artist.id} className="artist-index-item">
+                <ProtectedRoute path="/library/artists/:artistId" component={ArtistIndexDetail}></ProtectedRoute>
 
-                        <div className="artist-nav-item">
-                            <img src={artist.photoUrl}></img>
-                            <div artist={artist}>{artist.name}</div>
-                        </div>
+            </div>
+        )
 
-                        <ArtistIndexItem
-                            key={artist.id}
-                            artist={artist}
-                        ></ArtistIndexItem>
-                        {/* <div className="artist-index-detail">
-                            {artist.albums.map(album => {
-                                let albumSongs = this.props.songs.filter(song => song.album_id === album.id);
-                                albumSongs = albumSongs.map(song => (
-                                    <li>
-                                        {song.title}
-                                    </li>
-                                ))
-                                return (
-                                    
-                                    <div key={album.id} className="artist-index-detail-item">
-                                        <img src={this.props.albums[album.id].imageUrl}></img>
-                                        <ul>
-                                            {albumSongs}
-                                        </ul>
-                                    </div>
-                                )
-                            })}
-                        </div> */}
-
-                    </div>
-                )
-            })
-            return (
-                <div className="artist-index-container">
-                    <ul className="artist-index">
-                        {artistList}
-                    </ul>
-                </div>
-            )
-        } else {
-            return null;
-        }
     }
 }
 

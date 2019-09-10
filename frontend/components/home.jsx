@@ -15,8 +15,10 @@ class Home extends React.Component {
         return (
             <div className="home">
                 {/* <div className="home-container"> */}
-                <ProtectedRoute path="/" component={MusicPlayer}></ProtectedRoute>
-                <ProtectedRoute path="/" component={NavBar}></ProtectedRoute>
+                <div className="header">
+                    <ProtectedRoute path="/" component={MusicPlayer}></ProtectedRoute>
+                    <ProtectedRoute path="/" component={NavBar}></ProtectedRoute>
+                </div>
                 <Switch>
                     <ProtectedRoute path="/library" component={Library}></ProtectedRoute>
                     <ProtectedRoute path="/browse" component={Browse}></ProtectedRoute>
