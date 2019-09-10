@@ -19,13 +19,11 @@ class AlbumIndex extends React.Component {
         if (this.props.albums.length > 0) {
             const albumList = this.props.albums.map(album => {
                 return (
-                    <li key={album.id} className="single-album">
+                    <li key={album.id} className="album-list-item">
                         <div album={album}>
                             Title: {album.title}, 
                             Year: {album.year},
-                            <ul>
-                                
-                            </ul>
+                            <img src={album.imageUrl}></img>
                         </div>
                     </li>
                 )

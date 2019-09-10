@@ -381,10 +381,12 @@ function (_React$Component) {
         var albumList = this.props.albums.map(function (album) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             key: album.id,
-            className: "single-album"
+            className: "album-list-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             album: album
-          }, "Title: ", album.title, ", Year: ", album.year, ",", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null)));
+          }, "Title: ", album.title, ", Year: ", album.year, ",", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: album.imageUrl
+          })));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "album-index-container"
@@ -538,10 +540,12 @@ function (_React$Component) {
         var artistList = this.props.artists.map(function (artist) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             key: artist.id,
-            className: "single-artist"
+            className: "artist-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             artist: artist
-          }, "Name: ", artist.name));
+          }, "Name: ", artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: artist.photoUrl
+          }));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "artist-index-container"
@@ -32372,7 +32376,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

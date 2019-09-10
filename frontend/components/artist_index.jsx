@@ -19,8 +19,9 @@ class ArtistIndex extends React.Component {
         if (this.props.artists.length > 0) {
             const artistList = this.props.artists.map(artist => {
                 return (
-                    <li key={artist.id} className="single-artist">
+                    <li key={artist.id} className="artist-index-item">
                         <div artist={artist}>Name: {artist.name}</div>
+                        <img src={artist.photoUrl}></img>
                     </li>
                 )
             })
