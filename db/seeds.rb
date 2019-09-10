@@ -46,9 +46,51 @@ newyorkcity_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/albu
 newyorkcity.image.attach(io:newyorkcity_image, filename:'album-braziliangirls2.jpg')
 
 
-diegedakensindfrei = Song.create(title:'Die Gedaken sind frei', album_id: discovery.id)
+diegedakensindfrei = Song.create(title:'Die Gedaken sind frei', album_id: braziliangirlsalbum.id)
 diegedakensindhfrei_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-diegedaken.m4a')
 diegedakensindhfrei.audio.attach(io:diegedakensindhfrei_audio, filename:'audio-braziliangirls-diegedaken.m4a')
+
+goodtime = Song.create(title:'Good Time', album_id: newyorkcity.id)
+goodtime_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-goodtime.m4a')
+goodtime.audio.attach(io:goodtime_audio, filename:'audio-braziliangirls-goodtime.m4a')
+
+nevermetagerman = Song.create(title:'Never Met A German', album_id: talktolabomb.id)
+nevermetagerman_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-braziliangirls-nevermetagerman.m4a')
+nevermetagerman.audio.attach(io:nevermetagerman_audio, filename:'audio-braziliangirls-nevermetagerman.m4a')
+
+
+#####
+# The D4
+#####
+thed4 = Artist.create(name:'The D4')
+thed4_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-d4.jpg')
+thed4.photo.attach(io:thed4_photo, filename:'photo-d4.jpg')
+
+
+6twenty = Album.create(title:'6Twenty', artist_id: thed4.id, year:'1998')
+6twenty_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-d4-6twenty.jpg')
+6twenty.image.attach(io:6twenty_image, filename:'album-d4-6twenty.jpg')
+
+runningonemptyalbum = Album.create(title:'Running On Empty', artist_id: thed4.id, year:'1997')
+runningonemptyalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-d4-runningonempty.jpg')
+runningonemptyalbum.image.attach(io:runningonemptyalbum_image, filename:'album-d4-runningonempty.jpg')
+
+d4ep = Album.create(title:'The D4 EP', artist_id: thed4.id, year:'1997')
+d4ep_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-d4-ep.jpg')
+d4ep.image.attach(io:d4ep_image, filename:'album-d4-ep.jpg')
+
+
+comeon = Song.create(title:'Come On!', album_id: d4ep.id)
+comeon_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-d4-comeon.m4a')
+comeon.audio.attach(io:comeon_audio, filename:'audio-d4-comeon.m4a')
+
+invaderace = Song.create(title:'Invader Ace', album_id: 6twenty.id)
+invaderace_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-d4-invaderace.m4a')
+invaderace.audio.attach(io:invaderace_audio, filename:'audio-d4-invaderace.m4a')
+
+runningonemptysong = Song.create(title:'Running On Empty', album_id: runningonemptyalbum.id)
+runningonemptysong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-d4-runningonempty.m4a')
+runningonemptysong.audio.attach(io:runningonemptysong_audio, filename:'audio-d4-runningonempty.m4a')
 
 
 #####
@@ -139,7 +181,6 @@ boldaslove_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio
 boldaslove.audio.attach(io:boldaslove_audio, filename:'audio-jimihendrix-boldaslove.m4a')
 
 
-
 #####
 # Prince
 #####
@@ -172,6 +213,25 @@ sexydancer.audio.attach(io:sexydancer_audio, filename:'audio-prince-sexydancer.m
 whendovescry = Song.create(title:'When Doves Cry', album_id: purplerain.id)
 whendovescry_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-prince-whendovescry.m4a')
 whendovescry.audio.attach(io:whendovescry_audio, filename:'audio-prince-whendovescry.m4a')
+
+
+#####
+# Stéphane Pompougnac
+#####
+stéphanepompougnac = Artist.create(name:'Stéphane Pompougnac')
+stéphanepompougnac_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-cafedeflore.jpg')
+stéphanepompougnac.photo.attach(io:stéphanepompougnac_photo, filename:'photo-cafedeflore.jpg')
+
+
+cafedeflorealbum = Album.create(title:'Cafe De Flore', artist_id: stéphanepompougnac.id, year:'2006')
+cafedeflorealbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-cafedeflore.jpg')
+cafedeflorealbum.image.attach(io:cafedeflorealbum_image, filename:'album-cafedeflore.jpg')
+
+
+cafedefloresong = Song.create(title:'Something About Us', album_id: cafedeflorealbum.id)
+cafedefloresong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-steph-cafedeflore.mp3')
+cafedefloresong.audio.attach(io:cafedefloresong_audio, filename:'audio-steph-cafedeflore.mp3')
+
 
 
 
