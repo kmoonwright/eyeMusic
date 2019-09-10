@@ -364,7 +364,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumIndex).call(this, props));
     _this.state = {
-      albums: _this.props.albums
+      albums: _this.props.albums,
+      songs: _this.props.songs
     };
     return _this;
   }
@@ -373,10 +374,13 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchAllAlbums();
+      this.props.fetchAllSongs();
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       if (this.props.albums.length > 0) {
         var albumList = this.props.albums.map(function (album) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -386,7 +390,7 @@ function (_React$Component) {
             album: album
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: album.imageUrl
-          })));
+          }), _this2.props.songs));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "album-index-container"
@@ -415,6 +419,9 @@ var mdp = function mdp(dispatch) {
     },
     fetchOneAlbum: function fetchOneAlbum(albumId) {
       return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOneAlbum"])(albumId));
+    },
+    fetchAllSongs: function fetchAllSongs() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllSongs"])());
     }
   };
 };

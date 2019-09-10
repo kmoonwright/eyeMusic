@@ -233,6 +233,24 @@ turbulentweather_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com
 turbulentweather.audio.attach(io:turbulentweather_audio, filename:'audio-jimnoir-turbulentweather.m4a')
 
 
+# #####
+# # Living In A Box
+# #####
+livinginabox = Artist.create(name:'Living In A Box')
+livinginabox_photo = open(' 	https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-livinginabox.jpg')
+livinginabox.photo.attach(io:livinginabox_photo, filename:'photo-livinginabox.jpg')
+
+
+livinginaboxalbum = Album.create(title:'Living In A Box', artist_id: livinginabox.id, year:'1984')
+livinginaboxalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-livinginabox.jpg')
+livinginaboxalbum.image.attach(io:livinginaboxalbum_image, filename:'album-livinginabox.jpg')
+
+
+livinginaboxsong = Song.create(title:'Living In A Box', album_id: livinginaboxalbum.id)
+livinginaboxsong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-livinginabox-Living+In+A+Box.m4a')
+livinginaboxsong.audio.attach(io:livinginaboxsong_audio, filename:'audio-daftpunk-SomethingAboutUs.m4a')
+
+
 #####
 # Nekromantix
 #####

@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllAlbums, fetchOneAlbum } from '../actions/music_actions'
+import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_actions'
 
 class AlbumIndex extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            albums: this.props.albums
+            albums: this.props.albums,
+            songs: this.props.songs,
         }
     }
 
     componentDidMount() {
         this.props.fetchAllAlbums();
+        this.props.fetchAllSongs();
     }
 
     render() {
@@ -24,6 +26,7 @@ class AlbumIndex extends React.Component {
                             {/* Title: {album.title}, 
                             Year: {album.year}, */}
                             <img src={album.imageUrl}></img>
+                            {this.props.songs}
                         </div>
                     </li>
                 )
@@ -42,12 +45,13 @@ class AlbumIndex extends React.Component {
 }
 
 const msp = state => ({
-    albums: Object.values(state.entities.albums)
+    albums: Object.values(state.entities.albums),
 })
 
 const mdp = dispatch => ({
     fetchAllAlbums: () => dispatch(fetchAllAlbums()),
     fetchOneAlbum: (albumId) => dispatch(fetchOneAlbum(albumId)),
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
 })
 
 export default connect(msp, mdp)(AlbumIndex);
