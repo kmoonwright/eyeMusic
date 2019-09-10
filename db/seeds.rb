@@ -181,6 +181,58 @@ boldaslove_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio
 boldaslove.audio.attach(io:boldaslove_audio, filename:'audio-jimihendrix-boldaslove.m4a')
 
 
+
+
+#####
+# Jim Noir
+#####
+jimnoir = Artist.create(name:'Jim Noir')
+jimnoir_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-jimnoir.jpg')
+jimnoir.photo.attach(io:jimnoir_photo, filename:'photo-jimnoir.jpg')
+
+
+aquietmanalbum = Album.create(title:'A Quiet Man', artist_id: jimnoir.id, year:'2004')
+aquietmanalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir-aquietman.jpg')
+aquietmanalbum.image.attach(io:aquietmanalbum_image, filename:'album-jimnoir-aquietman.jpg')
+
+eaneymeanyalbum = Album.create(title:'Eaney Meany', artist_id: jimnoir.id, year:'2004')
+eaneymeanealbum_image = open(' 	https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir-eaneymeany.jpg')
+eaneymeanyalbum.image.attach(io:eaneymeanyalbum_image, filename:'album-jimnoir-eaneymeany.jpg')
+
+mypatchalbum = Album.create(title:'My Patch', artist_id: jimnoir.id, year:'2003')
+mypatchalbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir-mypatch.jpg')
+mypatchalbum.image.attach(io:mypatchalbum_image, filename:'album-jimnoir-mypatch.jpg')
+
+toweroflove = Album.create(title:'Tower of Love', artist_id: jimnoir.id, year:'2005')
+toweroflove_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir-tower.jpg')
+toweroflove.image.attach(io:toweroflove_image, filename:'album-jimnoir-tower.jpg')
+
+jimnoiralbum = Album.create(title:'Jim Noir', artist_id: jimnoir.id, year:'2008')
+jimnoiralbum_image = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/album-jimnoir.jpg')
+jimnoiralbum.image.attach(io:jimnoiralbum_image, filename:'album-jimnoir.jpg')
+
+
+allrightsong = Song.create(title:'All Right', album_id: jimnoiralbum.id)
+allrightsong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-allright.m4a')
+allrightsong.audio.attach(io:allrightsong_audio, filename:'audio-jimnoir-allright.m4a')
+
+aquietmansong = Song.create(title:'A Quiet Man', album_id: aquietmanalbum.id)
+aquietmansong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-aquietman.m4a')
+aquietmansong.audio.attach(io:aquietmansong_audio, filename:'audio-jimnoir-aquietman.m4a')
+
+eaneymeany = Song.create(title:'Eaney Meany', album_id: eaneymeanyalbum.id)
+eaneymeany_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-eaeniemeany.m4a')
+eaneymeany.audio.attach(io:eaneymeany_audio, filename:'audio-jimnoir-eaeniemeany.m4a')
+
+mypatch = Song.create(title:'My Patch', album_id: mypatchalbum.id)
+mypatch_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-mypatch.m4a')
+mypatch.audio.attach(io:mypatch_audio, filename:'audio-jimnoir-mypatch.m4a')
+
+turbulentweather = Song.create(title:'Turbulent Weather', album_id: toweroflove.id)
+turbulentweather_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-jimnoir-turbulentweather.m4a')
+turbulentweather.audio.attach(io:turbulentweather_audio, filename:'audio-jimnoir-turbulentweather.m4a')
+
+
 #####
 # Prince
 #####
