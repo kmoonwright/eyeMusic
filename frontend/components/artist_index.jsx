@@ -26,6 +26,7 @@ class ArtistIndex extends React.Component {
         if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
             return <div className="loading-state">LOADING...</div>
         }
+        
         return (
             <div className="artist-index-container">
 

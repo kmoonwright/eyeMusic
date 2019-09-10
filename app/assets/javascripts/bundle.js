@@ -794,11 +794,15 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.albums.map(function (album) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "artist-index-detail"
+      }, this.props.albums.map(function (album) {
         var allsongs = _this2.props.songByAlbumId[album.id];
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: album.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, allsongs.map(function (song) {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: album.imageUrl
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, album.year), allsongs.map(function (song) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             key: song.id
           }, song.title);
@@ -930,7 +934,9 @@ function (_React$Component) {
         to: "/library/artists/".concat(artist.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: artist.photoUrl
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, artist.name))); // THIS ONE WORKS
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/artists/".concat(artist.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, artist.name))); // THIS ONE WORKS
       // return (
       //     <div className="artist-index-detail">
       //         {this.props.artist.albums.map(album => {
@@ -2243,7 +2249,15 @@ function (_React$Component) {
             src: artistAlbum.imageUrl
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "song-index-item-details"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "by ", artistName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "on ", artistAlbum.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "from ", artistAlbum.year))); // console.log(song)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-songtitle"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-artistinfo"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-albumtitle"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-albumyear"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year)))); // console.log(song)
           // return (
           //     <li key={song.id} className="single-song">
           //         {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}

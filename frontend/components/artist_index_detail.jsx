@@ -20,13 +20,15 @@ class ArtistIndexDetail extends React.Component {
 
     render() {
         return (
-            <ul>
+            <ul className="artist-index-detail">
                 {this.props.albums.map(album => {
                     let allsongs = this.props.songByAlbumId[album.id];
                     return (
                         <li key={album.id}>
-                            <p>{album.title}</p>    
+                            <img src={album.imageUrl}></img>
                             <ul>
+                                <h3>{album.title}</h3>
+                                <h4>{album.year}</h4>    
                                 {allsongs.map(song => {
                                     return (
                                         <li key={song.id}>

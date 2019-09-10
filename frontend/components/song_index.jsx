@@ -36,14 +36,19 @@ class SongIndex extends React.Component {
                     <div key={song.id} className="song-index-item">
                         <img src={artistAlbum.imageUrl}></img>
                         <div className="song-index-item-details">
-                            {/* <p>{song.title}</p>
-                            <p>by {artistName}</p>
-                            <p>on {artistAlbum.title}</p>
-                            <p>from {artistAlbum.year}</p> */}
-                            <span>{song.title}</span>
-                            <span>by {artistName}</span>
-                            <span>on {artistAlbum.title}</span>
-                            <span>from {artistAlbum.year}</span>
+                            <div className="song-index-item-details-songtitle">
+                                <span>{song.title}</span>
+                            </div>
+                            <div className="song-index-item-details-artistinfo">
+                                <span>{artistName}</span>
+                            </div>
+                            <div className="song-index-item-details-albumtitle">
+                                <span>{artistAlbum.title}</span>
+                            </div>
+                            <div className="song-index-item-details-albumyear">
+                                <span>{artistAlbum.year}</span>
+                            </div>
+
                         </div>
                     </div>
                 )   

@@ -26,6 +26,8 @@ class ArtistIndexItem extends React.Component {
             <li className="artist-index-item">
                 <Link to={`/library/artists/${artist.id}`}>
                     <img src={artist.photoUrl}></img>
+                </Link>
+                <Link to={`/library/artists/${artist.id}`}>
                     <div>{artist.name}</div>
                 </Link>
             </li>
