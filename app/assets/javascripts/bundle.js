@@ -2095,9 +2095,10 @@ function (_React$Component) {
       if (this.props.songs.length > 0) {
         var songList = this.props.songs.map(function (song) {
           var artistAlbum = _this2.props.albums[song.album_id];
+          var artistName = _this2.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id
-          }, "Title: ", song.title, "Artist: ", _this2.props.artists[artistAlbum.artist_id], "Album: ", artistAlbum.title); // console.log(song)
+          }, "Title: ", song.title, "Artist: ", artistName, "Album: ", artistAlbum.title); // console.log(song)
           // return (
           //     <li key={song.id} className="single-song">
           //         {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}
@@ -2125,7 +2126,7 @@ function (_React$Component) {
 
 var msp = function msp(state) {
   return {
-    artists: Object.values(state.entities.artists),
+    artists: state.entities.artists,
     songs: Object.values(state.entities.songs),
     albums: state.entities.albums
   };
