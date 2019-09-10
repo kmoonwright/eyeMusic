@@ -26,14 +26,17 @@ class ArtistIndex extends React.Component {
         if (this.props.artists.length > 0) {
             const artistList = this.props.artists.map(artist => {
 
-                debugger
+                
+                // const artistAlbums = this.props.albums[artist.id];
+                // const albumSongs = this.props.songs.map(
+                //     );
 
                 return (
-                    <li key={artist.id} className="artist-index-item">
+                    <div key={artist.id} className="artist-index-item">
 
                         <div className="artist-nav-item">
-                            <div artist={artist}>Name: {artist.name}</div>
                             <img src={artist.photoUrl}></img>
+                            <div artist={artist}>{artist.name}</div>
                         </div>
 
                         <div className="artist-index-detail">
@@ -43,17 +46,26 @@ class ArtistIndex extends React.Component {
                             >
                             </ArtistIndexItem> */}
                             {artist.albums.map(album => {
-                            const albumSongs = this.props.songs
-                                debugger
+                                
                                 {/* const albumSongs = this.props.songs.map(song => {
-                                    song.album_id === album.id;
+                                    song[album.id];
                                 }) */}
                                 {/* const albumSongs = this.props.songs.album_id[album.id]; */}
+                                
+                                let albumSongs = this.props.songs.filter(song => song.album_id === album.id);
+                                albumSongs = albumSongs.map(song => (
+                                    <li>
+                                        {song.title}
+                                    </li>
+                                ))
+                                
+
                                 return (
-                                    <div className="artist-index-item">
-                                        <img src={album.imageUrl}></img>
+                                    
+                                    <div key={album.id} className="artist-index-detail-item">
+                                        <img src={this.props.albums[album.id].imageUrl}></img>
                                         <ul>
-                                            {/* {albumSongs} */}
+                                            {albumSongs}
                                         </ul>
                                         {/* <ArtistIndexItem
                                             key={album.id}
@@ -65,7 +77,7 @@ class ArtistIndex extends React.Component {
                             })}
                         </div>
 
-                    </li>
+                    </div>
                 )
             })
             return (
@@ -83,7 +95,7 @@ class ArtistIndex extends React.Component {
 
 const msp = state => ({
     artists: Object.values(state.entities.artists),
-    songs: state.entities.songs,
+    songs: Object.values(state.entities.songs),
     albums: state.entities.albums,
 })
 

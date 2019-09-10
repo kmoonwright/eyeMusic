@@ -673,34 +673,43 @@ function (_React$Component) {
 
       if (this.props.artists.length > 0) {
         var artistList = this.props.artists.map(function (artist) {
-          debugger;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          // const artistAlbums = this.props.albums[artist.id];
+          // const albumSongs = this.props.songs.map(
+          //     );
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: artist.id,
             className: "artist-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "artist-nav-item"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            artist: artist
-          }, "Name: ", artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: artist.photoUrl
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            artist: artist
+          }, artist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "artist-index-detail"
           }, artist.albums.map(function (album) {
-            var albumSongs = _this2.props.songs;
-            debugger;
             {
               /* const albumSongs = this.props.songs.map(song => {
-                 song.album_id === album.id;
+                 song[album.id];
               }) */
             }
             {
               /* const albumSongs = this.props.songs.album_id[album.id]; */
             }
+
+            var albumSongs = _this2.props.songs.filter(function (song) {
+              return song.album_id === album.id;
+            });
+
+            albumSongs = albumSongs.map(function (song) {
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.title);
+            });
             return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-              className: "artist-index-item"
+              key: album.id,
+              className: "artist-index-detail-item"
             }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-              src: album.imageUrl
-            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
+              src: _this2.props.albums[album.id].imageUrl
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumSongs));
           })));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -720,7 +729,7 @@ function (_React$Component) {
 var msp = function msp(state) {
   return {
     artists: Object.values(state.entities.artists),
-    songs: state.entities.songs,
+    songs: Object.values(state.entities.songs),
     albums: state.entities.albums
   };
 };
@@ -2118,8 +2127,13 @@ function (_React$Component) {
           var artistAlbum = _this2.props.albums[song.album_id];
           var artistName = _this2.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: song.id
-          }, "Title: ", song.title, "Artist: ", artistName, "Album: ", artistAlbum.title); // console.log(song)
+            key: song.id,
+            className: "song-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: artistAlbum.imageUrl
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "by ", artistName), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "on ", artistAlbum.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "from ", artistAlbum.year))); // console.log(song)
           // return (
           //     <li key={song.id} className="single-song">
           //         {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}

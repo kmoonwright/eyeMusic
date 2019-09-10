@@ -18,10 +18,6 @@
 }
 
 // ARTIST INDEX
-.artist-index-container {
-
-}
-
 .artist-index {
     display: flex;
     flex-direction: column;
@@ -34,11 +30,15 @@
 }
 
 .artist-index-item {
+    display:flex;
+}
+
+.artist-index-detail {
     img {
         height: 100px;
         width: 100px;
         margin: 2px;
-        border-radius: 50px 50px 50px 50px;  
+        border-radius: 10px 10px 10px 10px;  
     }
 }
 
@@ -48,9 +48,24 @@
 }
 
 .song-index {
-
+    img {
+        height: 50px;
+        width: 50px;
+        margin: 2px;
+        border-radius: 10px 10px 10px 10px;  
+    }
 }
 
 .song-index-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.song-index-item-details {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
 
 }

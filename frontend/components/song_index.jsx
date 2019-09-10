@@ -33,10 +33,18 @@ class SongIndex extends React.Component {
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
                 
                 return (
-                    <div key={song.id}>
-                        Title: {song.title}
-                        Artist: {artistName}
-                        Album: {artistAlbum.title}
+                    <div key={song.id} className="song-index-item">
+                        <img src={artistAlbum.imageUrl}></img>
+                        <div className="song-index-item-details">
+                            {/* <p>{song.title}</p>
+                            <p>by {artistName}</p>
+                            <p>on {artistAlbum.title}</p>
+                            <p>from {artistAlbum.year}</p> */}
+                            <span>{song.title}</span>
+                            <span>by {artistName}</span>
+                            <span>on {artistAlbum.title}</span>
+                            <span>from {artistAlbum.year}</span>
+                        </div>
                     </div>
                 )   
                 // console.log(song)
