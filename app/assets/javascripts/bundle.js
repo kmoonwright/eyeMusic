@@ -545,7 +545,14 @@ function (_React$Component) {
             artist: artist
           }, "Name: ", artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: artist.photoUrl
-          }));
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, artist.albums.map(function (album) {
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              src: album.imageUrl
+            });
+            {
+              album.songs;
+            }
+          })));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "artist-index-container"
@@ -1763,7 +1770,7 @@ function (_React$Component) {
             className: "single-song"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             song: song
-          }, "Title: ", song.title));
+          }, "Title: ", song.title, "Artist: ", song.artist, "Album: ", song.album_id));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "song-index-container"

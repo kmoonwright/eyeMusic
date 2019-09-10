@@ -22,6 +22,13 @@ class ArtistIndex extends React.Component {
                     <li key={artist.id} className="artist-index-item">
                         <div artist={artist}>Name: {artist.name}</div>
                         <img src={artist.photoUrl}></img>
+
+                        <ul>
+                            {artist.albums.map(album => {
+                                <img src={album.imageUrl}></img>
+                                {album.songs}
+                            })}
+                        </ul>
                     </li>
                 )
             })

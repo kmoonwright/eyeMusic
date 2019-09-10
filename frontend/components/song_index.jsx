@@ -23,7 +23,11 @@ class SongIndex extends React.Component {
                 return (
                     <li key={song.id} className="single-song">
                         {/* <SongIndexItem song={song}>{song.title}</SongIndexItem> */}
-                        <div song={song}>Title: {song.title}</div>
+                        <div song={song}>
+                            Title: {song.title}
+                            Artist: {song.artist}
+                            Album: {song.album_id}
+                        </div>
                     </li>
                 )
             })
