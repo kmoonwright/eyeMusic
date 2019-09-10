@@ -662,8 +662,18 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      // ADD LOADING STATE
+      if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "loading-state"
+        }, "LOADING...");
+      }
+
       if (this.props.artists.length > 0) {
         var artistList = this.props.artists.map(function (artist) {
+          debugger;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             key: artist.id,
             className: "artist-index-item"
@@ -673,13 +683,24 @@ function (_React$Component) {
             artist: artist
           }, "Name: ", artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: artist.photoUrl
-          }), artist.albums.map(function (album) {
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "artist-index-detail"
+          }, artist.albums.map(function (album) {
+            var albumSongs = _this2.props.songs;
+            debugger;
+            {
+              /* const albumSongs = this.props.songs.map(song => {
+                 song.album_id === album.id;
+              }) */
+            }
+            {
+              /* const albumSongs = this.props.songs.album_id[album.id]; */
+            }
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               className: "artist-index-item"
-            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_artist_index_item__WEBPACK_IMPORTED_MODULE_3__["default"], {
-              key: album.id,
-              artist_albums: artist.albums
-            }));
+            }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+              src: album.imageUrl
+            }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
           })));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

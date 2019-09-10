@@ -34,7 +34,12 @@
 }
 
 .artist-index-item {
-
+    img {
+        height: 100px;
+        width: 100px;
+        margin: 2px;
+        border-radius: 50px 50px 50px 50px;  
+    }
 }
 
 // SONG INDEX

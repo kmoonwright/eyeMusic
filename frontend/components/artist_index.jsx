@@ -18,25 +18,53 @@ class ArtistIndex extends React.Component {
     }
 
     render() {
+        // ADD LOADING STATE
+        if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
+            return <div className="loading-state">LOADING...</div>
+        }
+        
         if (this.props.artists.length > 0) {
             const artistList = this.props.artists.map(artist => {
+
+                debugger
+
                 return (
                     <li key={artist.id} className="artist-index-item">
 
                         <div className="artist-nav-item">
                             <div artist={artist}>Name: {artist.name}</div>
                             <img src={artist.photoUrl}></img>
+                        </div>
 
+                        <div className="artist-index-detail">
+                            {/* <ArtistIndexItem
+                                key={artist.id}
+                                artist_albums={artist.albums}
+                            >
+                            </ArtistIndexItem> */}
                             {artist.albums.map(album => {
-                                <div className="artist-index-item">
-                                    <ArtistIndexItem
-                                        key={album.id}
-                                        artist_albums={artist.albums}
-                                    >
-                                    </ArtistIndexItem>
-                                </div>
+                            const albumSongs = this.props.songs
+                                debugger
+                                {/* const albumSongs = this.props.songs.map(song => {
+                                    song.album_id === album.id;
+                                }) */}
+                                {/* const albumSongs = this.props.songs.album_id[album.id]; */}
+                                return (
+                                    <div className="artist-index-item">
+                                        <img src={album.imageUrl}></img>
+                                        <ul>
+                                            {/* {albumSongs} */}
+                                        </ul>
+                                        {/* <ArtistIndexItem
+                                            key={album.id}
+                                            artist_albums={artist.albums}
+                                        >
+                                        </ArtistIndexItem> */}
+                                    </div>
+                                )
                             })}
                         </div>
+
                     </li>
                 )
             })
