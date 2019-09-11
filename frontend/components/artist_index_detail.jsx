@@ -12,6 +12,7 @@ class ArtistIndexDetail extends React.Component {
             artists: this.props.artists,
             songs: this.props.songs,
             albums: this.props.albums,
+            playlists: this.props.playlists,
         }
     }
 

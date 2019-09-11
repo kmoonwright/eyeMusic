@@ -237,7 +237,7 @@ turbulentweather.audio.attach(io:turbulentweather_audio, filename:'audio-jimnoir
 # # Living In A Box
 # #####
 livinginabox = Artist.create(name:'Living In A Box')
-livinginabox_photo = open(' 	https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-livinginabox.jpg')
+livinginabox_photo = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/photo-livinginabox.jpg')
 livinginabox.photo.attach(io:livinginabox_photo, filename:'photo-livinginabox.jpg')
 
 
@@ -356,8 +356,6 @@ cafedefloresong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/
 cafedefloresong.audio.attach(io:cafedefloresong_audio, filename:'audio-steph-cafedeflore.mp3')
 
 
-
-
 # #####
 # # Artist
 # #####
@@ -374,3 +372,18 @@ cafedefloresong.audio.attach(io:cafedefloresong_audio, filename:'audio-steph-caf
 # somethingaboutus = Song.create(title:'Something About Us', album_id: discovery.id)
 # somethingaboutus_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/audio-daftpunk-SomethingAboutUs.m4a')
 # somethingaboutus.audio.attach(io:somethingaboutus_audio, filename:'audio-daftpunk-SomethingAboutUs.m4a')
+
+
+
+
+##### Playlists #####
+
+a = Playlist.create(title: 'Rock Out', user_id: demoUser.id)
+
+b = Playlist.create(title: 'So Funky, So Fresh', user_id: demoUser.id)
+
+c = Playlist.create(title: 'Chill Out', user_id: demoUser.id)
+
+d = Playlist.create(title: 'Kramerica Industries', user_id: demoUser.id)
+
+e = Playlist.create(title: 'Random Songs', user_id: demoUser.id)

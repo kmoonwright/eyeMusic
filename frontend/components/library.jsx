@@ -6,21 +6,25 @@ import { Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
 
 import { fetchAllAlbums, fetchAllArtists, fetchAllSongs } from '../actions/music_actions'
+import { fetchAllPlaylists } from '../actions/playlist_actions'
 import AlbumIndex from './album_index';
 import ArtistIndex from './artist_index';
 import SongIndex from './song_index'
-import PlaylistIndex from './playlist_index'
+import PlaylistCreation from './playlist_creation'
+import PlaylistIndexItem from './playlist_index_item'
+import PlaylistIndexDetail from './playlist_index_detail'
 
 
 class Library extends React.Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props)
 
         this.state = {
             albums: this.props.albums,
             artists: this.props.artists,
             songs: this.props.songs,
+            playlists: this.props.playlists
         }
     }
 
@@ -28,10 +32,12 @@ class Library extends React.Component {
         this.props.fetchAllArtists();
         this.props.fetchAllAlbums();
         this.props.fetchAllSongs();
+        this.props.fetchAllPlaylists();
     }
 
     render() {
-        return(
+        
+        return (
             <div className="library-container">
 
                 <div className="library-nav">
@@ -44,12 +50,18 @@ class Library extends React.Component {
 
                     <p>Music Playlists</p>
                     <div className="library-nav-playlists">
-                        <Link to="/library/playlist/:playlistId">Playlists</Link>
-
-                        <p>Playlist1</p>
-                        <p>Playlist2</p>
-                        <p>Playlist3</p>
+                        <Link to="/library/playlist/new">
+                            Create a new playlist...
+                        </Link>
+                        <ul>
+                            {this.props.playlists.map(playlist => {
+                                return (
+                                    <PlaylistIndexItem key={playlist.id} playlist={playlist}></PlaylistIndexItem>
+                                )
+                            })}
+                        </ul>
                     </div>
+
                 </div>
 
                 <div className="library-main">
@@ -57,7 +69,9 @@ class Library extends React.Component {
                         <ProtectedRoute path="/library/albums" component={AlbumIndex}></ProtectedRoute>
                         <ProtectedRoute path="/library/artists" component={ArtistIndex}></ProtectedRoute>
                         <ProtectedRoute path="/library/songs" component={SongIndex}></ProtectedRoute>
-                        <ProtectedRoute path="/library/playlists" component={PlaylistIndex}></ProtectedRoute>
+                        <ProtectedRoute path="/library/playlists/:playlistId" component={PlaylistIndexDetail}></ProtectedRoute>
+                        <ProtectedRoute path="/library/playlist" component={PlaylistCreation}></ProtectedRoute>
+                        {/* <ProtectedRoute path="/library/playlists" component={PlaylistIndex}></ProtectedRoute> */}
 
                         {/* CATCH ALL FOR /LIBRARY URL? */}
                         <ProtectedRoute path="/library" component={AlbumIndex}></ProtectedRoute>
@@ -73,6 +87,7 @@ const msp = state => ({
     albums: Object.values(state.entities.albums),
     artists: Object.values(state.entities.artists),
     songs: Object.values(state.entities.songs),
+    playlists: Object.values(state.entities.playlists),
 })
 
 const mdp = dispatch => ({
@@ -80,6 +95,7 @@ const mdp = dispatch => ({
     fetchAllAlbums: () => dispatch(fetchAllAlbums()),
     fetchAllArtists: () => dispatch(fetchAllArtists()),
     fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    fetchAllPlaylists: () => dispatch(fetchAllPlaylists()),
 })
 
 export default connect(msp, mdp)(Library);
