@@ -47,6 +47,7 @@ class ArtistIndexDetail extends React.Component {
 
 const msp = (state, ownProps) => {
     const artistId = ownProps.match.params.artistId;
+    debugger
     let artist = state.entities.artists[artistId];
     let albums = Object.values(state.entities.albums).filter(album => album.artist_id.toString() === artistId);
     let albumIds = albums.map(album => album.id);
