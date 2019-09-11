@@ -10,6 +10,9 @@
     background-color: #333333;
     width: 20%;
     padding: 6px;
+    position: fixed;
+    margin-top: 102px;
+    height: 100%;
 
 }
 
@@ -24,7 +27,6 @@
 .library-nav-playlists {
     margin: 5px;
     padding: 6px;
-
 }
 
 .library-main {
@@ -32,4 +34,7 @@
     background-color: #1d1f22;
     width: 80%;
     padding: 6px;
+    margin-top: 102px;
+    position: absolute;
+    right:0;
 }
