@@ -48,6 +48,9 @@ class SongIndex extends React.Component {
                             <div className="song-index-item-details-albumyear">
                                 <span>{artistAlbum.year}</span>
                             </div>
+                            {/* <div className="song-index-item-add-to-playlist">
+                                <button>Add</button>
+                            </div> */}
 
                         </div>
                     </div>
