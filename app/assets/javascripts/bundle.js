@@ -2181,6 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2198,6 +2199,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2225,7 +2227,36 @@ function (_React$Component) {
   _createClass(PlaylistIndexDetail, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " HELLO"));
+      var playlistId = this.props.fetchOnePlaylist(this.props.match.params.playlistId);
+      var songs = this.props.songs;
+      var songList = [];
+      var artistAlbum = this.props.albums[song.album_id];
+      var artistName = this.props.artists[artistAlbum.artist_id].name;
+
+      if (songs.length > 0) {
+        songList = songs.map(function (song) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: song.id,
+            className: "song-index-item"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: artistAlbum.imageUrl
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-songtitle"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-artistinfo"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-albumtitle"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-albumyear"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
+        });
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "playlist-songs"
+      }, songList);
     }
   }]);
 
@@ -2243,32 +2274,18 @@ var msp = function msp(state, ownProps) {
 
 var mdp = function mdp(dispatch) {
   return {
-    fetchAllSongs: function (_fetchAllSongs) {
-      function fetchAllSongs() {
-        return _fetchAllSongs.apply(this, arguments);
-      }
-
-      fetchAllSongs.toString = function () {
-        return _fetchAllSongs.toString();
-      };
-
-      return fetchAllSongs;
-    }(function () {
-      return dispatch(fetchAllSongs());
-    }),
-    fetchOneSong: function (_fetchOneSong) {
-      function fetchOneSong(_x) {
-        return _fetchOneSong.apply(this, arguments);
-      }
-
-      fetchOneSong.toString = function () {
-        return _fetchOneSong.toString();
-      };
-
-      return fetchOneSong;
-    }(function (songId) {
-      return dispatch(fetchOneSong(songId));
-    })
+    fetchOnePlaylist: function fetchOnePlaylist(playlistId) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOnePlaylist"])(playlistId));
+    },
+    deletePlaylist: function deletePlaylist(id) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id));
+    },
+    addSongToPlaylist: function addSongToPlaylist(data) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["addSongToPlaylist"])(data));
+    },
+    removeSongFromPlaylist: function removeSongFromPlaylist(id, data) {
+      return Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["removeSongFromPlaylist"])(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id, data));
+    }
   };
 };
 
