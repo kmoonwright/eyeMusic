@@ -11,7 +11,7 @@ import {
 class PlaylistIndexDetail extends React.Component {
     constructor(props) {
         super(props)
-
+        
         this.state = {
             artists: this.props.artists,
             songs: this.props.songs,
@@ -20,15 +20,24 @@ class PlaylistIndexDetail extends React.Component {
         }
     }
 
+    componentDidMount() {
+        const playlistId = state.entities.playlists[ownProps.match.params.playlistId]
+        this.props.fetchOnePlaylist(playlistId);
+        debugger
+    }
+
     render() {
         
-        let playlistId = this.props.fetchOnePlaylist(this.props.match.params.playlistId)
-        let songs = this.props.songs
-        let songList = [];
-        const artistAlbum = this.props.albums[song.album_id];
-        const artistName = this.props.artists[artistAlbum.artist_id].name;
+        // let playlist = this.props.fetchOnePlaylist(this.props.match.params.playlistId)
+        // let songs = this.props.songs
+        // let songList = [];
+        // const albums = this.props.albums;
+        // const artists= this.props.artists;
+        debugger
         if (songs.length > 0) {
             songList = songs.map(song => {
+                // const artistAlbum = albums[song.album_id];
+                // const artistName = artists[artistAlbum.artist_id].name;
                 return (
                     <div key={song.id} className="song-index-item">
                         <img src={artistAlbum.imageUrl}></img>
@@ -54,6 +63,7 @@ class PlaylistIndexDetail extends React.Component {
                 )
             })
         }
+        
         return (
             <div className="playlist-songs">
                 {songList}
@@ -62,12 +72,14 @@ class PlaylistIndexDetail extends React.Component {
     }
 }
 
-const msp = (state, ownProps) => ({
-    artists: Object.values(state.entities.artists),
-    songs: Object.values(state.entities.songs),
-    albums: Object.values(state.entities.albums),
-    playlists: Object.values(state.entities.playlists),
-})
+const msp = (state, ownProps) => {
+    return ({
+        artists: Object.values(state.entities.artists),
+        songs: Object.values(state.entities.songs),
+        albums: Object.values(state.entities.albums),
+        playlists: Object.values(state.entities.playlists),
+    })
+}
 
 
 const mdp = dispatch => ({

@@ -43,7 +43,6 @@ class Search extends React.Component {
         let searchRender;
 
         if (artists.length > 0) {
-            debugger
             artistList = artists.map((artist, index) => {
                 return (
                     <li className="search-item-artist" key={`${index}`}>
@@ -172,24 +171,6 @@ class Search extends React.Component {
             </div>
         )
     }
-
-    // render () {
-    //     return (
-    //         <div className="search-container">
-    //             <p>Search for tunes...</p>
-    //             <form className="search-form" onSubmit={this.handleSubmit}>
-    //                 <input
-    //                     type="text"
-    //                     value={this.state.searchTerm}
-    //                     onChange={this.updateInput}
-    //                     placeholder="How did it go again...?"
-    //                 >
-    //                 </input>
-    //                 <button type="submit">Submit</button>
-    //             </form>
-    //         </div>
-    //     )
-    // }
 }
 
 const msp = state => {
@@ -235,16 +216,3 @@ const mdp = dispatch => {
 };
 
 export default connect(msp, mdp)(Search);
-
-// const msp = state => ({
-//     currentUser: state.session.currentUser
-// })
-
-// const mdp = dispatch => ({
-//     fetchSearchedSongs: (searchTerm) => dispatch(fetchSearchedSongs(searchTerm)),
-//     fetchSearchedArtists: (searchTerm) => dispatch(fetchSearchedArtists(searchTerm)),
-//     fetchSearchedAlbums: (searchTerm) => dispatch(fetchSearchedAlbums(searchTerm)),
-//     fetchSearchedPlaylists: (searchTerm) => dispatch(fetchSearchedPlaylists(searchTerm)),
-// })
-
-// export default connect(msp, mdp)(Search);

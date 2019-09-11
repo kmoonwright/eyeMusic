@@ -2308,16 +2308,26 @@ function (_React$Component) {
   }
 
   _createClass(PlaylistIndexDetail, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var playlistId = state.entities.playlists[ownProps.match.params.playlistId];
+      this.props.fetchOnePlaylist(playlistId);
+      debugger;
+    }
+  }, {
     key: "render",
     value: function render() {
-      var playlistId = this.props.fetchOnePlaylist(this.props.match.params.playlistId);
-      var songs = this.props.songs;
-      var songList = [];
-      var artistAlbum = this.props.albums[song.album_id];
-      var artistName = this.props.artists[artistAlbum.artist_id].name;
+      // let playlist = this.props.fetchOnePlaylist(this.props.match.params.playlistId)
+      // let songs = this.props.songs
+      // let songList = [];
+      // const albums = this.props.albums;
+      // const artists= this.props.artists;
+      debugger;
 
       if (songs.length > 0) {
         songList = songs.map(function (song) {
+          // const artistAlbum = albums[song.album_id];
+          // const artistName = artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             className: "song-index-item"
@@ -2673,7 +2683,6 @@ function (_React$Component) {
       var searchRender;
 
       if (artists.length > 0) {
-        debugger;
         artistList = artists.map(function (artist, index) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "search-item-artist",
@@ -2784,24 +2793,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
       }, "Submit")), searchRender);
-    } // render () {
-    //     return (
-    //         <div className="search-container">
-    //             <p>Search for tunes...</p>
-    //             <form className="search-form" onSubmit={this.handleSubmit}>
-    //                 <input
-    //                     type="text"
-    //                     value={this.state.searchTerm}
-    //                     onChange={this.updateInput}
-    //                     placeholder="How did it go again...?"
-    //                 >
-    //                 </input>
-    //                 <button type="submit">Submit</button>
-    //             </form>
-    //         </div>
-    //     )
-    // }
-
+    }
   }]);
 
   return Search;
@@ -2856,16 +2848,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Search)); // const msp = state => ({
-//     currentUser: state.session.currentUser
-// })
-// const mdp = dispatch => ({
-//     fetchSearchedSongs: (searchTerm) => dispatch(fetchSearchedSongs(searchTerm)),
-//     fetchSearchedArtists: (searchTerm) => dispatch(fetchSearchedArtists(searchTerm)),
-//     fetchSearchedAlbums: (searchTerm) => dispatch(fetchSearchedAlbums(searchTerm)),
-//     fetchSearchedPlaylists: (searchTerm) => dispatch(fetchSearchedPlaylists(searchTerm)),
-// })
-// export default connect(msp, mdp)(Search);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Search));
 
 /***/ }),
 
