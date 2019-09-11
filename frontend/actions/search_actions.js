@@ -3,7 +3,7 @@ import * as SearchApiUtil from '../util/search_util';
 export const RECEIVE_ALL_SEARCHES = "RECEIVE_ALL_SEARCHES";
 export const CLEAR_SEARCH = "CLEAR_SEARCH";
 
-const receiveAllSearches = ({ artists, search_ids, albums, playlists }) => {
+const receiveAllSearches = ({ artists, albums, playlists, search_ids }) => {
     return {
         type: RECEIVE_ALL_SEARCHES,
         artists,

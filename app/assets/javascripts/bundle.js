@@ -349,9 +349,9 @@ var CLEAR_SEARCH = "CLEAR_SEARCH";
 
 var receiveAllSearches = function receiveAllSearches(_ref) {
   var artists = _ref.artists,
-      search_ids = _ref.search_ids,
       albums = _ref.albums,
-      playlists = _ref.playlists;
+      playlists = _ref.playlists,
+      search_ids = _ref.search_ids;
   return {
     type: RECEIVE_ALL_SEARCHES,
     artists: artists,
@@ -2622,59 +2622,154 @@ function (_React$Component) {
     _classCallCheck(this, Search);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Search).call(this, props));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.updateInput = _this.updateInput.bind(_assertThisInitialized(_this));
     _this.state = {
-      searchTerm: ''
+      searchVal: ''
     };
+    _this.handleSearch = _this.handleSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Search, [{
-    key: "renderResults",
-    value: function renderResults() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SEARCH RESULTS RENDER");
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.clearSearch();
     }
   }, {
-    key: "updateInput",
-    value: function updateInput(e) {
-      var val = e.target.value;
-      this.setState({
-        searchTerm: val
-      });
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(e) {
-      var _this2 = this;
+    key: "handleSearch",
+    value: function handleSearch(e) {
+      if (this.state.searchVal === "") {
+        this.props.history.push("/search");
+      }
 
-      e.preventDefault();
-      debugger;
-      var searchTerm = this.state.searchTerm;
       this.setState({
-        title: ''
+        searchVal: e.target.value
       });
-      this.props.fetchSearchedSongs(searchTerm).then(function () {
-        return _this2.renderResults();
-      });
+
+      if (e.target.value === "") {
+        this.props.clearSearch();
+      }
+
+      this.props.searchArtists(e.target.value);
     }
   }, {
     key: "render",
     value: function render() {
+      var artistList;
+      var albumList;
+      var playlistList;
+      var artists = this.props.artists;
+      var albums = this.props.albums;
+      var playlists = this.props.playlists;
+      var artistsHeader = artists.length > 0 ? "Artists" : "";
+      var albumsHeader = albums.length > 0 ? "Albums" : "";
+      var playlistsHeader = playlists.length > 0 ? "Playlists" : "";
+
+      if (artists.length > 0) {
+        artistList = artists.map(function (artist, index) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "search-item-artist",
+            key: "".concat(index)
+          }, artist.photo);
+        });
+      }
+
+      if (albums.length > 0) {
+        albumList = albums.map(function (album, index) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "search-item-album",
+            key: "".concat(index)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+            to: "/albums/".concat(album.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: album.photo
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "search-item-album-title"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+            to: "/albums/".concat(album.id)
+          }, album.title)));
+        });
+      }
+
+      if (playlists.length > 0) {
+        playlistList = playlists.map(function (playlist, index) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "search-item-playlist",
+            key: index
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+            to: "/playlists/".concat(playlist.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "search-item-playlist-images",
+            src: playlist.photo
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+            to: "/playlists/".concat(playlist.id)
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+            className: "search-item-playlist-title"
+          }, playlist.title)));
+        });
+      }
+
+      if (artists[0] === undefined && this.state.searchVal === "" || albums[0] === undefined && this.state.searchVal === "" || playlists[0] === undefined && this.state.searchVal === "") {
+        var _searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-before"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "search-loading-title"
+        }, "Search eyeMusic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "search-loading-phrase"
+        }, "Find your favorite playlists, artists, and albums."));
+      } else if (artists[0] === undefined && this.state.searchVal !== "" && albums[0] === undefined && this.state.searchVal !== "" && playlists[0] === undefined && this.state.searchVal !== "") {
+        var _searchRender2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-before"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found for \"".concat(this.state.searchVal, "\"")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Please make sure your words are spelled correctly or use less or different keywords."));
+      } else {
+        var _searchRender3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "search-res"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "artists-header"
+        }, artistsHeader), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "all-artists-search"
+        }, artistList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "albums-header"
+        }, albumsHeader), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "all-albums-search"
+        }, albumList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          className: "playlists-header"
+        }, playlistsHeader), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "all-playlists-search"
+        }, playlistList));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Search for tunes..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "search-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "search-bar-text",
         type: "text",
-        value: this.state.searchTerm,
-        onChange: this.updateInput,
-        placeholder: "How did it go again...?"
+        placeholder: "Start typing...",
+        value: this.state.searchVal,
+        onChange: this.handleSearch
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
-      }, "Submit")));
-    }
+      }, "Submit")), searchRender);
+    } // render () {
+    //     return (
+    //         <div className="search-container">
+    //             <p>Search for tunes...</p>
+    //             <form className="search-form" onSubmit={this.handleSubmit}>
+    //                 <input
+    //                     type="text"
+    //                     value={this.state.searchTerm}
+    //                     onChange={this.updateInput}
+    //                     placeholder="How did it go again...?"
+    //                 >
+    //                 </input>
+    //                 <button type="submit">Submit</button>
+    //             </form>
+    //         </div>
+    //     )
+    // }
+
   }]);
 
   return Search;
@@ -3658,7 +3753,7 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:
-      return merge({}, {
+      return Object.assign({}, {
         "artist_ids": action.search_ids.artist_ids
       }, {
         "album_ids": action.search_ids.album_ids
@@ -3795,7 +3890,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  search: searchReducer
+  search: _search_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
 
 /***/ }),
@@ -4138,7 +4233,7 @@ __webpack_require__.r(__webpack_exports__);
 var searchArtists = function searchArtists(paramString) {
   return $.ajax({
     method: "GET",
-    url: "api/searches/".concat(paramString)
+    url: "api/search/".concat(paramString)
   });
 }; // export const searchAlbums = (searchTerm) => (
 //     $.ajax({
