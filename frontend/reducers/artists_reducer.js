@@ -2,6 +2,7 @@ import {
     RECEIVE_ALL_ARTISTS,
     RECEIVE_ONE_ARTIST
 } from '../actions/music_actions';
+import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from '../actions/search_actions';
 
 const artistsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -10,6 +11,11 @@ const artistsReducer = (oldState = {}, action) => {
             return action.artists
         case RECEIVE_ONE_ARTIST:
             return Object.assign({}, oldState, { [action.payload.artist.id]: action.payload.artist });
+        case RECEIVE_ALL_SEARCHES:
+            if (action.artists === undefined) {
+                return oldState;
+            }
+            return Object.assign({}, oldState, action.artists);
         default:
             return oldState;
     }
