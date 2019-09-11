@@ -1,10 +1,10 @@
 import * as PlaylistUtil from '../util/playlist_util';
 
 export const RECEIVE_ALL_PLAYLISTS = 'RECEIVE_ALL_PLAYLISTS';
-export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST';
+export const RECEIVE_ONE_PLAYLIST = 'RECEIVE_ONE_PLAYLIST';
 export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
-export const RECEIVE_PLAYLIST_SONG = 'RECEIVE_PLAYLIST_SONG';
-export const REMOVE_PLAYLIST_SONG = 'REMOVE_PLAYLIST_SONG';
+export const REMOVE_ONE_PLAYLIST = 'REMOVE_ONE_PLAYLIST';
+export const RECEIVE_PLAYLIST_ERRORS = 'RECEIVE_PLAYLIST_ERRORS';
 
 
 export const fetchAllPlaylists = () => (dispatch) => (
@@ -58,9 +58,9 @@ export const addSongToPlaylist = (data) => (dispatch) => (
 
 export const removeSongFromPlaylist = (id, data) => (dispatch) => (
     PlaylistUtil.removeSongFromPlaylist(id, data)
-        .then((payload) => dispatch({
-            type: RECEIVE_ONE_PLAYLIST,
-            payload
+        .then((playlist) => dispatch({
+            type: REMOVE_ONE_PLAYLIST,
+            playlist
         }),
         errors => dispatch({
             type: RECEIVE_PLAYLIST_ERRORS,
