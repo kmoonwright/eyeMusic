@@ -1,10 +1,15 @@
 .player-container {
     height: 55px;
-    display: flex;
-    flex-direction: row;
     color: white;
     background-color: #333333;
 
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+.player-container-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 30px;
 }

@@ -4,6 +4,7 @@ import { Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
 
 import MusicPlayer from './music_player';
+import Search from './search';
 import NavBar from './nav_bar';
 import Browse from './browse';
 import Library from './library';
@@ -23,6 +24,7 @@ class Home extends React.Component {
                     <ProtectedRoute path="/library" component={Library}></ProtectedRoute>
                     <ProtectedRoute path="/browse" component={Browse}></ProtectedRoute>
                     <ProtectedRoute path="/radio" component={Radio}></ProtectedRoute>
+                    <ProtectedRoute path="/search" component={Search}></ProtectedRoute>
                 </Switch>
 
                 {/* </div> */}

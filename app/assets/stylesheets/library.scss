@@ -17,20 +17,31 @@
     position: fixed;
     margin-top: 102px;
     height: 100%;
-
 }
 
-.library-nav-indices{
-    display: grid;
-    padding-left: 10px;
-    padding-bottom: 8px;
-    margin: 5px;
+.library-nav-items{
+    display: flex;
+    flex-direction: column;
 
+    // padding-left: 10px;
+    // padding-bottom: 8px;
+    // margin: 5px;
+}
+
+.library-nav-items-btns {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 6px;
 }
 
 .library-nav-playlists {
     margin: 5px;
     padding: 6px;
+}
+
+.playlist-index-item {
+    padding: 5px;
 }
 
 .library-main {

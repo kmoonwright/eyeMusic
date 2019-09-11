@@ -41,24 +41,26 @@ class Library extends React.Component {
             <div className="library-container">
 
                 <div className="library-nav">
-                    <p>Library</p>
-                    <div className="library-nav-indices">
-                        <Link to="/library/albums">Albums</Link>
-                        <Link to="/library/artists">Artists</Link>
-                        <Link to="/library/songs">Songs</Link>
+                    <div className="library-nav-items">
+                        <p>Library</p>
+                        <div className="library-nav-items-btns">
+                            <Link to="/library/albums">Albums</Link>
+                            <Link to="/library/artists">Artists</Link>
+                            <Link to="/library/songs">Songs</Link>
+                        </div>
                     </div>
 
-                    <p>Music Playlists</p>
                     <div className="library-nav-playlists">
-                        <Link to="/library/playlist/new">
-                            Create a new playlist...
-                        </Link>
+                        <p>Music Playlists</p>
                         <ul>
                             {this.props.playlists.map(playlist => {
                                 return (
                                     <PlaylistIndexItem key={playlist.id} playlist={playlist}></PlaylistIndexItem>
                                 )
                             })}
+                                <Link to="/library/playlist/new">
+                                    Create a new playlist...
+                                </Link>
                         </ul>
                     </div>
 
