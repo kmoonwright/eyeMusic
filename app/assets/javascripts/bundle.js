@@ -1560,6 +1560,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _album_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./album_index */ "./frontend/components/album_index.jsx");
 /* harmony import */ var _artist_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./artist_index */ "./frontend/components/artist_index.jsx");
 /* harmony import */ var _song_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./song_index */ "./frontend/components/song_index.jsx");
+/* harmony import */ var _playlist_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./playlist_index */ "./frontend/components/playlist_index.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1577,6 +1578,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1631,7 +1633,9 @@ function (_React$Component) {
         to: "/library/songs"
       }, "Songs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Music Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-playlists"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/playlist/:playlistId"
+      }, "Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Playlist3"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
         path: "/library/albums",
@@ -1642,6 +1646,9 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
         path: "/library/songs",
         component: _song_index__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+        path: "/library/playlists",
+        component: _playlist_index__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
         path: "/library",
         component: _album_index__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -1857,6 +1864,51 @@ var mdp = function mdp(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(msp, mdp)(NavBar));
+
+/***/ }),
+
+/***/ "./frontend/components/playlist_index.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/playlist_index.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var PlaylistIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PlaylistIndex, _React$Component);
+
+  function PlaylistIndex() {
+    _classCallCheck(this, PlaylistIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndex).apply(this, arguments));
+  }
+
+  return PlaylistIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PlaylistIndex);
 
 /***/ }),
 

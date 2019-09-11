@@ -9,6 +9,7 @@ import { fetchAllAlbums, fetchAllArtists, fetchAllSongs } from '../actions/music
 import AlbumIndex from './album_index';
 import ArtistIndex from './artist_index';
 import SongIndex from './song_index'
+import PlaylistIndex from './playlist_index'
 
 
 class Library extends React.Component {
@@ -32,8 +33,6 @@ class Library extends React.Component {
     render() {
         return(
             <div className="library-container">
-                {/* <LibraryNav></LibraryNav>
-                <LibraryMain></LibraryMain> */}
 
                 <div className="library-nav">
                     <p>Library</p>
@@ -45,6 +44,8 @@ class Library extends React.Component {
 
                     <p>Music Playlists</p>
                     <div className="library-nav-playlists">
+                        <Link to="/library/playlist/:playlistId">Playlists</Link>
+
                         <p>Playlist1</p>
                         <p>Playlist2</p>
                         <p>Playlist3</p>
@@ -56,11 +57,13 @@ class Library extends React.Component {
                         <ProtectedRoute path="/library/albums" component={AlbumIndex}></ProtectedRoute>
                         <ProtectedRoute path="/library/artists" component={ArtistIndex}></ProtectedRoute>
                         <ProtectedRoute path="/library/songs" component={SongIndex}></ProtectedRoute>
+                        <ProtectedRoute path="/library/playlists" component={PlaylistIndex}></ProtectedRoute>
 
                         {/* CATCH ALL FOR /LIBRARY URL? */}
                         <ProtectedRoute path="/library" component={AlbumIndex}></ProtectedRoute>
                     </Switch>
                 </div>
+
             </div>
         )
     }
