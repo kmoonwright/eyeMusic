@@ -527,7 +527,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var songList = this.props.songs;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "HELLO", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "album--index-detail"
       }, songList.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -1818,22 +1818,24 @@ function (_React$Component) {
       //     </div>
       // );
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbar"
+        className: "navbar-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "navbar-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-history"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Forward"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Forward")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-btns"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/library"
       }, "Library")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/browse"
       }, "Browse")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/radio"
-      }, "Radio")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Radio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-profile"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Welcome ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.props.logout
-      }, "Logout")));
+      }, "Logout"))));
     }
   }]);
 

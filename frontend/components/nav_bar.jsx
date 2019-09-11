@@ -24,15 +24,13 @@ class NavBar extends React.Component {
         //     </div>
         // );
         return (
-            <div className="navbar">
-                <div className="navbar-history">
-                    <ol>
+            <div className="navbar-container">
+                <div className="navbar-index">
+                    <div className="navbar-history">
                         <button>Back</button>
                         <button>Forward</button>
-                    </ol>
-                </div>
-                <div className="navbar-btns">
-                    <ol>
+                    </div>
+                    <div className="navbar-btns">
                         <button>
                             <Link to="/library">Library</Link>
                         </button>
@@ -42,13 +40,12 @@ class NavBar extends React.Component {
                         <button>
                             <Link to="/radio">Radio</Link>
                         </button>
-                    </ol>
+                    </div>
+                    <div className="navbar-profile">
+                        <button>Welcome {this.props.currentUser.username}!</button>
+                        <button onClick={this.props.logout}>Logout</button>
+                    </div>
                 </div>
-                <div className="navbar-profile">
-                    <p>Welcome {this.props.currentUser.username}!</p>
-                    <button onClick={this.props.logout}>Logout</button>
-                </div>
-
             </div>
         )
     }

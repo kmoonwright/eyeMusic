@@ -21,7 +21,7 @@ class AlbumIndexDetail extends React.Component {
     render() {
         let songList = this.props.songs;
         return (
-            <div>HELLO
+            <div>
                 <ul className="album--index-detail">
                     {songList.map(song => {
                         return (

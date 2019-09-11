@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 
+
+
 import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_actions'
 
 class AlbumIndexItem extends React.Component {
@@ -25,6 +27,7 @@ class AlbumIndexItem extends React.Component {
                 <Link to={`/library/albums/${album.id}`}>
                     <img src={album.imageUrl}></img>
                 </Link>
+
             </li>
         )
         // if (this.props.songs.length > 0) {

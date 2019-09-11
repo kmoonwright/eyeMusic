@@ -1,8 +1,4 @@
-.navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
+.navbar-container {
     height: 35px;
     color: whitesmoke;
     background-color: #202020;
@@ -10,6 +6,12 @@
     padding: 5px;
 }
 
-.navbar-profile {
-    display:inline-flex;
+.navbar-index {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+        margin:5px;
+    }
 }

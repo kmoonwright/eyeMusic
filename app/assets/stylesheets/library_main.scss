@@ -1,6 +1,6 @@
 // ALBUM INDEX
 .album-index-container {
-
+    display: flex;
 }
 
 .album-index {
@@ -71,6 +71,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
 }
 
 .song-index-item-details {
