@@ -329,6 +329,89 @@ var removeSongFromPlaylist = function removeSongFromPlaylist(id, data) {
 
 /***/ }),
 
+/***/ "./frontend/actions/search_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/search_actions.js ***!
+  \********************************************/
+/*! exports provided: RECEIVE_ALL_SEARCHES, CLEAR_SEARCH, clearSearch, searchArtists */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_SEARCHES", function() { return RECEIVE_ALL_SEARCHES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SEARCH", function() { return CLEAR_SEARCH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearSearch", function() { return clearSearch; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchArtists", function() { return searchArtists; });
+/* harmony import */ var _util_search_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/search_util */ "./frontend/util/search_util.js");
+
+var RECEIVE_ALL_SEARCHES = "RECEIVE_ALL_SEARCHES";
+var CLEAR_SEARCH = "CLEAR_SEARCH";
+
+var receiveAllSearches = function receiveAllSearches(_ref) {
+  var artists = _ref.artists,
+      search_ids = _ref.search_ids,
+      albums = _ref.albums,
+      playlists = _ref.playlists;
+  return {
+    type: RECEIVE_ALL_SEARCHES,
+    artists: artists,
+    albums: albums,
+    playlists: playlists,
+    search_ids: search_ids
+  };
+};
+
+var clearSearch = function clearSearch() {
+  return {
+    type: CLEAR_SEARCH
+  };
+};
+var searchArtists = function searchArtists(queryString) {
+  return function (dispatch) {
+    return _util_search_util__WEBPACK_IMPORTED_MODULE_0__["searchArtists"](queryString).then(function (response) {
+      return dispatch(receiveAllSearches(response));
+    });
+  };
+}; // import * as SearchApiUtil from '../util/search_util'
+// export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
+// export const RECEIVE_ALL_ARTISTS = 'RECEIVE_ALL_ARTISTS';
+// export const RECEIVE_ALL_ALBUMS = 'RECEIVE_ALL_ALBUMS';
+// export const RECEIVE_ALL_PLAYLISTS = 'RECEIVE_ALL_PLAYLISTS';
+// export const fetchSearchedSongs = searchTerm => dispatch => {
+//     SearchApiUtil.searchSongs(searchTerm)
+//         .then(songs => dispatch({
+//             type: RECEIVE_ALL_SONGS,
+//             songs
+//         })
+//     )
+// };
+// export const fetchSearchedArtists = searchTerm => dispatch => {
+//     SearchApiUtil.searchArtists(searchTerm)
+//         .then(artists => dispatch({
+//             type: RECEIVE_ALL_ARTISTS,
+//             artists
+//         })
+//     )
+// };
+// export const fetchSearchedAlbums = searchTerm => dispatch => {
+//     SearchApiUtil.searchAlbums(searchTerm)
+//         .then(albums => dispatch({
+//             type: RECEIVE_ALL_ALBUMS,
+//             albums
+//         })
+//     )
+// };
+// export const fetchSearchedPlaylists = searchTerm => dispatch => {
+//     SearchApiUtil.searchPlaylists(searchTerm)
+//         .then(playlists => dispatch({
+//             type: RECEIVE_ALL_PLAYLISTS,
+//             playlists
+//         })
+//     )
+// };
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -2505,7 +2588,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2598,29 +2681,56 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state) {
+  var artists = [];
+  var albums = [];
+  var playlists = [];
+
+  if (state.ui.search.artist_ids) {
+    artists = state.ui.search.artist_ids.map(function (artist_id) {
+      return state.entities.artists[artist_id];
+    });
+  }
+
+  if (state.ui.search.album_ids) {
+    albums = state.ui.search.album_ids.map(function (album_id) {
+      return state.entities.albums[album_id];
+    });
+  }
+
+  if (state.ui.search.playlist_ids) {
+    playlists = state.ui.search.playlist_ids.map(function (playlist_id) {
+      return state.entities.playlists[playlist_id];
+    });
+  }
+
   return {
-    currentUser: state.session.currentUser
+    artists: artists,
+    albums: albums,
+    playlists: playlists
   };
 };
 
 var mdp = function mdp(dispatch) {
   return {
-    fetchSearchedSongs: function fetchSearchedSongs(searchTerm) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSearchedSongs"])(searchTerm));
+    searchArtists: function searchArtists(queryString) {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["searchArtists"])(queryString));
     },
-    fetchSearchedArtists: function fetchSearchedArtists(searchTerm) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSearchedArtists"])(searchTerm));
-    },
-    fetchSearchedAlbums: function fetchSearchedAlbums(searchTerm) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSearchedAlbums"])(searchTerm));
-    },
-    fetchSearchedPlaylists: function fetchSearchedPlaylists(searchTerm) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSearchedPlaylists"])(searchTerm));
+    clearSearch: function clearSearch() {
+      return dispatch(Object(_actions_search_actions__WEBPACK_IMPORTED_MODULE_2__["clearSearch"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Search));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Search)); // const msp = state => ({
+//     currentUser: state.session.currentUser
+// })
+// const mdp = dispatch => ({
+//     fetchSearchedSongs: (searchTerm) => dispatch(fetchSearchedSongs(searchTerm)),
+//     fetchSearchedArtists: (searchTerm) => dispatch(fetchSearchedArtists(searchTerm)),
+//     fetchSearchedAlbums: (searchTerm) => dispatch(fetchSearchedAlbums(searchTerm)),
+//     fetchSearchedPlaylists: (searchTerm) => dispatch(fetchSearchedPlaylists(searchTerm)),
+// })
+// export default connect(msp, mdp)(Search);
 
 /***/ }),
 
@@ -3509,6 +3619,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
+
 
 
 
@@ -3521,9 +3633,46 @@ __webpack_require__.r(__webpack_exports__);
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   session: _session_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/search_reducer.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/search_reducer.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+
+  switch (action.type) {
+    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_SEARCHES"]:
+      return merge({}, {
+        "artist_ids": action.search_ids.artist_ids
+      }, {
+        "album_ids": action.search_ids.album_ids
+      }, {
+        "playlist_ids": action.search_ids.playlist_ids
+      });
+
+    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SEARCH"]:
+      return {};
+
+    default:
+      return oldState;
+  }
+});
 
 /***/ }),
 
@@ -3629,6 +3778,25 @@ var songReducer = function songReducer() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (songReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  search: searchReducer
+}));
 
 /***/ }),
 
@@ -3954,6 +4122,52 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var AuthRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps)(Auth));
 var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, undefined)(Protected));
+
+/***/ }),
+
+/***/ "./frontend/util/search_util.js":
+/*!**************************************!*\
+  !*** ./frontend/util/search_util.js ***!
+  \**************************************/
+/*! exports provided: searchArtists */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "searchArtists", function() { return searchArtists; });
+var searchArtists = function searchArtists(paramString) {
+  return $.ajax({
+    method: "GET",
+    url: "api/searches/".concat(paramString)
+  });
+}; // export const searchAlbums = (searchTerm) => (
+//     $.ajax({
+//         url: '/api/albums/search',
+//         method: 'GET',
+//         data: { search_term: searchTerm }
+//     })
+// );
+// export const searchArtists = (searchTerm) => (
+//     $.ajax({
+//         url: '/api/artists/search',
+//         method: 'GET',
+//         data: { search_term: searchTerm }
+//     })
+// );
+// export const searchSongs = (searchTerm) => (
+//     $.ajax({
+//         url: '/api/songs/search',
+//         method: 'GET',
+//         data: { search_term: searchTerm }
+//     })
+// );
+// export const searchPlaylists = (searchTerm) => (
+//     $.ajax({
+//         url: '/api/playlists/search',
+//         method: 'GET',
+//         data: { search_term: searchTerm }
+//     })
+// );
 
 /***/ }),
 
