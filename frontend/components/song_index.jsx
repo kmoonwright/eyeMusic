@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchAllSongs } from './../actions/music_actions';
 import SongIndexItem from './song_index_item';
+import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
 class SongIndex extends React.Component {
     constructor(props) {
@@ -13,10 +14,20 @@ class SongIndex extends React.Component {
             songs: this.props.songs,
             albums: this.props.albums,
         }
+        this.handlePlay = this.handlePlay.bind(this);
+        this.getQueue = this.getQueue.bind(this);
     }
 
-    componentDidMount() {
-        
+    handlePlay(song) {
+        this.props.setCurrentSong(song);
+        this.props.setQueue(this.props.songs);
+        this.props.toggleSong();
+    }
+
+    getQueue() {
+        let { songs } = this.props;
+        let queue = songs.slice(1);
+        return queue;
     }
 
     render() {
@@ -29,11 +40,11 @@ class SongIndex extends React.Component {
             
             const songList = this.props.songs.map(song => { 
                 
+                
                 const artistAlbum = this.props.albums[song.album_id];
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
-                
                 return (
-                    <div key={song.id} className="song-index-item">
+                    <div key={song.id} onClick={() => this.handlePlay(song)} className="song-index-item">
                         <img src={artistAlbum.imageUrl}></img>
                         <div className="song-index-item-details">
                             <div className="song-index-item-details-songtitle">
@@ -80,6 +91,7 @@ class SongIndex extends React.Component {
     }
 }
 
+
 const msp = state => ({
     artists: state.entities.artists,
     songs: Object.values(state.entities.songs),
@@ -89,6 +101,10 @@ const msp = state => ({
 const mdp = dispatch => ({
     fetchAllSongs: () => dispatch(fetchAllSongs()),
     fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+    toggleSong: () => (dispatch(toggleSong())),
+    setQueue: (queue) => (dispatch(setQueue(queue))),
+
 })
 
 export default connect(msp, mdp)(SongIndex);

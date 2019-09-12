@@ -8,8 +8,18 @@ class MusicPlayer extends React.Component {
 
     constructor(props) {
         super(props);
+
+        // ANDY NOTES
+        // this.audio = new Audio();
+        // this.audio.src = audioUrl;
+        // then we can call play on audio instance var
+
+        //componentDidUpdate
+        // need conditionals to prevent unneeded operations
+        // checks props passed in component
+        // all functionality of player goes here
         this.state = {
-            active: this.props.song,
+            active: this.props.currentSong,
             current: 0,
             progress: 0,
             random: false,
@@ -18,6 +28,14 @@ class MusicPlayer extends React.Component {
             playing: props.playing || false,
             songs: props.currQueue
         }
+
+        this.audio = new Audio();
+        // this.audio.src = audioUrl;
+
+
+        //song reference
+        // this.ref = React.createRef();
+
         this.setProgress = this.setProgress.bind(this);
         this.updateProgress = this.updateProgress.bind(this);
         this.play = this.play.bind(this);
@@ -31,23 +49,32 @@ class MusicPlayer extends React.Component {
         this.toggleMute = this.toggleMute.bind(this);
     }
 
-    componentDidMount() {
-        let playerElement = this.refs.player;
-        playerElement.addEventListener('timeupdate', this.updateProgress);
-        playerElement.addEventListener('ended', this.end);
-        playerElement.addEventListener('error', this.next);
-    }
+// everything depends on props
 
-    componentWillUnmount() {
-        let playerElement = this.refs.player;
-        playerElement.removeEventListener('timeupdate', this.updateProgress);
-        playerElement.removeEventListener('ended', this.end);
-        playerElement.removeEventListener('error', this.next);
-    }
 
-    componentWillReceiveProps(newProps) {
-        if (this.props.song != newProps.song) {
-            this.setState({ active: newProps.song, songs: newProps.songs, playing: true, progress: 0 })
+
+    // componentDidMount() {
+    //     let playerElement = this.refs.player;
+    //     playerElement.addEventListener('timeupdate', this.updateProgress);
+    //     playerElement.addEventListener('ended', this.end);
+    //     playerElement.addEventListener('error', this.next);
+    // }
+
+    // componentWillUnmount() {
+    //     let playerElement = this.audio;
+    //     playerElement.removeEventListener('timeupdate', this.updateProgress);
+    //     playerElement.removeEventListener('ended', this.end);
+    //     playerElement.removeEventListener('error', this.next);
+    // }
+
+    componentDidUpdate(oldProps) {
+        // need conditionals to prevent unneeded operations
+        // checks props passed in component
+        // all functionality of player goes here
+        if (!this.props.currentSong) return;
+        if (this.props.currentSong != oldProps.currentSong) {
+            this.audio.src = this.props.currentSong.audioUrl;
+            this.audio.play();
         }
     }
 
@@ -56,18 +83,18 @@ class MusicPlayer extends React.Component {
         let width = target.clientWidth;
         let rect = target.getBoundingClientRect();
         let offsetX = e.clientX - rect.left;
-        let duration = this.refs.player.duration;
+        let duration = this.audio.duration;
         let currentTime = (duration * offsetX) / width;
         let progress = (currentTime * 100) / duration;
 
-        this.refs.player.currentTime = currentTime;
+        this.audio.currentTime = currentTime;
         this.setState({ progress: progress });
         this.play();
     }
 
     updateProgress() {
-        let duration = this.refs.player.duration;
-        let currentTime = this.refs.player.currentTime;
+        let duration = this.audio.duration;
+        let currentTime = this.audio.currentTime;
         let progress = (currentTime * 100) / duration;
 
         this.setState({ progress: progress });
@@ -76,12 +103,14 @@ class MusicPlayer extends React.Component {
     play() {
         // this.props.setCurrentSong(this.state.active);
         this.setState({ playing: true });
-        this.refs.player.play();
+        this.audio.src = active.audioUrl;
+        debugger
+        this.audio.play();
     }
 
     pause() {
         this.setState({ playing: false });
-        this.refs.player.pause();
+        this.audio.pause();
     }
 
     toggle() {
@@ -98,31 +127,31 @@ class MusicPlayer extends React.Component {
     }
 
     next() {
-        var total = this.state.songs.length;
-        var current = (this.state.repeat) ? this.state.current : (this.state.current < total - 1) ? this.state.current + 1 : 0;
-        var active = this.state.songs[current];
+        let total = this.state.songs.length;
+        let current = (this.state.repeat) ? this.state.current : (this.state.current < total - 1) ? this.state.current + 1 : 0;
+        let active = this.state.songs[current];
 
         this.setState({ current: current, active: active, progress: 0 });
         this.props.setCurrentSong(active);
 
-        this.refs.player.src = active.audioUrl;
+        this.audio.src = active.audioUrl;
         this.play();
     }
 
     previous() {
-        var total = this.state.songs.length;
-        var current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
-        var active = this.state.songs[current];
+        let total = this.state.songs.length;
+        let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
+        let active = this.state.songs[current];
 
         this.setState({ current: current, active: active, progress: 0 });
         this.props.setCurrentSong(active);
 
-        this.refs.player.src = active.audioUrl;
+        this.audio.src = active.audioUrl;
         this.play();
     }
 
     randomize() {
-        var s = shuffle(this.state.songs.slice());
+        let s = shuffle(this.state.songs.slice());
         this.setState({ songs: (!this.state.random) ? s : this.state.songs, random: !this.state.random });
         this.props.setQueue((!this.state.random) ? s : this.state.songs);
     }
@@ -135,12 +164,13 @@ class MusicPlayer extends React.Component {
         let mute = this.state.mute;
 
         this.setState({ mute: !this.state.mute });
-        this.refs.player.volume = (mute) ? 1 : 0;
+        this.audio.volume = (mute) ? 1 : 0;
     }
 
     render() {
+        const { active, playing, progress } = this.state;
+
         let img;
-        debugger
         if (!active.name) {
             img = (
                 <div className='music-player-img-empty'>
@@ -156,7 +186,9 @@ class MusicPlayer extends React.Component {
                 </div>
             )
         }
-        return(
+        
+        return (
+
             <div className="player-container">
                 <div className="player-container-items">
 
