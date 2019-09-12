@@ -2309,9 +2309,11 @@ function (_React$Component) {
       var _this = this;
 
       var songList;
+      var playlist = this.props.playlists[this.props.match.params.playlistId];
+      debugger;
 
-      if (this.props.songs.length > 0) {
-        songList = this.props.songs.map(function (song) {
+      if (playlist.playlist_songs.length > 0) {
+        playlist.playlist_songs.map(function (song) {
           var artistAlbum = _this.props.albums[song.album_id];
           var artistName = _this.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2331,7 +2333,32 @@ function (_React$Component) {
             className: "playlist-songs-index-albumyear"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
         });
-      }
+      } // if (this.props.songs.length > 0) {
+      //     songList = this.props.songs.map(song => {
+      //         const artistAlbum = this.props.albums[song.album_id];
+      //         const artistName = this.props.artists[artistAlbum.artist_id].name;
+      //         return (
+      //             <div key={song.id} className="playlist-songs">
+      //                 <img src={artistAlbum.imageUrl}></img>
+      //                 <div className="playlist-songs-index">
+      //                     <div className="playlist-songs-index-songtitle">
+      //                         <span>{song.title}</span>
+      //                     </div>
+      //                     <div className="playlist-songs-index-artistinfo">
+      //                         <span>{artistName}</span>
+      //                     </div>
+      //                     <div className="playlist-songs-index-albumtitle">
+      //                         <span>{artistAlbum.title}</span>
+      //                     </div>
+      //                     <div className="playlist-songs-index-albumyear">
+      //                         <span>{artistAlbum.year}</span>
+      //                     </div>
+      //                 </div>
+      //             </div>
+      //         )
+      //     })
+      // }
+
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-songs-container"
@@ -2349,7 +2376,6 @@ var msp = function msp(state) {
     albums: state.entities.albums,
     playlists: Object.values(state.entities.playlists)
   };
-  debugger;
 };
 
 var mdp = function mdp(dispatch) {
