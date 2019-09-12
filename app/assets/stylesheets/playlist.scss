@@ -1,0 +1,17 @@
+.playlist-songs{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
+    img {
+        height: 80px;
+        width: 80px;
+    }
+}
+
+.playlist-songs-index {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}

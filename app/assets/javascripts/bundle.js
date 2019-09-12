@@ -2308,11 +2308,6 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      // let playlist = this.props.fetchOnePlaylist(this.props.match.params.playlistId)
-      // let songs = this.props.songs
-      // let songList = [];
-      // const albums = this.props.albums;
-      // const artists = this.props.artists;
       var songList;
 
       if (this.props.songs.length > 0) {
@@ -2321,33 +2316,33 @@ function (_React$Component) {
           var artistName = _this.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
-            className: "song-index-item"
+            className: "playlist-songs"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: artistAlbum.imageUrl
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index-item-details"
+            className: "playlist-songs-index"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index-item-details-songtitle"
+            className: "playlist-songs-index-songtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index-item-details-artistinfo"
+            className: "playlist-songs-index-artistinfo"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index-item-details-albumtitle"
+            className: "playlist-songs-index-albumtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index-item-details-albumyear"
+            className: "playlist-songs-index-albumyear"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
         });
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "playlist-songs"
-      }, songList);
+        className: "playlist-songs-container"
+      }, songList, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add a Song"));
     }
   }]);
 
   return PlaylistIndexDetail;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var msp = function msp(state, ownProps) {
+var msp = function msp(state) {
   return {
     artists: state.entities.artists,
     songs: Object.values(state.entities.songs),

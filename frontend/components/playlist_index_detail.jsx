@@ -19,50 +19,42 @@ class PlaylistIndexDetail extends React.Component {
 
     render() {
         
-        // let playlist = this.props.fetchOnePlaylist(this.props.match.params.playlistId)
-        // let songs = this.props.songs
-        // let songList = [];
-        // const albums = this.props.albums;
-        // const artists = this.props.artists;
         let songList;
         if (this.props.songs.length > 0) {
             songList = this.props.songs.map(song => {
                 const artistAlbum = this.props.albums[song.album_id];
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
                 return (
-                    <div key={song.id} className="song-index-item">
+                    <div key={song.id} className="playlist-songs">
                         <img src={artistAlbum.imageUrl}></img>
-                        <div className="song-index-item-details">
-                            <div className="song-index-item-details-songtitle">
+                        <div className="playlist-songs-index">
+                            <div className="playlist-songs-index-songtitle">
                                 <span>{song.title}</span>
                             </div>
-                            <div className="song-index-item-details-artistinfo">
+                            <div className="playlist-songs-index-artistinfo">
                                 <span>{artistName}</span>
                             </div>
-                            <div className="song-index-item-details-albumtitle">
+                            <div className="playlist-songs-index-albumtitle">
                                 <span>{artistAlbum.title}</span>
                             </div>
-                            <div className="song-index-item-details-albumyear">
+                            <div className="playlist-songs-index-albumyear">
                                 <span>{artistAlbum.year}</span>
                             </div>
-                            {/* <div className="song-index-item-add-to-playlist">
-                                <button>Add</button>
-                            </div> */}
-
                         </div>
                     </div>
                 )
             })
         }
         return (
-            <div className="playlist-songs">
+            <div className="playlist-songs-container">
                 {songList}
+                <p>Add a Song</p>
             </div>
         )
     }
 }
 
-const msp = (state, ownProps) => {
+const msp = (state) => {
     return ({
         artists: state.entities.artists,
         songs: Object.values(state.entities.songs),
