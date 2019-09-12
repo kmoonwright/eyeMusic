@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_actions'
+import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
 
 class ArtistIndexDetail extends React.Component {
@@ -16,9 +17,16 @@ class ArtistIndexDetail extends React.Component {
         }
     }
 
-    componentDidMount() {
+    handlePlay(song) {
+        this.props.setCurrentSong(song);
     }
 
+    getQueue(currSongIdx) {
+        debugger
+        let { songs } = this.props;
+        let queue = songs.slice(currSongIdx).concat(songs.slice(0, currSongIdx))
+        return queue;
+    }
     render() {
         return (
             <ul className="artist-index-detail">
@@ -32,9 +40,9 @@ class ArtistIndexDetail extends React.Component {
                                 <h4>{album.year}</h4>    
                                 {allsongs.map(song => {
                                     return (
-                                        <li key={song.id}>
+                                        <button key={song.id} onClick={() => this.handlePlay(song)} song={song}>
                                             {song.title}
-                                        </li>
+                                        </button>
                                     )
                                 })}
                             </ul>                     
@@ -70,6 +78,7 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => ({
     fetchAllSongs: () => dispatch(fetchAllSongs()),
     fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
 })
 
 export default connect(msp, mdp)(ArtistIndexDetail);
