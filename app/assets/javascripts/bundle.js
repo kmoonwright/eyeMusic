@@ -3610,7 +3610,7 @@ var artistsReducer = function artistsReducer() {
       return Object.assign({}, oldState, action.artists);
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ONE_PLAYLIST"]:
-      return Object.assign({}, oldState, _defineProperty({}, action.payload.artist.id, action.payload.artist));
+      return Object.assign({}, oldState, action.payload.artists);
 
     default:
       return oldState;

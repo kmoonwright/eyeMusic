@@ -18,7 +18,7 @@ const artistsReducer = (oldState = {}, action) => {
             }
             return Object.assign({}, oldState, action.artists);
         case RECEIVE_ONE_PLAYLIST:
-            return Object.assign({}, oldState, { [action.payload.artist.id]: action.payload.artist });
+            return Object.assign({}, oldState, action.payload.artists);        
         default:
             return oldState;
     }
