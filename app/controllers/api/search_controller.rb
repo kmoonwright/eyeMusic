@@ -11,8 +11,8 @@
                 .where("UPPER(albums.title) LIKE UPPER(:query) OR UPPER(songs.title) LIKE UPPER(:query)", query: str)
             @albums = @albums.uniq
 
-            @playlists = Playlist.joins("JOIN playlists_songs ON playlists_songs.playlist_id = playlists.id")
-                .joins("JOIN songs ON playlists_songs.song_id = songs.id")
+            @playlists = Playlist.joins("JOIN playlist_songs ON playlist_songs.playlist_id = playlists.id")
+                .joins("JOIN songs ON playlist_songs.song_id = songs.id")
                 .where("UPPER(playlists.title) LIKE UPPER(:query) OR UPPER(songs.title) LIKE UPPER(:query)", query: str)
             @playlists = @playlists.uniq
         end

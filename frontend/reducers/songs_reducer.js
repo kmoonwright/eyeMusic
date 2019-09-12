@@ -3,6 +3,7 @@ import {
     RECEIVE_ONE_SONG
 } from '../actions/music_actions';
 import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from '../actions/search_actions';
+import { RECEIVE_ONE_PLAYLIST } from '../actions/playlist_actions';
 
 // MIGHT NEED, RECEIVE_ONE_ALBUM, RECEIVE_ONE_ARTIST, RECEIVE_ONE_PLAYLIST CASES
 
@@ -18,6 +19,8 @@ const songReducer = (oldState = {}, action) => {
                 return oldState;
             }
             return Object.assign({}, oldState, action.playlists);
+        case RECEIVE_ONE_PLAYLIST:
+            return Object.assign({}, oldState, action.payload.songs);
         default:
             return oldState;
     }

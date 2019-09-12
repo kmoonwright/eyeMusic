@@ -3,7 +3,7 @@ import {
     RECEIVE_ONE_ALBUM
 } from '../actions/music_actions';
 import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from "../actions/search_actions";
-
+import { RECEIVE_ONE_PLAYLIST } from '../actions/playlist_actions';
 
 const albumsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
@@ -17,6 +17,9 @@ const albumsReducer = (oldState = {}, action) => {
                 return oldState;
             }
             return Object.assign({}, oldState, action.albums);
+            debugger
+        case RECEIVE_ONE_PLAYLIST:
+            return Object.assign({}, oldState, action.payload.albums);
         default:
             return oldState;
     }

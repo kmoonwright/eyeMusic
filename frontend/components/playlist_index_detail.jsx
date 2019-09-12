@@ -11,19 +11,10 @@ import {
 class PlaylistIndexDetail extends React.Component {
     constructor(props) {
         super(props)
-        
-        this.state = {
-            artists: this.props.artists,
-            songs: this.props.songs,
-            albums: this.props.albums,
-            playlists: this.props.playlists,
-        }
     }
 
     componentDidMount() {
-        const playlistId = state.entities.playlists[ownProps.match.params.playlistId]
-        this.props.fetchOnePlaylist(playlistId);
-        debugger
+        this.props.fetchOnePlaylist(this.props.match.params.playlistId);
     }
 
     render() {
@@ -32,12 +23,12 @@ class PlaylistIndexDetail extends React.Component {
         // let songs = this.props.songs
         // let songList = [];
         // const albums = this.props.albums;
-        // const artists= this.props.artists;
-        debugger
-        if (songs.length > 0) {
-            songList = songs.map(song => {
-                // const artistAlbum = albums[song.album_id];
-                // const artistName = artists[artistAlbum.artist_id].name;
+        // const artists = this.props.artists;
+        let songList;
+        if (this.props.songs.length > 0) {
+            songList = this.props.songs.map(song => {
+                const artistAlbum = this.props.albums[song.album_id];
+                const artistName = this.props.artists[artistAlbum.artist_id].name;
                 return (
                     <div key={song.id} className="song-index-item">
                         <img src={artistAlbum.imageUrl}></img>
@@ -63,7 +54,6 @@ class PlaylistIndexDetail extends React.Component {
                 )
             })
         }
-        
         return (
             <div className="playlist-songs">
                 {songList}
@@ -74,11 +64,12 @@ class PlaylistIndexDetail extends React.Component {
 
 const msp = (state, ownProps) => {
     return ({
-        artists: Object.values(state.entities.artists),
+        artists: state.entities.artists,
         songs: Object.values(state.entities.songs),
-        albums: Object.values(state.entities.albums),
+        albums: state.entities.albums,
         playlists: Object.values(state.entities.playlists),
     })
+    debugger
 }
 
 

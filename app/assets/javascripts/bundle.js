@@ -2293,41 +2293,32 @@ function (_React$Component) {
   _inherits(PlaylistIndexDetail, _React$Component);
 
   function PlaylistIndexDetail(props) {
-    var _this;
-
     _classCallCheck(this, PlaylistIndexDetail);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexDetail).call(this, props));
-    _this.state = {
-      artists: _this.props.artists,
-      songs: _this.props.songs,
-      albums: _this.props.albums,
-      playlists: _this.props.playlists
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexDetail).call(this, props));
   }
 
   _createClass(PlaylistIndexDetail, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var playlistId = state.entities.playlists[ownProps.match.params.playlistId];
-      this.props.fetchOnePlaylist(playlistId);
-      debugger;
+      this.props.fetchOnePlaylist(this.props.match.params.playlistId);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       // let playlist = this.props.fetchOnePlaylist(this.props.match.params.playlistId)
       // let songs = this.props.songs
       // let songList = [];
       // const albums = this.props.albums;
-      // const artists= this.props.artists;
-      debugger;
+      // const artists = this.props.artists;
+      var songList;
 
-      if (songs.length > 0) {
-        songList = songs.map(function (song) {
-          // const artistAlbum = albums[song.album_id];
-          // const artistName = artists[artistAlbum.artist_id].name;
+      if (this.props.songs.length > 0) {
+        songList = this.props.songs.map(function (song) {
+          var artistAlbum = _this.props.albums[song.album_id];
+          var artistName = _this.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             className: "song-index-item"
@@ -2358,11 +2349,12 @@ function (_React$Component) {
 
 var msp = function msp(state, ownProps) {
   return {
-    artists: Object.values(state.entities.artists),
+    artists: state.entities.artists,
     songs: Object.values(state.entities.songs),
-    albums: Object.values(state.entities.albums),
+    albums: state.entities.albums,
     playlists: Object.values(state.entities.playlists)
   };
+  debugger;
 };
 
 var mdp = function mdp(dispatch) {
@@ -3541,7 +3533,9 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_music_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/music_actions */ "./frontend/actions/music_actions.js");
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3564,6 +3558,10 @@ var albumsReducer = function albumsReducer() {
       }
 
       return Object.assign({}, oldState, action.albums);
+      debugger;
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ONE_PLAYLIST"]:
+      return Object.assign({}, oldState, action.payload.albums);
 
     default:
       return oldState;
@@ -3585,7 +3583,9 @@ var albumsReducer = function albumsReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_music_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/music_actions */ "./frontend/actions/music_actions.js");
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3608,6 +3608,9 @@ var artistsReducer = function artistsReducer() {
       }
 
       return Object.assign({}, oldState, action.artists);
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ONE_PLAYLIST"]:
+      return Object.assign({}, oldState, _defineProperty({}, action.payload.artist.id, action.payload.artist));
 
     default:
       return oldState;
@@ -3902,7 +3905,9 @@ var sessionReducer = function sessionReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_music_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/music_actions */ "./frontend/actions/music_actions.js");
 /* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
  // MIGHT NEED, RECEIVE_ONE_ALBUM, RECEIVE_ONE_ARTIST, RECEIVE_ONE_PLAYLIST CASES
@@ -3925,6 +3930,9 @@ var songReducer = function songReducer() {
       }
 
       return Object.assign({}, oldState, action.playlists);
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ONE_PLAYLIST"]:
+      return Object.assign({}, oldState, action.payload.songs);
 
     default:
       return oldState;
