@@ -13,6 +13,7 @@ import Radio from './radio';
 class Home extends React.Component {
 
     render() {
+        debugger
         return (
             <div className="home">
                 {/* <div className="home-container"> */}
@@ -34,7 +35,11 @@ class Home extends React.Component {
 }
 
 const msp = state => ({
-    currentUser: state.session.id
+    currentUser: state.session.id,
+
+    // songs: state.ui.musicPlayer.queue,
+    // song: state.ui.musicPlayer.currentSong,
+    // playing: state.ui.musicPlayer.playing
 })
 
 export default connect(msp)(Home);

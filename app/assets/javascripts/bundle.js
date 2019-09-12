@@ -1519,6 +1519,7 @@ function (_React$Component) {
   _createClass(Home, [{
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "home"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1550,7 +1551,10 @@ function (_React$Component) {
 
 var msp = function msp(state) {
   return {
-    currentUser: state.session.id
+    currentUser: state.session.id // songs: state.ui.musicPlayer.queue,
+    // song: state.ui.musicPlayer.currentSong,
+    // playing: state.ui.musicPlayer.playing
+
   };
 };
 
