@@ -3,7 +3,7 @@ export const TOGGLE_SONG = 'TOGGLE_SONG';
 export const SET_QUEUE = 'SET_QUEUE';
 export const ADD_TO_QUEUE = 'ADD_TO_QUEUE';
 export const TOGGLE_SHUFFLE = 'TOGGLE_SHUFFLE';
-
+export const TOGGLE_PLAY = 'TOGGLE_PLAY';
 
 export const setCurrentSong = (song) => ({
     type: SET_CURRENT_SONG,
@@ -27,3 +27,10 @@ export const addToQueue = (song) => ({
 export const toggleShuffle = () => ({
     type: TOGGLE_SHUFFLE
 })
+
+export const togglePlay = (boolean) => {
+    return {
+        type: TOGGLE_PLAY,
+        boolean
+    }
+}

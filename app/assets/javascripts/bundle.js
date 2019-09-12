@@ -86,6 +86,53 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/current_song_actions.js":
+/*!**************************************************!*\
+  !*** ./frontend/actions/current_song_actions.js ***!
+  \**************************************************/
+/*! exports provided: TOGGLE_PLAY, FETCH_NEXT_SONG, FETCH_PREV_SONG, togglePlay, fetchNextSong, fetchPrevSong */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_PLAY", function() { return TOGGLE_PLAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_NEXT_SONG", function() { return FETCH_NEXT_SONG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PREV_SONG", function() { return FETCH_PREV_SONG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "togglePlay", function() { return togglePlay; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchNextSong", function() { return fetchNextSong; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPrevSong", function() { return fetchPrevSong; });
+var TOGGLE_PLAY = "TOGGLE_PLAY";
+var FETCH_NEXT_SONG = "FETCH_NEXT_SONG";
+var FETCH_PREV_SONG = "FETCH_PREV_SONG";
+var togglePlay = function togglePlay(_boolean) {
+  return {
+    type: TOGGLE_PLAY,
+    "boolean": _boolean
+  };
+};
+var fetchNextSong = function fetchNextSong(songId) {
+  return function (dispatch) {
+    return SongApiUtil.fetchSong(songId).then(function (song) {
+      return dispatch({
+        type: FETCH_NEXT_SONG,
+        song: song
+      });
+    });
+  };
+};
+var fetchPrevSong = function fetchPrevSong(songId) {
+  return function (dispatch) {
+    return SongApiUtil.fetchSong(songId).then(function (song) {
+      return dispatch({
+        type: FETCH_PREV_SONG,
+        song: song
+      });
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/music_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/music_actions.js ***!
@@ -238,7 +285,7 @@ var deletePlaylist = function deletePlaylist(id) {
 /*!**************************************************!*\
   !*** ./frontend/actions/music_player_actions.js ***!
   \**************************************************/
-/*! exports provided: SET_CURRENT_SONG, TOGGLE_SONG, SET_QUEUE, ADD_TO_QUEUE, TOGGLE_SHUFFLE, setCurrentSong, toggleSong, setQueue, addToQueue, toggleShuffle */
+/*! exports provided: SET_CURRENT_SONG, TOGGLE_SONG, SET_QUEUE, ADD_TO_QUEUE, TOGGLE_SHUFFLE, TOGGLE_PLAY, setCurrentSong, toggleSong, setQueue, addToQueue, toggleShuffle, togglePlay */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -248,16 +295,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_QUEUE", function() { return SET_QUEUE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TO_QUEUE", function() { return ADD_TO_QUEUE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_SHUFFLE", function() { return TOGGLE_SHUFFLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_PLAY", function() { return TOGGLE_PLAY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentSong", function() { return setCurrentSong; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleSong", function() { return toggleSong; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setQueue", function() { return setQueue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToQueue", function() { return addToQueue; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleShuffle", function() { return toggleShuffle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "togglePlay", function() { return togglePlay; });
 var SET_CURRENT_SONG = 'SET_CURRENT_SONG';
 var TOGGLE_SONG = 'TOGGLE_SONG';
 var SET_QUEUE = 'SET_QUEUE';
 var ADD_TO_QUEUE = 'ADD_TO_QUEUE';
 var TOGGLE_SHUFFLE = 'TOGGLE_SHUFFLE';
+var TOGGLE_PLAY = 'TOGGLE_PLAY';
 var setCurrentSong = function setCurrentSong(song) {
   return {
     type: SET_CURRENT_SONG,
@@ -284,6 +334,12 @@ var addToQueue = function addToQueue(song) {
 var toggleShuffle = function toggleShuffle() {
   return {
     type: TOGGLE_SHUFFLE
+  };
+};
+var togglePlay = function togglePlay(_boolean) {
+  return {
+    type: TOGGLE_PLAY,
+    "boolean": _boolean
   };
 };
 
@@ -2059,7 +2115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/music_player_actions */ "./frontend/actions/music_player_actions.js");
+/* harmony import */ var _actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/current_song_actions */ "./frontend/actions/current_song_actions.js");
+/* harmony import */ var _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../actions/music_player_actions */ "./frontend/actions/music_player_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2077,6 +2134,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2155,12 +2213,21 @@ function (_React$Component) {
       if (this.props.currentSong !== oldProps.currentSong) {
         this.audio.src = this.props.currentSong.audioUrl;
         this.audio.play();
-      } else if (this.props.currentSong === oldProps.currentSong) {
+      } else if (this.props.playing) {
         this.audio.play();
       } else {
         this.audio.pause();
       } //check if state changed
 
+    }
+  }, {
+    key: "handlePlay",
+    value: function handlePlay() {
+      debugger; // if (this.props.playing && this.props.currentSong) {
+      //     this.audio.pause();
+      // } else{
+      //     this.audio.play();
+      // }
     } // play() {
     //     // this.props.setCurrentSong(this.state.active);
     //     // this.setState({ playing: true });
@@ -2179,7 +2246,12 @@ function (_React$Component) {
       //toggle song dispatch action to set a new slice of state
       // musicPlayer.ui.playing change
       // buttons should only swap out pieces of state
-      this.props.playing ? this.audio.pause() : this.audio.play();
+      this.props.toggleSong(); // this.props.playing ? this.audio.pause() : this.audio.play();
+      // if (oldProps.playing === true && this.props.playing === false) {
+      //     this.audio.pause();
+      // } else if (oldProps.playing === false && this.props.playing === true) {
+      //     this.audio.play();
+      // }
     }
   }, {
     key: "end",
@@ -2288,19 +2360,10 @@ function (_React$Component) {
 
 
 var msp = function msp(state) {
-  var songs = Object.values(state.entities.songs);
-
-  if (state.ui.currentPlayingSong) {
-    var playing = state.ui.currentPlayingSong.playing || null;
-    return {
-      playing: playing,
-      songs: songs
-    };
-  } else {
-    return {
-      songs: songs
-    };
-  }
+  return {// playing: state.ui.musicPlayer.playing,
+    // currentSong: state.ui.musicPlayer.currentSong,
+    // queue: state.ui.musicPlayer.queue,
+  };
 }; // const mapDispatchToProps = (dispatch) => ({
 //     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
 //     toggleSong: () => (dispatch(toggleSong())),
@@ -2310,58 +2373,18 @@ var msp = function msp(state) {
 
 var mdp = function mdp(dispatch) {
   return {
-    togglePlay: function (_togglePlay) {
-      function togglePlay(_x) {
-        return _togglePlay.apply(this, arguments);
-      }
-
-      togglePlay.toString = function () {
-        return _togglePlay.toString();
-      };
-
-      return togglePlay;
-    }(function (_boolean) {
-      return dispatch(togglePlay(_boolean));
-    }),
-    fetchNextSong: function (_fetchNextSong) {
-      function fetchNextSong(_x2) {
-        return _fetchNextSong.apply(this, arguments);
-      }
-
-      fetchNextSong.toString = function () {
-        return _fetchNextSong.toString();
-      };
-
-      return fetchNextSong;
-    }(function (songId) {
-      return dispatch(fetchNextSong(songId));
-    }),
-    fetchPrevSong: function (_fetchPrevSong) {
-      function fetchPrevSong(_x3) {
-        return _fetchPrevSong.apply(this, arguments);
-      }
-
-      fetchPrevSong.toString = function () {
-        return _fetchPrevSong.toString();
-      };
-
-      return fetchPrevSong;
-    }(function (songId) {
-      return dispatch(fetchPrevSong(songId));
-    }),
-    fetchSong: function (_fetchSong) {
-      function fetchSong(_x4) {
-        return _fetchSong.apply(this, arguments);
-      }
-
-      fetchSong.toString = function () {
-        return _fetchSong.toString();
-      };
-
-      return fetchSong;
-    }(function (songId) {
-      return dispatch(fetchSong(songId));
-    })
+    togglePlay: function togglePlay(_boolean) {
+      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["togglePlay"])(_boolean));
+    },
+    fetchNextSong: function fetchNextSong(songId) {
+      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchNextSong"])(songId));
+    },
+    fetchPrevSong: function fetchPrevSong(songId) {
+      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPrevSong"])(songId));
+    },
+    toggleSong: function toggleSong() {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["toggleSong"])());
+    }
   };
 };
 
@@ -3819,7 +3842,20 @@ var mdp = function mdp(dispatch) {
     },
     setQueue: function setQueue(queue) {
       return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["setQueue"])(queue));
-    }
+    },
+    togglePlay: function (_togglePlay) {
+      function togglePlay(_x2) {
+        return _togglePlay.apply(this, arguments);
+      }
+
+      togglePlay.toString = function () {
+        return _togglePlay.toString();
+      };
+
+      return togglePlay;
+    }(function (_boolean) {
+      return dispatch(togglePlay(_boolean));
+    })
   };
 };
 

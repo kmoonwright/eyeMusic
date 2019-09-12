@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setCurrentSong, toggleSong, setQueue } from '../actions/music_player_actions';
+import { fetchNextSong, fetchPrevSong, togglePlay } from '../actions/current_song_actions';
+import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
 
 class MusicPlayer extends React.Component {
@@ -74,14 +75,22 @@ class MusicPlayer extends React.Component {
         if (this.props.currentSong !== oldProps.currentSong) {
             this.audio.src = this.props.currentSong.audioUrl;
             this.audio.play();
-        } else if (this.props.currentSong === oldProps.currentSong) {
+        } else if (this.props.playing) {
             this.audio.play();
         } else {
             this.audio.pause();
         }
         //check if state changed
     }
-    
+
+    handlePlay() {
+        debugger        
+        // if (this.props.playing && this.props.currentSong) {
+        //     this.audio.pause();
+        // } else{
+        //     this.audio.play();
+        // }
+    }
     // play() {
     //     // this.props.setCurrentSong(this.state.active);
     //     // this.setState({ playing: true });
@@ -96,12 +105,19 @@ class MusicPlayer extends React.Component {
     // }
 
     toggle() {
-        
         //toggle song dispatch action to set a new slice of state
         // musicPlayer.ui.playing change
         // buttons should only swap out pieces of state
 
-        this.props.playing ? this.audio.pause() : this.audio.play();
+        this.props.toggleSong();
+
+        // this.props.playing ? this.audio.pause() : this.audio.play();
+
+        // if (oldProps.playing === true && this.props.playing === false) {
+        //     this.audio.pause();
+        // } else if (oldProps.playing === false && this.props.playing === true) {
+        //     this.audio.play();
+        // }
     }
 
     end() {
@@ -203,20 +219,11 @@ class MusicPlayer extends React.Component {
 // const mapStateToProps = (state) => ({
 //     currQueue: state.ui.musicPlayer.queue
 // });
-const msp = state => {
-    const songs = Object.values(state.entities.songs);
-    if (state.ui.currentPlayingSong) {
-        const playing = state.ui.currentPlayingSong.playing || null;
-        return {
-            playing,
-            songs
-        };
-    } else {
-        return {
-            songs
-        }
-    }
-};
+const msp = state => ({
+    // playing: state.ui.musicPlayer.playing,
+    // currentSong: state.ui.musicPlayer.currentSong,
+    // queue: state.ui.musicPlayer.queue,
+});
 // const mapDispatchToProps = (dispatch) => ({
 //     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
 //     toggleSong: () => (dispatch(toggleSong())),
@@ -227,7 +234,8 @@ const mdp = dispatch => {
         togglePlay: (boolean) => dispatch(togglePlay(boolean)),
         fetchNextSong: (songId) => dispatch(fetchNextSong(songId)),
         fetchPrevSong: (songId) => dispatch(fetchPrevSong(songId)),
-        fetchSong: (songId) => dispatch(fetchSong(songId)),
+        toggleSong: () => (dispatch(toggleSong())),
+
     };
 };
 

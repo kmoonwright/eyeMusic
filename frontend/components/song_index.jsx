@@ -115,6 +115,7 @@ const mdp = dispatch => ({
     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
     toggleSong: () => (dispatch(toggleSong())),
     setQueue: (queue) => (dispatch(setQueue(queue))),
+    togglePlay: (boolean) => dispatch(togglePlay(boolean)),
 
 })
 
