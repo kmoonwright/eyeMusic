@@ -234,6 +234,61 @@ var deletePlaylist = function deletePlaylist(id) {
 
 /***/ }),
 
+/***/ "./frontend/actions/music_player_actions.js":
+/*!**************************************************!*\
+  !*** ./frontend/actions/music_player_actions.js ***!
+  \**************************************************/
+/*! exports provided: SET_CURRENT_SONG, TOGGLE_SONG, SET_QUEUE, ADD_TO_QUEUE, TOGGLE_SHUFFLE, setCurrentSong, toggleSong, setQueue, addToQueue, toggleShuffle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_CURRENT_SONG", function() { return SET_CURRENT_SONG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_SONG", function() { return TOGGLE_SONG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_QUEUE", function() { return SET_QUEUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_TO_QUEUE", function() { return ADD_TO_QUEUE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_SHUFFLE", function() { return TOGGLE_SHUFFLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCurrentSong", function() { return setCurrentSong; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleSong", function() { return toggleSong; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setQueue", function() { return setQueue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addToQueue", function() { return addToQueue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleShuffle", function() { return toggleShuffle; });
+var SET_CURRENT_SONG = 'SET_CURRENT_SONG';
+var TOGGLE_SONG = 'TOGGLE_SONG';
+var SET_QUEUE = 'SET_QUEUE';
+var ADD_TO_QUEUE = 'ADD_TO_QUEUE';
+var TOGGLE_SHUFFLE = 'TOGGLE_SHUFFLE';
+var setCurrentSong = function setCurrentSong(song) {
+  return {
+    type: SET_CURRENT_SONG,
+    song: song
+  };
+};
+var toggleSong = function toggleSong() {
+  return {
+    type: TOGGLE_SONG
+  };
+};
+var setQueue = function setQueue(queue) {
+  return {
+    type: SET_QUEUE,
+    queue: queue
+  };
+};
+var addToQueue = function addToQueue(song) {
+  return {
+    type: ADD_TO_QUEUE,
+    song: song
+  };
+};
+var toggleShuffle = function toggleShuffle() {
+  return {
+    type: TOGGLE_SHUFFLE
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/playlist_actions.js":
 /*!**********************************************!*\
   !*** ./frontend/actions/playlist_actions.js ***!
@@ -3695,6 +3750,61 @@ var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 
 /***/ }),
 
+/***/ "./frontend/reducers/music_player_reducer.js":
+/*!***************************************************!*\
+  !*** ./frontend/reducers/music_player_reducer.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/music_player_actions */ "./frontend/actions/music_player_actions.js");
+
+var nullState = {
+  currentSong: {},
+  playing: false,
+  queue: [],
+  shuffle: false
+};
+
+var musicPlayerReducer = function musicPlayerReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : nullState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var newState = Object.assign({}, oldState);
+
+  switch (action.type) {
+    case _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_0__["SET_CURRENT_SONG"]:
+      newState.currentSong = action.song;
+      return newState;
+
+    case _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_SONG"]:
+      if (newState.playing === true) {
+        newState.playing = false;
+      } else {
+        newState.playing = true;
+      }
+
+      return newState;
+
+    case _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_0__["SET_QUEUE"]:
+      newState.queue = action.queue;
+      return newState;
+
+    case _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_0__["ADD_TO_QUEUE"]:
+      newState.queue.push(action.song);
+      return newState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (musicPlayerReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/playlist_errors_reducer.js":
 /*!******************************************************!*\
   !*** ./frontend/reducers/playlist_errors_reducer.js ***!
@@ -3974,10 +4084,13 @@ var songReducer = function songReducer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _search_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_reducer */ "./frontend/reducers/search_reducer.js");
+/* harmony import */ var _music_player_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./music_player_reducer */ "./frontend/reducers/music_player_reducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  search: _search_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  search: _search_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  musicPlayer: _music_player_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
