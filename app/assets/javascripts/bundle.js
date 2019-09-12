@@ -1529,6 +1529,7 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state) {
+  debugger;
   return {
     currentUser: state.session.id,
     queue: state.ui.musicPlayer.queue,
@@ -2109,8 +2110,8 @@ function (_React$Component) {
       random: false,
       repeat: false,
       mute: false,
-      playing: props.playing || false,
-      songs: props.currQueue
+      playing: _this.props.playing || false,
+      songs: _this.props.currQueue
     };
     _this.audio = new Audio(); // this.audio.src = audioUrl;
     //song reference
@@ -2154,6 +2155,8 @@ function (_React$Component) {
       if (this.props.currentSong != oldProps.currentSong) {
         this.audio.src = this.props.currentSong.audioUrl;
         this.audio.play();
+      } else {
+        this.audio.pause();
       }
     }
   }, {
@@ -2186,11 +2189,11 @@ function (_React$Component) {
     key: "play",
     value: function play() {
       // this.props.setCurrentSong(this.state.active);
+      debugger;
       this.setState({
         playing: true
       });
       this.audio.src = active.audioUrl;
-      debugger;
       this.audio.play();
     }
   }, {
@@ -2222,8 +2225,9 @@ function (_React$Component) {
   }, {
     key: "next",
     value: function next() {
+      debugger;
       var total = this.state.songs.length;
-      var current = this.state.repeat ? this.state.current : this.state.current < total - 1 ? this.state.current + 1 : 0;
+      var current = this.state.current < total - 1 ? this.state.current + 1 : 0;
       var active = this.state.songs[current];
       this.setState({
         current: current,
@@ -3727,9 +3731,10 @@ function (_React$Component) {
     }
   }, {
     key: "getQueue",
-    value: function getQueue() {
+    value: function getQueue(currSongIdx) {
+      debugger;
       var songs = this.props.songs;
-      var queue = songs.slice(1);
+      var queue = songs.slice(currSongIdx).concat(songs.slice(0, currSongIdx));
       return queue;
     }
   }, {

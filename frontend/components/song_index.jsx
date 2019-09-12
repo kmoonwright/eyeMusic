@@ -24,9 +24,10 @@ class SongIndex extends React.Component {
         this.props.toggleSong();
     }
 
-    getQueue() {
+    getQueue(currSongIdx) {
+        debugger
         let { songs } = this.props;
-        let queue = songs.slice(1);
+        let queue = songs.slice(currSongIdx).concat(songs.slice(0, currSongIdx))
         return queue;
     }
 

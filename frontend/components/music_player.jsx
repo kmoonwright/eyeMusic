@@ -25,8 +25,8 @@ class MusicPlayer extends React.Component {
             random: false,
             repeat: false,
             mute: false,
-            playing: props.playing || false,
-            songs: props.currQueue
+            playing: this.props.playing || false,
+            songs: this.props.currQueue
         }
 
         this.audio = new Audio();
@@ -75,6 +75,8 @@ class MusicPlayer extends React.Component {
         if (this.props.currentSong != oldProps.currentSong) {
             this.audio.src = this.props.currentSong.audioUrl;
             this.audio.play();
+        } else {
+            this.audio.pause();
         }
     }
 
@@ -96,15 +98,14 @@ class MusicPlayer extends React.Component {
         let duration = this.audio.duration;
         let currentTime = this.audio.currentTime;
         let progress = (currentTime * 100) / duration;
-
         this.setState({ progress: progress });
     }
-
+    
     play() {
         // this.props.setCurrentSong(this.state.active);
+        debugger
         this.setState({ playing: true });
         this.audio.src = active.audioUrl;
-        debugger
         this.audio.play();
     }
 
@@ -127,8 +128,9 @@ class MusicPlayer extends React.Component {
     }
 
     next() {
+        debugger
         let total = this.state.songs.length;
-        let current = (this.state.repeat) ? this.state.current : (this.state.current < total - 1) ? this.state.current + 1 : 0;
+        let current = (this.state.current < total - 1) ? this.state.current + 1 : 0;
         let active = this.state.songs[current];
 
         this.setState({ current: current, active: active, progress: 0 });
