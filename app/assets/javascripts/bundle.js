@@ -1529,7 +1529,6 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state) {
-  debugger;
   return {
     currentUser: state.session.id,
     queue: state.ui.musicPlayer.queue,
@@ -2104,23 +2103,16 @@ function (_React$Component) {
     // all functionality of player goes here
 
     _this.state = {
-      active: _this.props.currentSong,
       current: 0,
       progress: 0,
       random: false,
       repeat: false,
-      mute: false,
-      playing: _this.props.playing || false,
-      songs: _this.props.currQueue
+      mute: false
     };
     _this.audio = new Audio(); // this.audio.src = audioUrl;
-    //song reference
-    // this.ref = React.createRef();
+    // this.play = this.play.bind(this);
+    // this.pause = this.pause.bind(this);
 
-    _this.setProgress = _this.setProgress.bind(_assertThisInitialized(_this));
-    _this.updateProgress = _this.updateProgress.bind(_assertThisInitialized(_this));
-    _this.play = _this.play.bind(_assertThisInitialized(_this));
-    _this.pause = _this.pause.bind(_assertThisInitialized(_this));
     _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
     _this.end = _this.end.bind(_assertThisInitialized(_this));
     _this.next = _this.next.bind(_assertThisInitialized(_this));
@@ -2145,6 +2137,14 @@ function (_React$Component) {
 
 
   _createClass(MusicPlayer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {// if (this.props.playing) { 
+      //     this.audio.play();
+      // } else {
+      //     this.audio.play();
+      // }
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(oldProps) {
       // need conditionals to prevent unneeded operations
@@ -2152,62 +2152,34 @@ function (_React$Component) {
       // all functionality of player goes here
       if (!this.props.currentSong) return;
 
-      if (this.props.currentSong != oldProps.currentSong) {
+      if (this.props.currentSong !== oldProps.currentSong) {
         this.audio.src = this.props.currentSong.audioUrl;
+        this.audio.play();
+      } else if (this.props.currentSong === oldProps.currentSong) {
         this.audio.play();
       } else {
         this.audio.pause();
-      }
-    }
-  }, {
-    key: "setProgress",
-    value: function setProgress(e) {
-      var target = e.target.nodeName === 'SPAN' ? e.target.parentNode : e.target;
-      var width = target.clientWidth;
-      var rect = target.getBoundingClientRect();
-      var offsetX = e.clientX - rect.left;
-      var duration = this.audio.duration;
-      var currentTime = duration * offsetX / width;
-      var progress = currentTime * 100 / duration;
-      this.audio.currentTime = currentTime;
-      this.setState({
-        progress: progress
-      });
-      this.play();
-    }
-  }, {
-    key: "updateProgress",
-    value: function updateProgress() {
-      var duration = this.audio.duration;
-      var currentTime = this.audio.currentTime;
-      var progress = currentTime * 100 / duration;
-      this.setState({
-        progress: progress
-      });
-    }
-  }, {
-    key: "play",
-    value: function play() {
-      // this.props.setCurrentSong(this.state.active);
-      debugger;
-      this.setState({
-        playing: true
-      });
-      this.audio.src = active.audioUrl;
-      this.audio.play();
-    }
-  }, {
-    key: "pause",
-    value: function pause() {
-      this.setState({
-        playing: false
-      });
-      this.audio.pause();
-    }
+      } //check if state changed
+
+    } // play() {
+    //     // this.props.setCurrentSong(this.state.active);
+    //     // this.setState({ playing: true });
+    //     debugger
+    //     this.audio.src = active.audioUrl;
+    //     this.audio.play();
+    // }
+    // pause() {
+    //     // this.setState({ playing: false });
+    //     this.audio.pause();
+    // }
+
   }, {
     key: "toggle",
     value: function toggle() {
-      this.state.playing ? this.pause() : this.play();
+      //toggle song dispatch action to set a new slice of state
+      // musicPlayer.ui.playing change
+      // buttons should only swap out pieces of state
+      this.props.playing ? this.audio.pause() : this.audio.play();
     }
   }, {
     key: "end",
@@ -2215,10 +2187,7 @@ function (_React$Component) {
       if (this.state.repeat) {
         this.play();
       } else {
-        this.setState({
-          playing: false,
-          progress: 0
-        });
+        // this.setState({ playing: false, progress: 0 });
         this.next();
       }
     }
@@ -2228,12 +2197,8 @@ function (_React$Component) {
       debugger;
       var total = this.state.songs.length;
       var current = this.state.current < total - 1 ? this.state.current + 1 : 0;
-      var active = this.state.songs[current];
-      this.setState({
-        current: current,
-        active: active,
-        progress: 0
-      });
+      var active = this.state.songs[current]; // this.setState({ current: current, active: active, progress: 0 });
+
       this.props.setCurrentSong(active);
       this.audio.src = active.audioUrl;
       this.play();
@@ -2243,12 +2208,8 @@ function (_React$Component) {
     value: function previous() {
       var total = this.state.songs.length;
       var current = this.state.current > 0 ? this.state.current - 1 : total - 1;
-      var active = this.state.songs[current];
-      this.setState({
-        current: current,
-        active: active,
-        progress: 0
-      });
+      var active = this.state.songs[current]; // this.setState({ current: current, active: active, progress: 0 });
+
       this.props.setCurrentSong(active);
       this.audio.src = active.audioUrl;
       this.play();
@@ -2282,26 +2243,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$state = this.state,
-          active = _this$state.active,
-          playing = _this$state.playing,
-          progress = _this$state.progress;
-      var img;
-
-      if (!active.name) {
-        img = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "music-player-img-empty"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", null));
-      } else {
-        img = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "music-player-img-render"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-          to: "/albums/".concat(active.albumId)
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: active.imageUrl
-        })));
-      }
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2318,7 +2259,7 @@ function (_React$Component) {
         onClick: this.toggle,
         className: "music-player-btns-play",
         title: "Play/Pause"
-      }, "Play"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Play/Pause"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.next,
         className: "music-player-btns-next",
         title: "Next Song"
@@ -2332,25 +2273,7 @@ function (_React$Component) {
         title: "Shuffle"
       }, "Shuffle"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-display"
-      }, img, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "current-song-info"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/albums/".concat(active.albumId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "song-name"
-      }, active.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/artists/".concat(active.artistId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "artist-name"
-      }, active.artistName))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "music-player-progress-container",
-        onClick: this.setProgress
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "music-player-progress-value",
-        style: {
-          width: progress + '%'
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
@@ -2359,29 +2282,90 @@ function (_React$Component) {
   }]);
 
   return MusicPlayer;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const mapStateToProps = (state) => ({
+//     currQueue: state.ui.musicPlayer.queue
+// });
 
-var mapStateToProps = function mapStateToProps(state) {
+
+var msp = function msp(state) {
+  var songs = Object.values(state.entities.songs);
+
+  if (state.ui.currentPlayingSong) {
+    var playing = state.ui.currentPlayingSong.playing || null;
+    return {
+      playing: playing,
+      songs: songs
+    };
+  } else {
+    return {
+      songs: songs
+    };
+  }
+}; // const mapDispatchToProps = (dispatch) => ({
+//     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+//     toggleSong: () => (dispatch(toggleSong())),
+//     setQueue: (queue) => (dispatch(setQueue(queue)))
+// });
+
+
+var mdp = function mdp(dispatch) {
   return {
-    currQueue: state.ui.musicPlayer.queue
+    togglePlay: function (_togglePlay) {
+      function togglePlay(_x) {
+        return _togglePlay.apply(this, arguments);
+      }
+
+      togglePlay.toString = function () {
+        return _togglePlay.toString();
+      };
+
+      return togglePlay;
+    }(function (_boolean) {
+      return dispatch(togglePlay(_boolean));
+    }),
+    fetchNextSong: function (_fetchNextSong) {
+      function fetchNextSong(_x2) {
+        return _fetchNextSong.apply(this, arguments);
+      }
+
+      fetchNextSong.toString = function () {
+        return _fetchNextSong.toString();
+      };
+
+      return fetchNextSong;
+    }(function (songId) {
+      return dispatch(fetchNextSong(songId));
+    }),
+    fetchPrevSong: function (_fetchPrevSong) {
+      function fetchPrevSong(_x3) {
+        return _fetchPrevSong.apply(this, arguments);
+      }
+
+      fetchPrevSong.toString = function () {
+        return _fetchPrevSong.toString();
+      };
+
+      return fetchPrevSong;
+    }(function (songId) {
+      return dispatch(fetchPrevSong(songId));
+    }),
+    fetchSong: function (_fetchSong) {
+      function fetchSong(_x4) {
+        return _fetchSong.apply(this, arguments);
+      }
+
+      fetchSong.toString = function () {
+        return _fetchSong.toString();
+      };
+
+      return fetchSong;
+    }(function (songId) {
+      return dispatch(fetchSong(songId));
+    })
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    setCurrentSong: function setCurrentSong(song) {
-      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_3__["setCurrentSong"])(song));
-    },
-    toggleSong: function toggleSong() {
-      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_3__["toggleSong"])());
-    },
-    setQueue: function setQueue(queue) {
-      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_3__["setQueue"])(queue));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(MusicPlayer));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(MusicPlayer));
 
 /***/ }),
 
@@ -3726,8 +3710,10 @@ function (_React$Component) {
     key: "handlePlay",
     value: function handlePlay(song) {
       this.props.setCurrentSong(song);
-      this.props.setQueue(this.props.songs);
       this.props.toggleSong();
+      this.props.setQueue(this.props.songs); // this will change state through a dispatch
+      // every button changes state
+      // music player should only change audio based on state change
     }
   }, {
     key: "getQueue",
@@ -3758,6 +3744,8 @@ function (_React$Component) {
             onClick: function onClick() {
               return _this2.handlePlay(song);
             },
+            song: song // queue={this.getQueue()}
+            ,
             className: "song-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: artistAlbum.imageUrl

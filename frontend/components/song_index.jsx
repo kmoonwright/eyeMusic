@@ -20,8 +20,13 @@ class SongIndex extends React.Component {
 
     handlePlay(song) {
         this.props.setCurrentSong(song);
-        this.props.setQueue(this.props.songs);
         this.props.toggleSong();
+        this.props.setQueue(this.props.songs);
+        // this will change state through a dispatch
+
+        // every button changes state
+
+        // music player should only change audio based on state change
     }
 
     getQueue(currSongIdx) {
@@ -45,7 +50,12 @@ class SongIndex extends React.Component {
                 const artistAlbum = this.props.albums[song.album_id];
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
                 return (
-                    <div key={song.id} onClick={() => this.handlePlay(song)} className="song-index-item">
+                    <div key={song.id} 
+                        onClick={() => this.handlePlay(song)}
+                        song={song}
+                        // queue={this.getQueue()}
+                        className="song-index-item"
+                    >
                         <img src={artistAlbum.imageUrl}></img>
                         <div className="song-index-item-details">
                             <div className="song-index-item-details-songtitle">

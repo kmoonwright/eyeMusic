@@ -19,27 +19,18 @@ class MusicPlayer extends React.Component {
         // checks props passed in component
         // all functionality of player goes here
         this.state = {
-            active: this.props.currentSong,
             current: 0,
             progress: 0,
             random: false,
             repeat: false,
             mute: false,
-            playing: this.props.playing || false,
-            songs: this.props.currQueue
         }
 
         this.audio = new Audio();
         // this.audio.src = audioUrl;
 
-
-        //song reference
-        // this.ref = React.createRef();
-
-        this.setProgress = this.setProgress.bind(this);
-        this.updateProgress = this.updateProgress.bind(this);
-        this.play = this.play.bind(this);
-        this.pause = this.pause.bind(this);
+        // this.play = this.play.bind(this);
+        // this.pause = this.pause.bind(this);
         this.toggle = this.toggle.bind(this);
         this.end = this.end.bind(this);
         this.next = this.next.bind(this);
@@ -67,62 +58,57 @@ class MusicPlayer extends React.Component {
     //     playerElement.removeEventListener('error', this.next);
     // }
 
+    componentDidMount() {
+        // if (this.props.playing) { 
+        //     this.audio.play();
+        // } else {
+        //     this.audio.play();
+        // }
+    }
+
     componentDidUpdate(oldProps) {
         // need conditionals to prevent unneeded operations
         // checks props passed in component
         // all functionality of player goes here
         if (!this.props.currentSong) return;
-        if (this.props.currentSong != oldProps.currentSong) {
+        if (this.props.currentSong !== oldProps.currentSong) {
             this.audio.src = this.props.currentSong.audioUrl;
+            this.audio.play();
+        } else if (this.props.currentSong === oldProps.currentSong) {
             this.audio.play();
         } else {
             this.audio.pause();
         }
-    }
-
-    setProgress(e) {
-        let target = e.target.nodeName === 'SPAN' ? e.target.parentNode : e.target;
-        let width = target.clientWidth;
-        let rect = target.getBoundingClientRect();
-        let offsetX = e.clientX - rect.left;
-        let duration = this.audio.duration;
-        let currentTime = (duration * offsetX) / width;
-        let progress = (currentTime * 100) / duration;
-
-        this.audio.currentTime = currentTime;
-        this.setState({ progress: progress });
-        this.play();
-    }
-
-    updateProgress() {
-        let duration = this.audio.duration;
-        let currentTime = this.audio.currentTime;
-        let progress = (currentTime * 100) / duration;
-        this.setState({ progress: progress });
+        //check if state changed
     }
     
-    play() {
-        // this.props.setCurrentSong(this.state.active);
-        debugger
-        this.setState({ playing: true });
-        this.audio.src = active.audioUrl;
-        this.audio.play();
-    }
+    // play() {
+    //     // this.props.setCurrentSong(this.state.active);
+    //     // this.setState({ playing: true });
+    //     debugger
+    //     this.audio.src = active.audioUrl;
+    //     this.audio.play();
+    // }
 
-    pause() {
-        this.setState({ playing: false });
-        this.audio.pause();
-    }
+    // pause() {
+    //     // this.setState({ playing: false });
+    //     this.audio.pause();
+    // }
 
     toggle() {
-        this.state.playing ? this.pause() : this.play();
+        
+        //toggle song dispatch action to set a new slice of state
+        // musicPlayer.ui.playing change
+        // buttons should only swap out pieces of state
+
+        this.props.playing ? this.audio.pause() : this.audio.play();
     }
 
     end() {
         if (this.state.repeat) {
             this.play()
         } else {
-            this.setState({ playing: false, progress: 0 });
+            // this.setState({ playing: false, progress: 0 });
             this.next();
         }
     }
@@ -133,7 +119,7 @@ class MusicPlayer extends React.Component {
         let current = (this.state.current < total - 1) ? this.state.current + 1 : 0;
         let active = this.state.songs[current];
 
-        this.setState({ current: current, active: active, progress: 0 });
+        // this.setState({ current: current, active: active, progress: 0 });
         this.props.setCurrentSong(active);
 
         this.audio.src = active.audioUrl;
@@ -145,7 +131,7 @@ class MusicPlayer extends React.Component {
         let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
         let active = this.state.songs[current];
 
-        this.setState({ current: current, active: active, progress: 0 });
+        // this.setState({ current: current, active: active, progress: 0 });
         this.props.setCurrentSong(active);
 
         this.audio.src = active.audioUrl;
@@ -170,24 +156,6 @@ class MusicPlayer extends React.Component {
     }
 
     render() {
-        const { active, playing, progress } = this.state;
-
-        let img;
-        if (!active.name) {
-            img = (
-                <div className='music-player-img-empty'>
-                    <img></img>
-                </div>
-            )
-        } else {
-            img = (
-                <div className='music-player-img-render'>
-                    <Link to={`/albums/${active.albumId}`}>
-                        <img src={active.imageUrl}></img>
-                    </Link>
-                </div>
-            )
-        }
         
         return (
 
@@ -200,7 +168,7 @@ class MusicPlayer extends React.Component {
                                 Previous
                             </button>
                             <button onClick={this.toggle} className="music-player-btns-play" title="Play/Pause">
-                                Play
+                                Play/Pause
                             </button>
                             <button onClick={this.next} className="music-player-btns-next" title="Next Song">
                                 Next
@@ -218,21 +186,6 @@ class MusicPlayer extends React.Component {
                     </div>
                 
                     <div className="music-player-display">
-
-                        {img}
-
-                        <div className="current-song-info">
-                            <Link to={`/albums/${active.albumId}`}>
-                                <h2 className="song-name">{active.name}</h2>
-                            </Link>
-                            <Link to={`/artists/${active.artistId}`}>
-                                <h3 className="artist-name">{active.artistName}</h3>
-                            </Link>
-                        </div>
-
-                        <div className="music-player-progress-container" onClick={this.setProgress}>
-                            <span className="music-player-progress-value" style={{ width: progress + '%' }}></span>
-                        </div>
                     </div>
 
                     <div className="search-btn">
@@ -247,15 +200,36 @@ class MusicPlayer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    currQueue: state.ui.musicPlayer.queue
-});
+// const mapStateToProps = (state) => ({
+//     currQueue: state.ui.musicPlayer.queue
+// });
+const msp = state => {
+    const songs = Object.values(state.entities.songs);
+    if (state.ui.currentPlayingSong) {
+        const playing = state.ui.currentPlayingSong.playing || null;
+        return {
+            playing,
+            songs
+        };
+    } else {
+        return {
+            songs
+        }
+    }
+};
+// const mapDispatchToProps = (dispatch) => ({
+//     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+//     toggleSong: () => (dispatch(toggleSong())),
+//     setQueue: (queue) => (dispatch(setQueue(queue)))
+// });
+const mdp = dispatch => {
+    return {
+        togglePlay: (boolean) => dispatch(togglePlay(boolean)),
+        fetchNextSong: (songId) => dispatch(fetchNextSong(songId)),
+        fetchPrevSong: (songId) => dispatch(fetchPrevSong(songId)),
+        fetchSong: (songId) => dispatch(fetchSong(songId)),
+    };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
-    toggleSong: () => (dispatch(toggleSong())),
-    setQueue: (queue) => (dispatch(setQueue(queue)))
-});
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(MusicPlayer);
+export default connect(msp, mdp)(MusicPlayer);

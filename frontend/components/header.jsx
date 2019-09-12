@@ -21,7 +21,6 @@ class Header extends React.Component {
 }
 
 const msp = (state) => {
-    debugger
     return ({
         currentUser: state.session.id,
     
