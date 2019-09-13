@@ -17,12 +17,13 @@
     position: fixed;
     margin-top: 102px;
     height: 100%;
+    font-family: verdana;
 }
 
 .library-nav-items{
     display: flex;
     flex-direction: column;
-
+    margin-bottom: 20px;
     // padding-left: 10px;
     // padding-bottom: 8px;
     // margin: 5px;
@@ -31,17 +32,22 @@
 .library-nav-items-btns {
     display: flex;
     flex-direction: column;
-    margin: 5px;
-    padding: 6px;
+    margin-top: 10px;
+    margin-left: 10px;
+
 }
 
 .library-nav-playlists {
-    margin: 5px;
-    padding: 6px;
+    // margin: 5px;
+    // padding: 6px;
+}
+.library-nav-playlist-items {
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .playlist-index-item {
-    padding: 5px;
+
 }
 
 .library-main {
@@ -54,4 +60,5 @@
     right:0;
     height: 100%;
     overflow-x: auto;
+    font-family: verdana;
 }

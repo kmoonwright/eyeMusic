@@ -2130,7 +2130,9 @@ function (_React$Component) {
         to: "/library/songs"
       }, "Songs"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-playlists"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Music Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.playlists.map(function (playlist) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Music Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "library-nav-playlist-items"
+      }, this.props.playlists.map(function (playlist) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_playlist_index_item__WEBPACK_IMPORTED_MODULE_10__["default"], {
           key: playlist.id,
           playlist: playlist
@@ -3331,6 +3333,8 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Search for tunes..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "search-form",
         onSubmit: this.handleSubmit
@@ -3342,7 +3346,7 @@ function (_React$Component) {
         onChange: this.handleSearch
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit"
-      }, "Submit")), searchRender);
+      }, "Submit")), searchRender));
     }
   }]);
 

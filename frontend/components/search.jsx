@@ -157,17 +157,19 @@ class Search extends React.Component {
         
         return (
             <div className="search-container">
-                <p>Search for tunes...</p>
-                <form className="search-form" onSubmit={this.handleSubmit}>
-                    <input className="search-bar-text"
-                        type="text"
-                        placeholder="Start typing..."
-                        value={this.state.searchVal}
-                        onChange={this.handleSearch}
-                    ></input>
-                    <button type="submit">Submit</button>
-                </form>
-                {searchRender}
+                <div className="search-index">
+                    <p>Search for tunes...</p>
+                    <form className="search-form" onSubmit={this.handleSubmit}>
+                        <input className="search-bar-text"
+                            type="text"
+                            placeholder="Start typing..."
+                            value={this.state.searchVal}
+                            onChange={this.handleSearch}
+                        ></input>
+                        <button type="submit">Submit</button>
+                    </form>
+                    {searchRender}
+                </div>
             </div>
         )
     }

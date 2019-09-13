@@ -52,7 +52,7 @@ class Library extends React.Component {
 
                     <div className="library-nav-playlists">
                         <p>Music Playlists</p>
-                        <ul>
+                        <ul className="library-nav-playlist-items">
                             {this.props.playlists.map(playlist => {
                                 return (
                                     <PlaylistIndexItem key={playlist.id} playlist={playlist}></PlaylistIndexItem>
