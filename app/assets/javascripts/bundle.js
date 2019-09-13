@@ -1986,14 +1986,31 @@ function (_React$Component) {
         className: "btn",
         to: "/signup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Try it free"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "landing-cards"
+        className: "landing-cards-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         name: "overview"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "It's as easy", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "as it sounds.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "landing-program-guide"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         name: "explore"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "New and noteworthy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Now Playing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Playlists")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "New and noteworthy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Now Playing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-artists-slideshow",
+        id: "landing-slideshow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "landing-slide-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/signup'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feature-bowie"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "David Bowie"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/signup'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feature-prince"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/signup'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feature-daftpunk"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "landing-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Start your free trial."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No commitment. Cancel anytime."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn",

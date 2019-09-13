@@ -88,21 +88,40 @@
 
 }
 
-.landing-cards {
+.landing-cards-container {
+  margin-top: 100px;
   font-size: 50px;
   width: 100%;
   min-height: 800px;
   max-height:860px;
   padding: 40px;
-
+  background: image-url('music-guy.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   h2 {
-    padding-top: 150px;
+    padding-top: 50px;
     font-size: 56px;
     line-height: 1.07143;
     font-weight: 600;
     letter-spacing: -.005em;
   }
 }
+// .landing-cards-index {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+// .landing-cards-index-card1 {
+//     background: image-url('music-guy.png');
+//     background-size: contain;
+//     height: 600px;
+//     width: 400px;
+// }
+
+
+
+
 
 .landing-program-guide {
   background-color: #fafafa;
@@ -112,7 +131,7 @@
   padding: 40px;
   h1 {
     font-size: 50px;
-    padding-top: 150px;
+    padding-top: 50px;
   }
 }
 
@@ -129,4 +148,28 @@
   h3 {
     font-size: 21px;
   }
+}
+
+.featured-artists-slideshow {
+  p {
+    color: #fff;
+  }
+}
+#landing-slideshow {
+  overflow: hidden;
+  width: 800px;
+  height: 450px;
+  margin: 0 auto;
+}
+.landing-slide-wrapper {
+    display: flex;
+    width: 2400px;
+    -webkit-animation: slide 30s ease infinite;
+}
+@-webkit-keyframes slide {
+  20% {margin-left: 0px;}
+  30% {margin-left: -820px;}
+  50% {margin-left: -820px;}
+  70% {margin-left: -1675px;}
+  90% {margin-left: -1675px;}
 }

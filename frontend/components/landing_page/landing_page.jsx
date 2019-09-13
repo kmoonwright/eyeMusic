@@ -35,7 +35,7 @@ class LandingPage extends React.Component {
                         <Link className="btn" to="/signup"><button>Try it free</button></Link>
                     </div>
 
-                    <div className="landing-cards">
+                    <div className="landing-cards-container">
                         <a name="overview"></a>
                         <h2>It's as easy
                             <br/>as it sounds.
@@ -46,7 +46,22 @@ class LandingPage extends React.Component {
                         <a name="explore"></a>
                         <h1>New and noteworthy.</h1>
                         <h3>Now Playing</h3>
-                        <h3>Featured Playlists</h3>
+                        <h3>Featured Artists</h3>
+                        <div className="featured-artists-slideshow" id="landing-slideshow">
+                            <div className="landing-slide-wrapper">
+                                <Link to={'/signup'}>
+                                    <div className="feature-bowie">
+                                        <p>David Bowie</p>
+                                    </div>
+                                </Link>
+                                <Link to={'/signup'}>
+                                    <div className="feature-prince"></div>
+                                </Link>
+                                <Link to={'/signup'}>
+                                    <div className="feature-daftpunk"></div>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="landing-footer">
