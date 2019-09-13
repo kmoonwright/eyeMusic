@@ -2867,20 +2867,22 @@ function (_React$Component) {
           var albumArtist = allArtists[songAlbum.artist_id];
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
-            className: "playlist-songs"
+            className: "playlist-songs-index-item"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: songAlbum.imageUrl
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index"
+            className: "playlist-songs-index-item-details"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-songtitle"
+            className: "playlist-songs-index-item-details"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "playlist-songs-index-item-details-songtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-artistinfo"
+            className: "playlist-songs-index-item-details-artistinfo"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, albumArtist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-albumtitle"
+            className: "playlist-songs-index-item-details-albumtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "playlist-songs-index-albumyear"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.year))));
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.year)))));
         });
       } else {
         songList = "No songs here...";
@@ -2940,7 +2942,9 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-songs-container"
-      }, songList, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add a Song"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "playlist-songs-index"
+      }, songList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add a Song..."));
     }
   }]);
 
@@ -3017,7 +3021,7 @@ function (_React$Component) {
     value: function render() {
       var playlist = this.props.playlist;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "playlist-index-item"
+        className: "playlist-nav-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/playlists/".concat(playlist.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, playlist.title)));

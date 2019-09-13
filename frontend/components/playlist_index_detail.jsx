@@ -60,20 +60,23 @@ class PlaylistIndexDetail extends React.Component {
                 let albumArtist = allArtists[songAlbum.artist_id]
                 
                 return (
-                    <div key={song.id} className="playlist-songs">
+                    <div key={song.id} className="playlist-songs-index-item">
+
                         <img src={songAlbum.imageUrl}></img>
-                        <div className="playlist-songs-index">
-                            <div className="playlist-songs-index-songtitle">
-                                <span>{song.title}</span>
-                            </div>
-                            <div className="playlist-songs-index-artistinfo">
-                                <span>{albumArtist.name}</span>
-                            </div>
-                            <div className="playlist-songs-index-albumtitle">
-                                <span>{songAlbum.title}</span>
-                            </div>
-                            <div className="playlist-songs-index-albumyear">
-                                <span>{songAlbum.year}</span>
+                        <div className="playlist-songs-index-item-details">
+                            <div className="playlist-songs-index-item-details">
+                                <div className="playlist-songs-index-item-details-songtitle">
+                                    <span>{song.title}</span>
+                                </div>
+                                <div className="playlist-songs-index-item-details-artistinfo">
+                                    <span>{albumArtist.name}</span>
+                                </div>
+                                <div className="playlist-songs-index-item-details-albumtitle">
+                                    <span>{songAlbum.title}</span>
+                                </div>
+                                <div className="playlist-songs-index-albumyear">
+                                    <span>{songAlbum.year}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -138,8 +141,10 @@ class PlaylistIndexDetail extends React.Component {
         // }
         return (
             <div className="playlist-songs-container">
-                {songList}
-                <p>Add a Song</p>
+                <div className="playlist-songs-index">
+                    {songList}
+                </div>
+                <p>Add a Song...</p>
             </div>
         )
     }

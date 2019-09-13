@@ -1,17 +1,31 @@
-.playlist-songs{
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-    border-bottom: 1px solid lightgray;
-    img {
-        height: 80px;
-        width: 80px;
-    }
-}
 
 .playlist-songs-index {
+    img {
+        height: 50px;
+        width: 50px;
+        margin: 2px;
+        border-radius: 10px 10px 10px 10px;  
+    }
+}
+.playlist-songs-index-item {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 5px;
+    border-bottom: 1px solid lightgray;
+}
+.playlist-songs-index-item-details {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+.playlist-songs-index-item-details-songtitle {
+    width: 35%;
+}
+.playlist-songs-index-item-details-artistinfo {
+    width: 35%;
+}
+.playlist-songs-index-item-details-albumtitle {
+    width: 20%;
 }

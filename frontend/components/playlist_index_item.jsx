@@ -23,7 +23,7 @@ class PlaylistIndexItem extends React.Component {
     render() {
         const playlist = this.props.playlist;
         return (
-            <li className="playlist-index-item">
+            <li className="playlist-nav-index-item">
                 <Link to={`/library/playlists/${playlist.id}`}>
                     <div>{playlist.title}</div>
                 </Link>
