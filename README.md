@@ -17,6 +17,11 @@ This project is built with **Ruby On Rails** with a **PostgreSQL** database on t
 
 [View the design documents](https://github.com/kmoonwright/eyeMusic_fullstack/wiki "eyeMUSIC Wiki")
 
+### Browse
+* Featured artists and albums showcase link to detail pages
+* Playlists can be organized by song, album, or artist parameters
+
+![browse]
 
 ### User Authentication
 * Users can sign up or log in to use the application
@@ -59,7 +64,7 @@ end
 
 ### Eye Friendly UI with Continuous Play
 
-Songs play continuously in the header music player. When a song is played, other songs are queued depending on the selected index. This queue is maintained by a music player slice of state that stores the current song and queue, and can be accessed by other components to be displayed elsewhere.
+Songs play continuously in the header music player. When a song is played, other songs are queued depending on the selected index. This queue is maintained by a music player slice of state that stores the current song and queue, and can be accessed by other components elsewhere.
 
 ![UI]
 
@@ -80,19 +85,16 @@ handleSearch(e) {
     this.props.searchArtists(e.target.value);
 }
 // results render
-<div className="search-index">
-    <p>Search for tunes...</p>
-    <form className="search-form" onSubmit={this.handleSubmit}>
-        <input className="search-bar-text"
-            type="text"
-            placeholder="Start typing..."
-            value={this.state.searchVal}
-            onChange={this.handleSearch}
-        ></input>
-        <button type="submit">Submit</button>
-    </form>
-    {searchRender}
-</div>
+<form className="search-form" onSubmit={this.handleSubmit}>
+  <input className="search-bar-text"
+    type="text"
+    placeholder="Start typing..."
+    value={this.state.searchVal}
+    onChange={this.handleSearch}
+  ></input>
+  <button type="submit" value="Submit"/>
+</form>
+
 ```
 
 ### Upcoming Features
@@ -103,4 +105,5 @@ handleSearch(e) {
 [logo]: https://github.com/kmoonwright/eyeMusic_fullstack/blob/master/app/assets/images/icon-eyemusic-logo.png "eyeMUSIC Logo"
 [splash]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-splash2.png "eyeMUSIC Splash"
 [ui]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-ui.png "eyeMUSIC UI"
+[browse]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-splash3.png "eyeMUSIC Browse"
 
