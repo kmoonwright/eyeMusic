@@ -1,7 +1,7 @@
+# ![logo] eyeMUSIC
+
+
 ![logo]
-
-# eyeMUSIC
-
 ## [View the live site](https://eyemusic.herokuapp.com/ "eyeMUSIC")
 
 **eyeMUSIC** is a single-page, full stack web application inspired by Apple Music and iTunes. Music enthusiasts can enjoy a fully interactive user interface to browse albums, artists, songs, and playlists, all while utilizing the React Music Player for an uninterrupted listening experience.
