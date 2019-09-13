@@ -23,3 +23,5 @@ trending_util
 .DS_Store
 
 npm-debug.log
+
+./app/assets/images
