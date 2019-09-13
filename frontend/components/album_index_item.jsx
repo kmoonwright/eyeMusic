@@ -32,8 +32,6 @@ class AlbumIndexItem extends React.Component {
         )
         // if (this.props.songs.length > 0) {
         //     const songList = this.props.songs.map(song => {
-        //         debugger
-
         //         return (
         //             <li key={song.id} className="song-list-item">
         //                 <div song={song}>

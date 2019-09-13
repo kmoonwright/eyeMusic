@@ -729,14 +729,13 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state, ownProps) {
-  // debugger
   var albumId = ownProps.match.params.albumId;
   var album = state.entities.albums[albumId];
   return {
     artists: Object.values(state.entities.artists),
     songs: Object.values(state.entities.songs),
     albums: Object.values(state.entities.albums)
-  }; // debugger
+  };
 };
 
 var mdp = function mdp(dispatch) {
@@ -964,7 +963,6 @@ function (_React$Component) {
         src: album.imageUrl
       }))); // if (this.props.songs.length > 0) {
       //     const songList = this.props.songs.map(song => {
-      //         debugger
       //         return (
       //             <li key={song.id} className="song-list-item">
       //                 <div song={song}>
@@ -2859,7 +2857,8 @@ function (_React$Component) {
       if (playlistSongs) {
         var playlistSongsIds = playlistSongs.map(function (song) {
           return song.song_id;
-        }); // const artistAlbum = this.props.albums[song.album_id];
+        });
+        var songs = this.props.songs; // const artistAlbum = this.props.albums[song.album_id];
         // const artistName = this.props.artists[artistAlbum.artist_id].name;
 
         songList = this.props.songs.map(function (song) {
@@ -3882,7 +3881,6 @@ function (_React$Component) {
   }, {
     key: "getQueue",
     value: function getQueue(currSongIdx) {
-      debugger;
       var songs = this.props.songs;
       var queue = songs.slice(currSongIdx).concat(songs.slice(0, currSongIdx));
       return queue;
@@ -4184,7 +4182,6 @@ var albumsReducer = function albumsReducer() {
       }
 
       return Object.assign({}, oldState, action.albums);
-      debugger;
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ONE_PLAYLIST"]:
       return Object.assign({}, oldState, action.payload.albums);

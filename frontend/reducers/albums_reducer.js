@@ -17,7 +17,6 @@ const albumsReducer = (oldState = {}, action) => {
                 return oldState;
             }
             return Object.assign({}, oldState, action.albums);
-            debugger
         case RECEIVE_ONE_PLAYLIST:
             return Object.assign({}, oldState, action.payload.albums);
         default:

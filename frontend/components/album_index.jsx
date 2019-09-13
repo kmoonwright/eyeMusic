@@ -73,7 +73,6 @@ class AlbumIndex extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    // debugger
     const albumId = ownProps.match.params.albumId;
     let album = state.entities.albums[albumId];
     
@@ -83,7 +82,6 @@ const msp = (state, ownProps) => {
         albums: Object.values(state.entities.albums),
         
     })
-    // debugger
 }
 
 const mdp = dispatch => ({

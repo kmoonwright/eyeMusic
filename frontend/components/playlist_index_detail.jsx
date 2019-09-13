@@ -50,8 +50,7 @@ class PlaylistIndexDetail extends React.Component {
         
         if (playlistSongs) {
             let playlistSongsIds = playlistSongs.map(song => song.song_id);
-            
-
+            let songs = this.props.songs
             // const artistAlbum = this.props.albums[song.album_id];
             // const artistName = this.props.artists[artistAlbum.artist_id].name;
 
