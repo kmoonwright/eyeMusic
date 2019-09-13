@@ -95,6 +95,6 @@ handleSearch(e) {
 * Visualizer
 
 [logo]: https://github.com/kmoonwright/eyeMusic_fullstack/blob/master/app/assets/images/icon-eyemusic-logo.png "eyeMUSIC Logo"
-[splash]:"eyeMUSIC Splash"
+[splash]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-splash.png "eyeMUSIC Splash"
 [ui]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-ui.png "eyeMUSIC UI"
 
