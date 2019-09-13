@@ -101,6 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "togglePlay", function() { return togglePlay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchNextSong", function() { return fetchNextSong; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPrevSong", function() { return fetchPrevSong; });
+/* harmony import */ var _util_music_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/music_util */ "./frontend/util/music_util.js");
+
 var TOGGLE_PLAY = "TOGGLE_PLAY";
 var FETCH_NEXT_SONG = "FETCH_NEXT_SONG";
 var FETCH_PREV_SONG = "FETCH_PREV_SONG";
@@ -112,7 +114,7 @@ var togglePlay = function togglePlay(_boolean) {
 };
 var fetchNextSong = function fetchNextSong(songId) {
   return function (dispatch) {
-    return SongApiUtil.fetchSong(songId).then(function (song) {
+    return Object(_util_music_util__WEBPACK_IMPORTED_MODULE_0__["fetchOneSong"])(songId).then(function (song) {
       return dispatch({
         type: FETCH_NEXT_SONG,
         song: song
@@ -122,7 +124,7 @@ var fetchNextSong = function fetchNextSong(songId) {
 };
 var fetchPrevSong = function fetchPrevSong(songId) {
   return function (dispatch) {
-    return SongApiUtil.fetchSong(songId).then(function (song) {
+    return Object(_util_music_util__WEBPACK_IMPORTED_MODULE_0__["fetchOneSong"])(songId).then(function (song) {
       return dispatch({
         type: FETCH_PREV_SONG,
         song: song
@@ -2208,8 +2210,8 @@ function (_React$Component) {
 
     _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
     _this.end = _this.end.bind(_assertThisInitialized(_this));
-    _this.next = _this.next.bind(_assertThisInitialized(_this));
-    _this.previous = _this.previous.bind(_assertThisInitialized(_this));
+    _this.nextSong = _this.nextSong.bind(_assertThisInitialized(_this));
+    _this.prevSong = _this.prevSong.bind(_assertThisInitialized(_this));
     _this.randomize = _this.randomize.bind(_assertThisInitialized(_this));
     _this.repeat = _this.repeat.bind(_assertThisInitialized(_this));
     _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
@@ -2254,15 +2256,6 @@ function (_React$Component) {
         this.audio.pause();
       } //check if state changed
 
-    }
-  }, {
-    key: "handlePlay",
-    value: function handlePlay() {
-      debugger; // if (this.props.playing && this.props.currentSong) {
-      //     this.audio.pause();
-      // } else{
-      //     this.audio.play();
-      // }
     } // play() {
     //     // this.props.setCurrentSong(this.state.active);
     //     // this.setState({ playing: true });
@@ -2299,20 +2292,21 @@ function (_React$Component) {
       }
     }
   }, {
-    key: "next",
-    value: function next() {
-      debugger;
-      var total = this.state.songs.length;
-      var current = this.state.current < total - 1 ? this.state.current + 1 : 0;
-      var active = this.state.songs[current]; // this.setState({ current: current, active: active, progress: 0 });
+    key: "nextSong",
+    value: function nextSong() {
+      var songs = this.props.queue;
+      var currentSong = this.props.currentSong;
 
-      this.props.setCurrentSong(active);
-      this.audio.src = active.audioUrl;
-      this.play();
+      for (var i = 0; i < songs.length; i++) {
+        if (songs[i].id === currentSong.id) {
+          var nextSong = i === songs.length - 1 ? songs[0] : songs[i + 1];
+          this.props.setCurrentSong(nextSong);
+        }
+      }
     }
   }, {
-    key: "previous",
-    value: function previous() {
+    key: "prevSong",
+    value: function prevSong() {
       var total = this.state.songs.length;
       var current = this.state.current > 0 ? this.state.current - 1 : total - 1;
       var active = this.state.songs[current]; // this.setState({ current: current, active: active, progress: 0 });
@@ -2367,7 +2361,7 @@ function (_React$Component) {
         className: "music-player-btns-play",
         title: "Play/Pause"
       }, "Play/Pause"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.next,
+        onClick: this.nextSong,
         className: "music-player-btns-next",
         title: "Next Song"
       }, "Next"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2395,9 +2389,10 @@ function (_React$Component) {
 
 
 var msp = function msp(state) {
-  return {// playing: state.ui.musicPlayer.playing,
+  return {
+    // playing: state.ui.musicPlayer.playing,
     // currentSong: state.ui.musicPlayer.currentSong,
-    // queue: state.ui.musicPlayer.queue,
+    queue: state.ui.musicPlayer.queue
   };
 }; // const mapDispatchToProps = (dispatch) => ({
 //     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
@@ -2419,6 +2414,9 @@ var mdp = function mdp(dispatch) {
     },
     toggleSong: function toggleSong() {
       return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["toggleSong"])());
+    },
+    setCurrentSong: function setCurrentSong(song) {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["setCurrentSong"])(song));
     }
   };
 };

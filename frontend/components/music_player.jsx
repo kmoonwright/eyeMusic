@@ -34,8 +34,8 @@ class MusicPlayer extends React.Component {
         // this.pause = this.pause.bind(this);
         this.toggle = this.toggle.bind(this);
         this.end = this.end.bind(this);
-        this.next = this.next.bind(this);
-        this.previous = this.previous.bind(this);
+        this.nextSong = this.nextSong.bind(this);
+        this.prevSong = this.prevSong.bind(this);
         this.randomize = this.randomize.bind(this);
         this.repeat = this.repeat.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
@@ -82,15 +82,7 @@ class MusicPlayer extends React.Component {
         }
         //check if state changed
     }
-
-    handlePlay() {
-        debugger        
-        // if (this.props.playing && this.props.currentSong) {
-        //     this.audio.pause();
-        // } else{
-        //     this.audio.play();
-        // }
-    }
+    
     // play() {
     //     // this.props.setCurrentSong(this.state.active);
     //     // this.setState({ playing: true });
@@ -129,20 +121,18 @@ class MusicPlayer extends React.Component {
         }
     }
 
-    next() {
-        debugger
-        let total = this.state.songs.length;
-        let current = (this.state.current < total - 1) ? this.state.current + 1 : 0;
-        let active = this.state.songs[current];
-
-        // this.setState({ current: current, active: active, progress: 0 });
-        this.props.setCurrentSong(active);
-
-        this.audio.src = active.audioUrl;
-        this.play();
+    nextSong() {
+        let songs = this.props.queue;
+        const currentSong = this.props.currentSong;
+        for (let i = 0; i < songs.length; i++) {
+            if (songs[i].id === currentSong.id) {
+                const nextSong = (i === songs.length - 1) ? songs[0] : songs[i + 1];
+                this.props.setCurrentSong(nextSong);
+            }
+        }
     }
 
-    previous() {
+    prevSong() {
         let total = this.state.songs.length;
         let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
         let active = this.state.songs[current];
@@ -186,7 +176,7 @@ class MusicPlayer extends React.Component {
                             <button onClick={this.toggle} className="music-player-btns-play" title="Play/Pause">
                                 Play/Pause
                             </button>
-                            <button onClick={this.next} className="music-player-btns-next" title="Next Song">
+                            <button onClick={this.nextSong} className="music-player-btns-next" title="Next Song">
                                 Next
                             </button>
                             {/* <button onClick={this.next} className="music-player-btns-volume" title="Volume">
@@ -222,7 +212,7 @@ class MusicPlayer extends React.Component {
 const msp = state => ({
     // playing: state.ui.musicPlayer.playing,
     // currentSong: state.ui.musicPlayer.currentSong,
-    // queue: state.ui.musicPlayer.queue,
+    queue: state.ui.musicPlayer.queue,
 });
 // const mapDispatchToProps = (dispatch) => ({
 //     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
@@ -235,7 +225,7 @@ const mdp = dispatch => {
         fetchNextSong: (songId) => dispatch(fetchNextSong(songId)),
         fetchPrevSong: (songId) => dispatch(fetchPrevSong(songId)),
         toggleSong: () => (dispatch(toggleSong())),
-
+        setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
     };
 };
 
