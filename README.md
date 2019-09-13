@@ -62,40 +62,17 @@ class User < ApplicationRecord
 end
 ```
 
+### Search
+
+* Users can search their entire library for songs, artists, albums, or playlists and watch their results render in real-time. 
+* Search results will immediately display in response to state change as the user types.
+
 ### Eye Friendly UI with Continuous Play
 
 Songs play continuously in the header music player. When a song is played, other songs are queued depending on the selected index. This queue is maintained by a music player slice of state that stores the current song and queue, and can be accessed by other components elsewhere.
 
 ![UI]
 
-
-### Search
-
-Users can search for songs, artists, albums, or playlists and watch their results render in real-time.
-```javascript
-//onChange Function
-handleSearch(e) {
-    if (this.state.searchVal === "") {
-        this.props.history.push("/search");
-    }
-    this.setState({ searchVal: e.target.value });
-    if (e.target.value === "") {
-        this.props.clearSearch();
-    }
-    this.props.searchArtists(e.target.value);
-}
-// results render
-<form className="search-form" onSubmit={this.handleSubmit}>
-  <input className="search-bar-text"
-    type="text"
-    placeholder="Start typing..."
-    value={this.state.searchVal}
-    onChange={this.handleSearch}
-  ></input>
-  <button type="submit" value="Submit"/>
-</form>
-
-```
 
 ### Upcoming Features
 * Playlist customization with playlist images and description
