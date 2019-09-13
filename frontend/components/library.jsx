@@ -44,9 +44,15 @@ class Library extends React.Component {
                     <div className="library-nav-items">
                         <p>Library</p>
                         <div className="library-nav-items-btns">
-                            <Link to="/library/albums">Albums</Link>
-                            <Link to="/library/artists">Artists</Link>
-                            <Link to="/library/songs">Songs</Link>
+                            <div className="library-nav-items-btns-each">
+                                <Link to="/library/albums">Albums</Link>
+                            </div>
+                            <div className="library-nav-items-btns-each">
+                                <Link to="/library/artists">Artists</Link>
+                            </div>
+                            <div className="library-nav-items-btns-each">
+                                <Link to="/library/songs">Songs</Link>
+                            </div>
                         </div>
                     </div>
 
@@ -58,10 +64,12 @@ class Library extends React.Component {
                                     <PlaylistIndexItem key={playlist.id} playlist={playlist}></PlaylistIndexItem>
                                 )
                             })}
-                                <Link to="/library/playlist/new">
-                                    Create a new playlist...
-                                </Link>
                         </ul>
+                        <div className="library-nav-playlist-create">
+                            <Link to="/library/playlist/new">
+                                Create a new playlist...
+                            </Link>
+                        </div>
                     </div>
 
                 </div>

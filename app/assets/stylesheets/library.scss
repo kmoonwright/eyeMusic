@@ -24,9 +24,9 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    // padding-left: 10px;
-    // padding-bottom: 8px;
-    // margin: 5px;
+    p {
+        font-weight: 600;
+    }
 }
 
 .library-nav-items-btns {
@@ -38,16 +38,24 @@
 }
 
 .library-nav-playlists {
-    // margin: 5px;
-    // padding: 6px;
+    p {
+        font-weight: 600;
+    }
 }
 .library-nav-playlist-items {
     margin-top: 10px;
     margin-left: 10px;
 }
+.library-nav-playlist-create {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.library-nav-items-btns-each {
+    padding-bottom: 4px;
+}
 
 .playlist-index-item {
-
+    padding-bottom: 6px;
 }
 
 .library-main {

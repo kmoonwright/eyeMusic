@@ -37,14 +37,29 @@ class PlaylistIndexDetail extends React.Component {
 
     render() {
         let songList;
+        
+        const allAlbums = this.props.albums
+        const allArtists = this.props.artists
+        // playlist song, array of ids
+        // then pull 
+        //use songs as source of truth
+        // map over songs with playlist songs ids
+
         debugger
+        // let playlistSongs = this.props.playlists.playlist_songs;
+        // let playlistSongsIds = playlistSongs.map(song => song.song_id);
+
         if (this.props.playlists.playlist_songs) {
             let playlistItems = Object.values(this.props.playlists.playlist_songs);
             debugger
+
+            // const artistAlbum = this.props.albums[song.album_id];
+            // const artistName = this.props.artists[artistAlbum.artist_id].name;
+
             songList = playlistItems.map(song => {
+                let songAlbum = allAlbums[song.album_id]
                 debugger
-                const artistAlbum = this.props.albums[song.album_id];
-                const artistName = this.props.artists[artistAlbum.artist_id].name;
+                let albumArtist = allArtists[songAlbum.artist_id]
                 return (
                     <div key={song.id} className="playlist-songs">
                         <img src={artistAlbum.imageUrl}></img>

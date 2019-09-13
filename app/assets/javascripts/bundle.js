@@ -2122,13 +2122,19 @@ function (_React$Component) {
         className: "library-nav-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Library"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-items-btns"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-items-btns-each"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/albums"
-      }, "Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-items-btns-each"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/artists"
-      }, "Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Artists")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-items-btns-each"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/songs"
-      }, "Songs"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Songs")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-playlists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Music Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "library-nav-playlist-items"
@@ -2137,7 +2143,9 @@ function (_React$Component) {
           key: playlist.id,
           playlist: playlist
         });
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-playlist-create"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/playlist/new"
       }, "Create a new playlist...")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-main"
@@ -2839,18 +2847,25 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       var songList;
-      debugger;
+      var allAlbums = this.props.albums;
+      var allArtists = this.props.artists; // playlist song, array of ids
+      // then pull 
+      //use songs as source of truth
+      // map over songs with playlist songs ids
+
+      debugger; // let playlistSongs = this.props.playlists.playlist_songs;
+      // let playlistSongsIds = playlistSongs.map(song => song.song_id);
 
       if (this.props.playlists.playlist_songs) {
         var playlistItems = Object.values(this.props.playlists.playlist_songs);
-        debugger;
+        debugger; // const artistAlbum = this.props.albums[song.album_id];
+        // const artistName = this.props.artists[artistAlbum.artist_id].name;
+
         songList = playlistItems.map(function (song) {
+          var songAlbum = allAlbums[song.album_id];
           debugger;
-          var artistAlbum = _this.props.albums[song.album_id];
-          var artistName = _this.props.artists[artistAlbum.artist_id].name;
+          var albumArtist = allArtists[songAlbum.artist_id];
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             className: "playlist-songs"
