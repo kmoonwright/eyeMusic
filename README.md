@@ -1,4 +1,5 @@
-# ![logo] eyeMUSIC
+![splash]
+# eyeMUSIC
 
 [View the live site](https://eyemusic.herokuapp.com/ "eyeMUSIC")
 
@@ -55,7 +56,8 @@ end
 ```
 
 ### Eye Friendly UI with Continuous Play
-
+Songs play continuously in the header music player. When a song is played, other songs are queued depending on the selected index. This queue is maintained by a music player slice of state that stores the current song and queue, and can be accessed by other components to be displayed elsewhere.
+![UI]
 
 ### Search
 Users can search for songs, artists, albums, or playlists and watch their results render in real-time.
@@ -93,3 +95,6 @@ handleSearch(e) {
 * Visualizer
 
 [logo]: https://github.com/kmoonwright/eyeMusic_fullstack/blob/master/app/assets/images/icon-eyemusic-logo.png "eyeMUSIC Logo"
+[splash]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-splash.png "eyeMUSIC Splash"
+[ui]: https://publicchum.s3-us-west-1.amazonaws.com/eyeMusic-ui.png "eyeMUSIC UI"
+
