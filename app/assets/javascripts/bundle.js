@@ -1270,7 +1270,6 @@ function (_React$Component) {
   }, {
     key: "getQueue",
     value: function getQueue(currSongIdx) {
-      debugger;
       var songs = this.props.songs;
       var queue = songs.slice(currSongIdx).concat(songs.slice(0, currSongIdx));
       return queue;
@@ -2807,7 +2806,8 @@ var msp = function msp(state) {
     // songs: Object.values(state.entities.songs),
     albums: state.entities.albums,
     playlists: state.entities.playlists,
-    playlist_songs: state.entities.playlist_songs
+    songs: Object.values(state.entities.songs),
+    playlist_songs: Object.keys(state.entities.playlistSongs)
   };
 };
 
@@ -2854,42 +2854,40 @@ function (_React$Component) {
       //use songs as source of truth
       // map over songs with playlist songs ids
 
-      debugger; // let playlistSongs = this.props.playlists.playlist_songs;
-      // let playlistSongsIds = playlistSongs.map(song => song.song_id);
+      var playlistSongs = this.props.playlist_songs;
 
-      if (this.props.playlists.playlist_songs) {
-        var playlistItems = Object.values(this.props.playlists.playlist_songs);
-        debugger; // const artistAlbum = this.props.albums[song.album_id];
+      if (playlistSongs) {
+        var playlistSongsIds = playlistSongs.map(function (song) {
+          return song.song_id;
+        }); // const artistAlbum = this.props.albums[song.album_id];
         // const artistName = this.props.artists[artistAlbum.artist_id].name;
 
-        songList = playlistItems.map(function (song) {
+        songList = this.props.songs.map(function (song) {
           var songAlbum = allAlbums[song.album_id];
-          debugger;
           var albumArtist = allArtists[songAlbum.artist_id];
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             className: "playlist-songs"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: artistAlbum.imageUrl
+            src: songAlbum.imageUrl
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "playlist-songs-index"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "playlist-songs-index-songtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "playlist-songs-index-artistinfo"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, albumArtist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "playlist-songs-index-albumtitle"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "playlist-songs-index-albumyear"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.year))));
         });
       } else {
         songList = "No songs here...";
       } // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
-      // let playlist = this.props.playlists[this.props.match.params.playlistId];
-      // let playlist = this.props.playlists[this.props.match.params.playlistId];
-      // if (playlist.playlist_songs.length > 0) {
-      //     playlist.playlist_songs.map(song => {
+      // let playlistItem = this.props.playlists[this.props.match.params.playlistId];
+      // if (playlistItem.playlist_songs.length > 0) {
+      //     playlistItem.playlist_songs.map(song => {
       //         const artistAlbum = this.props.albums[song.album_id];
       //         const artistName = this.props.artists[artistAlbum.artist_id].name;
       //         return (

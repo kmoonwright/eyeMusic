@@ -14,7 +14,8 @@ const msp = (state) => {
         // songs: Object.values(state.entities.songs),
         albums: state.entities.albums,
         playlists: state.entities.playlists,
-        playlist_songs: state.entities.playlist_songs,
+        songs: Object.values(state.entities.songs),
+        playlist_songs: Object.keys(state.entities.playlistSongs),
     })
 }
 
@@ -45,36 +46,34 @@ class PlaylistIndexDetail extends React.Component {
         //use songs as source of truth
         // map over songs with playlist songs ids
 
-        debugger
-        // let playlistSongs = this.props.playlists.playlist_songs;
-        // let playlistSongsIds = playlistSongs.map(song => song.song_id);
-
-        if (this.props.playlists.playlist_songs) {
-            let playlistItems = Object.values(this.props.playlists.playlist_songs);
-            debugger
+        let playlistSongs = this.props.playlist_songs;
+        
+        if (playlistSongs) {
+            let playlistSongsIds = playlistSongs.map(song => song.song_id);
+            
 
             // const artistAlbum = this.props.albums[song.album_id];
             // const artistName = this.props.artists[artistAlbum.artist_id].name;
 
-            songList = playlistItems.map(song => {
+            songList = this.props.songs.map(song => {
                 let songAlbum = allAlbums[song.album_id]
-                debugger
                 let albumArtist = allArtists[songAlbum.artist_id]
+                
                 return (
                     <div key={song.id} className="playlist-songs">
-                        <img src={artistAlbum.imageUrl}></img>
+                        <img src={songAlbum.imageUrl}></img>
                         <div className="playlist-songs-index">
                             <div className="playlist-songs-index-songtitle">
                                 <span>{song.title}</span>
                             </div>
                             <div className="playlist-songs-index-artistinfo">
-                                <span>{artistName}</span>
+                                <span>{albumArtist.name}</span>
                             </div>
                             <div className="playlist-songs-index-albumtitle">
-                                <span>{artistAlbum.title}</span>
+                                <span>{songAlbum.title}</span>
                             </div>
                             <div className="playlist-songs-index-albumyear">
-                                <span>{artistAlbum.year}</span>
+                                <span>{songAlbum.year}</span>
                             </div>
                         </div>
                     </div>
@@ -85,12 +84,10 @@ class PlaylistIndexDetail extends React.Component {
         }
 
         // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
-
-        // let playlist = this.props.playlists[this.props.match.params.playlistId];
         
-        // let playlist = this.props.playlists[this.props.match.params.playlistId];
-        // if (playlist.playlist_songs.length > 0) {
-        //     playlist.playlist_songs.map(song => {
+        // let playlistItem = this.props.playlists[this.props.match.params.playlistId];
+        // if (playlistItem.playlist_songs.length > 0) {
+        //     playlistItem.playlist_songs.map(song => {
         //         const artistAlbum = this.props.albums[song.album_id];
         //         const artistName = this.props.artists[artistAlbum.artist_id].name;
         //         return (

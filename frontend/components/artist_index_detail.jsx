@@ -22,7 +22,6 @@ class ArtistIndexDetail extends React.Component {
     }
 
     getQueue(currSongIdx) {
-        debugger
         let { songs } = this.props;
         let queue = songs.slice(currSongIdx).concat(songs.slice(0, currSongIdx))
         return queue;

@@ -25,7 +25,7 @@ end
 json.albums do
     @playlist.albums.each do |album|
         json.set! album.id do
-            json.extract! album, :id, :title, :image
+            json.extract! album, :id, :title, :image, :artist_id
             json.image url_for(album.image)
         end
     end
