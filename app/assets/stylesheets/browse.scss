@@ -14,14 +14,22 @@
     background: image-url('feature-bowie.jpg');
     background-size: contain;
     width: 800px;
-    height: 433px;
+    height: 450px;
     border-radius: 20px 20px 20px 20px;
+    p {
+        display:flex;
+        justify-content: flex-end;
+        font-size: 40px;
+        padding-top: 15px;
+        padding-right:15px;
+        font-family: Georgia, 'Times New Roman', Times, serif
+    }
 }
 .feature-prince {
     background: image-url('feature-prince.jpg');
     background-size: contain;
     width: 800px;
-    height: 480px;
+    height: 500px;
     border-radius: 20px 20px 20px 20px;
     margin-left: 41px;
     margin-right: 50px;
@@ -30,7 +38,7 @@
     background: image-url('feature-daftpunk.jpg');
     background-size: contain;
     width: 800px;
-    height: 450px;
+    height: 475px;
     border-radius: 20px 20px 20px 20px;
 }
 
@@ -52,9 +60,9 @@
 }
 @-webkit-keyframes slide {
   20% {margin-left: 0px;}
-  30% {margin-left: -790px;}
-  50% {margin-left: -790px;}
-  70% {margin-left: -1600px;}
-  90% {margin-left: -1600px;}
+  30% {margin-left: -820px;}
+  50% {margin-left: -820px;}
+  70% {margin-left: -1675px;}
+  90% {margin-left: -1675px;}
 
 }

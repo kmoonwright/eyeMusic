@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Slideshow from './browse-slide';
 
@@ -15,9 +16,17 @@ class Browse extends React.Component {
                         <h3>Featured Artists</h3>
                         <div className="featured-artists-slideshow" id="slideshow">
                             <div className="slide-wrapper">
-                                <div className="feature-bowie">David Bowie</div>
-                                <div className="feature-prince"></div>
-                                <div className="feature-daftpunk"></div>
+                                <Link to={'/library/artists/64'}>
+                                    <div className="feature-bowie">
+                                        <p>David Bowie</p>
+                                    </div>
+                                </Link>
+                                <Link to={'/library/artists/70'}>
+                                    <div className="feature-prince"></div>
+                                </Link>
+                                <Link to={'/library/artists/63'}>
+                                    <div className="feature-daftpunk"></div>
+                                </Link>
                             </div>
                         </div>
                     </div>

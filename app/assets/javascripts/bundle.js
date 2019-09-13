@@ -1496,49 +1496,7 @@ var mdp = function mdp(dispatch) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// import React from 'react';
-// import { Fade } from 'react-slideshow-image';
-// const fadeImages = [
-//     'images/feature-bowie.jpg',
-//     'images/feature-daftpunk.jpg',
-//     'images/feature-prince.jpg'
-// ];
-// const fadeProperties = {
-//     duration: 5000,
-//     transitionDuration: 500,
-//     infinite: false,
-//     indicators: true,
-//     onChange: (oldIndex, newIndex) => {
-//         console.log(`fade transition from ${oldIndex} to ${newIndex}`);
-//     }
-// }
-// const Slideshow = () => {
-//     return (
-//         <div className="slide-container">
-//             <Fade {...fadeProperties}>
-//                 <div className="each-fade">
-//                     <div className="image-container">
-//                         <img src={fadeImages[0]} />
-//                     </div>
-//                     <h2>First Slide</h2>
-//                 </div>
-//                 <div className="each-fade">
-//                     <div className="image-container">
-//                         <img src={fadeImages[1]} />
-//                     </div>
-//                     <h2>Second Slide</h2>
-//                 </div>
-//                 <div className="each-fade">
-//                     <div className="image-container">
-//                         <img src={fadeImages[2]} />
-//                     </div>
-//                     <h2>Third Slide</h2>
-//                 </div>
-//             </Fade>
-//         </div>
-//     )
-// }
-// export default Slideshow;
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/kyle/Desktop/a:A/6.24.19/AO7 - Fullstack Project/imusic_fullstack/frontend/components/browse-slide.jsx'");
 
 /***/ }),
 
@@ -1578,6 +1536,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Browse =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1603,13 +1562,19 @@ function (_React$Component) {
         id: "slideshow"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "slide-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/library/artists/64'
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-bowie"
-      }, "David Bowie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "David Bowie"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/library/artists/70'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-prince"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/library/artists/63'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-daftpunk"
-      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlists"
