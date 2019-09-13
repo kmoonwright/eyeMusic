@@ -9,7 +9,7 @@ class Radio extends React.Component {
     render() {
         return (
             <div className="radio-container">
-                <p>RADIO TBD</p>
+                <div className="radio-temp"></div>
             </div>
         )
     }

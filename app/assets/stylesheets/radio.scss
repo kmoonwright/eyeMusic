@@ -4,5 +4,16 @@
 
     height: 100%;
     width: 100%;
-    min-height: 900px;
+    min-height: 1200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radio-temp {
+    background: image-url('uc-clipart.png');
+    background-size: contain;
+    height: 400px;
+    width: 400px;
 }

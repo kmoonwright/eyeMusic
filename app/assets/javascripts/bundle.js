@@ -3095,7 +3095,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "radio-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "RADIO TBD"));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "radio-temp"
+      }));
     }
   }]);
 
