@@ -2202,33 +2202,24 @@ function (_React$Component) {
       progress: 0,
       random: false,
       repeat: false,
+      volumeBeforeMute: 0.65,
+      currentVolume: 0.65,
       mute: false
     };
     _this.audio = new Audio(); // this.audio.src = audioUrl;
     // this.play = this.play.bind(this);
     // this.pause = this.pause.bind(this);
+    // this.end = this.end.bind(this);
 
     _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
-    _this.end = _this.end.bind(_assertThisInitialized(_this));
     _this.nextSong = _this.nextSong.bind(_assertThisInitialized(_this));
-    _this.prevSong = _this.prevSong.bind(_assertThisInitialized(_this));
-    _this.randomize = _this.randomize.bind(_assertThisInitialized(_this));
-    _this.repeat = _this.repeat.bind(_assertThisInitialized(_this));
+    _this.prevSong = _this.prevSong.bind(_assertThisInitialized(_this)); // this.randomize = this.randomize.bind(this);
+    // this.repeat = this.repeat.bind(this);
+
     _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
+    _this.setVolume = _this.setVolume.bind(_assertThisInitialized(_this));
     return _this;
   } // everything depends on props
-  // componentDidMount() {
-  //     let playerElement = this.refs.player;
-  //     playerElement.addEventListener('timeupdate', this.updateProgress);
-  //     playerElement.addEventListener('ended', this.end);
-  //     playerElement.addEventListener('error', this.next);
-  // }
-  // componentWillUnmount() {
-  //     let playerElement = this.audio;
-  //     playerElement.removeEventListener('timeupdate', this.updateProgress);
-  //     playerElement.removeEventListener('ended', this.end);
-  //     playerElement.removeEventListener('error', this.next);
-  // }
 
 
   _createClass(MusicPlayer, [{
@@ -2256,39 +2247,34 @@ function (_React$Component) {
         this.audio.pause();
       } //check if state changed
 
-    } // play() {
-    //     // this.props.setCurrentSong(this.state.active);
-    //     // this.setState({ playing: true });
-    //     debugger
-    //     this.audio.src = active.audioUrl;
-    //     this.audio.play();
-    // }
-    // pause() {
-    //     // this.setState({ playing: false });
-    //     this.audio.pause();
-    // }
-
+    }
   }, {
     key: "toggle",
     value: function toggle() {
       //toggle song dispatch action to set a new slice of state
       // musicPlayer.ui.playing change
       // buttons should only swap out pieces of state
-      this.props.toggleSong(); // this.props.playing ? this.audio.pause() : this.audio.play();
-      // if (oldProps.playing === true && this.props.playing === false) {
-      //     this.audio.pause();
-      // } else if (oldProps.playing === false && this.props.playing === true) {
-      //     this.audio.play();
-      // }
-    }
+      this.props.toggleSong();
+    } // end() {
+    //     if (this.state.repeat) {
+    //         this.play()
+    //     } else {
+    //         // this.setState({ playing: false, progress: 0 });
+    //         this.next();
+    //     }
+    // }
+
   }, {
-    key: "end",
-    value: function end() {
-      if (this.state.repeat) {
-        this.play();
-      } else {
-        // this.setState({ playing: false, progress: 0 });
-        this.next();
+    key: "prevSong",
+    value: function prevSong() {
+      var songs = this.props.queue;
+      var currentSong = this.props.currentSong;
+
+      for (var i = 0; i < songs.length; i++) {
+        if (songs[i].id === currentSong.id) {
+          var prevSong = i === 0 ? null : songs[i - 1];
+          this.props.setCurrentSong(prevSong);
+        }
       }
     }
   }, {
@@ -2305,43 +2291,6 @@ function (_React$Component) {
       }
     }
   }, {
-    key: "prevSong",
-    value: function prevSong() {
-      var songs = this.props.queue;
-      var currentSong = this.props.currentSong;
-
-      for (var i = 0; i < songs.length; i++) {
-        if (songs[i].id === currentSong.id) {
-          var prevSong = i === 0 ? null : songs[i - 1];
-          this.props.setCurrentSong(prevSong);
-        }
-      } // let total = this.state.songs.length;
-      // let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
-      // let active = this.state.songs[current];
-      // // this.setState({ current: current, active: active, progress: 0 });
-      // this.props.setCurrentSong(active);
-      // this.audio.src = active.audioUrl;
-      // this.play();
-
-    }
-  }, {
-    key: "randomize",
-    value: function randomize() {
-      var s = shuffle(this.state.songs.slice());
-      this.setState({
-        songs: !this.state.random ? s : this.state.songs,
-        random: !this.state.random
-      });
-      this.props.setQueue(!this.state.random ? s : this.state.songs);
-    }
-  }, {
-    key: "repeat",
-    value: function repeat() {
-      this.setState({
-        repeat: !this.state.repeat
-      });
-    }
-  }, {
     key: "toggleMute",
     value: function toggleMute() {
       var mute = this.state.mute;
@@ -2350,6 +2299,25 @@ function (_React$Component) {
       });
       this.audio.volume = mute ? 1 : 0;
     }
+  }, {
+    key: "setVolume",
+    value: function setVolume(e) {
+      this.audio.currentSong.volume = e.target.value;
+      this.setState({
+        currentVolume: e.target.value
+      });
+      this.setState({
+        volumeBeforeMute: e.target.value
+      });
+    } // randomize() {
+    //     let s = shuffle(this.state.songs.slice());
+    //     this.setState({ songs: (!this.state.random) ? s : this.state.songs, random: !this.state.random });
+    //     this.props.setQueue((!this.state.random) ? s : this.state.songs);
+    // }
+    // repeat() {
+    //     this.setState({ repeat: !this.state.repeat });
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -2378,6 +2346,10 @@ function (_React$Component) {
         className: "music-player-btns-mute",
         title: "Mute/Unmute"
       }, "Mute"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.toggleMute,
+        className: "music-player-btns-volume",
+        title: "Volume"
+      }, "Volume"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.randomize,
         className: "music-player-btns-shuffle",
         title: "Shuffle"

@@ -24,6 +24,9 @@ class MusicPlayer extends React.Component {
             progress: 0,
             random: false,
             repeat: false,
+
+            volumeBeforeMute: 0.65,
+            currentVolume: 0.65,
             mute: false,
         }
 
@@ -32,32 +35,18 @@ class MusicPlayer extends React.Component {
 
         // this.play = this.play.bind(this);
         // this.pause = this.pause.bind(this);
+        // this.end = this.end.bind(this);
         this.toggle = this.toggle.bind(this);
-        this.end = this.end.bind(this);
         this.nextSong = this.nextSong.bind(this);
         this.prevSong = this.prevSong.bind(this);
-        this.randomize = this.randomize.bind(this);
-        this.repeat = this.repeat.bind(this);
+        // this.randomize = this.randomize.bind(this);
+        // this.repeat = this.repeat.bind(this);
+
         this.toggleMute = this.toggleMute.bind(this);
+        this.setVolume = this.setVolume.bind(this);
     }
 
-// everything depends on props
-
-
-
-    // componentDidMount() {
-    //     let playerElement = this.refs.player;
-    //     playerElement.addEventListener('timeupdate', this.updateProgress);
-    //     playerElement.addEventListener('ended', this.end);
-    //     playerElement.addEventListener('error', this.next);
-    // }
-
-    // componentWillUnmount() {
-    //     let playerElement = this.audio;
-    //     playerElement.removeEventListener('timeupdate', this.updateProgress);
-    //     playerElement.removeEventListener('ended', this.end);
-    //     playerElement.removeEventListener('error', this.next);
-    // }
+    // everything depends on props
 
     componentDidMount() {
         // if (this.props.playing) { 
@@ -82,19 +71,6 @@ class MusicPlayer extends React.Component {
         }
         //check if state changed
     }
-    
-    // play() {
-    //     // this.props.setCurrentSong(this.state.active);
-    //     // this.setState({ playing: true });
-    //     debugger
-    //     this.audio.src = active.audioUrl;
-    //     this.audio.play();
-    // }
-
-    // pause() {
-    //     // this.setState({ playing: false });
-    //     this.audio.pause();
-    // }
 
     toggle() {
         //toggle song dispatch action to set a new slice of state
@@ -102,22 +78,25 @@ class MusicPlayer extends React.Component {
         // buttons should only swap out pieces of state
 
         this.props.toggleSong();
-
-        // this.props.playing ? this.audio.pause() : this.audio.play();
-
-        // if (oldProps.playing === true && this.props.playing === false) {
-        //     this.audio.pause();
-        // } else if (oldProps.playing === false && this.props.playing === true) {
-        //     this.audio.play();
-        // }
     }
 
-    end() {
-        if (this.state.repeat) {
-            this.play()
-        } else {
-            // this.setState({ playing: false, progress: 0 });
-            this.next();
+    // end() {
+    //     if (this.state.repeat) {
+    //         this.play()
+    //     } else {
+    //         // this.setState({ playing: false, progress: 0 });
+    //         this.next();
+    //     }
+    // }
+
+    prevSong() {
+        let songs = this.props.queue;
+        const currentSong = this.props.currentSong;
+        for (let i = 0; i < songs.length; i++) {
+            if (songs[i].id === currentSong.id) {
+                const prevSong = (i === 0) ? null : songs[i - 1];
+                this.props.setCurrentSong(prevSong);
+            }
         }
     }
 
@@ -132,44 +111,28 @@ class MusicPlayer extends React.Component {
         }
     }
 
-    prevSong() {
-        let songs = this.props.queue;
-        const currentSong = this.props.currentSong;
-        for (let i = 0; i < songs.length; i++) {
-            if (songs[i].id === currentSong.id) {
-                const prevSong = (i === 0) ? null : songs[i - 1];
-                this.props.setCurrentSong(prevSong);
-            }
-        }
-
-
-        // let total = this.state.songs.length;
-        // let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
-        // let active = this.state.songs[current];
-
-        // // this.setState({ current: current, active: active, progress: 0 });
-        // this.props.setCurrentSong(active);
-
-        // this.audio.src = active.audioUrl;
-        // this.play();
-    }
-
-    randomize() {
-        let s = shuffle(this.state.songs.slice());
-        this.setState({ songs: (!this.state.random) ? s : this.state.songs, random: !this.state.random });
-        this.props.setQueue((!this.state.random) ? s : this.state.songs);
-    }
-
-    repeat() {
-        this.setState({ repeat: !this.state.repeat });
-    }
-
     toggleMute() {
         let mute = this.state.mute;
-
         this.setState({ mute: !this.state.mute });
         this.audio.volume = (mute) ? 1 : 0;
     }
+
+    setVolume(e) {
+        this.audio.currentSong.volume = e.target.value;
+        this.setState({ currentVolume: e.target.value })
+        this.setState({ volumeBeforeMute: e.target.value })
+    }
+
+    // randomize() {
+    //     let s = shuffle(this.state.songs.slice());
+    //     this.setState({ songs: (!this.state.random) ? s : this.state.songs, random: !this.state.random });
+    //     this.props.setQueue((!this.state.random) ? s : this.state.songs);
+    // }
+
+    // repeat() {
+    //     this.setState({ repeat: !this.state.repeat });
+    // }
+
 
     render() {
         
@@ -194,6 +157,9 @@ class MusicPlayer extends React.Component {
                             </button> */}
                             <button onClick={this.toggleMute} className="music-player-btns-mute" title="Mute/Unmute">
                                 Mute
+                            </button>
+                            <button onClick={this.toggleMute} className="music-player-btns-volume" title="Volume">
+                                Volume
                             </button>
                             <button onClick={this.randomize} className="music-player-btns-shuffle" title="Shuffle">
                                 Shuffle
