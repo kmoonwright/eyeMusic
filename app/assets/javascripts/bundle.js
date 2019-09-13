@@ -1489,6 +1489,59 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/browse-slide.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/browse-slide.jsx ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// import React from 'react';
+// import { Fade } from 'react-slideshow-image';
+// const fadeImages = [
+//     'images/feature-bowie.jpg',
+//     'images/feature-daftpunk.jpg',
+//     'images/feature-prince.jpg'
+// ];
+// const fadeProperties = {
+//     duration: 5000,
+//     transitionDuration: 500,
+//     infinite: false,
+//     indicators: true,
+//     onChange: (oldIndex, newIndex) => {
+//         console.log(`fade transition from ${oldIndex} to ${newIndex}`);
+//     }
+// }
+// const Slideshow = () => {
+//     return (
+//         <div className="slide-container">
+//             <Fade {...fadeProperties}>
+//                 <div className="each-fade">
+//                     <div className="image-container">
+//                         <img src={fadeImages[0]} />
+//                     </div>
+//                     <h2>First Slide</h2>
+//                 </div>
+//                 <div className="each-fade">
+//                     <div className="image-container">
+//                         <img src={fadeImages[1]} />
+//                     </div>
+//                     <h2>Second Slide</h2>
+//                 </div>
+//                 <div className="each-fade">
+//                     <div className="image-container">
+//                         <img src={fadeImages[2]} />
+//                     </div>
+//                     <h2>Third Slide</h2>
+//                 </div>
+//             </Fade>
+//         </div>
+//     )
+// }
+// export default Slideshow;
+
+/***/ }),
+
 /***/ "./frontend/components/browse.jsx":
 /*!****************************************!*\
   !*** ./frontend/components/browse.jsx ***!
@@ -1501,6 +1554,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _browse_slide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./browse-slide */ "./frontend/components/browse-slide.jsx");
+/* harmony import */ var _browse_slide__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_browse_slide__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1522,6 +1577,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Browse =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1536,14 +1592,24 @@ function (_React$Component) {
   _createClass(Browse, [{
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Browse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-artists-slideshow",
+        id: "slideshow"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "slide-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feature-bowie"
+      }, "David Bowie"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feature-prince"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feature-daftpunk"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlists"

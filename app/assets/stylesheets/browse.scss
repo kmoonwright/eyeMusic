@@ -6,3 +6,55 @@
     width: 100%;
     min-height: 900px;
 }
+
+.featured-artists {
+
+}
+.feature-bowie {
+    background: image-url('feature-bowie.jpg');
+    background-size: contain;
+    width: 800px;
+    height: 433px;
+    border-radius: 20px 20px 20px 20px;
+}
+.feature-prince {
+    background: image-url('feature-prince.jpg');
+    background-size: contain;
+    width: 800px;
+    height: 480px;
+    border-radius: 20px 20px 20px 20px;
+    margin-left: 41px;
+    margin-right: 50px;
+}
+.feature-daftpunk {
+    background: image-url('feature-daftpunk.jpg');
+    background-size: contain;
+    width: 800px;
+    height: 450px;
+    border-radius: 20px 20px 20px 20px;
+}
+
+#slideshow {
+  overflow: hidden;
+  width: 800px;
+  height: 450px;
+  margin: 0 auto;
+}
+.slide-wrapper {
+    display: flex;
+    width: 2400px;
+    -webkit-animation: slide 30s ease infinite;
+}
+.slide {
+  float: left;
+  height: 510px;
+  width: 730px;
+}
+@-webkit-keyframes slide {
+  20% {margin-left: 0px;}
+  30% {margin-left: -790px;}
+  50% {margin-left: -790px;}
+  70% {margin-left: -1600px;}
+  90% {margin-left: -1600px;}
+
+}
