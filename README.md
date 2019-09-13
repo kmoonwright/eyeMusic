@@ -58,9 +58,33 @@ end
 
 
 ### Search
+Users can search for songs, artists, albums, or playlists and watch their results render in real-time.
 ```javascript
-class User < ApplicationRecord
-
+//onChange Function
+handleSearch(e) {
+    if (this.state.searchVal === "") {
+        this.props.history.push("/search");
+    }
+    this.setState({ searchVal: e.target.value });
+    if (e.target.value === "") {
+        this.props.clearSearch();
+    }
+    this.props.searchArtists(e.target.value);
+}
+// results render
+<div className="search-index">
+    <p>Search for tunes...</p>
+    <form className="search-form" onSubmit={this.handleSubmit}>
+        <input className="search-bar-text"
+            type="text"
+            placeholder="Start typing..."
+            value={this.state.searchVal}
+            onChange={this.handleSearch}
+        ></input>
+        <button type="submit">Submit</button>
+    </form>
+    {searchRender}
+</div>
 ```
 
 ### Upcoming Features
@@ -69,24 +93,3 @@ class User < ApplicationRecord
 * Visualizer
 
 [logo]: https://github.com/kmoonwright/eyeMusic_fullstack/blob/master/app/assets/images/icon-eyemusic-logo.png "eyeMUSIC Logo"
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
