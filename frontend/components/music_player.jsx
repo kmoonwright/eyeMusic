@@ -135,7 +135,6 @@ class MusicPlayer extends React.Component {
 
 
     render() {
-        
         return (
 
             <div className="player-container">

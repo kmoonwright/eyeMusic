@@ -1536,9 +1536,18 @@ function (_React$Component) {
   _createClass(Browse, [{
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "THIS IS BROWSE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "browse-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Browse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-artists"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-albums"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlists"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Playlists"))));
     }
   }]);
 
