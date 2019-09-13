@@ -16,96 +16,57 @@ This project is built with **Ruby On Rails** with a **PostgreSQL** database on t
 
 
 ### User Authentication
-⋅⋅* Users can sign up or log in to use the application
-⋅⋅* Users can also log in through a demo account
+* Users can sign up or log in to use the application
+* Users can also log in through a demo account
 User credentials are securely hashed, salted, and stored as a password digest
 
 ```javascript
 class User < ApplicationRecord
+  validates :username, :session_token, uniqueness: true
+  validates :username, presence: true
+  validates :password, length: {minimum: 6, allow_nil: true}
+  
+  attr_reader :password
+  before_validation :ensure_session_token
 
-    validates :username, :password_digest, :session_token, presence: true
-    validates :password_digest, presence: true
-    validates :password, length: {minimum: 6}, allow_nil: true
+  def self.find_by_credentials(username, password)
+    @user = User.find_by(username: username)
+    return nil unless @user
+    @user.is_password?(password) ? @user : nil
+  end
 
-    after_initialize :ensure_session_token
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
 
-    attr_reader :password
-    
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
 
-    def self.find_by_credentials(username, password)
-        user = User.find_by(username: username)
-        return nil unless user && user.is_password?(password)
-        user
-    end
+  def ensure_session_token
+    self.session_token ||= SecureRandom::urlsafe_base64
+  end
 
-    def password=(password)
-        @password = password
-        self.password_digest = BCrypt::Password.create(password)
-    end
-
-    def is_password?(password)
-        BCrypt::Password.new(self.password_digest).is_password?(password)
-    end
-
-    def reset_session_token
-        self.session_token = SecureRandom.urlsafe_base64(16)
-        self.save!
-        self.session_token
-    end
-
-    private
-    def ensure_session_token
-        self.session_token ||= SecureRandom.urlsafe_base64(16)
-    end
+  def reset_session_token!
+    self.session_token = SecureRandom::urlsafe_base64
+  end
 end
 ```
+
 ### Eye Friendly UI with Continuous Play
+
 
 ### Search
 ```javascript
 class User < ApplicationRecord
 
-    validates :username, :password_digest, :session_token, presence: true
-    validates :password_digest, presence: true
-    validates :password, length: {minimum: 6}, allow_nil: true
-
-    after_initialize :ensure_session_token
-
-    attr_reader :password
-    
-
-    def self.find_by_credentials(username, password)
-        user = User.find_by(username: username)
-        return nil unless user && user.is_password?(password)
-        user
-    end
-
-    def password=(password)
-        @password = password
-        self.password_digest = BCrypt::Password.create(password)
-    end
-
-    def is_password?(password)
-        BCrypt::Password.new(self.password_digest).is_password?(password)
-    end
-
-    def reset_session_token
-        self.session_token = SecureRandom.urlsafe_base64(16)
-        self.save!
-        self.session_token
-    end
-
-    private
-    def ensure_session_token
-        self.session_token ||= SecureRandom.urlsafe_base64(16)
-    end
-end
 ```
 
 ### Upcoming Features
-⋅⋅* Playlist customization with playlist images and description
-⋅⋅* Radio functionality
-
+* Playlist customization with playlist images and description
+* Radio functionality
+* Visualizer
 
 [logo]: https://github.com/kmoonwright/eyeMusic_fullstack/blob/master/app/assets/images/icon-eyemusic-logo.png "eyeMUSIC Logo"
 
