@@ -7,9 +7,11 @@
 
 The project was built in 10 days, and more features will be added over time.
 
+
 ## Technologies
 
 This project is built with **Ruby On Rails** with a **PostgreSQL** database on the back-end, utilizing Rails ActiveStorage to upload music and image files to Amazon S3. **React.js** and **Redux** on the front-end to implement seamless navigation and dynamic user interfaces.
+
 
 ## Key Features
 
@@ -56,10 +58,14 @@ end
 ```
 
 ### Eye Friendly UI with Continuous Play
+
 Songs play continuously in the header music player. When a song is played, other songs are queued depending on the selected index. This queue is maintained by a music player slice of state that stores the current song and queue, and can be accessed by other components to be displayed elsewhere.
+
 ![UI]
 
+
 ### Search
+
 Users can search for songs, artists, albums, or playlists and watch their results render in real-time.
 ```javascript
 //onChange Function
