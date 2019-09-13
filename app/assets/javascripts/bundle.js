@@ -1288,13 +1288,16 @@ function (_React$Component) {
           key: album.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: album.imageUrl
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, album.year), allsongs.map(function (song) {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+          className: "artist-index-details-show "
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, album.year), allsongs.map(function (song) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             key: song.id,
             onClick: function onClick() {
               return _this2.handlePlay(song);
             },
-            song: song
+            song: song,
+            className: "artist-index-detail-song-item"
           }, song.title);
         })));
       }));
@@ -1989,11 +1992,11 @@ function (_React$Component) {
         className: "landing-cards-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         name: "overview"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "It's as easy", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "as it sounds.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "landing-program-guide"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "It's as easy", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "as it sounds.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         name: "explore"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "New and noteworthy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Now Playing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "landing-program-guide"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "New and noteworthy."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists-slideshow",
         id: "landing-slideshow"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

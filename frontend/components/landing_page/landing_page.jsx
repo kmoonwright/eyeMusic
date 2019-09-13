@@ -42,10 +42,9 @@ class LandingPage extends React.Component {
                         </h2>
                     </div>
 
+                    <a name="explore"></a>
                     <div className="landing-program-guide">
-                        <a name="explore"></a>
                         <h1>New and noteworthy.</h1>
-                        <h3>Now Playing</h3>
                         <h3>Featured Artists</h3>
                         <div className="featured-artists-slideshow" id="landing-slideshow">
                             <div className="landing-slide-wrapper">

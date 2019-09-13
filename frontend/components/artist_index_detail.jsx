@@ -35,12 +35,16 @@ class ArtistIndexDetail extends React.Component {
                     return (
                         <li key={album.id}>
                             <img src={album.imageUrl}></img>
-                            <ul>
+                            <ul className="artist-index-details-show ">
                                 <h3>{album.title}</h3>
-                                <h4>{album.year}</h4>    
+                                <h4>{album.year}</h4>       
                                 {allsongs.map(song => {
                                     return (
-                                        <button key={song.id} onClick={() => this.handlePlay(song)} song={song}>
+                                        <button key={song.id} 
+                                            onClick={() => this.handlePlay(song)} 
+                                            song={song}
+                                            className="artist-index-detail-song-item"    
+                                        >
                                             {song.title}
                                         </button>
                                     )

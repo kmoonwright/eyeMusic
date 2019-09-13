@@ -53,6 +53,21 @@
     }
 }
 
+.artist-index-details-show {
+    display: flex;
+    flex-direction: column;
+    button {
+        padding: 4px;
+    }
+}
+
+.artist-index-detail-song-item {
+    padding: 5px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+
 // SONG INDEX
 .song-index-container {
 
