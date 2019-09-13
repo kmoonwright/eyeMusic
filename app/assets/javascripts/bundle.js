@@ -1489,17 +1489,6 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/browse-slide.jsx":
-/*!**********************************************!*\
-  !*** ./frontend/components/browse-slide.jsx ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/kyle/Desktop/a:A/6.24.19/AO7 - Fullstack Project/imusic_fullstack/frontend/components/browse-slide.jsx'");
-
-/***/ }),
-
 /***/ "./frontend/components/browse.jsx":
 /*!****************************************!*\
   !*** ./frontend/components/browse.jsx ***!
@@ -1512,8 +1501,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _browse_slide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./browse-slide */ "./frontend/components/browse-slide.jsx");
-/* harmony import */ var _browse_slide__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_browse_slide__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1531,7 +1518,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -1555,7 +1541,7 @@ function (_React$Component) {
         className: "browse-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Browse"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists-slideshow",
@@ -1576,9 +1562,31 @@ function (_React$Component) {
         className: "feature-daftpunk"
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlists"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Playlists"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-album-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/library/albums/158'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-album-bold"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Axis:Bold As Love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Jimi Hendrix Experience")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/library/albums/149'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-album-d4"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "6Twenty"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The D4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: '/library/albums/164'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-album-box"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Living In A Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Living In A Box")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-60s"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "60's Hits")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-70s"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "70's Hits")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-80s"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "80's Hits"))))));
     }
   }]);
 

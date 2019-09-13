@@ -4,7 +4,11 @@
 
     height: 100%;
     width: 100%;
-    min-height: 900px;
+    min-height: 1200px;
+    h3 {
+        margin-top: 50px;
+        margin-left: 50px;
+    }
 }
 
 .featured-artists {
@@ -64,5 +68,63 @@
   50% {margin-left: -820px;}
   70% {margin-left: -1675px;}
   90% {margin-left: -1675px;}
+}
 
+.featured-album-index {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.featured-album-bold {
+    background: image-url('feature-album-bold.png');
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+}
+.featured-album-d4 {
+    background: image-url('feature-album-d4.jpg');
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+}
+.featured-album-box {
+    background: image-url('feature-album-box.jpg');
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+}
+
+
+.featured-playlist-index {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-family: -apple-system, BlinkMacSystemFont, 
+        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 
+        'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 60px;
+    p {
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+}
+
+.featured-playlist-60s {
+    background: image-url('card-red.png');
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+}
+.featured-playlist-70s {
+    background: image-url('card-purple.png');
+    background-size: contain;
+    height: 200px;
+    width: 200px;
+}
+.featured-playlist-80s {
+    background: image-url('card-blue.png');
+    background-size: contain;
+    height: 200px;
+    width: 200px;
 }
