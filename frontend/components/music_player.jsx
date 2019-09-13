@@ -133,15 +133,25 @@ class MusicPlayer extends React.Component {
     }
 
     prevSong() {
-        let total = this.state.songs.length;
-        let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
-        let active = this.state.songs[current];
+        let songs = this.props.queue;
+        const currentSong = this.props.currentSong;
+        for (let i = 0; i < songs.length; i++) {
+            if (songs[i].id === currentSong.id) {
+                const prevSong = (i === 0) ? null : songs[i - 1];
+                this.props.setCurrentSong(prevSong);
+            }
+        }
 
-        // this.setState({ current: current, active: active, progress: 0 });
-        this.props.setCurrentSong(active);
 
-        this.audio.src = active.audioUrl;
-        this.play();
+        // let total = this.state.songs.length;
+        // let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
+        // let active = this.state.songs[current];
+
+        // // this.setState({ current: current, active: active, progress: 0 });
+        // this.props.setCurrentSong(active);
+
+        // this.audio.src = active.audioUrl;
+        // this.play();
     }
 
     randomize() {
@@ -170,7 +180,7 @@ class MusicPlayer extends React.Component {
 
                     <div className="music-player-interface">
                         <div className="music-player-btns">
-                            <button onClick={this.previous} className="music-player-btns-prev" title="Previous Song">
+                            <button onClick={this.prevSong} className="music-player-btns-prev" title="Previous Song">
                                 Previous
                             </button>
                             <button onClick={this.toggle} className="music-player-btns-play" title="Play/Pause">

@@ -2307,13 +2307,22 @@ function (_React$Component) {
   }, {
     key: "prevSong",
     value: function prevSong() {
-      var total = this.state.songs.length;
-      var current = this.state.current > 0 ? this.state.current - 1 : total - 1;
-      var active = this.state.songs[current]; // this.setState({ current: current, active: active, progress: 0 });
+      var songs = this.props.queue;
+      var currentSong = this.props.currentSong;
 
-      this.props.setCurrentSong(active);
-      this.audio.src = active.audioUrl;
-      this.play();
+      for (var i = 0; i < songs.length; i++) {
+        if (songs[i].id === currentSong.id) {
+          var prevSong = i === 0 ? null : songs[i - 1];
+          this.props.setCurrentSong(prevSong);
+        }
+      } // let total = this.state.songs.length;
+      // let current = (this.state.current > 0) ? this.state.current - 1 : total - 1;
+      // let active = this.state.songs[current];
+      // // this.setState({ current: current, active: active, progress: 0 });
+      // this.props.setCurrentSong(active);
+      // this.audio.src = active.audioUrl;
+      // this.play();
+
     }
   }, {
     key: "randomize",
@@ -2353,7 +2362,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-btns"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.previous,
+        onClick: this.prevSong,
         className: "music-player-btns-prev",
         title: "Previous Song"
       }, "Previous"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
