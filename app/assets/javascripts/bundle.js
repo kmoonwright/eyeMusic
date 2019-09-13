@@ -2333,33 +2333,33 @@ function (_React$Component) {
         onClick: this.prevSong,
         className: "music-player-btns-prev",
         title: "Previous Song"
-      }, "Previous"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.toggle,
         className: "music-player-btns-play",
         title: "Play/Pause"
-      }, "Play/Pause"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.nextSong,
         className: "music-player-btns-next",
         title: "Next Song"
-      }, "Next"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.toggleMute,
         className: "music-player-btns-mute",
         title: "Mute/Unmute"
-      }, "Mute"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.toggleMute,
         className: "music-player-btns-volume",
         title: "Volume"
-      }, "Volume"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.randomize,
         className: "music-player-btns-shuffle",
         title: "Shuffle"
-      }, "Shuffle"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-display"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-btn"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
-      }, "Search")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "search-btn"
+      }))));
     }
   }]);
 
@@ -2476,7 +2476,11 @@ function (_React$Component) {
         className: "navbar-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-history"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Back"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Forward")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "navbar-history-back"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "navbar-history-forward"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-btns"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/library"
@@ -2719,6 +2723,33 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var msp = function msp(state) {
+  return {
+    artists: state.entities.artists,
+    // songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
+    playlists: state.entities.playlists,
+    playlist_songs: state.entities.playlist_songs
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchOnePlaylist: function fetchOnePlaylist(playlistId) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOnePlaylist"])(playlistId));
+    },
+    deletePlaylist: function deletePlaylist(id) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id));
+    },
+    addSongToPlaylist: function addSongToPlaylist(data) {
+      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["addSongToPlaylist"])(data));
+    },
+    removeSongFromPlaylist: function removeSongFromPlaylist(id, data) {
+      return Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["removeSongFromPlaylist"])(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id, data));
+    }
+  };
+};
+
 var PlaylistIndexDetail =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2738,8 +2769,38 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       var songList;
-      debugger; // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
+      debugger;
+
+      if (this.props.playlists.playlist_songs) {
+        var playlistItems = Object.values(this.props.playlists.playlist_songs);
+        debugger;
+        songList = playlistItems.map(function (song) {
+          debugger;
+          var artistAlbum = _this.props.albums[song.album_id];
+          var artistName = _this.props.artists[artistAlbum.artist_id].name;
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: song.id,
+            className: "playlist-songs"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: artistAlbum.imageUrl
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "playlist-songs-index"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "playlist-songs-index-songtitle"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "playlist-songs-index-artistinfo"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistName)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "playlist-songs-index-albumtitle"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "playlist-songs-index-albumyear"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
+        });
+      } else {
+        songList = "No songs here...";
+      } // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
       // let playlist = this.props.playlists[this.props.match.params.playlistId];
       // let playlist = this.props.playlists[this.props.match.params.playlistId];
       // if (playlist.playlist_songs.length > 0) {
@@ -2793,6 +2854,7 @@ function (_React$Component) {
       //     })
       // }
 
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-songs-container"
       }, songList, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Add a Song"));
@@ -2801,32 +2863,6 @@ function (_React$Component) {
 
   return PlaylistIndexDetail;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var msp = function msp(state) {
-  return {
-    artists: state.entities.artists,
-    // songs: Object.values(state.entities.songs),
-    albums: state.entities.albums,
-    playlists: state.entities.playlists
-  };
-};
-
-var mdp = function mdp(dispatch) {
-  return {
-    fetchOnePlaylist: function fetchOnePlaylist(playlistId) {
-      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOnePlaylist"])(playlistId));
-    },
-    deletePlaylist: function deletePlaylist(id) {
-      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id));
-    },
-    addSongToPlaylist: function addSongToPlaylist(data) {
-      return dispatch(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["addSongToPlaylist"])(data));
-    },
-    removeSongFromPlaylist: function removeSongFromPlaylist(id, data) {
-      return Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["removeSongFromPlaylist"])(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id, data));
-    }
-  };
-};
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(PlaylistIndexDetail));
 
@@ -4135,6 +4171,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _albums_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./albums_reducer */ "./frontend/reducers/albums_reducer.js");
 /* harmony import */ var _artists_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./artists_reducer */ "./frontend/reducers/artists_reducer.js");
 /* harmony import */ var _playlists_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./playlists_reducer */ "./frontend/reducers/playlists_reducer.js");
+/* harmony import */ var _playlist_songs_reducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./playlist_songs_reducer */ "./frontend/reducers/playlist_songs_reducer.js");
+
 
 
 
@@ -4146,7 +4184,8 @@ __webpack_require__.r(__webpack_exports__);
   songs: _songs_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   albums: _albums_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   artists: _artists_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  playlists: _playlists_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  playlists: _playlists_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  playlistSongs: _playlist_songs_reducer__WEBPACK_IMPORTED_MODULE_6__["default"]
 }));
 
 /***/ }),
@@ -4259,6 +4298,56 @@ var playlistErrorsReducer = function playlistErrorsReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/playlist_songs_reducer.js":
+/*!*****************************************************!*\
+  !*** ./frontend/reducers/playlist_songs_reducer.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
+/* harmony import */ var _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/search_actions */ "./frontend/actions/search_actions.js");
+
+
+
+var playlistSongsReducer = function playlistSongsReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+
+  switch (action.type) {
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_PLAYLISTS"]:
+      return action.playlists;
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_PLAYLIST"]:
+      //     let newState = Object.assign({})
+      //     return Object.assign({}, oldState, action.payload.playlist_songs);
+      newState = Object.assign({}, action.payload.playlist_songs);
+      return newState;
+
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ONE_PLAYLIST"]:
+      var newState = Object.assign({}, oldState);
+      delete newState[action.playlist.id];
+      return newState;
+
+    case _actions_search_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_SEARCHES"]:
+      if (action.playlists === undefined) {
+        return oldState;
+      }
+
+      return Object.assign({}, oldState, action.playlists);
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (playlistSongsReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/playlists_reducer.js":
 /*!************************************************!*\
   !*** ./frontend/reducers/playlists_reducer.js ***!
@@ -4283,7 +4372,12 @@ var playlistReducer = function playlistReducer() {
       return action.playlists;
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ONE_PLAYLIST"]:
-      return Object.assign({}, oldState, action.payload.playlist_songs);
+      //     let newState = Object.assign({})
+      //     return Object.assign({}, oldState, action.payload.playlist_songs);
+      newState = {
+        playlist_songs: action.payload.playlist_songs
+      };
+      return newState;
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_ONE_PLAYLIST"]:
       var newState = Object.assign({}, oldState);

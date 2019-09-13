@@ -5,11 +5,13 @@ import songsReducer from './songs_reducer';
 import albumsReducer from './albums_reducer';
 import artistsReducer from './artists_reducer';
 import playlistsReducer from './playlists_reducer';
+import playlistSongsReducer from './playlist_songs_reducer';
 
 export default combineReducers({
     users: usersReducer,
     songs: songsReducer,
     albums: albumsReducer,
     artists: artistsReducer,
-    playlists: playlistsReducer
+    playlists: playlistsReducer,
+    playlistSongs: playlistSongsReducer,
 });

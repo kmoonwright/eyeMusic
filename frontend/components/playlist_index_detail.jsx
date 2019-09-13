@@ -8,6 +8,24 @@ import {
     removeSongFromPlaylist,
 } from '../actions/playlist_actions';
 
+const msp = (state) => {
+    return ({
+        artists: state.entities.artists,
+        // songs: Object.values(state.entities.songs),
+        albums: state.entities.albums,
+        playlists: state.entities.playlists,
+        playlist_songs: state.entities.playlist_songs,
+    })
+}
+
+
+const mdp = dispatch => ({
+    fetchOnePlaylist: (playlistId) => dispatch(fetchOnePlaylist(playlistId)),
+    deletePlaylist: (id) => dispatch(deletePlaylist(id)),
+    addSongToPlaylist: (data) => dispatch(addSongToPlaylist(data)),
+    removeSongFromPlaylist: (id, data) => removeSongFromPlaylist(deletePlaylist(id, data)),
+})
+
 class PlaylistIndexDetail extends React.Component {
     constructor(props) {
         super(props)
@@ -18,9 +36,38 @@ class PlaylistIndexDetail extends React.Component {
     }
 
     render() {
-        
         let songList;
         debugger
+        if (this.props.playlists.playlist_songs) {
+            let playlistItems = Object.values(this.props.playlists.playlist_songs);
+            debugger
+            songList = playlistItems.map(song => {
+                debugger
+                const artistAlbum = this.props.albums[song.album_id];
+                const artistName = this.props.artists[artistAlbum.artist_id].name;
+                return (
+                    <div key={song.id} className="playlist-songs">
+                        <img src={artistAlbum.imageUrl}></img>
+                        <div className="playlist-songs-index">
+                            <div className="playlist-songs-index-songtitle">
+                                <span>{song.title}</span>
+                            </div>
+                            <div className="playlist-songs-index-artistinfo">
+                                <span>{artistName}</span>
+                            </div>
+                            <div className="playlist-songs-index-albumtitle">
+                                <span>{artistAlbum.title}</span>
+                            </div>
+                            <div className="playlist-songs-index-albumyear">
+                                <span>{artistAlbum.year}</span>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        } else {
+            songList = "No songs here...";
+        }
 
         // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
 
@@ -85,22 +132,5 @@ class PlaylistIndexDetail extends React.Component {
         )
     }
 }
-
-const msp = (state) => {
-    return ({
-        artists: state.entities.artists,
-        // songs: Object.values(state.entities.songs),
-        albums: state.entities.albums,
-        playlists: state.entities.playlists,
-    })
-}
-
-
-const mdp = dispatch => ({
-    fetchOnePlaylist: (playlistId) => dispatch(fetchOnePlaylist(playlistId)),
-    deletePlaylist: (id) => dispatch(deletePlaylist(id)),
-    addSongToPlaylist: (data) => dispatch(addSongToPlaylist(data)),
-    removeSongFromPlaylist: (id, data) => removeSongFromPlaylist(deletePlaylist(id, data)),
-})
 
 export default connect(msp, mdp)(PlaylistIndexDetail);

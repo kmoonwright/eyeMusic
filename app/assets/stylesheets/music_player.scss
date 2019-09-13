@@ -11,5 +11,50 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
     font-size: 30px;
+}
+
+.music-player-btns {
+    display: flex;
+    align-items: center;
+}
+
+.music-player-btns-prev {
+    background: image-url('icon-rewind.png');
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+}
+
+.music-player-btns-play {
+    background: image-url('icon-play.png');
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+}
+
+.music-player-btns-next {
+    background: image-url('icon-fastforward.png');
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+}
+
+.music-player-btns-mute {
+    background: image-url('icon-mute.png');
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+}
+
+
+.search-btn {
+    background: image-url('icon-search.png');
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    margin-top: 8px;
 }

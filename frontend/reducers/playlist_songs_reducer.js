@@ -5,15 +5,15 @@ import {
 } from '../actions/playlist_actions';
 import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from '../actions/search_actions';
 
-const playlistReducer = (oldState = {}, action) => {
+const playlistSongsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     switch (action.type) {
         case RECEIVE_ALL_PLAYLISTS:
             return action.playlists
         case RECEIVE_ONE_PLAYLIST:
-        //     let newState = Object.assign({})
-        //     return Object.assign({}, oldState, action.payload.playlist_songs);
-            newState = { playlist_songs: action.payload.playlist_songs };
+            //     let newState = Object.assign({})
+            //     return Object.assign({}, oldState, action.payload.playlist_songs);
+            newState = Object.assign({}, action.payload.playlist_songs );
             return newState;
         case REMOVE_ONE_PLAYLIST:
             let newState = Object.assign({}, oldState);
@@ -29,4 +29,4 @@ const playlistReducer = (oldState = {}, action) => {
     }
 }
 
-export default playlistReducer;
+export default playlistSongsReducer;

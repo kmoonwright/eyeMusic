@@ -143,38 +143,28 @@ class MusicPlayer extends React.Component {
 
                     <div className="music-player-interface">
                         <div className="music-player-btns">
-                            <button onClick={this.prevSong} className="music-player-btns-prev" title="Previous Song">
-                                Previous
-                            </button>
-                            <button onClick={this.toggle} className="music-player-btns-play" title="Play/Pause">
-                                Play/Pause
-                            </button>
-                            <button onClick={this.nextSong} className="music-player-btns-next" title="Next Song">
-                                Next
-                            </button>
+                            <button onClick={this.prevSong} className="music-player-btns-prev" 
+                                title="Previous Song"></button>
+                            <button onClick={this.toggle} className="music-player-btns-play" 
+                                title="Play/Pause"></button>
+                            <button onClick={this.nextSong} className="music-player-btns-next" 
+                                title="Next Song"></button>
                             {/* <button onClick={this.next} className="music-player-btns-volume" title="Volume">
                                 Volume
                             </button> */}
-                            <button onClick={this.toggleMute} className="music-player-btns-mute" title="Mute/Unmute">
-                                Mute
-                            </button>
-                            <button onClick={this.toggleMute} className="music-player-btns-volume" title="Volume">
-                                Volume
-                            </button>
-                            <button onClick={this.randomize} className="music-player-btns-shuffle" title="Shuffle">
-                                Shuffle
-                            </button>
+                            <button onClick={this.toggleMute} className="music-player-btns-mute" 
+                                title="Mute/Unmute"></button>
+                            <button onClick={this.toggleMute} className="music-player-btns-volume" 
+                                title="Volume"></button>
+                            <button onClick={this.randomize} className="music-player-btns-shuffle" 
+                                title="Shuffle"></button>
                         </div>
                     </div>
                 
                     <div className="music-player-display">
                     </div>
 
-                    <div className="search-btn">
-                        <button>
-                            <Link to="/search">Search</Link>
-                        </button>
-                    </div>
+                    <Link to="/search"><button className="search-btn"></button></Link>
 
                 </div>
             </div>

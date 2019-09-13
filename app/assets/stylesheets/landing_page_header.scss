@@ -77,13 +77,15 @@
 // }
 .header-logo {
     display: flex;
+    align-items: center;
     font-size: 22px;
     font-weight: 700;
+    padding-bottom: 25px;
 }
 
 .header-icon {
-    background: image-url('icon2.png') no-repeat;
+    background: image-url('icon-eyemusic-logo.png') no-repeat;
     background-size: contain;
-    height: 30px;
-    width: 28px;
+    height: 40px;
+    width: 40px;
 }

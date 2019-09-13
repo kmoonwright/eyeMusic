@@ -15,3 +15,17 @@
         margin:5px;
     }
 }
+
+.navbar-history-back {
+  background: image-url('icon-backbutton.png') no-repeat;
+  background-size: contain;
+  height: 25px;
+  width: 45px;
+}
+
+.navbar-history-forward {
+  background: image-url('icon-forward.png') no-repeat;
+  background-size: contain;
+  height: 25px;
+  width: 45px;
+}
