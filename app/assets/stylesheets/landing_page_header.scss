@@ -23,21 +23,26 @@
 .landing-nav-signup {
   margin-left: 18px;
   button {
-      padding-left:10px;
-      color: #fff;
-      box-sizing: border-box;
-      //   display: flex;
-      //   align-content: center;
-      //   justify-content: center;
-      width: 85px;
-      height: 30px;
-      font-size: 14px;
-      background: #ff2f56;
-      border-color: #ff2f56;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
+    padding-left:10px;
+    color: #fff;
+    box-sizing: border-box;
+    //   display: flex;
+    //   align-content: center;
+    //   justify-content: center;
+    width: 85px;
+    height: 30px;
+    font-size: 14px;
+    background: #ff2f56;
+    border-color: #ff2f56;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  button:hover {
+    background: #ff7c94;
+    box-shadow: 3px 5px black;
+    transition: ease-in;
   }
 }
 .landing-nav-jumpers {

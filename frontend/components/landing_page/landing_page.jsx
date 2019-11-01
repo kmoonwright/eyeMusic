@@ -67,6 +67,22 @@ class LandingPage extends React.Component {
                         <h2>Start your free trial.</h2>
                         <h3>No commitment. Cancel anytime.</h3>
                         <Link className="btn" to="/signup"><button>Try it free</button></Link>
+
+                        <div class="landing-social-container">
+                            <p>
+                                Developed by
+                                <a href="http://www.kylemoonwright.com" target="_blank" class="landing-social-portfolio-link"> Kyle Moon-Wright</a>
+                            </p>
+                            <a href="https://www.linkedin.com/in/kyle-moon-wright/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/kmoonwright" target="_blank">
+                                <i class="fab fa-github-square"></i>
+                            </a>
+                            <a href="https://angel.co/kyle-moon-wright" target="_blank">
+                                <i class="fab fa-angellist"></i>
+                            </a>
+                        </div>
                     </div>
 
                 </div>

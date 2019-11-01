@@ -1,19 +1,19 @@
 .navbar-container {
-    height: 35px;
-    color: whitesmoke;
-    background-color: #202020;
-    border-bottom: 2px solid #3e3e3e;
-    padding: 5px;
+  height: 35px;
+  color: whitesmoke;
+  background-color: #202020;
+  border-bottom: 2px solid #3e3e3e;
+  padding: 5px;
 }
 
 .navbar-index {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-    button {
-        margin:5px;
-    }
+  button {
+    margin:5px;
+  }
 }
 
 

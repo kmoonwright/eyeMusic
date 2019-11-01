@@ -23,6 +23,11 @@
     background: #ff2f56;
     border-color: #ff2f56;
   }
+  button:hover {
+    background: #ff7c94;
+    box-shadow: 3px 5px black;
+    transition: ease-in;
+  }
 }
 
 .landing-logo {
@@ -137,6 +142,24 @@
   h3 {
     font-size: 21px;
   }
+}
+
+.landing-social-container {
+  margin-top: 100px;
+  font-size: 30px;
+  font-style: italic;
+  i {
+    font-size: 50px;
+    padding: 20px;
+  }
+  a:hover {
+    color: black;
+    border-bottom: solid 2px black;
+  }
+}
+.landing-social-portfolio-link {
+  font-weight: 600;
+  border-bottom: solid 2px white;
 }
 
 //Artist Slideshow

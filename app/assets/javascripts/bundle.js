@@ -2015,7 +2015,28 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Start your free trial."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "No commitment. Cancel anytime."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "btn",
         to: "/signup"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Try it free")))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Try it free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "landing-social-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Developed by", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "http://www.kylemoonwright.com",
+        target: "_blank",
+        "class": "landing-social-portfolio-link"
+      }, " Kyle Moon-Wright")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://www.linkedin.com/in/kyle-moon-wright/",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-linkedin"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://github.com/kmoonwright",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-github-square"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "https://angel.co/kyle-moon-wright",
+        target: "_blank"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "fab fa-angellist"
+      }))))));
     }
   }]);
 
