@@ -7,6 +7,26 @@ import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_a
 import AlbumIndexItem from './album_index_item'
 import AlbumIndexDetail from './album_index_detail'
 
+
+const msp = (state, ownProps) => {
+    const albumId = ownProps.match.params.albumId;
+    let album = state.entities.albums[albumId];
+
+    return ({
+        artists: Object.values(state.entities.artists),
+        songs: Object.values(state.entities.songs),
+        albums: Object.values(state.entities.albums),
+
+    })
+}
+
+const mdp = dispatch => ({
+    fetchAllAlbums: () => dispatch(fetchAllAlbums()),
+    fetchOneAlbum: (albumId) => dispatch(fetchOneAlbum(albumId)),
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
+})
+
+
 class AlbumIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -71,23 +91,5 @@ class AlbumIndex extends React.Component {
 
     }
 }
-
-const msp = (state, ownProps) => {
-    const albumId = ownProps.match.params.albumId;
-    let album = state.entities.albums[albumId];
-    
-    return ({
-        artists: Object.values(state.entities.artists),
-        songs: Object.values(state.entities.songs),
-        albums: Object.values(state.entities.albums),
-        
-    })
-}
-
-const mdp = dispatch => ({
-    fetchAllAlbums: () => dispatch(fetchAllAlbums()),
-    fetchOneAlbum: (albumId) => dispatch(fetchOneAlbum(albumId)),
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-})
 
 export default connect(msp, mdp)(AlbumIndex);

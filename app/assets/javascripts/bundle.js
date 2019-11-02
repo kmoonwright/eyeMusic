@@ -651,6 +651,30 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var msp = function msp(state, ownProps) {
+  var albumId = ownProps.match.params.albumId;
+  var album = state.entities.albums[albumId];
+  return {
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    albums: Object.values(state.entities.albums)
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchAllAlbums: function fetchAllAlbums() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_4__["fetchAllAlbums"])());
+    },
+    fetchOneAlbum: function fetchOneAlbum(albumId) {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_4__["fetchOneAlbum"])(albumId));
+    },
+    fetchAllSongs: function fetchAllSongs() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_4__["fetchAllSongs"])());
+    }
+  };
+};
+
 var AlbumIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -727,30 +751,6 @@ function (_React$Component) {
 
   return AlbumIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var msp = function msp(state, ownProps) {
-  var albumId = ownProps.match.params.albumId;
-  var album = state.entities.albums[albumId];
-  return {
-    artists: Object.values(state.entities.artists),
-    songs: Object.values(state.entities.songs),
-    albums: Object.values(state.entities.albums)
-  };
-};
-
-var mdp = function mdp(dispatch) {
-  return {
-    fetchAllAlbums: function fetchAllAlbums() {
-      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_4__["fetchAllAlbums"])());
-    },
-    fetchOneAlbum: function fetchOneAlbum(albumId) {
-      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_4__["fetchOneAlbum"])(albumId));
-    },
-    fetchAllSongs: function fetchAllSongs() {
-      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_4__["fetchAllSongs"])());
-    }
-  };
-};
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(AlbumIndex));
 
@@ -1116,6 +1116,38 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var msp = function msp(state) {
+  return {
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchAllArtists: function fetchAllArtists() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllArtists"])());
+    },
+    fetchOneArtist: function fetchOneArtist(artistId) {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOneArtist"])(artistId));
+    },
+    fetchAllSongs: function (_fetchAllSongs) {
+      function fetchAllSongs() {
+        return _fetchAllSongs.apply(this, arguments);
+      }
+
+      fetchAllSongs.toString = function () {
+        return _fetchAllSongs.toString();
+      };
+
+      return fetchAllSongs;
+    }(function () {
+      return dispatch(fetchAllSongs());
+    })
+  };
+};
+
 var ArtistIndex =
 /*#__PURE__*/
 function (_React$Component) {
@@ -1166,38 +1198,6 @@ function (_React$Component) {
 
   return ArtistIndex;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var msp = function msp(state) {
-  return {
-    artists: Object.values(state.entities.artists),
-    songs: Object.values(state.entities.songs),
-    albums: state.entities.albums
-  };
-};
-
-var mdp = function mdp(dispatch) {
-  return {
-    fetchAllArtists: function fetchAllArtists() {
-      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllArtists"])());
-    },
-    fetchOneArtist: function fetchOneArtist(artistId) {
-      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_2__["fetchOneArtist"])(artistId));
-    },
-    fetchAllSongs: function (_fetchAllSongs) {
-      function fetchAllSongs() {
-        return _fetchAllSongs.apply(this, arguments);
-      }
-
-      fetchAllSongs.toString = function () {
-        return _fetchAllSongs.toString();
-      };
-
-      return fetchAllSongs;
-    }(function () {
-      return dispatch(fetchAllSongs());
-    })
-  };
-};
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(ArtistIndex));
 

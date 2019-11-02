@@ -7,6 +7,19 @@ import { ProtectedRoute } from '../util/route_util';
 import ArtistIndexItem from './artist_index_item'
 import ArtistIndexDetail from './artist_index_detail'
 
+const msp = state => ({
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
+})
+
+const mdp = dispatch => ({
+    fetchAllArtists: () => dispatch(fetchAllArtists()),
+    fetchOneArtist: (artistId) => dispatch(fetchOneArtist(artistId)),
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
+})
+
+
 class ArtistIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -45,17 +58,5 @@ class ArtistIndex extends React.Component {
 
     }
 }
-
-const msp = state => ({
-    artists: Object.values(state.entities.artists),
-    songs: Object.values(state.entities.songs),
-    albums: state.entities.albums,
-})
-
-const mdp = dispatch => ({
-    fetchAllArtists: () => dispatch(fetchAllArtists()),
-    fetchOneArtist: (artistId) => dispatch(fetchOneArtist(artistId)),
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-})
 
 export default connect(msp, mdp)(ArtistIndex);
