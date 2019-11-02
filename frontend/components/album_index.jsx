@@ -16,7 +16,6 @@ const msp = (state, ownProps) => {
         artists: Object.values(state.entities.artists),
         songs: Object.values(state.entities.songs),
         albums: Object.values(state.entities.albums),
-
     })
 }
 
@@ -31,11 +30,11 @@ class AlbumIndex extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            artists: this.props.artists,
-            songs: this.props.songs,
-            albums: this.props.albums,
-        }
+        // this.state = {
+        //     artists: this.props.artists,
+        //     songs: this.props.songs,
+        //     albums: this.props.albums,
+        // }
     }
 
     componentDidMount() {

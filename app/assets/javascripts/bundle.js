@@ -681,17 +681,13 @@ function (_React$Component) {
   _inherits(AlbumIndex, _React$Component);
 
   function AlbumIndex(props) {
-    var _this;
-
     _classCallCheck(this, AlbumIndex);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AlbumIndex).call(this, props));
-    _this.state = {
-      artists: _this.props.artists,
-      songs: _this.props.songs,
-      albums: _this.props.albums
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(AlbumIndex).call(this, props)); // this.state = {
+    //     artists: this.props.artists,
+    //     songs: this.props.songs,
+    //     albums: this.props.albums,
+    // }
   }
 
   _createClass(AlbumIndex, [{
@@ -1154,17 +1150,13 @@ function (_React$Component) {
   _inherits(ArtistIndex, _React$Component);
 
   function ArtistIndex(props) {
-    var _this;
-
     _classCallCheck(this, ArtistIndex);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ArtistIndex).call(this, props));
-    _this.state = {
-      artists: _this.props.artists,
-      songs: _this.props.songs,
-      albums: _this.props.albums
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(ArtistIndex).call(this, props)); // this.state = {
+    //     artists: this.props.artists,
+    //     songs: this.props.songs,
+    //     albums: this.props.albums,
+    // }
   }
 
   _createClass(ArtistIndex, [{
@@ -2016,26 +2008,26 @@ function (_React$Component) {
         className: "btn",
         to: "/signup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Try it free")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "landing-social-container"
+        className: "landing-social-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Developed by", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "http://www.kylemoonwright.com",
         target: "_blank",
-        "class": "landing-social-portfolio-link"
+        className: "landing-social-portfolio-link"
       }, " Kyle Moon-Wright")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://www.linkedin.com/in/kyle-moon-wright/",
         target: "_blank"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-linkedin"
+        className: "fab fa-linkedin"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/kmoonwright",
         target: "_blank"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-github-square"
+        className: "fab fa-github-square"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://angel.co/kyle-moon-wright",
         target: "_blank"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fab fa-angellist"
+        className: "fab fa-angellist"
       }))))));
     }
   }]);
@@ -2860,9 +2852,7 @@ function (_React$Component) {
 
   _createClass(PlaylistIndexDetail, [{
     key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchOnePlaylist(this.props.match.params.playlistId);
-    }
+    value: function componentDidMount() {}
   }, {
     key: "render",
     value: function render() {
@@ -2885,6 +2875,7 @@ function (_React$Component) {
         songList = this.props.songs.map(function (song) {
           var songAlbum = allAlbums[song.album_id];
           var albumArtist = allArtists[songAlbum.artist_id];
+          debugger;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             className: "playlist-songs-index-item"
@@ -3014,43 +3005,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var PlaylistIndexItem =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(PlaylistIndexItem, _React$Component);
-
-  function PlaylistIndexItem(props) {
-    var _this;
-
-    _classCallCheck(this, PlaylistIndexItem);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexItem).call(this, props));
-    _this.state = {
-      artists: _this.props.artists,
-      songs: _this.props.songs,
-      albums: _this.props.albums
-    };
-    return _this;
-  }
-
-  _createClass(PlaylistIndexItem, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "render",
-    value: function render() {
-      var playlist = this.props.playlist;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "playlist-nav-index-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/playlists/".concat(playlist.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, playlist.title)));
-    }
-  }]);
-
-  return PlaylistIndexItem;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
 var msp = function msp(state) {
   return {
     artists: Object.values(state.entities.artists),
@@ -3080,6 +3034,41 @@ var mdp = function mdp(dispatch) {
     })
   };
 };
+
+var PlaylistIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PlaylistIndexItem, _React$Component);
+
+  function PlaylistIndexItem(props) {
+    _classCallCheck(this, PlaylistIndexItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexItem).call(this, props)); // this.state = {
+    //     playlists: this.props.playlists,
+    //     artists: this.props.artists,
+    //     songs: this.props.songs,
+    //     albums: this.props.albums,
+    // }
+  }
+
+  _createClass(PlaylistIndexItem, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "render",
+    value: function render() {
+      var playlist = this.props.playlist;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "playlist-nav-index-item",
+        key: playlist.id
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/playlists/".concat(playlist.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, playlist.title)));
+    }
+  }]);
+
+  return PlaylistIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(PlaylistIndexItem));
 

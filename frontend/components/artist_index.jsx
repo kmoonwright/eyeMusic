@@ -24,11 +24,11 @@ class ArtistIndex extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            artists: this.props.artists,
-            songs: this.props.songs,
-            albums: this.props.albums,
-        }
+        // this.state = {
+        //     artists: this.props.artists,
+        //     songs: this.props.songs,
+        //     albums: this.props.albums,
+        // }
     }
 
     componentDidUpdate() {

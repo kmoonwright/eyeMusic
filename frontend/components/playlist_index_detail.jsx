@@ -33,7 +33,6 @@ class PlaylistIndexDetail extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchOnePlaylist(this.props.match.params.playlistId);
     }
 
     render() {
@@ -57,7 +56,7 @@ class PlaylistIndexDetail extends React.Component {
             songList = this.props.songs.map(song => {
                 let songAlbum = allAlbums[song.album_id]
                 let albumArtist = allArtists[songAlbum.artist_id]
-                
+                debugger
                 return (
                     <div key={song.id} className="playlist-songs-index-item">
 
