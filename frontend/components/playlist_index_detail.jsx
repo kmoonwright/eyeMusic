@@ -15,7 +15,7 @@ const msp = (state) => {
         albums: state.entities.albums,
         playlists: state.entities.playlists,
         songs: Object.values(state.entities.songs),
-        playlist_songs: Object.keys(state.entities.playlistSongs),
+        playlistSongs: Object.keys(state.entities.playlistSongs),
     })
 }
 
@@ -33,110 +33,12 @@ class PlaylistIndexDetail extends React.Component {
     }
 
     componentDidMount() {
+        // this.props.fetchOnePlaylist(this.params.match.playlistId)
     }
 
     render() {
-        let songList;
-        
-        const allAlbums = this.props.albums
-        const allArtists = this.props.artists
-        // playlist song, array of ids
-        // then pull 
-        //use songs as source of truth
-        // map over songs with playlist songs ids
-
-        let playlistSongs = this.props.playlist_songs;
-        
-        if (playlistSongs) {
-            let playlistSongsIds = playlistSongs.map(song => song.song_id);
-            let songs = this.props.songs
-            // const artistAlbum = this.props.albums[song.album_id];
-            // const artistName = this.props.artists[artistAlbum.artist_id].name;
-
-            songList = this.props.songs.map(song => {
-                let songAlbum = allAlbums[song.album_id]
-                let albumArtist = allArtists[songAlbum.artist_id]
-                debugger
-                return (
-                    <div key={song.id} className="playlist-songs-index-item">
-
-                        <img src={songAlbum.imageUrl}></img>
-                        <div className="playlist-songs-index-item-details">
-                            <div className="playlist-songs-index-item-details">
-                                <div className="playlist-songs-index-item-details-songtitle">
-                                    <span>{song.title}</span>
-                                </div>
-                                <div className="playlist-songs-index-item-details-artistinfo">
-                                    <span>{albumArtist.name}</span>
-                                </div>
-                                <div className="playlist-songs-index-item-details-albumtitle">
-                                    <span>{songAlbum.title}</span>
-                                </div>
-                                <div className="playlist-songs-index-albumyear">
-                                    <span>{songAlbum.year}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })
-        } else {
-            songList = "No songs here...";
-        }
-
-        // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
-        
-        // let playlistItem = this.props.playlists[this.props.match.params.playlistId];
-        // if (playlistItem.playlist_songs.length > 0) {
-        //     playlistItem.playlist_songs.map(song => {
-        //         const artistAlbum = this.props.albums[song.album_id];
-        //         const artistName = this.props.artists[artistAlbum.artist_id].name;
-        //         return (
-        //             <div key={song.id} className="playlist-songs">
-        //                 <img src={artistAlbum.imageUrl}></img>
-        //                 <div className="playlist-songs-index">
-        //                     <div className="playlist-songs-index-songtitle">
-        //                         <span>{song.title}</span>
-        //                     </div>
-        //                     <div className="playlist-songs-index-artistinfo">
-        //                         <span>{artistName}</span>
-        //                     </div>
-        //                     <div className="playlist-songs-index-albumtitle">
-        //                         <span>{artistAlbum.title}</span>
-        //                     </div>
-        //                     <div className="playlist-songs-index-albumyear">
-        //                         <span>{artistAlbum.year}</span>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         )
-        //     })
-        // }
-        // if (this.props.songs.length > 0) {
-        //     songList = this.props.songs.map(song => {
-        //         const artistAlbum = this.props.albums[song.album_id];
-        //         const artistName = this.props.artists[artistAlbum.artist_id].name;
-        //         return (
-        //             <div key={song.id} className="playlist-songs">
-        //                 <img src={artistAlbum.imageUrl}></img>
-        //                 <div className="playlist-songs-index">
-        //                     <div className="playlist-songs-index-songtitle">
-        //                         <span>{song.title}</span>
-        //                     </div>
-        //                     <div className="playlist-songs-index-artistinfo">
-        //                         <span>{artistName}</span>
-        //                     </div>
-        //                     <div className="playlist-songs-index-albumtitle">
-        //                         <span>{artistAlbum.title}</span>
-        //                     </div>
-        //                     <div className="playlist-songs-index-albumyear">
-        //                         <span>{artistAlbum.year}</span>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         )
-        //     })
-        // }
+        debugger
+        let songList = "testtest"
         return (
             <div className="playlist-songs-container">
                 <div className="playlist-songs-index">
@@ -149,3 +51,123 @@ class PlaylistIndexDetail extends React.Component {
 }
 
 export default connect(msp, mdp)(PlaylistIndexDetail);
+
+// V2
+    // render() {
+    //     debugger
+    //     let songList = "Test"
+
+    //     let songList;
+        
+    //     const allAlbums = this.props.albums
+    //     const allArtists = this.props.artists
+    //     // playlist song, array of ids
+    //     // then pull 
+    //     //use songs as source of truth
+    //     // map over songs with playlist songs ids
+
+    //     let playlistSongs = this.props.playlist_songs;
+    //     debugger
+    //     if (playlistSongs) {
+    //         let playlistSongsIds = playlistSongs.map(song => song.song_id);
+    //         let songs = this.props.songs
+    //         // const artistAlbum = this.props.albums[song.album_id];
+    //         // const artistName = this.props.artists[artistAlbum.artist_id].name;
+
+    //         songList = this.props.songs.map(song => {
+    //             let songAlbum = allAlbums[song.album_id]
+    //             let albumArtist = allArtists[songAlbum.artist_id]
+    //             debugger
+    //             return (
+    //                 <div key={song.id} className="playlist-songs-index-item">
+
+    //                     <img src={songAlbum.imageUrl}></img>
+    //                     <div className="playlist-songs-index-item-details">
+    //                         <div className="playlist-songs-index-item-details">
+    //                             <div className="playlist-songs-index-item-details-songtitle">
+    //                                 <span>{song.title}</span>
+    //                             </div>
+    //                             <div className="playlist-songs-index-item-details-artistinfo">
+    //                                 <span>{albumArtist.name}</span>
+    //                             </div>
+    //                             <div className="playlist-songs-index-item-details-albumtitle">
+    //                                 <span>{songAlbum.title}</span>
+    //                             </div>
+    //                             <div className="playlist-songs-index-albumyear">
+    //                                 <span>{songAlbum.year}</span>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             )
+    //         })
+    //     } else {
+    //         songList = "No songs here...";
+    //     }
+    //     return (
+    //         <div className="playlist-songs-container">
+    //             <div className="playlist-songs-index">
+    //                 {songList}
+    //             </div>
+    //             <p>Add a Song...</p>
+    //         </div>
+    //     )
+    // }
+
+
+
+
+// V1
+// WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
+
+// let playlistItem = this.props.playlists[this.props.match.params.playlistId];
+// if (playlistItem.playlist_songs.length > 0) {
+//     playlistItem.playlist_songs.map(song => {
+//         const artistAlbum = this.props.albums[song.album_id];
+//         const artistName = this.props.artists[artistAlbum.artist_id].name;
+//         return (
+//             <div key={song.id} className="playlist-songs">
+//                 <img src={artistAlbum.imageUrl}></img>
+//                 <div className="playlist-songs-index">
+//                     <div className="playlist-songs-index-songtitle">
+//                         <span>{song.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-artistinfo">
+//                         <span>{artistName}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumtitle">
+//                         <span>{artistAlbum.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumyear">
+//                         <span>{artistAlbum.year}</span>
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//     })
+// }
+// if (this.props.songs.length > 0) {
+//     songList = this.props.songs.map(song => {
+//         const artistAlbum = this.props.albums[song.album_id];
+//         const artistName = this.props.artists[artistAlbum.artist_id].name;
+//         return (
+//             <div key={song.id} className="playlist-songs">
+//                 <img src={artistAlbum.imageUrl}></img>
+//                 <div className="playlist-songs-index">
+//                     <div className="playlist-songs-index-songtitle">
+//                         <span>{song.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-artistinfo">
+//                         <span>{artistName}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumtitle">
+//                         <span>{artistAlbum.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumyear">
+//                         <span>{artistAlbum.year}</span>
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//     })
+// }

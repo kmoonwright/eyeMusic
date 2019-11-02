@@ -351,13 +351,15 @@ var togglePlay = function togglePlay(_boolean) {
 /*!**********************************************!*\
   !*** ./frontend/actions/playlist_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_ALL_PLAYLISTS, RECEIVE_ONE_PLAYLIST, REMOVE_PLAYLIST, REMOVE_ONE_PLAYLIST, RECEIVE_PLAYLIST_ERRORS, fetchAllPlaylists, fetchOnePlaylist, createPlaylist, deletePlaylist, addSongToPlaylist, removeSongFromPlaylist */
+/*! exports provided: RECEIVE_ALL_PLAYLISTS, RECEIVE_ONE_PLAYLIST, RECEIVE_ALL_PLAYLIST_SONGS, RECEIVE_ONE_PLAYLIST_SONG, REMOVE_PLAYLIST, REMOVE_ONE_PLAYLIST, RECEIVE_PLAYLIST_ERRORS, fetchAllPlaylists, fetchOnePlaylist, createPlaylist, deletePlaylist, addSongToPlaylist, removeSongFromPlaylist */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_PLAYLISTS", function() { return RECEIVE_ALL_PLAYLISTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ONE_PLAYLIST", function() { return RECEIVE_ONE_PLAYLIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_PLAYLIST_SONGS", function() { return RECEIVE_ALL_PLAYLIST_SONGS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ONE_PLAYLIST_SONG", function() { return RECEIVE_ONE_PLAYLIST_SONG; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PLAYLIST", function() { return REMOVE_PLAYLIST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ONE_PLAYLIST", function() { return REMOVE_ONE_PLAYLIST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_PLAYLIST_ERRORS", function() { return RECEIVE_PLAYLIST_ERRORS; });
@@ -371,6 +373,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_ALL_PLAYLISTS = 'RECEIVE_ALL_PLAYLISTS';
 var RECEIVE_ONE_PLAYLIST = 'RECEIVE_ONE_PLAYLIST';
+var RECEIVE_ALL_PLAYLIST_SONGS = 'RECEIVE_ALL_PLAYLIST_SONGS';
+var RECEIVE_ONE_PLAYLIST_SONG = 'RECEIVE_ONE_PLAYLIST_SONG';
 var REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
 var REMOVE_ONE_PLAYLIST = 'REMOVE_ONE_PLAYLIST';
 var RECEIVE_PLAYLIST_ERRORS = 'RECEIVE_PLAYLIST_ERRORS';
@@ -393,7 +397,25 @@ var fetchOnePlaylist = function fetchOnePlaylist(playlistId) {
       });
     });
   };
-};
+}; // export const fetchAllPlaylistSongs = () => (dispatch) => (
+//     PlaylistUtil.fetchAllPlaylistSongs()
+//         .then(playlists => dispatch({
+//             type: RECEIVE_ALL_PLAYLIST_SONGS,
+//             playlists
+//         })
+//     )
+// );
+// export const fetchOnePlaylistSong = (playlistId, songId) => (dispatch) => {
+//     return (
+//         PlaylistUtil.fetchOnePlaylistSong(playlistId, songId)
+//             .then(payload => dispatch({
+//                 type: RECEIVE_ONE_PLAYLIST_SONG,
+//                 payload
+//             })
+//         )
+//     )
+// };
+
 var createPlaylist = function createPlaylist(playlist) {
   return function (dispatch) {
     return _util_playlist_util__WEBPACK_IMPORTED_MODULE_0__["createPlaylist"](playlist).then(function (payload) {
@@ -2818,7 +2840,7 @@ var msp = function msp(state) {
     albums: state.entities.albums,
     playlists: state.entities.playlists,
     songs: Object.values(state.entities.songs),
-    playlist_songs: Object.keys(state.entities.playlistSongs)
+    playlistSongs: Object.keys(state.entities.playlistSongs)
   };
 };
 
@@ -2852,105 +2874,13 @@ function (_React$Component) {
 
   _createClass(PlaylistIndexDetail, [{
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {// this.props.fetchOnePlaylist(this.params.match.playlistId)
+    }
   }, {
     key: "render",
     value: function render() {
-      var songList;
-      var allAlbums = this.props.albums;
-      var allArtists = this.props.artists; // playlist song, array of ids
-      // then pull 
-      //use songs as source of truth
-      // map over songs with playlist songs ids
-
-      var playlistSongs = this.props.playlist_songs;
-
-      if (playlistSongs) {
-        var playlistSongsIds = playlistSongs.map(function (song) {
-          return song.song_id;
-        });
-        var songs = this.props.songs; // const artistAlbum = this.props.albums[song.album_id];
-        // const artistName = this.props.artists[artistAlbum.artist_id].name;
-
-        songList = this.props.songs.map(function (song) {
-          var songAlbum = allAlbums[song.album_id];
-          var albumArtist = allArtists[songAlbum.artist_id];
-          debugger;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            key: song.id,
-            className: "playlist-songs-index-item"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-            src: songAlbum.imageUrl
-          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-item-details"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-item-details"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-item-details-songtitle"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-item-details-artistinfo"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, albumArtist.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-item-details-albumtitle"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "playlist-songs-index-albumyear"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, songAlbum.year)))));
-        });
-      } else {
-        songList = "No songs here...";
-      } // WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
-      // let playlistItem = this.props.playlists[this.props.match.params.playlistId];
-      // if (playlistItem.playlist_songs.length > 0) {
-      //     playlistItem.playlist_songs.map(song => {
-      //         const artistAlbum = this.props.albums[song.album_id];
-      //         const artistName = this.props.artists[artistAlbum.artist_id].name;
-      //         return (
-      //             <div key={song.id} className="playlist-songs">
-      //                 <img src={artistAlbum.imageUrl}></img>
-      //                 <div className="playlist-songs-index">
-      //                     <div className="playlist-songs-index-songtitle">
-      //                         <span>{song.title}</span>
-      //                     </div>
-      //                     <div className="playlist-songs-index-artistinfo">
-      //                         <span>{artistName}</span>
-      //                     </div>
-      //                     <div className="playlist-songs-index-albumtitle">
-      //                         <span>{artistAlbum.title}</span>
-      //                     </div>
-      //                     <div className="playlist-songs-index-albumyear">
-      //                         <span>{artistAlbum.year}</span>
-      //                     </div>
-      //                 </div>
-      //             </div>
-      //         )
-      //     })
-      // }
-      // if (this.props.songs.length > 0) {
-      //     songList = this.props.songs.map(song => {
-      //         const artistAlbum = this.props.albums[song.album_id];
-      //         const artistName = this.props.artists[artistAlbum.artist_id].name;
-      //         return (
-      //             <div key={song.id} className="playlist-songs">
-      //                 <img src={artistAlbum.imageUrl}></img>
-      //                 <div className="playlist-songs-index">
-      //                     <div className="playlist-songs-index-songtitle">
-      //                         <span>{song.title}</span>
-      //                     </div>
-      //                     <div className="playlist-songs-index-artistinfo">
-      //                         <span>{artistName}</span>
-      //                     </div>
-      //                     <div className="playlist-songs-index-albumtitle">
-      //                         <span>{artistAlbum.title}</span>
-      //                     </div>
-      //                     <div className="playlist-songs-index-albumyear">
-      //                         <span>{artistAlbum.year}</span>
-      //                     </div>
-      //                 </div>
-      //             </div>
-      //         )
-      //     })
-      // }
-
-
+      debugger;
+      var songList = "testtest";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-songs-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2962,7 +2892,115 @@ function (_React$Component) {
   return PlaylistIndexDetail;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(PlaylistIndexDetail));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(PlaylistIndexDetail)); // V2
+// render() {
+//     debugger
+//     let songList = "Test"
+//     let songList;
+//     const allAlbums = this.props.albums
+//     const allArtists = this.props.artists
+//     // playlist song, array of ids
+//     // then pull 
+//     //use songs as source of truth
+//     // map over songs with playlist songs ids
+//     let playlistSongs = this.props.playlist_songs;
+//     debugger
+//     if (playlistSongs) {
+//         let playlistSongsIds = playlistSongs.map(song => song.song_id);
+//         let songs = this.props.songs
+//         // const artistAlbum = this.props.albums[song.album_id];
+//         // const artistName = this.props.artists[artistAlbum.artist_id].name;
+//         songList = this.props.songs.map(song => {
+//             let songAlbum = allAlbums[song.album_id]
+//             let albumArtist = allArtists[songAlbum.artist_id]
+//             debugger
+//             return (
+//                 <div key={song.id} className="playlist-songs-index-item">
+//                     <img src={songAlbum.imageUrl}></img>
+//                     <div className="playlist-songs-index-item-details">
+//                         <div className="playlist-songs-index-item-details">
+//                             <div className="playlist-songs-index-item-details-songtitle">
+//                                 <span>{song.title}</span>
+//                             </div>
+//                             <div className="playlist-songs-index-item-details-artistinfo">
+//                                 <span>{albumArtist.name}</span>
+//                             </div>
+//                             <div className="playlist-songs-index-item-details-albumtitle">
+//                                 <span>{songAlbum.title}</span>
+//                             </div>
+//                             <div className="playlist-songs-index-albumyear">
+//                                 <span>{songAlbum.year}</span>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             )
+//         })
+//     } else {
+//         songList = "No songs here...";
+//     }
+//     return (
+//         <div className="playlist-songs-container">
+//             <div className="playlist-songs-index">
+//                 {songList}
+//             </div>
+//             <p>Add a Song...</p>
+//         </div>
+//     )
+// }
+// V1
+// WILL FETCH THE CORRECT PLAYLIST SONGS, THEN WILL FETCH ALL SONGS AND OVERRIDE this.props.entities.songs
+// let playlistItem = this.props.playlists[this.props.match.params.playlistId];
+// if (playlistItem.playlist_songs.length > 0) {
+//     playlistItem.playlist_songs.map(song => {
+//         const artistAlbum = this.props.albums[song.album_id];
+//         const artistName = this.props.artists[artistAlbum.artist_id].name;
+//         return (
+//             <div key={song.id} className="playlist-songs">
+//                 <img src={artistAlbum.imageUrl}></img>
+//                 <div className="playlist-songs-index">
+//                     <div className="playlist-songs-index-songtitle">
+//                         <span>{song.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-artistinfo">
+//                         <span>{artistName}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumtitle">
+//                         <span>{artistAlbum.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumyear">
+//                         <span>{artistAlbum.year}</span>
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//     })
+// }
+// if (this.props.songs.length > 0) {
+//     songList = this.props.songs.map(song => {
+//         const artistAlbum = this.props.albums[song.album_id];
+//         const artistName = this.props.artists[artistAlbum.artist_id].name;
+//         return (
+//             <div key={song.id} className="playlist-songs">
+//                 <img src={artistAlbum.imageUrl}></img>
+//                 <div className="playlist-songs-index">
+//                     <div className="playlist-songs-index-songtitle">
+//                         <span>{song.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-artistinfo">
+//                         <span>{artistName}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumtitle">
+//                         <span>{artistAlbum.title}</span>
+//                     </div>
+//                     <div className="playlist-songs-index-albumyear">
+//                         <span>{artistAlbum.year}</span>
+//                     </div>
+//                 </div>
+//             </div>
+//         )
+//     })
+// }
 
 /***/ }),
 
