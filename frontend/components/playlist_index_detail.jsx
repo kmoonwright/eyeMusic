@@ -17,7 +17,7 @@ const msp = (state) => {
         albums: state.entities.albums,
         playlists: state.entities.playlists,
         songs: Object.values(state.entities.songs),
-        playlistSongs: Object.keys(state.entities.playlistSongs),
+        playlistSongs: state.entities.playlistSongs,
     })
 }
 
@@ -40,7 +40,7 @@ class PlaylistIndexDetail extends React.Component {
     }
 
     render() {
-        debugger
+        
         let songList = "testtest"
         return (
             <div className="playlist-songs-container">

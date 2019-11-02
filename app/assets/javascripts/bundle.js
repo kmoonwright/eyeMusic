@@ -2838,7 +2838,7 @@ var msp = function msp(state) {
     albums: state.entities.albums,
     playlists: state.entities.playlists,
     songs: Object.values(state.entities.songs),
-    playlistSongs: Object.keys(state.entities.playlistSongs)
+    playlistSongs: state.entities.playlistSongs
   };
 };
 
@@ -2881,7 +2881,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var songList = "testtest";
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "playlist-songs-container"
