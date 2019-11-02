@@ -28,24 +28,14 @@ export const fetchOnePlaylist = (playlistId) => (dispatch) => {
     )
 };
 
-// export const fetchAllPlaylistSongs = () => (dispatch) => (
-//     PlaylistUtil.fetchAllPlaylistSongs()
-//         .then(playlists => dispatch({
-//             type: RECEIVE_ALL_PLAYLIST_SONGS,
-//             playlists
-//         })
-//     )
-// );
-// export const fetchOnePlaylistSong = (playlistId, songId) => (dispatch) => {
-//     return (
-//         PlaylistUtil.fetchOnePlaylistSong(playlistId, songId)
-//             .then(payload => dispatch({
-//                 type: RECEIVE_ONE_PLAYLIST_SONG,
-//                 payload
-//             })
-//         )
-//     )
-// };
+export const fetchAllPlaylistSongs = () => (dispatch) => (
+    PlaylistUtil.fetchAllPlaylistSongs()
+        .then(playlist_songs => dispatch({
+            type: RECEIVE_ALL_PLAYLIST_SONGS,
+            playlist_songs
+        })
+    )
+);
 
 export const createPlaylist = (playlist) => (dispatch) => (
     PlaylistUtil.createPlaylist(playlist)

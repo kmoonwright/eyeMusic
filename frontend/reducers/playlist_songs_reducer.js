@@ -1,29 +1,19 @@
 import {
-    RECEIVE_ALL_PLAYLISTS,
-    RECEIVE_ONE_PLAYLIST,
-    REMOVE_ONE_PLAYLIST
+    RECEIVE_ALL_PLAYLIST_SONGS,
+    RECEIVE_ONE_PLAYLIST_SONG,
 } from '../actions/playlist_actions';
 import { RECEIVE_ALL_SEARCHES, CLEAR_SEARCH } from '../actions/search_actions';
 
 const playlistSongsReducer = (oldState = {}, action) => {
     Object.freeze(oldState);
     switch (action.type) {
-        case RECEIVE_ALL_PLAYLISTS:
-            return action.playlists
-        case RECEIVE_ONE_PLAYLIST:
-            //     let newState = Object.assign({})
-            //     return Object.assign({}, oldState, action.payload.playlist_songs);
-            newState = Object.assign({}, action.payload.playlist_songs );
-            return newState;
-        case REMOVE_ONE_PLAYLIST:
-            let newState = Object.assign({}, oldState);
-            delete newState[action.playlist.id];
-            return newState;
+        case RECEIVE_ALL_PLAYLIST_SONGS:
+            return action.playlist_songs
         case RECEIVE_ALL_SEARCHES:
-            if (action.playlists === undefined) {
+            if (action.playlists_songs === undefined) {
                 return oldState;
             }
-            return Object.assign({}, oldState, action.playlists);
+            return Object.assign({}, oldState, action.playlists_songs);
         default:
             return oldState;
     }

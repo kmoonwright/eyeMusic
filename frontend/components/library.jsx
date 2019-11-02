@@ -6,13 +6,30 @@ import { Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
 
 import { fetchAllAlbums, fetchAllArtists, fetchAllSongs } from '../actions/music_actions'
-import { fetchAllPlaylists } from '../actions/playlist_actions'
+import { fetchAllPlaylists, fetchAllPlaylistSongs } from '../actions/playlist_actions'
 import AlbumIndex from './album_index';
 import ArtistIndex from './artist_index';
 import SongIndex from './song_index'
 import PlaylistCreation from './playlist_creation'
 import PlaylistIndexItem from './playlist_index_item'
 import PlaylistIndexDetail from './playlist_index_detail'
+
+
+const msp = state => ({
+    albums: Object.values(state.entities.albums),
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    playlists: Object.values(state.entities.playlists),
+})
+
+const mdp = dispatch => ({
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
+    fetchAllAlbums: () => dispatch(fetchAllAlbums()),
+    fetchAllArtists: () => dispatch(fetchAllArtists()),
+    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    fetchAllPlaylists: () => dispatch(fetchAllPlaylists()),
+    fetchAllPlaylistSongs: () => dispatch(fetchAllPlaylistSongs()),
+})
 
 
 class Library extends React.Component {
@@ -24,7 +41,8 @@ class Library extends React.Component {
             albums: this.props.albums,
             artists: this.props.artists,
             songs: this.props.songs,
-            playlists: this.props.playlists
+            playlists: this.props.playlists,
+            playlist_songs: this.props.playlist_songs
         }
     }
 
@@ -33,6 +51,7 @@ class Library extends React.Component {
         this.props.fetchAllAlbums();
         this.props.fetchAllSongs();
         this.props.fetchAllPlaylists();
+        this.props.fetchAllPlaylistSongs();
     }
 
     render() {
@@ -92,20 +111,5 @@ class Library extends React.Component {
         )
     }
 }
-
-const msp = state => ({
-    albums: Object.values(state.entities.albums),
-    artists: Object.values(state.entities.artists),
-    songs: Object.values(state.entities.songs),
-    playlists: Object.values(state.entities.playlists),
-})
-
-const mdp = dispatch => ({
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-    fetchAllAlbums: () => dispatch(fetchAllAlbums()),
-    fetchAllArtists: () => dispatch(fetchAllArtists()),
-    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
-    fetchAllPlaylists: () => dispatch(fetchAllPlaylists()),
-})
 
 export default connect(msp, mdp)(Library);

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import {
     fetchOnePlaylist,
+    fetchAllPlaylistSongs,
+    createPlaylist,
     deletePlaylist,
     addSongToPlaylist,
     removeSongFromPlaylist,
@@ -22,6 +24,7 @@ const msp = (state) => {
 
 const mdp = dispatch => ({
     fetchOnePlaylist: (playlistId) => dispatch(fetchOnePlaylist(playlistId)),
+    fetchAllPlaylistSongs: () => dispatch(fetchAllPlaylistSongs()),
     deletePlaylist: (id) => dispatch(deletePlaylist(id)),
     addSongToPlaylist: (data) => dispatch(addSongToPlaylist(data)),
     removeSongFromPlaylist: (id, data) => removeSongFromPlaylist(deletePlaylist(id, data)),
@@ -33,7 +36,7 @@ class PlaylistIndexDetail extends React.Component {
     }
 
     componentDidMount() {
-        // this.props.fetchOnePlaylist(this.params.match.playlistId)
+        this.props.fetchAllPlaylistSongs()
     }
 
     render() {
