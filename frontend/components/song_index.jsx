@@ -5,6 +5,23 @@ import { fetchAllSongs } from './../actions/music_actions';
 import SongIndexItem from './song_index_item';
 import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
+
+const msp = state => ({
+    artists: state.entities.artists,
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
+})
+
+const mdp = dispatch => ({
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
+    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+    toggleSong: () => (dispatch(toggleSong())),
+    setQueue: (queue) => (dispatch(setQueue(queue))),
+    togglePlay: (boolean) => dispatch(togglePlay(boolean)),
+})
+
+
 class SongIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -100,22 +117,5 @@ class SongIndex extends React.Component {
         }
     }
 }
-
-
-const msp = state => ({
-    artists: state.entities.artists,
-    songs: Object.values(state.entities.songs),
-    albums: state.entities.albums,
-})
-
-const mdp = dispatch => ({
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
-    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
-    toggleSong: () => (dispatch(toggleSong())),
-    setQueue: (queue) => (dispatch(setQueue(queue))),
-    togglePlay: (boolean) => dispatch(togglePlay(boolean)),
-
-})
 
 export default connect(msp, mdp)(SongIndex);
