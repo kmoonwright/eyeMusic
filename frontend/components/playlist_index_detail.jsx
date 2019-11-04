@@ -10,6 +10,7 @@ import {
     removeSongFromPlaylist,
 } from '../actions/playlist_actions';
 import { fetchAllSongs, fetchOneSong } from '../actions/music_actions'
+import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
 
 const msp = (state) => {
@@ -34,13 +35,34 @@ const mdp = dispatch => ({
     deletePlaylist: (id) => dispatch(deletePlaylist(id)),
     addSongToPlaylist: (data) => dispatch(addSongToPlaylist(data)),
     removeSongFromPlaylist: (id, data) => removeSongFromPlaylist(deletePlaylist(id, data)),
+
+    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+    toggleSong: () => (dispatch(toggleSong())),
+    setQueue: (queue) => (dispatch(setQueue(queue))),
+    togglePlay: (boolean) => dispatch(togglePlay(boolean)),
 })
 
 class PlaylistIndexDetail extends React.Component {
     constructor(props) {
         super(props)
 
-        // this.state = {}
+        this.handlePlay = this.handlePlay.bind(this);
+    }
+
+    handlePlay(song) {
+        this.props.setCurrentSong(song);
+        this.props.toggleSong();
+        this.props.setQueue(this.props.songs);
+        // this will change state through a dispatch
+        // every button changes state
+        // music player should only change audio based on state change
+    }
+
+    handlePlaylistAdd(songId) {
+        this.props.addSongToPlaylist({
+            song_id: songId,
+            playlist_id: null
+        })
     }
 
     render() {
@@ -90,6 +112,9 @@ class PlaylistIndexDetail extends React.Component {
                             </div>
                             <div className="song-index-item-details-albumyear">
                                 <span>{artistAlbum.year}</span>
+                            </div>
+                            <div className="song-index-item-details-playlist-button">
+                                <span onClick={this.handlePlaylistAdd(song.id)}>ADD</span>
                             </div>
                             {/* <div className="song-index-item-add-to-playlist">
                                 <button>Add</button>

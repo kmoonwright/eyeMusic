@@ -2810,6 +2810,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 /* harmony import */ var _actions_music_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/music_actions */ "./frontend/actions/music_actions.js");
+/* harmony import */ var _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../actions/music_player_actions */ "./frontend/actions/music_player_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2820,13 +2821,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2866,7 +2868,29 @@ var mdp = function mdp(dispatch) {
     },
     removeSongFromPlaylist: function removeSongFromPlaylist(id, data) {
       return Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["removeSongFromPlaylist"])(Object(_actions_playlist_actions__WEBPACK_IMPORTED_MODULE_2__["deletePlaylist"])(id, data));
-    }
+    },
+    setCurrentSong: function setCurrentSong(song) {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["setCurrentSong"])(song));
+    },
+    toggleSong: function toggleSong() {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["toggleSong"])());
+    },
+    setQueue: function setQueue(queue) {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["setQueue"])(queue));
+    },
+    togglePlay: function (_togglePlay) {
+      function togglePlay(_x) {
+        return _togglePlay.apply(this, arguments);
+      }
+
+      togglePlay.toString = function () {
+        return _togglePlay.toString();
+      };
+
+      return togglePlay;
+    }(function (_boolean) {
+      return dispatch(togglePlay(_boolean));
+    })
   };
 };
 
@@ -2876,15 +2900,36 @@ function (_React$Component) {
   _inherits(PlaylistIndexDetail, _React$Component);
 
   function PlaylistIndexDetail(props) {
+    var _this;
+
     _classCallCheck(this, PlaylistIndexDetail);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexDetail).call(this, props)); // this.state = {}
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexDetail).call(this, props));
+    _this.handlePlay = _this.handlePlay.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(PlaylistIndexDetail, [{
+    key: "handlePlay",
+    value: function handlePlay(song) {
+      this.props.setCurrentSong(song);
+      this.props.toggleSong();
+      this.props.setQueue(this.props.songs); // this will change state through a dispatch
+      // every button changes state
+      // music player should only change audio based on state change
+    }
+  }, {
+    key: "handlePlaylistAdd",
+    value: function handlePlaylistAdd(songId) {
+      this.props.addSongToPlaylist({
+        song_id: songId,
+        playlist_id: null
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       // ADD LOADING STATE
       if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
@@ -2909,12 +2954,12 @@ function (_React$Component) {
           }
         });
         var songList = mix.map(function (song) {
-          var artistAlbum = _this.props.albums[song.album_id];
-          var artistName = _this.props.artists[artistAlbum.artist_id].name;
+          var artistAlbum = _this2.props.albums[song.album_id];
+          var artistName = _this2.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             onClick: function onClick() {
-              return _this.handlePlay(song);
+              return _this2.handlePlay(song);
             },
             song: song // queue={this.getQueue()}
             ,
@@ -2931,7 +2976,11 @@ function (_React$Component) {
             className: "song-index-item-details-albumtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "song-index-item-details-albumyear"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "song-index-item-details-playlist-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            onClick: _this2.handlePlaylistAdd(song.id)
+          }, "ADD"))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "song-index-container"

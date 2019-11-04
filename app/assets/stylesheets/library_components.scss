@@ -83,6 +83,7 @@
 }
 
 .song-index-item {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -109,4 +110,7 @@
 }
 .song-index-item-details-albumtitle {
     width: 20%;
+}
+.song-index-item-details-playlist-button {
+    padding-left: 15px;
 }
