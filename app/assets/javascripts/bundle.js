@@ -2876,53 +2876,15 @@ function (_React$Component) {
   _inherits(PlaylistIndexDetail, _React$Component);
 
   function PlaylistIndexDetail(props) {
-    var _this;
-
     _classCallCheck(this, PlaylistIndexDetail);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexDetail).call(this, props));
-    _this.state = {}; // this.generatePlaylist = this.generatePlaylist.bind(this);
-
-    return _this;
-  } // generatePlaylist(songObjects) {
-  //     songObjects.forEach((song => {
-  //         plId = song[playlist_id]
-  //     }))
-  // }
-
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlaylistIndexDetail).call(this, props)); // this.state = {}
+  }
 
   _createClass(PlaylistIndexDetail, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevState) {// Set state after component has rendered with store
-      // if (!prevState[playlist_songs]) {
-      // if (!('playlist_songs' in this.state)) {
-      //     this.setState({
-      //         playlist_songs: Object.values(this.props.playlist_songs),
-      //     });
-      // } else if (!('playlists' in this.state)) {
-      //     this.setState({
-      //         playlists: Object.values(this.props.playlists),
-      //     });
-      // } else if (!('artists' in this.state)) {
-      //     this.setState({
-      //         artists: this.props.artists,
-      //     });
-      // } else if (!('songs' in this.state)) {
-      //     this.setState({
-      //         songs: Object.values(this.props.songs),
-      //     });
-      // } else if (!('albums' in this.state)) {
-      //     debugger
-      //     this.setState({
-      //         albums: this.props.albums,
-      //     });
-      //     debugger
-      // }
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this = this;
 
       // ADD LOADING STATE
       if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
@@ -2947,12 +2909,12 @@ function (_React$Component) {
           }
         });
         var songList = mix.map(function (song) {
-          var artistAlbum = _this2.props.albums[song.album_id];
-          var artistName = _this2.props.artists[artistAlbum.artist_id].name;
+          var artistAlbum = _this.props.albums[song.album_id];
+          var artistName = _this.props.artists[artistAlbum.artist_id].name;
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             key: song.id,
             onClick: function onClick() {
-              return _this2.handlePlay(song);
+              return _this.handlePlay(song);
             },
             song: song // queue={this.getQueue()}
             ,
@@ -2979,32 +2941,7 @@ function (_React$Component) {
       } else {
         return null;
       }
-    } // render() {
-    //     // this.generatePlaylist(this.state.playlist_songs);
-    //     let playlistId = this.props.match.params.playlistId;
-    //     let playlist_songs = Object.values(this.props.playlist_songs);
-    //     let mix = [];
-    //     debugger
-    //     let playlistRender = playlist_songs.forEach(playlist_song => {
-    //         if(playlist_song.playlist_id === playlistId) {
-    //             mix.push(playlist_song)
-    //         }
-    //     })
-    //     let playlists = Object.values(this.props.playlists);
-    //     let songs = this.props.songs;
-    //     let songList = "testtest"
-    //     debugger
-    //     return (
-    //         <div className="playlist-songs-container">
-    //             <div className="playlist-songs-index">
-    //                 {playlistId}
-    //                 {songList}
-    //             </div>
-    //             <p>Add a Song...</p>
-    //         </div>
-    //     )
-    // }
-
+    }
   }]);
 
   return PlaylistIndexDetail;

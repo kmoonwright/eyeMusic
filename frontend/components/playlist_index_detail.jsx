@@ -40,47 +40,9 @@ class PlaylistIndexDetail extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {}
-
-        // this.generatePlaylist = this.generatePlaylist.bind(this);
+        // this.state = {}
     }
 
-    // generatePlaylist(songObjects) {
-        
-    //     songObjects.forEach((song => {
-    //         plId = song[playlist_id]
-            
-    //     }))
-    // }
-    
-    componentDidUpdate(prevState) {
-        // Set state after component has rendered with store
-        
-        // if (!prevState[playlist_songs]) {
-        // if (!('playlist_songs' in this.state)) {
-        //     this.setState({
-        //         playlist_songs: Object.values(this.props.playlist_songs),
-        //     });
-        // } else if (!('playlists' in this.state)) {
-        //     this.setState({
-        //         playlists: Object.values(this.props.playlists),
-        //     });
-        // } else if (!('artists' in this.state)) {
-        //     this.setState({
-        //         artists: this.props.artists,
-        //     });
-        // } else if (!('songs' in this.state)) {
-        //     this.setState({
-        //         songs: Object.values(this.props.songs),
-        //     });
-        // } else if (!('albums' in this.state)) {
-        //     debugger
-        //     this.setState({
-        //         albums: this.props.albums,
-        //     });
-        //     debugger
-        // }
-    }
     render() {
         // ADD LOADING STATE
         if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
@@ -88,7 +50,6 @@ class PlaylistIndexDetail extends React.Component {
         }
 
         if (this.props.songs.length > 0) {
-
 
             let playlistId = parseInt(this.props.match.params.playlistId);
             let playlist_songs = Object.values(this.props.playlist_songs);
@@ -105,9 +66,7 @@ class PlaylistIndexDetail extends React.Component {
                 }
             })
             
-            
             const songList = mix.map(song => { 
-                
                 
                 const artistAlbum = this.props.albums[song.album_id];
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
@@ -151,34 +110,6 @@ class PlaylistIndexDetail extends React.Component {
             return null;
         }
     }
-    // render() {
-    //     // this.generatePlaylist(this.state.playlist_songs);
-        
-    //     let playlistId = this.props.match.params.playlistId;
-    //     let playlist_songs = Object.values(this.props.playlist_songs);
-    //     let mix = [];
-    //     debugger
-    //     let playlistRender = playlist_songs.forEach(playlist_song => {
-    //         if(playlist_song.playlist_id === playlistId) {
-    //             mix.push(playlist_song)
-    //         }
-    //     })
-
-
-    //     let playlists = Object.values(this.props.playlists);
-    //     let songs = this.props.songs;
-    //     let songList = "testtest"
-    //     debugger
-    //     return (
-    //         <div className="playlist-songs-container">
-    //             <div className="playlist-songs-index">
-    //                 {playlistId}
-    //                 {songList}
-    //             </div>
-    //             <p>Add a Song...</p>
-    //         </div>
-    //     )
-    // }
 }
 
 export default connect(msp, mdp)(PlaylistIndexDetail);

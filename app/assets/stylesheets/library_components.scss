@@ -89,6 +89,10 @@
     padding: 5px;
     border-bottom: 1px solid lightgray;
 }
+.song-index-item:hover {
+    background-color:lightgray;
+    color: black;
+}
 
 .song-index-item-details {
     display: flex;
