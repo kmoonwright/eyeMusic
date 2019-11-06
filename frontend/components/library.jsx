@@ -63,15 +63,21 @@ class Library extends React.Component {
                     <div className="library-nav-items">
                         <p>Library</p>
                         <div className="library-nav-items-btns">
-                            <div className="library-nav-items-btns-each">
-                                <Link to="/library/albums">Albums</Link>
-                            </div>
-                            <div className="library-nav-items-btns-each">
-                                <Link to="/library/artists">Artists</Link>
-                            </div>
-                            <div className="library-nav-items-btns-each">
-                                <Link to="/library/songs">Songs</Link>
-                            </div>
+                            <Link to="/library/albums">
+                                <div className="library-nav-items-btns-each">
+                                    Albums
+                                </div>
+                            </Link>
+                            <Link to="/library/artists">
+                                <div className="library-nav-items-btns-each">
+                                    Artists
+                                </div>
+                            </Link>
+                            <Link to="/library/songs">
+                                <div className="library-nav-items-btns-each">
+                                    Songs
+                                </div>
+                            </Link>
                         </div>
                     </div>
 

@@ -11,11 +11,20 @@
   flex-direction: row;
   justify-content: space-between;
 
-  button {
-    margin:5px;
+  a {
+    padding: 4px;
   }
-}
+  button {
+    padding:5px;
+  }
 
+}
+.navbar-index a:hover {
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+  background-color: whitesmoke;
+}
 
 .navbar-history-back {
   background: image-url('icon-backbutton.png') no-repeat;
@@ -33,5 +42,10 @@
 
 .navbar-profile {
   font-family: verdana;
-
+}
+#logout-btn:hover {
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+  background-color: whitesmoke;
 }

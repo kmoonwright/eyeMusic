@@ -20,10 +20,13 @@
 // ARTIST INDEX
 .artist-index-container {
     display: flex;
+    overflow: hidden;
 }
 .artist-index {
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: auto;
     img {
         height: 100px;
         width: 100px;

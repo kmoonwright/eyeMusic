@@ -71,6 +71,7 @@ class Browse extends React.Component {
         return (
             <div className="browse-container">
                 <div className="browse-content">
+                <br></br>
                     <div className="featured-artists">
                         <h3>Featured Artists</h3>
                         <div className="featured-artists-slideshow" id="slideshow">

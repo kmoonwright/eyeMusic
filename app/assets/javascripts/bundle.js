@@ -1608,7 +1608,7 @@ function (_React$Component) {
         className: "browse-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Artists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-artists-slideshow",
@@ -2257,18 +2257,18 @@ function (_React$Component) {
         className: "library-nav-items"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Library"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-items-btns"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "library-nav-items-btns-each"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/albums"
-      }, "Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-items-btns-each"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Albums")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/artists"
-      }, "Artists")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-items-btns-each"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, "Artists")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/songs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "library-nav-items-btns-each"
       }, "Songs")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-playlists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Music Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -2684,6 +2684,7 @@ function (_React$Component) {
       }, "Radio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-profile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Welcome ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "logout-btn",
         onClick: this.props.logout
       }, "Logout"))));
     }
