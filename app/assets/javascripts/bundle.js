@@ -1507,7 +1507,9 @@ var mdp = function mdp(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _actions_music_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/music_actions */ "./frontend/actions/music_actions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1530,20 +1532,80 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+var msp = function msp(state, ownProps) {
+  return {
+    artists: Object.values(state.entities.artists),
+    songs: Object.values(state.entities.songs),
+    albums: Object.values(state.entities.albums),
+    playlists: Object.values(state.entities.playlists)
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchAllAlbums: function fetchAllAlbums() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllAlbums"])());
+    },
+    fetchAllArtists: function fetchAllArtists() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllArtists"])());
+    },
+    fetchAllPlaylists: function fetchAllPlaylists() {
+      return dispatch(Object(_actions_music_actions__WEBPACK_IMPORTED_MODULE_3__["fetchAllPlaylists"])());
+    }
+  };
+};
+
 var Browse =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(Browse, _React$Component);
 
-  function Browse() {
+  function Browse(props) {
+    var _this;
+
     _classCallCheck(this, Browse);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Browse).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Browse).call(this, props));
+    _this.state = {
+      albums: _this.props.albums,
+      artists: _this.props.artists,
+      songs: _this.props.songs,
+      playlists: _this.props.playlists,
+      playlist_songs: _this.props.playlist_songs
+    };
+    return _this;
   }
 
   _createClass(Browse, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchAllArtists();
+      this.props.fetchAllAlbums();
+      this.props.fetchAllPlaylists();
+    }
+  }, {
     key: "render",
     value: function render() {
+      var boldId, sixTwentyId, livingId;
+      this.props.albums.forEach(function (album) {
+        if (album.title === "Axis: Bold As Love") boldId = album.id;
+        if (album.title === "6Twenty") sixTwentyId = album.id;
+        if (album.title === "Living In A Box") livingId = album.id;
+      });
+      var bowieId, princeId, daftId;
+      this.props.artists.forEach(function (artist) {
+        if (artist.name === "David Bowie") bowieId = artist.id;
+        if (artist.name === "Prince") princeId = artist.id;
+        if (artist.name === "Daft Punk") daftId = artist.id;
+      });
+      var sixtiesId, seventiesId, eightiesId;
+      this.props.playlists.forEach(function (playlist) {
+        if (playlist.title === "60's Playlist") sixtiesId = playlist.id;
+        if (playlist.title === "70's Playlist") seventiesId = playlist.id;
+        if (playlist.title === "80's Playlist") eightiesId = playlist.id;
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1555,32 +1617,32 @@ function (_React$Component) {
         id: "slideshow"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "slide-wrapper"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/library/artists/4'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/artists/".concat(bowieId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-bowie"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "David Bowie"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/library/artists/70'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "David Bowie"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/artists/".concat(princeId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-prince"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/library/artists/63'
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/artists/".concat(daftId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feature-daftpunk"
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-albums"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Albums"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-album-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/library/albums/13'
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/albums/".concat(boldId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-album-bold"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Axis:Bold As Love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Jimi Hendrix Experience")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/library/albums/4'
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Axis:Bold As Love"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Jimi Hendrix Experience")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/albums/".concat(sixTwentyId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-album-d4"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "6Twenty"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The D4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/library/albums/19'
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "6Twenty"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "The D4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/albums/".concat(livingId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-album-box"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Living In A Box"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Living In A Box")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1600,7 +1662,7 @@ function (_React$Component) {
   return Browse;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Browse);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Browse));
 
 /***/ }),
 
