@@ -23,6 +23,7 @@ class NavBar extends React.Component {
         //         <Link className="btn" to="/login">Log In</Link>
         //     </div>
         // );
+
         return (
             <div className="navbar-container">
                 <div className="navbar-index">
