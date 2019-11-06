@@ -42,7 +42,7 @@ class Browse extends React.Component {
     }
 
     render() {
-        let boldId, sixTwentyId, livingId;
+        let boldId, sixTwentyId, livingId, bowieId, princeId, daftId, sixtiesId, seventiesId, eightiesId;
         this.props.albums.forEach(album => {
             if (album.title === "Axis: Bold As Love")
                 boldId = album.id;
@@ -51,7 +51,6 @@ class Browse extends React.Component {
             if (album.title === "Living In A Box")
                 livingId = album.id;
         })
-        let bowieId, princeId, daftId;
         this.props.artists.forEach(artist => {
             if (artist.name === "David Bowie")
                 bowieId = artist.id;
@@ -60,8 +59,6 @@ class Browse extends React.Component {
             if (artist.name === "Daft Punk")
                 daftId = artist.id;
         })
-        
-        let sixtiesId, seventiesId, eightiesId;
         this.props.playlists.forEach(playlist => {
             if (playlist.title === "60's Playlist")
                 sixtiesId = playlist.id;
@@ -119,18 +116,23 @@ class Browse extends React.Component {
                         <h3>Featured Playlists</h3>
                         <div className="featured-playlist-index">
                             <div className="featured-playlist-60s">
-                                <p>60's Hits</p>
+                                <Link to={`/library/albums/${sixtiesId}`}>
+                                    <p>60's Hits</p>
+                                </Link>
                             </div>
-
                             <div className="featured-playlist-70s">
-                                <p>70's Hits</p>
+                                <Link to={`/library/albums/${seventiesId}`}>
+                                    <p>70's Hits</p>
+                                </Link>
                             </div>
-
                             <div className="featured-playlist-80s">
-                                <p>80's Hits</p>
+                                <Link to={`/library/albums/${eightiesId}`}>
+                                    <p>80's Hits</p>
+                                </Link>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         )
