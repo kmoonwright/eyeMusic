@@ -60,7 +60,15 @@
 }
 .library-nav-playlist-create {
     margin-top: 20px;
-    margin-left: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+.library-nav-playlist-create a {
+    padding-left: 10px;
+}
+.library-nav-playlist-create:hover {
+    background-color:lightgray;
+    color: black;
 }
 
 

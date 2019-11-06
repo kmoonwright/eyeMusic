@@ -86,7 +86,7 @@ class Library extends React.Component {
                         </ul>
                         <div className="library-nav-playlist-create">
                             <Link to="/library/playlist/new">
-                                Create a new playlist...
+                                Create playlist...
                             </Link>
                         </div>
                     </div>

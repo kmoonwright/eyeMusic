@@ -2282,7 +2282,7 @@ function (_React$Component) {
         className: "library-nav-playlist-create"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/playlist/new"
-      }, "Create a new playlist..."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create playlist..."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-socials"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "library-nav-social-icons"
@@ -37730,7 +37730,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
