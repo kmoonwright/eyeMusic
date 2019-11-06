@@ -33,8 +33,14 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    margin-left: 10px;
-
+}
+.library-nav-items-btns-each {
+    padding-left: 10px;
+    padding-bottom: 4px;
+}
+.library-nav-items-btns-each:hover {
+    background-color:lightgray;
+    color: black;
 }
 
 .library-nav-playlists {
@@ -44,15 +50,19 @@
 }
 .library-nav-playlist-items {
     margin-top: 10px;
-    margin-left: 10px;
+}
+.library-nav-playlist-items li {
+    padding-left: 10px;
+}
+.library-nav-playlist-items li:hover {
+    background-color: lightgray;
+    color: black;
 }
 .library-nav-playlist-create {
     margin-top: 20px;
     margin-left: 10px;
 }
-.library-nav-items-btns-each {
-    padding-bottom: 4px;
-}
+
 
 .library-nav-socials {
     width: 18%;

@@ -46,6 +46,11 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     box-shadow: 10px 10px 5px black;
+    button:hover {
+        background: #ff7c94;
+        box-shadow: 3px 5px black;
+        transition: ease-in;
+    }
 
 }
 
