@@ -1647,18 +1647,18 @@ function (_React$Component) {
         className: "featured-playlist"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlist-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlist-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/playlists/".concat(eightiesId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "80's Hits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlist-2"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "80's Hits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/playlists/".concat(hiddenId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hidden ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gems"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlist-3"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hidden ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gems"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/playlists/".concat(electronicId)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Electronic")))))));
     }
   }]);
