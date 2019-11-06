@@ -116,17 +116,17 @@ class Browse extends React.Component {
                         <h3>Featured Playlists</h3>
                         <div className="featured-playlist-index">
                             <div className="featured-playlist-1">
-                                <Link to={`/library/albums/${eightiesId}`}>
+                                <Link to={`/library/playlists/${eightiesId}`}>
                                     <p>80's Hits</p>
                                 </Link>
                             </div>
                             <div className="featured-playlist-2">
-                                <Link to={`/library/albums/${hiddenId}`}>
+                                <Link to={`/library/playlists/${hiddenId}`}>
                                     <p>Hidden <br/>Gems</p>
                                 </Link>
                             </div>
                             <div className="featured-playlist-3">
-                                <Link to={`/library/albums/${electronicId}`}>
+                                <Link to={`/library/playlists/${electronicId}`}>
                                     <p>Electronic</p>
                                 </Link>
                             </div>

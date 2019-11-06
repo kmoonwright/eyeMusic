@@ -1650,15 +1650,15 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlist-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/albums/".concat(eightiesId)
+        to: "/library/playlists/".concat(eightiesId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "80's Hits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlist-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/albums/".concat(hiddenId)
+        to: "/library/playlists/".concat(hiddenId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hidden ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gems"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlist-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/albums/".concat(electronicId)
+        to: "/library/playlists/".concat(electronicId)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Electronic")))))));
     }
   }]);
