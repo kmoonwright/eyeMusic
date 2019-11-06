@@ -416,8 +416,22 @@ playlistD = Playlist.create(title: 'Kramerica Industries', user_id: demoUser.id)
     pd9 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistD.id )
     pd10 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistD.id )
 
-
 playlistE = Playlist.create(title: 'Random Songs', user_id: demoUser.id)
+    pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
+    pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
+    pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
+
+playlistF = Playlist.create(title: "80's Playlist", user_id: demoUser.id)
+    pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
+    pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
+    pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
+
+playlistG = Playlist.create(title: "00's Playlist", user_id: demoUser.id)
+    pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
+    pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
+    pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
+
+playlistH = Playlist.create(title: "Electronic Mix", user_id: demoUser.id)
     pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
     pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
     pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )

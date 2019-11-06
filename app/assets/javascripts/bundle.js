@@ -1588,7 +1588,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var boldId, sixTwentyId, livingId, bowieId, princeId, daftId, sixtiesId, seventiesId, eightiesId;
+      var boldId, sixTwentyId, livingId, bowieId, princeId, daftId, eightiesId, hiddenId, electronicId;
       this.props.albums.forEach(function (album) {
         if (album.title === "Axis: Bold As Love") boldId = album.id;
         if (album.title === "6Twenty") sixTwentyId = album.id;
@@ -1600,9 +1600,9 @@ function (_React$Component) {
         if (artist.name === "Daft Punk") daftId = artist.id;
       });
       this.props.playlists.forEach(function (playlist) {
-        if (playlist.title === "60's Playlist") sixtiesId = playlist.id;
-        if (playlist.title === "70's Playlist") seventiesId = playlist.id;
         if (playlist.title === "80's Playlist") eightiesId = playlist.id;
+        if (playlist.title === "Hidden Gems") hiddenId = playlist.id;
+        if (playlist.title === "Electronic") electronicId = playlist.id;
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "browse-container"
@@ -1648,18 +1648,18 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Featured Playlists"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlist-index"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlist-60s"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/albums/".concat(sixtiesId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "60's Hits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlist-70s"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/albums/".concat(seventiesId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "70's Hits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "featured-playlist-80s"
+        className: "featured-playlist-1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/albums/".concat(eightiesId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "80's Hits")))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "80's Hits"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/albums/".concat(hiddenId)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hidden", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gems"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "featured-playlist-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/library/albums/".concat(electronicId)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Electronic")))))));
     }
   }]);
 
