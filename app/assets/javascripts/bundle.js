@@ -1655,7 +1655,7 @@ function (_React$Component) {
         className: "featured-playlist-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/albums/".concat(hiddenId)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hidden", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gems"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hidden ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Gems"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "featured-playlist-3"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/albums/".concat(electronicId)

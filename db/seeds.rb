@@ -356,6 +356,7 @@ cafedefloresong_audio = open('https://eyemusic-seeds.s3-us-west-1.amazonaws.com/
 cafedefloresong.audio.attach(io:cafedefloresong_audio, filename:'audio-steph-cafedeflore.mp3')
 
 
+# DO NOT DELETE - TEMPLATE
 # #####
 # # Artist
 # #####
@@ -421,17 +422,26 @@ playlistE = Playlist.create(title: 'Random Songs', user_id: demoUser.id)
     pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
     pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
 
+
+# BROWSE PLAYLISTS
 playlistF = Playlist.create(title: "80's Playlist", user_id: demoUser.id)
-    pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
-    pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
-    pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
+    pf1 = PlaylistSong.create(song_id: whendovescry.id, playlist_id:playlistF.id )
+    pf2 = PlaylistSong.create(song_id: sexydancer.id, playlist_id:playlistF.id )
+    pf3 = PlaylistSong.create(song_id: livinginaboxsong.id, playlist_id:playlistF.id )
+    pf4 = PlaylistSong.create(song_id: letsdancesong.id, playlist_id:playlistF.id )
+    pf5 = PlaylistSong.create(song_id: trust_audio.id, playlist_id:playlistF.id )
 
-playlistG = Playlist.create(title: "00's Playlist", user_id: demoUser.id)
-    pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
-    pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
-    pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
+playlistG = Playlist.create(title: "Hidden Gems", user_id: demoUser.id)
+    pg1 = PlaylistSong.create(song_id: goodtime.id, playlist_id:playlistG.id )
+    pg2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistG.id )
+    pg3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistG.id )
+    pg4 = PlaylistSong.create(song_id: comeon.id, playlist_id:playlistG.id )
+    pg5 = PlaylistSong.create(song_id: compositesynthesizer.id, playlist_id:playlistG.id )
+    pg5 = PlaylistSong.create(song_id: mypatch_audio.id, playlist_id:playlistG.id )
+    pg6 = PlaylistSong.create(song_id: allrightsong_audio.id, playlist_id:playlistG.id )
 
-playlistH = Playlist.create(title: "Electronic Mix", user_id: demoUser.id)
-    pe1 = PlaylistSong.create(song_id: allrightsong.id, playlist_id:playlistE.id )
-    pe2 = PlaylistSong.create(song_id: trust.id, playlist_id:playlistE.id )
-    pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
+playlistH = Playlist.create(title: "Electronic", user_id: demoUser.id)
+    ph1 = PlaylistSong.create(song_id: diegedakensindfrei.id, playlist_id:playlistH.id )
+    ph2 = PlaylistSong.create(song_id: instantcrush.id, playlist_id:playlistH.id )
+    ph3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistH.id )
+    ph4 = PlaylistSong.create(song_id: somethingaboutus_audio.id, playlist_id:playlistH.id )

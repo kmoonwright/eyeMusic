@@ -122,7 +122,7 @@ class Browse extends React.Component {
                             </div>
                             <div className="featured-playlist-2">
                                 <Link to={`/library/albums/${hiddenId}`}>
-                                    <p>Hidden<br/>Gems</p>
+                                    <p>Hidden <br/>Gems</p>
                                 </Link>
                             </div>
                             <div className="featured-playlist-3">
