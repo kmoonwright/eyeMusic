@@ -13,7 +13,7 @@ class Browse extends React.Component {
                         <h3>Featured Artists</h3>
                         <div className="featured-artists-slideshow" id="slideshow">
                             <div className="slide-wrapper">
-                                <Link to={'/library/artists/64'}>
+                                <Link to={'/library/artists/4'}>
                                     <div className="feature-bowie">
                                         <p>David Bowie</p>
                                     </div>
@@ -31,17 +31,17 @@ class Browse extends React.Component {
                     <div className="featured-albums">
                         <h3>Featured Albums</h3>
                         <div className="featured-album-index">
-                            <Link to={'/library/albums/158'}>
+                            <Link to={'/library/albums/13'}>
                                 <div className="featured-album-bold"></div>
                                 <p>Axis:Bold As Love</p>
                                 <p>Jimi Hendrix Experience</p>
                             </Link>
-                            <Link to={'/library/albums/149'}>
+                            <Link to={'/library/albums/4'}>
                                 <div className="featured-album-d4"></div>
                                 <p>6Twenty</p>
                                 <p>The D4</p>
                             </Link>
-                            <Link to={'/library/albums/164'}>
+                            <Link to={'/library/albums/19'}>
                                 <div className="featured-album-box"></div>
                                 <p>Living In A Box</p>
                                 <p>Living In A Box</p>

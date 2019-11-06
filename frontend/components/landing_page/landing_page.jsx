@@ -79,7 +79,7 @@ class LandingPage extends React.Component {
                             <a href="https://github.com/kmoonwright" target="_blank">
                                 <i className="fab fa-github-square"></i>
                             </a>
-                            <a href="https://angel.co/kyle-moon-wright" target="_blank">
+                            <a href="https://angel.co/kmoonwright" target="_blank">
                                 <i className="fab fa-angellist"></i>
                             </a>
                         </div>

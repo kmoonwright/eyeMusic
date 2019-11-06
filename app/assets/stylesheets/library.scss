@@ -12,7 +12,7 @@
 .library-nav {
     color: whitesmoke;
     background-color: #333333;
-    width: 20%;
+    width: 18%;
     padding: 6px;
     position: fixed;
     margin-top: 102px;
@@ -52,6 +52,21 @@
 }
 .library-nav-items-btns-each {
     padding-bottom: 4px;
+}
+
+.library-nav-socials {
+    width: 18%;
+    position: fixed;
+    bottom: 20px;
+}
+.library-nav-social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 35px;
+    :hover {
+        color: lightgray;
+    }
 }
 
 .playlist-nav-index-item {

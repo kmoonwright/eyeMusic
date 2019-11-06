@@ -29,12 +29,14 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development --watch"
+    "start": "webpack --mode=development --watch",
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack-cli": "^3.3.9"
+    "babel-core": "^6.26.3",
+    "webpack-cli": "^3.3.10"
   }
 }

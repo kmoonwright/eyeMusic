@@ -91,6 +91,24 @@ class Library extends React.Component {
                         </div>
                     </div>
 
+                    <div className="library-nav-socials">
+                            {/* <p>
+                                Developed by
+                                <a href="http://www.kylemoonwright.com" target="_blank" className="landing-social-portfolio-link"> Kyle Moon-Wright</a>
+                            </p> */}
+                            <div className="library-nav-social-icons">
+                                <a href="https://www.linkedin.com/in/kyle-moon-wright/" target="_blank">
+                                    <i className="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/kmoonwright" target="_blank">
+                                    <i className="fab fa-github-square"></i>
+                                </a>
+                                <a href="https://angel.co/kmoonwright" target="_blank">
+                                    <i className="fab fa-angellist"></i>
+                                </a>
+                            </div>
+                    </div>
+
                 </div>
 
                 <div className="library-main">
