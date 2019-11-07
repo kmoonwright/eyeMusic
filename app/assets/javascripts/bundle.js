@@ -2716,7 +2716,7 @@ function (_React$Component) {
         to: "/browse"
       }, "Browse")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/radio"
-      }, "Radio"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Visualizer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-profile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Welcome ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "logout-btn",
