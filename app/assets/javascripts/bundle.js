@@ -1428,15 +1428,13 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var artist = this.props.artist;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "artist-index-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/library/artists/".concat(artist.id)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "artist-index-item"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: artist.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/library/artists/".concat(artist.id)
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, artist.name))); // THIS ONE WORKS
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, artist.name))); // THIS ONE WORKS
       // return (
       //     <div className="artist-index-detail">
       //         {this.props.artist.albums.map(album => {
@@ -2404,7 +2402,7 @@ function (_React$Component) {
     // this.pause = this.pause.bind(this);
     // this.end = this.end.bind(this);
 
-    _this.toggle = _this.toggle.bind(_assertThisInitialized(_this));
+    _this.togglePlay = _this.togglePlay.bind(_assertThisInitialized(_this));
     _this.nextSong = _this.nextSong.bind(_assertThisInitialized(_this));
     _this.prevSong = _this.prevSong.bind(_assertThisInitialized(_this)); // this.randomize = this.randomize.bind(this);
     // this.repeat = this.repeat.bind(this);
@@ -2442,8 +2440,8 @@ function (_React$Component) {
 
     }
   }, {
-    key: "toggle",
-    value: function toggle() {
+    key: "togglePlay",
+    value: function togglePlay() {
       //toggle song dispatch action to set a new slice of state
       // musicPlayer.ui.playing change
       // buttons should only swap out pieces of state
@@ -2527,7 +2525,7 @@ function (_React$Component) {
         className: "music-player-btns-prev",
         title: "Previous Song"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.toggle,
+        onClick: this.togglePlay,
         className: "music-player-btns-play",
         title: "Play/Pause"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -37731,7 +37729,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

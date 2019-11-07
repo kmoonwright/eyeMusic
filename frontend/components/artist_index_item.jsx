@@ -23,14 +23,12 @@ class ArtistIndexItem extends React.Component {
     render() {
         const artist = this.props.artist;
         return (
-            <li className="artist-index-item">
-                <Link to={`/library/artists/${artist.id}`}>
+            <Link to={`/library/artists/${artist.id}`}>
+                <li className="artist-index-item">
                     <img src={artist.photoUrl}></img>
-                </Link>
-                <Link to={`/library/artists/${artist.id}`}>
-                    <div>{artist.name}</div>
-                </Link>
-            </li>
+                    <p>{artist.name}</p>
+                </li>
+            </Link>
         )
         // THIS ONE WORKS
         // return (

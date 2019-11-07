@@ -36,7 +36,7 @@ class MusicPlayer extends React.Component {
         // this.play = this.play.bind(this);
         // this.pause = this.pause.bind(this);
         // this.end = this.end.bind(this);
-        this.toggle = this.toggle.bind(this);
+        this.togglePlay = this.togglePlay.bind(this);
         this.nextSong = this.nextSong.bind(this);
         this.prevSong = this.prevSong.bind(this);
         // this.randomize = this.randomize.bind(this);
@@ -72,7 +72,7 @@ class MusicPlayer extends React.Component {
         //check if state changed
     }
 
-    toggle() {
+    togglePlay() {
         //toggle song dispatch action to set a new slice of state
         // musicPlayer.ui.playing change
         // buttons should only swap out pieces of state
@@ -144,7 +144,7 @@ class MusicPlayer extends React.Component {
                         <div className="music-player-btns">
                             <button onClick={this.prevSong} className="music-player-btns-prev" 
                                 title="Previous Song"></button>
-                            <button onClick={this.toggle} className="music-player-btns-play" 
+                            <button onClick={this.togglePlay} className="music-player-btns-play" 
                                 title="Play/Pause"></button>
                             <button onClick={this.nextSong} className="music-player-btns-next" 
                                 title="Next Song"></button>

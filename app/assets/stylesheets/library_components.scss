@@ -28,8 +28,8 @@
     flex-direction: column;
     overflow: auto;
     img {
-        height: 100px;
-        width: 100px;
+        height: 80px;
+        width: 80px;
         margin: 2px;
         border-radius: 50px 50px 50px 50px;
     }
@@ -38,6 +38,14 @@
 .artist-index-item {
     display:flex;
     align-items: center;
+
+    p {
+        padding-left: 10px;
+        padding-right: 5px;
+    }
+}
+.artist-index-item:hover {
+    background-color: lightsalmon;
 }
 
 .artist-index-detail {
