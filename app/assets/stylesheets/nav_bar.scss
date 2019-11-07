@@ -41,7 +41,12 @@
 }
 
 .navbar-profile {
-  font-family: verdana;
+  display: flex;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#logout-btn {
+  margin-left: 10px;
 }
 #logout-btn:hover {
   padding: 5px;
