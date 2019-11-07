@@ -37,12 +37,12 @@ class MusicPlayer extends React.Component {
         // checks props passed in component
         // all functionality of player goes here
         this.state = {
-            current: 0,
+            currentTime: 0,
             progress: 0,
             random: false,
             repeat: false,
 
-            volumeBeforeMute: 0.65,
+            volumeBeforeMute: 0.45,
             currentVolume: 0.45,
             mute: false,
         }
@@ -61,6 +61,9 @@ class MusicPlayer extends React.Component {
 
         this.toggleMute = this.toggleMute.bind(this);
         this.setVolume = this.setVolume.bind(this);
+        this.convertSecondsToMinutes = this.convertSecondsToMinutes.bind(this);
+        this.setPlaybackTime = this.setPlaybackTime.bind(this);
+        this.handleMusicBarUpdate = this.handleMusicBarUpdate.bind(this);
     }
 
     // everything depends on props
@@ -72,7 +75,14 @@ class MusicPlayer extends React.Component {
         //     this.audio.play();
         // }
     }
-
+    componentDidMount() {
+        if (this.props.currentSong.playing) {
+            this.audio.play();
+        } else {
+            this.audio.pause();
+        }
+        this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
+    }
     componentDidUpdate(oldProps) {
         // need conditionals to prevent unneeded operations
         // checks props passed in component
@@ -160,7 +170,31 @@ class MusicPlayer extends React.Component {
     // repeat() {
     //     this.setState({ repeat: !this.state.repeat });
     // }
+    handleMusicBarUpdate() {
+        this.setState({
+            currentTime: this.audio.currentTime
+        });
+    }
 
+    setPlaybackTime(e) {
+        this.audio.currentTime = e.target.value;
+        this.setState({
+            currentTime: e.target.value
+        });
+    }
+
+    convertSecondsToMinutes(sec) {
+        let minutes = Math.floor(sec / 60);
+        let finalMinutes = minutes < 60 ? minutes : 0;
+        const seconds = Math.floor(sec) % 60;
+        const finalSeconds = seconds < 10 ? `:0${seconds}` : `:${seconds}`;
+
+        if (finalMinutes < 10) finalMinutes = `0${finalMinutes}`;
+        else finalMinutes = `${finalMinutes}`;
+
+        let finalTime = finalMinutes + finalSeconds;
+        return finalTime;
+    }
 
     render() {
         let volumeIcon;
@@ -220,6 +254,23 @@ class MusicPlayer extends React.Component {
                     </div>
                 
                     <div className="music-player-display">
+                        <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
+
+                        <div className="progress-bar">
+                            <input
+                                type="range"
+                                className="music-progress-bar"
+                                min="0"
+                                max={length}
+                                step="1"
+                                onChange={this.setPlaybackTime} />
+
+                            <div className="outer-music-bar">
+                                <div className="inner-music-bar" style={{ width: `${100 * (this.state.currentTime / length) || 0}%` }}></div>
+                                <div className="progress-ball" style={{ marginLeft: `${100 * (this.state.currentTime / length) || 0}%` }}></div>
+                            </div>
+                        </div>
+                        <p className="music-bar-time-right">{this.props.currentSong.length}</p>
                     </div>
 
                     <Link to="/search"><button className="search-btn"></button></Link>

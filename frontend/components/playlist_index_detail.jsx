@@ -129,6 +129,7 @@ class PlaylistIndexDetail extends React.Component {
                     <ul className="song-index">
                         {songList}
                     </ul>
+                    <div className="black-space"></div>
                 </div>
             )
         } else {

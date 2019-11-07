@@ -128,7 +128,7 @@
     position: relative;
     top: -35px;
     background-color: #1db954;
-    height: 3px;
+    height: 4px;
     border-radius: 55px;
 }
 
@@ -148,4 +148,10 @@
 .volume-bar-wrapper:hover .progress-ball-volume {
     opacity: 1;
     border-radius: 55px;
+}
+
+
+.music-player-display {
+    display: flex;
+    flex-direction: row;
 }

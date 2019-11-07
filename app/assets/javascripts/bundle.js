@@ -2417,11 +2417,11 @@ function (_React$Component) {
     // all functionality of player goes here
 
     _this.state = {
-      current: 0,
+      currentTime: 0,
       progress: 0,
       random: false,
       repeat: false,
-      volumeBeforeMute: 0.65,
+      volumeBeforeMute: 0.45,
       currentVolume: 0.45,
       mute: false
     };
@@ -2437,6 +2437,9 @@ function (_React$Component) {
 
     _this.toggleMute = _this.toggleMute.bind(_assertThisInitialized(_this));
     _this.setVolume = _this.setVolume.bind(_assertThisInitialized(_this));
+    _this.convertSecondsToMinutes = _this.convertSecondsToMinutes.bind(_assertThisInitialized(_this));
+    _this.setPlaybackTime = _this.setPlaybackTime.bind(_assertThisInitialized(_this));
+    _this.handleMusicBarUpdate = _this.handleMusicBarUpdate.bind(_assertThisInitialized(_this));
     return _this;
   } // everything depends on props
 
@@ -2448,6 +2451,17 @@ function (_React$Component) {
       // } else {
       //     this.audio.play();
       // }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.currentSong.playing) {
+        this.audio.play();
+      } else {
+        this.audio.pause();
+      }
+
+      this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
   }, {
     key: "componentDidUpdate",
@@ -2555,6 +2569,32 @@ function (_React$Component) {
     // }
 
   }, {
+    key: "handleMusicBarUpdate",
+    value: function handleMusicBarUpdate() {
+      this.setState({
+        currentTime: this.audio.currentTime
+      });
+    }
+  }, {
+    key: "setPlaybackTime",
+    value: function setPlaybackTime(e) {
+      this.audio.currentTime = e.target.value;
+      this.setState({
+        currentTime: e.target.value
+      });
+    }
+  }, {
+    key: "convertSecondsToMinutes",
+    value: function convertSecondsToMinutes(sec) {
+      var minutes = Math.floor(sec / 60);
+      var finalMinutes = minutes < 60 ? minutes : 0;
+      var seconds = Math.floor(sec) % 60;
+      var finalSeconds = seconds < 10 ? ":0".concat(seconds) : ":".concat(seconds);
+      if (finalMinutes < 10) finalMinutes = "0".concat(finalMinutes);else finalMinutes = "".concat(finalMinutes);
+      var finalTime = finalMinutes + finalSeconds;
+      return finalTime;
+    }
+  }, {
     key: "render",
     value: function render() {
       var volumeIcon;
@@ -2619,7 +2659,32 @@ function (_React$Component) {
         }
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-display"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "music-bar-time-left"
+      }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "range",
+        className: "music-progress-bar",
+        min: "0",
+        max: length,
+        step: "1",
+        onChange: this.setPlaybackTime
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outer-music-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-music-bar",
+        style: {
+          width: "".concat(100 * (this.state.currentTime / length) || 0, "%")
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-ball",
+        style: {
+          marginLeft: "".concat(100 * (this.state.currentTime / length) || 0, "%")
+        }
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "music-bar-time-right"
+      }, this.props.currentSong.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-btn"
@@ -3107,7 +3172,9 @@ function (_React$Component) {
           className: "song-index-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
           className: "song-index"
-        }, songList));
+        }, songList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "black-space"
+        }));
       } else {
         return null;
       }
