@@ -59,3 +59,88 @@
     width: 40px;
     margin-top: 8px;
 }
+
+
+
+
+// Volume range and button
+.volume-bar {
+    float: right;
+    min-width: 153px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#volume-button {
+    background-color: Transparent;
+    font-size: 15px;
+    color: hsl(0, 0%, 70%);
+    border-color: transparent;
+    transition-duration: 50ms;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        // transform: scale(1.1);
+        transition-duration: 66ms;
+        color: #fff;
+    }
+}
+
+.volume-progress-bar {
+    position: relative;
+    top: -20px;
+    width: 120px;
+    cursor: pointer;
+    background-color: transparent;
+    color: transparent;
+    -webkit-appearance: none;
+    //   height: 3px;
+    //   outline: 0;
+}
+
+.volume-progress-bar::-webkit-slider-thumb {
+    visibility: hidden;
+}
+
+.volume-bar-wrapper {
+    //   display: flex;
+    //   flex-flow: column-reverse;
+    width: 120px;
+}
+
+.outer-volume-bar {
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+    height: 3px;
+    border-radius: 55px;
+    z-index: -2;
+}
+
+.inner-volume-bar {
+    position: relative;
+    top: -35px;
+    background-color: #1db954;
+    height: 3px;
+    border-radius: 55px;
+}
+
+.progress-ball-volume {
+    z-index: -1;
+    position: relative;
+    top: -42px;
+    bottom: 7px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: rgb(238, 238, 238);
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.volume-bar-wrapper:hover .progress-ball-volume {
+    opacity: 1;
+    border-radius: 55px;
+}

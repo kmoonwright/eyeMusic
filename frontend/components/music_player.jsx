@@ -5,6 +5,23 @@ import { fetchNextSong, fetchPrevSong, togglePlay } from '../actions/current_son
 import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
 
+const msp = state => ({
+    // playing: state.ui.musicPlayer.playing,
+    // currentSong: state.ui.musicPlayer.currentSong,
+    queue: state.ui.musicPlayer.queue,
+});
+
+const mdp = dispatch => {
+    return {
+        togglePlay: (boolean) => dispatch(togglePlay(boolean)),
+        fetchNextSong: (songId) => dispatch(fetchNextSong(songId)),
+        fetchPrevSong: (songId) => dispatch(fetchPrevSong(songId)),
+        toggleSong: () => (dispatch(toggleSong())),
+        setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+    };
+};
+
+
 class MusicPlayer extends React.Component {
 
     constructor(props) {
@@ -26,7 +43,7 @@ class MusicPlayer extends React.Component {
             repeat: false,
 
             volumeBeforeMute: 0.65,
-            currentVolume: 0.65,
+            currentVolume: 0.45,
             mute: false,
         }
 
@@ -112,13 +129,24 @@ class MusicPlayer extends React.Component {
     }
 
     toggleMute() {
-        let mute = this.state.mute;
-        this.setState({ mute: !this.state.mute });
-        this.audio.volume = (mute) ? 1 : 0;
+        if (this.state.muted === false) {
+            this.setState({ currentVolume: 0 });
+            this.setState({ muted: true });
+            this.audio.volume = 0;
+        } else {
+            this.setState({ currentVolume: this.state.volumeBeforeMute });
+            this.setState({ muted: false });
+            this.audio.volume = this.state.volumeBeforeMute;
+        }
     }
+    // toggleMute() {
+    //     let mute = this.state.mute;
+    //     this.setState({ mute: !this.state.mute });
+    //     this.audio.volume = (mute) ? 1 : 0;
+    // }
 
     setVolume(e) {
-        this.audio.currentSong.volume = e.target.value;
+        this.audio.volume = e.target.value;
         this.setState({ currentVolume: e.target.value })
         this.setState({ volumeBeforeMute: e.target.value })
     }
@@ -135,6 +163,16 @@ class MusicPlayer extends React.Component {
 
 
     render() {
+        let volumeIcon;
+        if (this.state.currentVolume === 0) {
+            volumeIcon = "mute";
+        } else if (this.state.currentVolume >= 0.65) {
+            volumeIcon = "up";
+        } else if (this.state.currentVolume >= 0.05 && this.state.currentVolume < 0.65) {
+            volumeIcon = "down";
+        } else if (this.state.currentVolume < 0.05) {
+            volumeIcon = "off";
+        }
         return (
 
             <div className="player-container">
@@ -151,13 +189,34 @@ class MusicPlayer extends React.Component {
                             {/* <button onClick={this.next} className="music-player-btns-volume" title="Volume">
                                 Volume
                             </button> */}
-                            <button onClick={this.toggleMute} className="music-player-btns-mute" 
+                            {/* <button onClick={this.toggleMute} className="music-player-btns-mute" 
                                 title="Mute/Unmute"></button>
                             <button onClick={this.toggleMute} className="music-player-btns-volume" 
                                 title="Volume"></button>
                             <button onClick={this.randomize} className="music-player-btns-shuffle" 
-                                title="Shuffle"></button>
+                                title="Shuffle"></button> */}
+
+                            <div className="volume-bar">
+                                <button id="volume-button" onClick={this.toggleMute}>
+                                    <i className={`fas fa-volume-${volumeIcon}`}></i>
+                                </button>
+                                <div className="volume-bar-wrapper">
+                                    <div className="outer-volume-bar">
+                                    <input type="range"
+                                        className="volume-progress-bar"
+                                        min="0"
+                                        max="1"
+                                        step="0.01"
+                                        onChange={this.setVolume}
+                                    ></input>
+                                        <div className="inner-volume-bar" style={{ width: `${100 * (this.state.currentVolume / 1)}%` }}></div>
+                                        <div className="progress-ball-volume" style={{ marginLeft: `${100 * (this.state.currentVolume / 1)}%` }}></div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 
                     <div className="music-player-display">
@@ -170,29 +229,6 @@ class MusicPlayer extends React.Component {
         )
     }
 }
-
-// const mapStateToProps = (state) => ({
-//     currQueue: state.ui.musicPlayer.queue
-// });
-const msp = state => ({
-    // playing: state.ui.musicPlayer.playing,
-    // currentSong: state.ui.musicPlayer.currentSong,
-    queue: state.ui.musicPlayer.queue,
-});
-// const mapDispatchToProps = (dispatch) => ({
-//     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
-//     toggleSong: () => (dispatch(toggleSong())),
-//     setQueue: (queue) => (dispatch(setQueue(queue)))
-// });
-const mdp = dispatch => {
-    return {
-        togglePlay: (boolean) => dispatch(togglePlay(boolean)),
-        fetchNextSong: (songId) => dispatch(fetchNextSong(songId)),
-        fetchPrevSong: (songId) => dispatch(fetchPrevSong(songId)),
-        toggleSong: () => (dispatch(toggleSong())),
-        setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
-    };
-};
 
 
 export default connect(msp, mdp)(MusicPlayer);

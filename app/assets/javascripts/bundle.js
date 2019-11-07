@@ -2369,6 +2369,34 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var msp = function msp(state) {
+  return {
+    // playing: state.ui.musicPlayer.playing,
+    // currentSong: state.ui.musicPlayer.currentSong,
+    queue: state.ui.musicPlayer.queue
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    togglePlay: function togglePlay(_boolean) {
+      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["togglePlay"])(_boolean));
+    },
+    fetchNextSong: function fetchNextSong(songId) {
+      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchNextSong"])(songId));
+    },
+    fetchPrevSong: function fetchPrevSong(songId) {
+      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPrevSong"])(songId));
+    },
+    toggleSong: function toggleSong() {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["toggleSong"])());
+    },
+    setCurrentSong: function setCurrentSong(song) {
+      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["setCurrentSong"])(song));
+    }
+  };
+};
+
 var MusicPlayer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2394,7 +2422,7 @@ function (_React$Component) {
       random: false,
       repeat: false,
       volumeBeforeMute: 0.65,
-      currentVolume: 0.65,
+      currentVolume: 0.45,
       mute: false
     };
     _this.audio = new Audio(); // this.audio.src = audioUrl;
@@ -2484,16 +2512,33 @@ function (_React$Component) {
   }, {
     key: "toggleMute",
     value: function toggleMute() {
-      var mute = this.state.mute;
-      this.setState({
-        mute: !this.state.mute
-      });
-      this.audio.volume = mute ? 1 : 0;
-    }
+      if (this.state.muted === false) {
+        this.setState({
+          currentVolume: 0
+        });
+        this.setState({
+          muted: true
+        });
+        this.audio.volume = 0;
+      } else {
+        this.setState({
+          currentVolume: this.state.volumeBeforeMute
+        });
+        this.setState({
+          muted: false
+        });
+        this.audio.volume = this.state.volumeBeforeMute;
+      }
+    } // toggleMute() {
+    //     let mute = this.state.mute;
+    //     this.setState({ mute: !this.state.mute });
+    //     this.audio.volume = (mute) ? 1 : 0;
+    // }
+
   }, {
     key: "setVolume",
     value: function setVolume(e) {
-      this.audio.currentSong.volume = e.target.value;
+      this.audio.volume = e.target.value;
       this.setState({
         currentVolume: e.target.value
       });
@@ -2512,6 +2557,18 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var volumeIcon;
+
+      if (this.state.currentVolume === 0) {
+        volumeIcon = "mute";
+      } else if (this.state.currentVolume >= 0.65) {
+        volumeIcon = "up";
+      } else if (this.state.currentVolume >= 0.05 && this.state.currentVolume < 0.65) {
+        volumeIcon = "down";
+      } else if (this.state.currentVolume < 0.05) {
+        volumeIcon = "off";
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2532,19 +2589,35 @@ function (_React$Component) {
         onClick: this.nextSong,
         className: "music-player-btns-next",
         title: "Next Song"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.toggleMute,
-        className: "music-player-btns-mute",
-        title: "Mute/Unmute"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.toggleMute,
-        className: "music-player-btns-volume",
-        title: "Volume"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.randomize,
-        className: "music-player-btns-shuffle",
-        title: "Shuffle"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "volume-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "volume-button",
+        onClick: this.toggleMute
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-volume-".concat(volumeIcon)
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "volume-bar-wrapper"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outer-volume-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "range",
+        className: "volume-progress-bar",
+        min: "0",
+        max: "1",
+        step: "0.01",
+        onChange: this.setVolume
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-volume-bar",
+        style: {
+          width: "".concat(100 * (this.state.currentVolume / 1), "%")
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-ball-volume",
+        style: {
+          marginLeft: "".concat(100 * (this.state.currentVolume / 1), "%")
+        }
+      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-display"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
@@ -2555,43 +2628,7 @@ function (_React$Component) {
   }]);
 
   return MusicPlayer;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // const mapStateToProps = (state) => ({
-//     currQueue: state.ui.musicPlayer.queue
-// });
-
-
-var msp = function msp(state) {
-  return {
-    // playing: state.ui.musicPlayer.playing,
-    // currentSong: state.ui.musicPlayer.currentSong,
-    queue: state.ui.musicPlayer.queue
-  };
-}; // const mapDispatchToProps = (dispatch) => ({
-//     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
-//     toggleSong: () => (dispatch(toggleSong())),
-//     setQueue: (queue) => (dispatch(setQueue(queue)))
-// });
-
-
-var mdp = function mdp(dispatch) {
-  return {
-    togglePlay: function togglePlay(_boolean) {
-      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["togglePlay"])(_boolean));
-    },
-    fetchNextSong: function fetchNextSong(songId) {
-      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchNextSong"])(songId));
-    },
-    fetchPrevSong: function fetchPrevSong(songId) {
-      return dispatch(Object(_actions_current_song_actions__WEBPACK_IMPORTED_MODULE_3__["fetchPrevSong"])(songId));
-    },
-    toggleSong: function toggleSong() {
-      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["toggleSong"])());
-    },
-    setCurrentSong: function setCurrentSong(song) {
-      return dispatch(Object(_actions_music_player_actions__WEBPACK_IMPORTED_MODULE_4__["setCurrentSong"])(song));
-    }
-  };
-};
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(MusicPlayer));
 
