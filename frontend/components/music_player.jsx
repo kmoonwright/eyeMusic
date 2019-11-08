@@ -257,7 +257,7 @@ class MusicPlayer extends React.Component {
                 
                     <div className="music-player-display">
                         <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
-
+                        {/* <p>{this.props.currentSong.title}</p> */}
                         <div className="progress-bar">
                             <input
                                 type="range"
