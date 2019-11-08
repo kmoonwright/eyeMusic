@@ -74,7 +74,7 @@ class MusicPlayer extends React.Component {
         } else {
             this.audio.pause();
         }
-        this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
+        // this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
 
     componentDidUpdate(oldProps) {

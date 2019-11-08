@@ -4,15 +4,18 @@ import { Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../util/route_util';
 
 import MusicPlayer from './music_player';
+// import MusicPlayer from 'react-responsive-music-player';
 import NavBar from './nav_bar';
 
 class Header extends React.Component {
+    
     render() {
 
         let { currentSong, queue, playing } = this.props;
 
         return (
             <div className="header-container">
+                {/* <MusicPlayer playlist={playlist} /> */}
                 <MusicPlayer songs={queue} currentSong={currentSong} playing={playing}></MusicPlayer>
                 <NavBar></NavBar>
             </div>
