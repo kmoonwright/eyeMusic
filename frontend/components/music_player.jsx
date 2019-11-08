@@ -69,13 +69,6 @@ class MusicPlayer extends React.Component {
     // everything depends on props
 
     componentDidMount() {
-        // if (this.props.playing) { 
-        //     this.audio.play();
-        // } else {
-        //     this.audio.play();
-        // }
-    }
-    componentDidMount() {
         if (this.props.currentSong.playing) {
             this.audio.play();
         } else {
@@ -83,6 +76,7 @@ class MusicPlayer extends React.Component {
         }
         this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
+
     componentDidUpdate(oldProps) {
         // need conditionals to prevent unneeded operations
         // checks props passed in component
@@ -270,7 +264,8 @@ class MusicPlayer extends React.Component {
                                 <div className="progress-ball" style={{ marginLeft: `${100 * (this.state.currentTime / length) || 0}%` }}></div>
                             </div>
                         </div>
-                        <p className="music-bar-time-right">{this.props.currentSong.length}</p>
+
+                        <p className="music-bar-time-right">{this.props.currentSong.duration}</p>
                     </div>
 
                     <Link to="/search"><button className="search-btn"></button></Link>

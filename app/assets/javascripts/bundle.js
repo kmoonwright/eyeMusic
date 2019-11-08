@@ -2446,14 +2446,6 @@ function (_React$Component) {
 
   _createClass(MusicPlayer, [{
     key: "componentDidMount",
-    value: function componentDidMount() {// if (this.props.playing) { 
-      //     this.audio.play();
-      // } else {
-      //     this.audio.play();
-      // }
-    }
-  }, {
-    key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.currentSong.playing) {
         this.audio.play();
@@ -2684,7 +2676,7 @@ function (_React$Component) {
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "music-bar-time-right"
-      }, this.props.currentSong.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, this.props.currentSong.duration)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-btn"
