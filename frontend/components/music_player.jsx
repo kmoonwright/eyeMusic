@@ -273,7 +273,7 @@ class MusicPlayer extends React.Component {
                             </div>
                         </div>
 
-                        <p className="music-bar-time-right">{this.props.currentSong.duration}</p>
+                        <p className="music-bar-time-right">{this.state.playing ? this.convertSecondsToMinutes(this.audio.duration) : '00:00'}</p>
                     </div>
 
                     <Link to="/search"><button className="search-btn"></button></Link>
