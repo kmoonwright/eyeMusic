@@ -142,7 +142,6 @@ export default connect(msp, mdp)(PlaylistIndexDetail);
 
 // V2
     // render() {
-    //     debugger
     //     let songList = "Test"
 
     //     let songList;
@@ -155,7 +154,6 @@ export default connect(msp, mdp)(PlaylistIndexDetail);
     //     // map over songs with playlist songs ids
 
     //     let playlistSongs = this.props.playlist_songs;
-    //     debugger
     //     if (playlistSongs) {
     //         let playlistSongsIds = playlistSongs.map(song => song.song_id);
     //         let songs = this.props.songs
@@ -165,7 +163,6 @@ export default connect(msp, mdp)(PlaylistIndexDetail);
     //         songList = this.props.songs.map(song => {
     //             let songAlbum = allAlbums[song.album_id]
     //             let albumArtist = allArtists[songAlbum.artist_id]
-    //             debugger
     //             return (
     //                 <div key={song.id} className="playlist-songs-index-item">
 

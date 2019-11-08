@@ -8,6 +8,9 @@ import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_
 const msp = state => ({
     // playing: state.ui.musicPlayer.playing,
     // currentSong: state.ui.musicPlayer.currentSong,
+    artists: state.entities.artists,
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
     queue: state.ui.musicPlayer.queue,
 });
 
@@ -210,6 +213,13 @@ class MusicPlayer extends React.Component {
             volumeIcon = "off";
         }
         
+        
+        // let currentSongTitle = <p>{this.props.currentSong.title}</p>
+        let currentSongId = this.props.currentSong.id
+        let currentSongTitle = this.props.currentSong.title
+        let currentAlbumId = this.props.currentSong.album_id
+        // let currentAlbumArt = this.props.albums[currentAlbumId].imageUrl
+        // let currentAlbumArtist = this.props.artists[this.props.albums[currentAlbumId].artist_id].name
         return (
             <div className="player-container">
                 <div className="player-container-items">
@@ -256,8 +266,10 @@ class MusicPlayer extends React.Component {
                     </div>
                 
                     <div className="music-player-display">
+                        {/* <p>{currentAlbumArt}</p> */}
+                        <p>{currentSongTitle}</p>
+                        {/* <p>{currentAlbumArtist}</p> */}
                         <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
-                        {/* <p>{this.props.currentSong.title}</p> */}
                         <div className="progress-bar">
                             <input
                                 type="range"

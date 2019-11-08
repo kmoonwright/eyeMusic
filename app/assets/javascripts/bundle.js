@@ -1929,7 +1929,7 @@ function (_React$Component) {
   _createClass(Header, [{
     key: "logoutUser",
     value: function logoutUser() {
-      debugger;
+      this.audio.pause();
       this.props.logout(); // .then(() => this.props.history.push('/'));
     }
   }, {
@@ -2395,6 +2395,9 @@ var msp = function msp(state) {
   return {
     // playing: state.ui.musicPlayer.playing,
     // currentSong: state.ui.musicPlayer.currentSong,
+    artists: state.entities.artists,
+    songs: Object.values(state.entities.songs),
+    albums: state.entities.albums,
     queue: state.ui.musicPlayer.queue
   };
 };
@@ -2633,7 +2636,13 @@ function (_React$Component) {
         volumeIcon = "down";
       } else if (this.state.currentVolume < 0.05) {
         volumeIcon = "off";
-      }
+      } // let currentSongTitle = <p>{this.props.currentSong.title}</p>
+
+
+      var currentSongId = this.props.currentSong.id;
+      var currentSongTitle = this.props.currentSong.title;
+      var currentAlbumId = this.props.currentSong.album_id; // let currentAlbumArt = this.props.albums[currentAlbumId].imageUrl
+      // let currentAlbumArtist = this.props.artists[this.props.albums[currentAlbumId].artist_id].name
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-container"
@@ -2685,7 +2694,7 @@ function (_React$Component) {
         }
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-display"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "music-bar-time-left"
       }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-bar"
@@ -3212,7 +3221,6 @@ function (_React$Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(PlaylistIndexDetail)); // V2
 // render() {
-//     debugger
 //     let songList = "Test"
 //     let songList;
 //     const allAlbums = this.props.albums
@@ -3222,7 +3230,6 @@ function (_React$Component) {
 //     //use songs as source of truth
 //     // map over songs with playlist songs ids
 //     let playlistSongs = this.props.playlist_songs;
-//     debugger
 //     if (playlistSongs) {
 //         let playlistSongsIds = playlistSongs.map(song => song.song_id);
 //         let songs = this.props.songs
@@ -3231,7 +3238,6 @@ function (_React$Component) {
 //         songList = this.props.songs.map(song => {
 //             let songAlbum = allAlbums[song.album_id]
 //             let albumArtist = allArtists[songAlbum.artist_id]
-//             debugger
 //             return (
 //                 <div key={song.id} className="playlist-songs-index-item">
 //                     <img src={songAlbum.imageUrl}></img>
