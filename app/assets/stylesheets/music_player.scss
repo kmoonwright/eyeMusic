@@ -163,4 +163,95 @@
 .music-player-display {
     display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+
+
+
+.progress-bar {
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 400px;
+}
+
+.music-progress-bar {
+    width: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    color: transparent;
+    -webkit-appearance: none;
+    height: 2px;
+    outline: 0;
+}
+
+.music-progress-bar::-webkit-slider-thumb {
+    visibility: hidden;
+}
+
+.outer-music-bar {
+    width: 100%;
+    background-color: rgb(204, 204, 204);
+    height: 3px;
+    border-radius: 55px;
+}
+
+.progress-bar:hover .progress-ball {
+    opacity: 1;
+    border-radius: 55px;
+}
+
+.inner-music-bar {
+    background-color: #1db954;
+    height: 3px;
+    border-radius: 55px;
+}
+
+.progress-ball {
+    position: relative;
+    bottom: 7px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgb(238, 238, 238);
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.music-time {
+    width: 100%;
+    top: 770px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8d8d8d;
+    font-family: Circular, Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    z-index: 20;
+}
+
+.music-bar-time-left {
+    margin-right: 10px;
+}
+
+.music-bar-time-right {
+    margin-left: 10px;
+}
+
+.toggle-button {
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.toggle-button:hover {
+    font-size: 25px;
+    color: rgb(22, 246, 2);
+    cursor: pointer;
 }

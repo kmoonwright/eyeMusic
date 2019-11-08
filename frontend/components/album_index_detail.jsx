@@ -12,6 +12,7 @@ class AlbumIndexDetail extends React.Component {
             artists: this.props.artists,
             songs: this.props.songs,
             albums: this.props.albums,
+            playing: false
         }
     }
 
@@ -20,6 +21,9 @@ class AlbumIndexDetail extends React.Component {
 
     handlePlay(song) {
         this.props.setCurrentSong(song);
+        this.props.toggleSong();
+        this.state.playing = true;
+        this.props.setQueue(this.props.songs);
     }
 
     render() {
@@ -64,6 +68,8 @@ const mdp = dispatch => ({
     fetchAllSongs: () => dispatch(fetchAllSongs()),
     fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
     setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+    toggleSong: () => (dispatch(toggleSong())),
+    setQueue: (queue) => (dispatch(setQueue(queue))),
 
 })
 

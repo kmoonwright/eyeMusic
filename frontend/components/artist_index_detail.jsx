@@ -5,6 +5,36 @@ import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_a
 import { setCurrentSong, setQueue, toggleSong } from './../actions/music_player_actions';
 
 
+const msp = (state, ownProps) => {
+    const artistId = ownProps.match.params.artistId;
+    let artist = state.entities.artists[artistId];
+    let albums = Object.values(state.entities.albums).filter(album => album.artist_id.toString() === artistId);
+    let albumIds = albums.map(album => album.id);
+    let songs = {};
+    let songObjects = Object.values(state.entities.songs);
+    songObjects.forEach(song => {
+        if (albumIds.includes(song.album_id)) {
+            songs[song.album_id] = songs[song.album_id] || [];
+            songs[song.album_id].push(song);
+        }
+    });
+
+    return ({
+        artist: artist,
+        albums: albums,
+        songByAlbumId: songs,
+    })
+}
+
+const mdp = dispatch => ({
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
+    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+    toggleSong: () => (dispatch(toggleSong())),
+    setQueue: (queue) => (dispatch(setQueue(queue))),
+})
+
+
 class ArtistIndexDetail extends React.Component {
     constructor(props) {
         super(props)
@@ -14,11 +44,15 @@ class ArtistIndexDetail extends React.Component {
             songs: this.props.songs,
             albums: this.props.albums,
             playlists: this.props.playlists,
+            playing: false,
         }
     }
 
     handlePlay(song) {
         this.props.setCurrentSong(song);
+        this.props.toggleSong();
+        this.state.playing = true;
+        this.props.setQueue(this.props.songs);
     }
 
     getQueue(currSongIdx) {
@@ -56,32 +90,5 @@ class ArtistIndexDetail extends React.Component {
         )
     }
 }
-
-const msp = (state, ownProps) => {
-    const artistId = ownProps.match.params.artistId;
-    let artist = state.entities.artists[artistId];
-    let albums = Object.values(state.entities.albums).filter(album => album.artist_id.toString() === artistId);
-    let albumIds = albums.map(album => album.id);
-    let songs = {};
-    let songObjects = Object.values(state.entities.songs);
-    songObjects.forEach(song => {
-        if (albumIds.includes(song.album_id)) {
-            songs[song.album_id] = songs[song.album_id] || [];
-            songs[song.album_id].push(song);
-        }
-    });
-
-    return ({
-        artist: artist,
-        albums: albums,
-        songByAlbumId: songs,
-    })
-}
-
-const mdp = dispatch => ({
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-    fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
-    setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
-})
 
 export default connect(msp, mdp)(ArtistIndexDetail);

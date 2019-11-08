@@ -77,7 +77,7 @@ class MusicPlayer extends React.Component {
             this.audio.pause();
             this.state.playing = false;
         }
-        // this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
+        this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
 
     componentDidUpdate(oldProps) {
@@ -98,7 +98,9 @@ class MusicPlayer extends React.Component {
         }
         //check if state changed
     }
-
+    componentWillUnmount() {
+        clearInterval(this.timeInterval);
+    }
     togglePlay() {
         //toggle song dispatch action to set a new slice of state
         // musicPlayer.ui.playing change
@@ -207,6 +209,7 @@ class MusicPlayer extends React.Component {
         } else if (this.state.currentVolume < 0.05) {
             volumeIcon = "off";
         }
+        
         return (
             <div className="player-container">
                 <div className="player-container-items">
@@ -265,8 +268,8 @@ class MusicPlayer extends React.Component {
                                 onChange={this.setPlaybackTime} />
 
                             <div className="outer-music-bar">
-                                <div className="inner-music-bar" style={{ width: `${100 * (this.state.currentTime / length) || 0}%` }}></div>
-                                <div className="progress-ball" style={{ marginLeft: `${100 * (this.state.currentTime / length) || 0}%` }}></div>
+                                <div className="inner-music-bar" style={{ width: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>
+                                <div className="progress-ball" style={{ marginLeft: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>
                             </div>
                         </div>
 

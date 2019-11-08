@@ -30,6 +30,7 @@ class SongIndex extends React.Component {
             artists: this.props.artists,
             songs: this.props.songs,
             albums: this.props.albums,
+            playing: false,
         }
         this.handlePlay = this.handlePlay.bind(this);
         this.getQueue = this.getQueue.bind(this);
@@ -38,6 +39,7 @@ class SongIndex extends React.Component {
     handlePlay(song) {
         this.props.setCurrentSong(song);
         this.props.toggleSong();
+        this.state.playing = true;
         this.props.setQueue(this.props.songs);
         // this will change state through a dispatch
 

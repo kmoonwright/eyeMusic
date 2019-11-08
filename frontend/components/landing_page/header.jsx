@@ -9,6 +9,7 @@ class Header extends React.Component {
     }
 
     logoutUser() {
+        debugger
         this.props.logout()
         // .then(() => this.props.history.push('/'));
     }
