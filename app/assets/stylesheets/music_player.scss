@@ -163,14 +163,23 @@
 
 .music-player-display {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     border: solid antiquewhite 1px;
     border-radius: 8px;
     padding: 6px;
     background-color: #1f1e1e;
 }
-
+.music-player-display-current-song-details {
+    font-size: 14px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.music-player-display-current-song-progress {
+    display: flex;
+    flex-direction: row;
+}
 
 
 

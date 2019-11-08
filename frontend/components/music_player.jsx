@@ -215,9 +215,13 @@ class MusicPlayer extends React.Component {
         
         
         // let currentSongTitle = <p>{this.props.currentSong.title}</p>
-        let currentSongId = this.props.currentSong.id
         let currentSongTitle = this.props.currentSong.title
-        let currentAlbumId = this.props.currentSong.album_id
+        let currentSongArtist = this.props.currentSong.artistName
+        // let currentSongArtistName = currentSongArtist.name
+        let currentSongAlbum = this.props.currentSong.albumTitle
+        // let currentSongAlbumYear = currentSongAlbum.year
+
+
         // let currentAlbumArt = this.props.albums[currentAlbumId].imageUrl
         // let currentAlbumArtist = this.props.artists[this.props.albums[currentAlbumId].artist_id].name
         return (
@@ -266,26 +270,28 @@ class MusicPlayer extends React.Component {
                     </div>
                 
                     <div className="music-player-display">
-                        {/* <p>{currentAlbumArt}</p> */}
-                        <p>{currentSongTitle}</p>
-                        {/* <p>{currentAlbumArtist}</p> */}
-                        <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
-                        <div className="progress-bar">
-                            <input
-                                type="range"
-                                className="music-progress-bar"
-                                min="0"
-                                max={length}
-                                step="1"
-                                onChange={this.setPlaybackTime} />
-
-                            <div className="outer-music-bar">
-                                <div className="inner-music-bar" style={{ width: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>
-                                <div className="progress-ball" style={{ marginLeft: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>
-                            </div>
+                        <div className="music-player-display-current-song-details">
+                            <p>{currentSongTitle}</p>
+                            <p>{currentSongArtist}  -  {currentSongAlbum}</p>
                         </div>
+                        <div className="music-player-display-current-song-progress">
+                            <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
+                            <div className="progress-bar">
+                                <input
+                                    type="range"
+                                    className="music-progress-bar"
+                                    min="0"
+                                    max={length}
+                                    step="1"
+                                    onChange={this.setPlaybackTime} />
 
-                        <p className="music-bar-time-right">{this.state.playing ? this.convertSecondsToMinutes(this.audio.duration) : '00:00'}</p>
+                                <div className="outer-music-bar">
+                                    <div className="inner-music-bar" style={{ width: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>
+                                    <div className="progress-ball" style={{ marginLeft: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>
+                                </div>
+                            </div>
+                            <p className="music-bar-time-right">{this.state.playing ? this.convertSecondsToMinutes(this.audio.duration) : '00:00'}</p>
+                        </div>
                     </div>
 
                     <Link to="/search"><button className="search-btn"></button></Link>

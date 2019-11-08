@@ -2639,9 +2639,11 @@ function (_React$Component) {
       } // let currentSongTitle = <p>{this.props.currentSong.title}</p>
 
 
-      var currentSongId = this.props.currentSong.id;
       var currentSongTitle = this.props.currentSong.title;
-      var currentAlbumId = this.props.currentSong.album_id; // let currentAlbumArt = this.props.albums[currentAlbumId].imageUrl
+      var currentSongArtist = this.props.currentSong.artistName; // let currentSongArtistName = currentSongArtist.name
+
+      var currentSongAlbum = this.props.currentSong.albumTitle; // let currentSongAlbumYear = currentSongAlbum.year
+      // let currentAlbumArt = this.props.albums[currentAlbumId].imageUrl
       // let currentAlbumArtist = this.props.artists[this.props.albums[currentAlbumId].artist_id].name
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2694,7 +2696,11 @@ function (_React$Component) {
         }
       })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-display"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "music-player-display-current-song-details"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongArtist, "  -  ", currentSongAlbum)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "music-player-display-current-song-progress"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "music-bar-time-left"
       }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "progress-bar"
@@ -2719,7 +2725,7 @@ function (_React$Component) {
         }
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "music-bar-time-right"
-      }, this.state.playing ? this.convertSecondsToMinutes(this.audio.duration) : '00:00')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, this.state.playing ? this.convertSecondsToMinutes(this.audio.duration) : '00:00'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-btn"
