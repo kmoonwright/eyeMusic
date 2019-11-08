@@ -2424,7 +2424,8 @@ function (_React$Component) {
       repeat: false,
       volumeBeforeMute: 0.45,
       currentVolume: 0.45,
-      mute: false
+      mute: false,
+      playing: false
     };
     _this.audio = new Audio(); // this.audio.src = audioUrl;
     // this.play = this.play.bind(this);
@@ -2450,8 +2451,10 @@ function (_React$Component) {
     value: function componentDidMount() {
       if (this.props.currentSong.playing) {
         this.audio.play();
+        this.state.playing = true;
       } else {
         this.audio.pause();
+        this.state.playing = false;
       } // this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
 
     }
@@ -2466,10 +2469,13 @@ function (_React$Component) {
       if (this.props.currentSong !== oldProps.currentSong) {
         this.audio.src = this.props.currentSong.audioUrl;
         this.audio.play();
+        this.state.playing = true;
       } else if (this.props.playing) {
         this.audio.play();
+        this.state.playing = true;
       } else {
         this.audio.pause();
+        this.state.playing = false;
       } //check if state changed
 
     }
@@ -2479,6 +2485,7 @@ function (_React$Component) {
       //toggle song dispatch action to set a new slice of state
       // musicPlayer.ui.playing change
       // buttons should only swap out pieces of state
+      this.state.playing ? this.state.playing = false : this.state.playing = true;
       this.props.toggleSong();
     } // end() {
     //     if (this.state.repeat) {
@@ -2615,7 +2622,7 @@ function (_React$Component) {
         title: "Previous Song"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.togglePlay,
-        className: "music-player-btns-play",
+        className: this.state.playing ? "music-player-btns-pause" : "music-player-btns-play",
         title: "Play/Pause"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.nextSong,

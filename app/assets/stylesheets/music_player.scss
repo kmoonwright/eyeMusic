@@ -38,6 +38,12 @@
     height: 50px;
     width: 50px;
 }
+.music-player-btns-pause {
+    background: image-url('icon-pause.png');
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+}
 
 .music-player-btns-next {
     background: image-url('icon-fastforward.png');

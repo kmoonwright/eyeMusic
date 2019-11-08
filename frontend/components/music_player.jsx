@@ -45,6 +45,7 @@ class MusicPlayer extends React.Component {
             volumeBeforeMute: 0.45,
             currentVolume: 0.45,
             mute: false,
+            playing: false
         }
 
         this.audio = new Audio();
@@ -71,8 +72,10 @@ class MusicPlayer extends React.Component {
     componentDidMount() {
         if (this.props.currentSong.playing) {
             this.audio.play();
+            this.state.playing = true;
         } else {
             this.audio.pause();
+            this.state.playing = false;
         }
         // this.timeInterval = setInterval(this.handleMusicBarUpdate, 400);
     }
@@ -85,10 +88,13 @@ class MusicPlayer extends React.Component {
         if (this.props.currentSong !== oldProps.currentSong) {
             this.audio.src = this.props.currentSong.audioUrl;
             this.audio.play();
+            this.state.playing = true;
         } else if (this.props.playing) {
             this.audio.play();
+            this.state.playing = true;
         } else {
             this.audio.pause();
+            this.state.playing = false;
         }
         //check if state changed
     }
@@ -97,7 +103,7 @@ class MusicPlayer extends React.Component {
         //toggle song dispatch action to set a new slice of state
         // musicPlayer.ui.playing change
         // buttons should only swap out pieces of state
-
+        this.state.playing ? this.state.playing = false : this.state.playing = true;
         this.props.toggleSong();
     }
 
@@ -202,18 +208,17 @@ class MusicPlayer extends React.Component {
             volumeIcon = "off";
         }
         return (
-
             <div className="player-container">
                 <div className="player-container-items">
 
                     <div className="music-player-interface">
                         <div className="music-player-btns">
-                            <button onClick={this.prevSong} className="music-player-btns-prev" 
-                                title="Previous Song"></button>
-                            <button onClick={this.togglePlay} className="music-player-btns-play" 
-                                title="Play/Pause"></button>
-                            <button onClick={this.nextSong} className="music-player-btns-next" 
-                                title="Next Song"></button>
+                            <button onClick={this.prevSong} className="music-player-btns-prev"title="Previous Song"></button>
+                            <button onClick={this.togglePlay} 
+                                className={this.state.playing ? "music-player-btns-pause" : "music-player-btns-play"}
+                                title="Play/Pause">
+                            </button>
+                            <button onClick={this.nextSong} className="music-player-btns-next" title="Next Song"></button>
                             {/* <button onClick={this.next} className="music-player-btns-volume" title="Volume">
                                 Volume
                             </button> */}
