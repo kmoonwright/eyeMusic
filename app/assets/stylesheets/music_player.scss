@@ -1,6 +1,6 @@
 .player-container {
     height: 55px;
-    padding: 12px;
+    padding: 22px;
     color: white;
     background-color: #333333;
 
@@ -20,9 +20,14 @@
 .music-player-btns {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 .music-player-btns button:hover {
     filter: brightness(50%);
+}
+.music-player-controls {
+    display: flex;
+    align-items: center;
 }
 
 .music-player-btns-prev {
@@ -69,7 +74,7 @@
     background-size: contain;
     height: 40px;
     width: 40px;
-    margin-top: 8px;
+    margin-top: 7px;
     margin-left: 15px;
 }
 .search-btn:hover {
@@ -80,10 +85,10 @@
 
 // Volume range and button
 .volume-bar {
-    padding: 10px;
     float: right;
     display: flex;
     align-items: center;
+    padding-top: 5px;
 }
 
 #volume-button {

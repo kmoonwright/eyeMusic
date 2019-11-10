@@ -2692,6 +2692,8 @@ function (_React$Component) {
         className: "music-player-interface"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "music-player-btns"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "music-player-controls"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.prevSong,
         className: "music-player-btns-prev",
@@ -2704,7 +2706,7 @@ function (_React$Component) {
         onClick: this.nextSong,
         className: "music-player-btns-next",
         title: "Next Song"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "volume-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "volume-button",
