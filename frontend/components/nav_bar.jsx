@@ -27,10 +27,10 @@ class NavBar extends React.Component {
         return (
             <div className="navbar-container">
                 <div className="navbar-index">
-                    <div className="navbar-history">
+                    {/* <div className="navbar-history">
                         <button className="navbar-history-back"></button>
                         <button className="navbar-history-forward"></button>
-                    </div>
+                    </div> */}
                     <div className="navbar-btns">
                         <button>
                             <Link to="/library">Library</Link>

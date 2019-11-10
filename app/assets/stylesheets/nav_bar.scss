@@ -11,19 +11,23 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
   a {
     padding: 4px;
   }
   button {
     padding:5px;
   }
-
 }
 .navbar-index a:hover {
   padding: 5px;
   border-radius: 5px;
   color: black;
   background-color: whitesmoke;
+}
+
+.navbar-btns {
+  margin-left: 40%
 }
 
 .navbar-history-back {
