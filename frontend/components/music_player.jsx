@@ -109,7 +109,7 @@ class MusicPlayer extends React.Component {
         //toggle song dispatch action to set a new slice of state
         // musicPlayer.ui.playing change
         // buttons should only swap out pieces of state
-        this.state.playing ? this.state.playing = false : this.state.playing = true;
+        // this.state.playing ? this.state.playing = true : this.state.playing = false;
         this.props.toggleSong();
     }
 
@@ -248,7 +248,7 @@ class MusicPlayer extends React.Component {
             )
         } else {
             displayBar = (
-                <div className="landing-logo"></div>
+                    <div className="landing-logo"></div>
             )
         }
 

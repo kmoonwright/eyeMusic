@@ -4,5 +4,7 @@
         json.audioUrl url_for(song.audio)
         json.artistName song.artist.name
         json.albumTitle song.album.title
+        json.albumArt song.album.image
+        json.albumYr song.album.year
     end
 end

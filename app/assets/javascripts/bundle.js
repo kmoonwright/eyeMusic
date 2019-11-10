@@ -2515,7 +2515,7 @@ function (_React$Component) {
       //toggle song dispatch action to set a new slice of state
       // musicPlayer.ui.playing change
       // buttons should only swap out pieces of state
-      this.state.playing ? this.state.playing = false : this.state.playing = true;
+      // this.state.playing ? this.state.playing = true : this.state.playing = false;
       this.props.toggleSong();
     } // end() {
     //     if (this.state.repeat) {
@@ -4712,6 +4712,7 @@ var musicPlayerReducer = function musicPlayerReducer() {
 
   switch (action.type) {
     case _actions_music_player_actions__WEBPACK_IMPORTED_MODULE_0__["SET_CURRENT_SONG"]:
+      newState.playing = false;
       newState.currentSong = action.song;
       return newState;
 

@@ -19,6 +19,7 @@ const musicPlayerReducer = (oldState = nullState, action) => {
 
     switch (action.type) {
         case SET_CURRENT_SONG:
+            newState.playing = false;
             newState.currentSong = action.song;
             return newState;
         case TOGGLE_SONG:
