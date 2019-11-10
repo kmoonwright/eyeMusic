@@ -39,7 +39,7 @@ class NavBar extends React.Component {
                             <Link to="/browse">Browse</Link>
                         </button>
                         <button>
-                            <Link to="/radio">Visualizer</Link>
+                            <Link to="/search">Search</Link>
                         </button>
                     </div>
                     <div className="navbar-profile">

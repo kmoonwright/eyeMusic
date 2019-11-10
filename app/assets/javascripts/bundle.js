@@ -2643,7 +2643,7 @@ function (_React$Component) {
 
       var displayBar;
 
-      if (this.state.playing) {
+      if (Object.keys(this.props.currentSong).length > 0) {
         displayBar = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "music-player-display"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2826,8 +2826,8 @@ function (_React$Component) {
       }, "Library")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/browse"
       }, "Browse")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/radio"
-      }, "Visualizer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        to: "/search"
+      }, "Search"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar-profile"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Welcome ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "logout-btn",
