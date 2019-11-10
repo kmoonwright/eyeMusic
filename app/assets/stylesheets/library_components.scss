@@ -18,26 +18,39 @@
 .album-index-item {
     position: relative;
 }
-.album-index-item:hover {
+.album-index-item img {
+    position: relative;
+    z-index: 0;
+}
+.album-index-item img:hover {
+    z-index: 0;
+}
+.album-index-item img:hover:after {
 }
 .album-index-detail-container {
-    display:none;
+    padding:10px;
     position: absolute;
-    top: 0;
-    height: 200px;
+    bottom: 2px;
     width: 200px;
     align-items: center;
     display: flex;
     justify-content: center;
-    img {
-        z-index: 5;
-    }
+    display:flex;
+    background-color: rgba(27, 27, 27, 0.7);
 }
 .album-index-detail-container:hover {
-    opacity: 0.5;
-    display:flex;
-    background-color: black;
+    font-weight: 400;
 }
+.album-index-detail-container button {
+    height: 100%;
+    width: 100%;
+    font-weight: 900;
+}
+// .album-index-detail-container:hover {
+//     opacity: 0.5;
+//     display:flex;
+//     background-color: black;
+// }
 
 // ARTIST INDEX
 .artist-index-container {
@@ -71,6 +84,7 @@
 }
 
 .artist-index-detail {
+    width: 80%;
     img {
         height: 200px;
         width: 200px;
@@ -87,6 +101,7 @@
 }
 
 .artist-index-details-show {
+    width: 50%;
     display: flex;
     flex-direction: column;
     button {

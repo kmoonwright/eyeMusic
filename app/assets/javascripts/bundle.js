@@ -872,8 +872,6 @@ function (_React$Component) {
       var songList = this.props.songs;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-index-detail-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "album--index-detail"
       }, songList.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           key: song.id,
@@ -881,8 +879,8 @@ function (_React$Component) {
             return _this2.handlePlay(song);
           },
           song: song
-        }, song.title);
-      })));
+        }, song.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+      }));
     }
   }]);
 

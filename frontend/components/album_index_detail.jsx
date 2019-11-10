@@ -30,15 +30,14 @@ class AlbumIndexDetail extends React.Component {
         let songList = this.props.songs;
         return (
             <div className="album-index-detail-container">
-                <ul className="album--index-detail">
                     {songList.map(song => {
                         return (
                             <button key={song.id} onClick={() => this.handlePlay(song)} song={song}>
                                 {song.title}
+                                <br/>
                             </button>
                         )
                     })}
-                </ul>
             </div>
         )
     }
