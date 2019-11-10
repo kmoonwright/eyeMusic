@@ -61,9 +61,10 @@ class ArtistIndexDetail extends React.Component {
         return queue;
     }
     render() {
+        let allAlbums = this.props.albums
         return (
             <ul className="artist-index-detail">
-                {this.props.albums.map(album => {
+                {allAlbums.map(album => {
                     let allsongs = this.props.songByAlbumId[album.id];
                     return (
                         <li key={album.id}>

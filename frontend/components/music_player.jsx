@@ -219,7 +219,6 @@ class MusicPlayer extends React.Component {
         }
         
         let displayBar;
-        
         if (Object.keys(this.props.currentSong).length > 0) {
             displayBar = (
                 <div className="music-player-display">

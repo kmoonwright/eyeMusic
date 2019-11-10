@@ -45,9 +45,11 @@ class Search extends React.Component {
         if (artists.length > 0) {
             artistList = artists.map((artist, index) => {
                 return (
-                    <li className="search-item-artist" key={`${index}`}>
-                        {artist.name}
-                    </li>
+                    <span className="search-item-artist" key={`${index}`}>
+                        <Link to={`library/artists/${artist.id}`}>
+                            {artist.name}
+                        </Link>
+                    </span>
                 )
             })
         }
@@ -56,7 +58,7 @@ class Search extends React.Component {
                 const artistAlbum = this.props.albums[song.album_id];
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
                 return (
-                    <li className="search-item-song" key={`${index}`}>
+                    <span className="search-item-song" key={`${index}`}>
                         <div className="search-item-song-title">
                             <span>{song.title}</span>
                         </div>
@@ -69,38 +71,38 @@ class Search extends React.Component {
                         <div className="search-item-song-album-year">
                             <span>{artistAlbum.year}</span>
                         </div>
-                    </li>
+                    </span>
                 )
             })
         }
         if (albums.length > 0) {
             albumList = albums.map((album, index) => {
                 return (
-                    <li className="search-item-album" key={`${index}`} >
-                        <Link to={`/albums/${album.id}`}>
+                    <span className="search-item-album" key={`${index}`} >
+                        <Link to={`library/albums/${album.id}`}>
                             <img src={album.photo} />
                         </Link>
 
                         <div className="search-item-album-title">
-                            <Link to={`/albums/${album.id}`}>{album.title}</Link>
+                            <Link to={`library/albums/${album.id}`}>{album.title}</Link>
                         </div>
-                    </li>
+                    </span>
                 )
             })
         }
         if (playlists.length > 0) {
             playlistList = playlists.map((playlist, index) => {
                 return (
-                    <li className="search-item-playlist" key={index}>
-                        <Link to={`/playlists/${playlist.id}`}>
+                    <span className="search-item-playlist" key={index}>
+                        <Link to={`library/playlists/${playlist.id}`}>
                             <img className="search-item-playlist-images" src={playlist.photo} />
                         </Link>
 
                         <Link
-                            to={`/playlists/${playlist.id}`}>
+                            to={`library/playlists/${playlist.id}`}>
                             <p className="search-item-playlist-title">{playlist.title}</p>
                         </Link>
-                    </li>
+                    </span>
                 )
             })
         }

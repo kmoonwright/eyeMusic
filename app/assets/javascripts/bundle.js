@@ -1515,9 +1515,10 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var allAlbums = this.props.albums;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "artist-index-detail"
-      }, this.props.albums.map(function (album) {
+      }, allAlbums.map(function (album) {
         var allsongs = _this2.props.songByAlbumId[album.id];
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: album.id
@@ -3798,10 +3799,12 @@ function (_React$Component) {
 
       if (artists.length > 0) {
         artistList = artists.map(function (artist, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "search-item-artist",
             key: "".concat(index)
-          }, artist.name);
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+            to: "library/artists/".concat(artist.id)
+          }, artist.name));
         });
       }
 
@@ -3809,7 +3812,7 @@ function (_React$Component) {
         songsList = artists.map(function (song, index) {
           var artistAlbum = _this2.props.albums[song.album_id];
           var artistName = _this2.props.artists[artistAlbum.artist_id].name;
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "search-item-song",
             key: "".concat(index)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3826,33 +3829,33 @@ function (_React$Component) {
 
       if (albums.length > 0) {
         albumList = albums.map(function (album, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "search-item-album",
             key: "".concat(index)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-            to: "/albums/".concat(album.id)
+            to: "library/albums/".concat(album.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: album.photo
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "search-item-album-title"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-            to: "/albums/".concat(album.id)
+            to: "library/albums/".concat(album.id)
           }, album.title)));
         });
       }
 
       if (playlists.length > 0) {
         playlistList = playlists.map(function (playlist, index) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             className: "search-item-playlist",
             key: index
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-            to: "/playlists/".concat(playlist.id)
+            to: "library/playlists/".concat(playlist.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "search-item-playlist-images",
             src: playlist.photo
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-            to: "/playlists/".concat(playlist.id)
+            to: "library/playlists/".concat(playlist.id)
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
             className: "search-item-playlist-title"
           }, playlist.title)));
