@@ -2678,8 +2678,10 @@ function (_React$Component) {
         }, this.convertSecondsToMinutes(this.audio.duration))));
       } else {
         displayBar = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "landing-logo"
-        });
+          className: "music-player-display-sleep"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "music-player-logo"
+        }));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

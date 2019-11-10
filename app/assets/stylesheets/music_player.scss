@@ -179,7 +179,25 @@
     display: flex;
     flex-direction: row;
 }
-
+.music-player-display-sleep {
+    width: 550px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid antiquewhite 1px;
+    border-radius: 8px;
+    padding: 6px;
+    background-color: #1f1e1e;
+}
+.music-player-logo {
+    height: 50px;
+    width: 50px;
+    background: image-url('icon-eyemusic-logo.png') no-repeat;
+    background-color: transparent;
+    background-size: contain;
+    border-radius: inherit;
+}
 
 
 .progress-bar {

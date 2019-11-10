@@ -249,7 +249,9 @@ class MusicPlayer extends React.Component {
             )
         } else {
             displayBar = (
-                    <div className="landing-logo"></div>
+                <div className="music-player-display-sleep">
+                    <div className="music-player-logo"></div>
+                </div>
             )
         }
 
