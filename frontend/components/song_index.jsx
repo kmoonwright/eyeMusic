@@ -42,9 +42,7 @@ class SongIndex extends React.Component {
         this.state.playing = true;
         this.props.setQueue(this.props.songs);
         // this will change state through a dispatch
-
         // every button changes state
-
         // music player should only change audio based on state change
     }
 

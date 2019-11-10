@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 
-
+import { openModal,closeModal } from '../actions/modal_actions';
+import Modal from './album_index_modal'
+import AlbumIndexDetail from './album_index_detail'
 
 import { fetchAllAlbums, fetchOneAlbum, fetchAllSongs } from '../actions/music_actions'
 
@@ -26,8 +28,8 @@ class AlbumIndexItem extends React.Component {
             <li className="album-index-item">
                 <Link to={`/library/albums/${album.id}`}>
                     <img src={album.imageUrl}></img>
+                    <AlbumIndexDetail albumId={album.id}/>
                 </Link>
-
             </li>
         )
         // if (this.props.songs.length > 0) {
@@ -63,6 +65,8 @@ const msp = state => ({
 const mdp = dispatch => ({
     fetchAllSongs: () => dispatch(fetchAllSongs()),
     fetchOneSong: (songId) => dispatch(fetchOneSong(songId)),
+    openModal: () => dispatch(openModal({ modal:'album_songs' })),
+    closeModal: () => dispatch(closeModal())
 })
 
 export default connect(msp, mdp)(AlbumIndexItem);

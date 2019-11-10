@@ -29,7 +29,7 @@ class AlbumIndexDetail extends React.Component {
     render() {
         let songList = this.props.songs;
         return (
-            <div>
+            <div className="album-index-detail-container">
                 <ul className="album--index-detail">
                     {songList.map(song => {
                         return (
@@ -45,9 +45,10 @@ class AlbumIndexDetail extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    const albumId = ownProps.match.params.albumId;
+    // const albumId = ownProps.match.params.albumId;
+    const albumId = ownProps.albumId;
     let album = state.entities.albums[albumId];
-    let songs = Object.values(state.entities.songs).filter(song => album.id === song.album_id);
+    let songs = Object.values(state.entities.songs).filter(song => albumId === song.album_id);
     // let albumIds = albums.map(album => album.id);
     // let songs = {};
     // let songObjects = Object.values(state.entities.songs);

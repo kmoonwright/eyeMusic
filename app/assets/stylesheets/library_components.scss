@@ -13,11 +13,30 @@
     }
 }
 .album-index img:hover {
-
 }
 
 .album-index-item {
-
+    position: relative;
+}
+.album-index-item:hover {
+}
+.album-index-detail-container {
+    display:none;
+    position: absolute;
+    top: 0;
+    height: 200px;
+    width: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    img {
+        z-index: 5;
+    }
+}
+.album-index-detail-container:hover {
+    opacity: 0.5;
+    display:flex;
+    background-color: black;
 }
 
 // ARTIST INDEX
