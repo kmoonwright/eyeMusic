@@ -2626,6 +2626,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var currentSongTitle = this.props.currentSong.title;
+      var currentSongArtist = this.props.currentSong.artistName;
+      var currentSongAlbum = this.props.currentSong.albumTitle;
       var volumeIcon;
 
       if (this.state.currentVolume === 0) {
@@ -2636,15 +2639,48 @@ function (_React$Component) {
         volumeIcon = "down";
       } else if (this.state.currentVolume < 0.05) {
         volumeIcon = "off";
-      } // let currentSongTitle = <p>{this.props.currentSong.title}</p>
+      }
 
+      var displayBar;
 
-      var currentSongTitle = this.props.currentSong.title;
-      var currentSongArtist = this.props.currentSong.artistName; // let currentSongArtistName = currentSongArtist.name
-
-      var currentSongAlbum = this.props.currentSong.albumTitle; // let currentSongAlbumYear = currentSongAlbum.year
-      // let currentAlbumArt = this.props.albums[currentAlbumId].imageUrl
-      // let currentAlbumArtist = this.props.artists[this.props.albums[currentAlbumId].artist_id].name
+      if (this.state.playing) {
+        displayBar = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "music-player-display"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "music-player-display-current-song-details"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongArtist, "  -  ", currentSongAlbum)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "music-player-display-current-song-progress"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "music-bar-time-left"
+        }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "progress-bar"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "range",
+          className: "music-progress-bar",
+          min: "0",
+          max: length,
+          step: "1",
+          onChange: this.setPlaybackTime
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "outer-music-bar"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "inner-music-bar",
+          style: {
+            width: "".concat(100 * (this.state.currentTime / this.audio.duration) || 0, "%")
+          }
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "progress-ball",
+          style: {
+            marginLeft: "".concat(100 * (this.state.currentTime / this.audio.duration) || 0, "%")
+          }
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "music-bar-time-right"
+        }, this.convertSecondsToMinutes(this.audio.duration))));
+      } else {
+        displayBar = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "landing-logo"
+        });
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-container"
@@ -2694,38 +2730,7 @@ function (_React$Component) {
         style: {
           marginLeft: "".concat(100 * (this.state.currentVolume / 1), "%")
         }
-      })))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "music-player-display"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "music-player-display-current-song-details"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongTitle), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, currentSongArtist, "  -  ", currentSongAlbum)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "music-player-display-current-song-progress"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "music-bar-time-left"
-      }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "range",
-        className: "music-progress-bar",
-        min: "0",
-        max: length,
-        step: "1",
-        onChange: this.setPlaybackTime
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "outer-music-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "inner-music-bar",
-        style: {
-          width: "".concat(100 * (this.state.currentTime / this.audio.duration) || 0, "%")
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "progress-ball",
-        style: {
-          marginLeft: "".concat(100 * (this.state.currentTime / this.audio.duration) || 0, "%")
-        }
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "music-bar-time-right"
-      }, this.state.playing ? this.convertSecondsToMinutes(this.audio.duration) : '00:00'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      })))))), displayBar, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/search"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "search-btn"
