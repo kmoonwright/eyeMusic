@@ -3369,11 +3369,7 @@ function (_React$Component) {
             className: "song-index-item-details-albumtitle"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "song-index-item-details-albumyear"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-            className: "song-index-item-details-playlist-button"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-            onClick: _this2.handlePlaylistAdd(song.id)
-          }))));
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, artistAlbum.year))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "song-index-container"

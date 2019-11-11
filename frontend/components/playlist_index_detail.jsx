@@ -112,11 +112,8 @@ class PlaylistIndexDetail extends React.Component {
                             <div className="song-index-item-details-albumyear">
                                 <span>{artistAlbum.year}</span>
                             </div>
-                            <div className="song-index-item-details-playlist-button">
+                            {/* <div className="song-index-item-details-playlist-button">
                                 <span onClick={this.handlePlaylistAdd(song.id)}></span>
-                            </div>
-                            {/* <div className="song-index-item-add-to-playlist">
-                                <button>Add</button>
                             </div> */}
 
                         </div>
