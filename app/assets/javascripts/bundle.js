@@ -5317,6 +5317,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // with REDUX LOGGER
+// export default (preloadedState = {}) => {
+//     return createStore(RootReducer, preloadedState, applyMiddleware(thunk, logger))
+// }
+// without REDUX LOGGER
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

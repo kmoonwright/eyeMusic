@@ -28,6 +28,7 @@
 .music-player-controls {
     display: flex;
     align-items: center;
+    padding-bottom: 5px;
 }
 
 .music-player-btns-prev {
@@ -46,7 +47,6 @@
 .music-player-btns-pause {
     background: image-url('icon-pause.png');
     background-size: contain;
-    margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
     height: 38px;
