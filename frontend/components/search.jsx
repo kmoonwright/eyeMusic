@@ -36,10 +36,10 @@ class Search extends React.Component {
         const albums = this.props.albums;
         const songs = this.props.songs;
         const playlists = this.props.playlists;
-        let artistsHeader = artists.length > 0 ? "Artists" : "";
-        let albumsHeader = albums.length > 0 ? "Albums" : "";
-        let songsHeader = songs.length > 0 ? "Songs" : "";
-        let playlistsHeader = playlists.length > 0 ? "Playlists" : "";
+        let artistsHeader = artists.length > 0 ? "Artists:" : "";
+        let albumsHeader = albums.length > 0 ? "Albums:" : "";
+        let songsHeader = songs.length > 0 ? "Songs:" : "";
+        let playlistsHeader = playlists.length > 0 ? "Playlists:" : "";
         let searchRender;
 
         if (artists.length > 0) {

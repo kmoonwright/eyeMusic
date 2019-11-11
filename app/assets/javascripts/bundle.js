@@ -3779,10 +3779,10 @@ function (_React$Component) {
       var albums = this.props.albums;
       var songs = this.props.songs;
       var playlists = this.props.playlists;
-      var artistsHeader = artists.length > 0 ? "Artists" : "";
-      var albumsHeader = albums.length > 0 ? "Albums" : "";
-      var songsHeader = songs.length > 0 ? "Songs" : "";
-      var playlistsHeader = playlists.length > 0 ? "Playlists" : "";
+      var artistsHeader = artists.length > 0 ? "Artists:" : "";
+      var albumsHeader = albums.length > 0 ? "Albums:" : "";
+      var songsHeader = songs.length > 0 ? "Songs:" : "";
+      var playlistsHeader = playlists.length > 0 ? "Playlists:" : "";
       var searchRender;
 
       if (artists.length > 0) {

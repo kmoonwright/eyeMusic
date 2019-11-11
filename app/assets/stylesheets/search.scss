@@ -24,7 +24,20 @@
     }
 }
 
+// SEARCH RESULTS
 .search-all-artists {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
+.search-all-albums {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.search-all-playlists {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
