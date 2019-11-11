@@ -423,7 +423,7 @@ playlistE = Playlist.create(title: 'Random Songs', user_id: demoUser.id)
     pe3 = PlaylistSong.create(song_id: cafedefloresong.id, playlist_id:playlistE.id )
 
 
-# BROWSE PLAYLISTS
+### BROWSE PLAYLISTS ###
 playlistF = Playlist.create(title: "80's Playlist", user_id: demoUser.id)
     pf1 = PlaylistSong.create(song_id: whendovescry.id, playlist_id:playlistF.id )
     pf2 = PlaylistSong.create(song_id: sexydancer.id, playlist_id:playlistF.id )
