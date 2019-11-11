@@ -148,6 +148,7 @@
 .song-index-item-details {
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
     justify-content: flex-start;
 
@@ -161,6 +162,13 @@
 .song-index-item-details-albumtitle {
     width: 20%;
 }
+.song-index-item-details-albumyear{
+    width: 5%;
+}
 .song-index-item-details-playlist-button {
-    padding-left: 15px;
+    height: 10px;
+    width: 10px;
+    background: image-url('icon-plus.png') no-repeat;
+    background-size: contain;
+    margin-left: 10px;
 }

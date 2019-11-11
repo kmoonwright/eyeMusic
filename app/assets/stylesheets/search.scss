@@ -1,4 +1,5 @@
 .search-container {
+    padding: 20px;
     margin-top: 150px;
     color: whitesmoke;
     background-color: #1d1f22;
@@ -8,10 +9,18 @@
     font-family: verdana;
 }
 
+.search-bar-text {
+    width: 90vw;
+    height: 10vh;
+    font-size: 30px;
+}
+
 .search-results {
     display: flex;
     h1 {
+        font-size: 26px;
         margin-right: 8px;
+        font-style: oblique;
     }
 }
 

@@ -3238,8 +3238,7 @@ var msp = function msp(state) {
     albums: state.entities.albums,
     songs: Object.values(state.entities.songs),
     playlists: state.entities.playlists,
-    playlist_songs: state.entities.playlist_songs,
-    other: 'test'
+    playlist_songs: state.entities.playlist_songs
   };
 };
 
@@ -3374,7 +3373,7 @@ function (_React$Component) {
             className: "song-index-item-details-playlist-button"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
             onClick: _this2.handlePlaylistAdd(song.id)
-          }, "ADD"))));
+          }))));
         });
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "song-index-container"
@@ -3865,9 +3864,7 @@ function (_React$Component) {
       if (artists[0] === undefined && this.state.searchVal === "" || songs[0] === undefined && this.state.searchVal === "" || albums[0] === undefined && this.state.searchVal === "" || playlists[0] === undefined && this.state.searchVal === "") {
         searchRender = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "search-before"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-          className: "search-loading-title"
-        }, "Search eyeMusic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "search-loading-phrase"
         }, "Find your favorite playlists, artists, and albums."));
       } else if (artists[0] === undefined && this.state.searchVal !== "" && albums[0] === undefined && this.state.searchVal !== "" && songs[0] === undefined && this.state.searchVal !== "" && playlists[0] === undefined && this.state.searchVal !== "") {
@@ -3900,7 +3897,7 @@ function (_React$Component) {
         className: "search-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-index"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Search for tunes..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Search the eyeMusic Library..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "search-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -3909,9 +3906,7 @@ function (_React$Component) {
         placeholder: "Start typing...",
         value: this.state.searchVal,
         onChange: this.handleSearch
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
-      }, "Submit")), searchRender));
+      })), searchRender));
     }
   }]);
 

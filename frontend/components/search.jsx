@@ -111,7 +111,6 @@ class Search extends React.Component {
             albums[0] === undefined && this.state.searchVal === "" ||
             playlists[0] === undefined && this.state.searchVal === "") {
             searchRender = <div className="search-before">
-                <h1 className="search-loading-title">Search eyeMusic</h1>
                 <p className="search-loading-phrase">Find your favorite playlists, artists, and albums.</p>
             </div>;
         } else if (artists[0] === undefined && this.state.searchVal !== "" &&
@@ -160,7 +159,7 @@ class Search extends React.Component {
         return (
             <div className="search-container">
                 <div className="search-index">
-                    <p>Search for tunes...</p>
+                    <p>Search the eyeMusic Library...</p>
                     <form className="search-form" onSubmit={this.handleSubmit}>
                         <input className="search-bar-text"
                             type="text"
@@ -168,7 +167,6 @@ class Search extends React.Component {
                             value={this.state.searchVal}
                             onChange={this.handleSearch}
                         ></input>
-                        <button type="submit">Submit</button>
                     </form>
                     {searchRender}
                 </div>

@@ -23,7 +23,6 @@ const msp = (state) => {
         songs: Object.values(state.entities.songs),
         playlists: state.entities.playlists,
         playlist_songs: state.entities.playlist_songs,
-        other: 'test'
     })
 }
 
@@ -89,9 +88,9 @@ class PlaylistIndexDetail extends React.Component {
             })
             
             const songList = mix.map(song => { 
-                
                 const artistAlbum = this.props.albums[song.album_id];
                 const artistName = this.props.artists[artistAlbum.artist_id].name;
+                
                 return (
                     <div key={song.id} 
                         onClick={() => this.handlePlay(song)}
@@ -114,7 +113,7 @@ class PlaylistIndexDetail extends React.Component {
                                 <span>{artistAlbum.year}</span>
                             </div>
                             <div className="song-index-item-details-playlist-button">
-                                <span onClick={this.handlePlaylistAdd(song.id)}>ADD</span>
+                                <span onClick={this.handlePlaylistAdd(song.id)}></span>
                             </div>
                             {/* <div className="song-index-item-add-to-playlist">
                                 <button>Add</button>
