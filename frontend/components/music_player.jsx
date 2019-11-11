@@ -229,13 +229,15 @@ class MusicPlayer extends React.Component {
                     <div className="music-player-display-current-song-progress">
                         <p className="music-bar-time-left">{this.convertSecondsToMinutes(this.state.currentTime)}</p>
                         <div className="progress-bar">
+                            
+                            {/* // SKIP INPUT
                             <input
                                 type="range"
                                 className="music-progress-bar"
                                 min="0"
                                 max={length}
                                 step="1"
-                                onChange={this.setPlaybackTime} />
+                                onChange={this.setPlaybackTime} /> */}
 
                             <div className="outer-music-bar">
                                 <div className="inner-music-bar" style={{ width: `${100 * (this.state.currentTime / this.audio.duration) || 0}%` }}></div>

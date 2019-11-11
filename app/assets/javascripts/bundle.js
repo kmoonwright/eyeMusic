@@ -2818,14 +2818,7 @@ function (_React$Component) {
           className: "music-bar-time-left"
         }, this.convertSecondsToMinutes(this.state.currentTime)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "progress-bar"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          type: "range",
-          className: "music-progress-bar",
-          min: "0",
-          max: length,
-          step: "1",
-          onChange: this.setPlaybackTime
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "outer-music-bar"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "inner-music-bar",
