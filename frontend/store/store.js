@@ -11,5 +11,5 @@ import thunk from 'redux-thunk';
 
 // without REDUX LOGGER
 export default (preloadedState = {}) => {
-    return createStore(RootReducer, preloadedState, applyMiddleware(thunk, logger))
+    return createStore(RootReducer, preloadedState, applyMiddleware(thunk))
 }
