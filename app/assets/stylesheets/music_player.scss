@@ -108,7 +108,7 @@
 }
 
 .volume-progress-bar {
-    z-index: 500;
+    z-index: 0;
     position: relative;
     top: -20px;
     width: 110px;
@@ -139,7 +139,7 @@
 
 .inner-volume-bar {
     position: relative;
-    top: -46px;
+    top: -36px;
     background-color: #1db954;
     height: 4px;
     border-radius: 55px;
@@ -147,7 +147,7 @@
 
 .progress-ball-volume {
     position: relative;
-    top: -58px;
+    top: -45px;
     bottom: 7px;
     width: 14px;
     height: 14px;
