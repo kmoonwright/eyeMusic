@@ -295,7 +295,7 @@ class MusicPlayer extends React.Component {
                                         onChange={this.setVolume}
                                     ></input>
                                         <div className="inner-volume-bar" style={{ width: `${100 * (this.state.currentVolume / 1)}%` }}></div>
-                                        <div className="progress-ball-volume" style={{ marginLeft: `${100 * (this.state.currentVolume / 1)}%` }}></div>
+                                        {/* <div className="progress-ball-volume" style={{ marginLeft: `${100 * (this.state.currentVolume / 1)}%` }}></div> */}
                                     </div>
 
                                 </div>
