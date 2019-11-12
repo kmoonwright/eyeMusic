@@ -69,7 +69,7 @@ class PlaylistIndexDetail extends React.Component {
         if (this.props.songs.length < 1 || this.props.albums.length < 1 || this.props.artists.length < 1) {
             return <div className="loading-state">LOADING...</div>
         }
-
+        
         if (this.props.songs.length > 0) {
 
             let playlistId = parseInt(this.props.match.params.playlistId);
@@ -122,6 +122,7 @@ class PlaylistIndexDetail extends React.Component {
             })
             return (
                 <div className="song-index-container">
+                    <p className="playlist-title">{this.props.playlists[playlistId].title}</p>
                     <ul className="song-index">
                         {songList}
                     </ul>
