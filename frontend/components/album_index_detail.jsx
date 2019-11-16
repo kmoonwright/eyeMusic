@@ -44,19 +44,9 @@ class AlbumIndexDetail extends React.Component {
 }
 
 const msp = (state, ownProps) => {
-    // const albumId = ownProps.match.params.albumId;
     const albumId = ownProps.albumId;
     let album = state.entities.albums[albumId];
     let songs = Object.values(state.entities.songs).filter(song => albumId === song.album_id);
-    // let albumIds = albums.map(album => album.id);
-    // let songs = {};
-    // let songObjects = Object.values(state.entities.songs);
-    // songObjects.forEach(song => {
-    //     if (albumIds.includes(song.album_id)) {
-    //         songs[song.album_id] = songs[song.album_id] || [];
-    //         songs[song.album_id].push(song);
-    //     }
-    // });
 
     return ({
         album: album,

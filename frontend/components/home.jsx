@@ -38,10 +38,6 @@ class Home extends React.Component {
 
 const msp = state => ({
     currentUser: state.session.id,
-
-    // songs: state.ui.musicPlayer.queue,
-    // song: state.ui.musicPlayer.currentSong,
-    // playing: state.ui.musicPlayer.playing
 })
 
 export default connect(msp)(Home);
