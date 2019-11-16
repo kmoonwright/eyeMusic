@@ -30,7 +30,7 @@ class MusicPlayer extends React.Component {
     constructor(props) {
         super(props);
 
-        // ANDY NOTES
+        // NOTES
         // this.audio = new Audio();
         // this.audio.src = audioUrl;
         // then we can call play on audio instance var
@@ -112,15 +112,6 @@ class MusicPlayer extends React.Component {
         // this.state.playing ? this.state.playing = true : this.state.playing = false;
         this.props.toggleSong();
     }
-
-    // end() {
-    //     if (this.state.repeat) {
-    //         this.play()
-    //     } else {
-    //         // this.setState({ playing: false, progress: 0 });
-    //         this.next();
-    //     }
-    // }
 
     prevSong() {
         let songs = this.props.queue;

@@ -6,6 +6,19 @@ import { createPlaylist } from '../actions/playlist_actions';
 import PlaylistIndexItem from './playlist_index_item'
 import PlaylistIndexDetail from './playlist_index_detail'
 
+
+const msp = state => ({
+    last_playlist: Object.values(state.entities.playlists).slice(-1)[0]
+})
+
+const mdp = dispatch => ({
+    fetchAllArtists: () => dispatch(fetchAllArtists()),
+    fetchOneArtist: (artistId) => dispatch(fetchOneArtist(artistId)),
+    fetchAllSongs: () => dispatch(fetchAllSongs()),
+    createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
+})
+
+
 class PlaylistCreation extends React.Component {
     constructor(props) {
         super(props)
@@ -52,20 +65,5 @@ class PlaylistCreation extends React.Component {
     }
 
 }
-
-const msp = state => ({
-    // artists: Object.values(state.entities.artists),
-    // songs: Object.values(state.entities.songs),
-    // albums: Object.values(state.entities.albums),
-    // playlists: Object.values(state.entities.playlists),
-    last_playlist: Object.values(state.entities.playlists).slice(-1)[0]
-})
-
-const mdp = dispatch => ({
-    fetchAllArtists: () => dispatch(fetchAllArtists()),
-    fetchOneArtist: (artistId) => dispatch(fetchOneArtist(artistId)),
-    fetchAllSongs: () => dispatch(fetchAllSongs()),
-    createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
-})
 
 export default connect(msp, mdp)(PlaylistCreation);
